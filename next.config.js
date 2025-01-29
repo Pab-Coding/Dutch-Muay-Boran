@@ -5,15 +5,19 @@ const nextConfig = {
       {
         protocol: 'https',
         hostname: 'img.youtube.com',
-        port: '',
         pathname: '/vi/**',
       },
+      {
+        protocol: 'https',
+        hostname: '*.vercel.app', // Permite imágenes del deployment de Vercel
+      }
     ],
-    unoptimized: false, // Asegura que Next.js optimice las imágenes
-    dangerouslyAllowSVG: true, // Si estás usando SVGs
-    contentDispositionType: 'attachment', // Ayuda con algunos tipos de archivos
-    contentSecurityPolicy: "default-src 'self'; script-src 'none'; sandbox;",
+    // Habilita imágenes estáticas locales
+    domains: ['localhost'], // Para desarrollo local
+    disableStaticImages: false, // Asegúrate que esté en false
   },
+  // Opcional: Si usas la carpeta public
+  trailingSlash: true,
 }
 
 module.exports = nextConfig
