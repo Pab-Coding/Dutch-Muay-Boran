@@ -26,28 +26,28 @@ const ThaiseBenamingenSection = () => {
 
   const sections = [
     {
-      title: "Algemene begrippen en tellen",
+      title: 'Algemene begrippen en tellen',
       content: [
-        "Ajarn = meester (vanaf 14e khan)",
-        "Kru = leraar",
-        "Pahsom = combinatie",
-        "Sawadee kap = begroeting",
-        "Chok = beginnen",
-        "Yud = stoppen",
-        "Sai = links",
-        "Kua = rechts"
+        'Ajarn = meester (vanaf 14e khan)',
+        'Kru = leraar',
+        'Pahsom = combinatie',
+        'Sawadee kap = begroeting',
+        'Chok = beginnen',
+        'Yud = stoppen',
+        'Sai = links',
+        'Kua = rechts'
       ]
     },
     {
-      title: "Standen en loopbewegingen",
+      title: 'Standen en loopbewegingen',
       content: [
-        "Wai = groet met gevouwen handen",
-        "Kum Chung = gevechtshouding",
-        "Seub = voorwaarts schuifelen (zelfde been blijft voor",
-        "Seue Yang = voorwaarts schuifelen (wisselen van been)",
-        "Mah Yong = paardenloop (met knieën omhoog)",
-        "Yaang saam kum = driestaps loop",
-        "Yaang suk gasem = ontwijkende loop (in een driehoek)"
+        'Wai = groet met gevouwen handen',
+        'Kum Chung = gevechtshouding',
+        'Seub = voorwaarts schuifelen (zelfde been blijft voor',
+        'Seue Yang = voorwaarts schuifelen (wisselen van been)',
+        'Mah Yong = paardenloop (met knieën omhoog)',
+        'Yaang saam kum = driestaps loop',
+        'Yaang suk gasem = ontwijkende loop (in een driehoek)'
       ]
     }
   ]
@@ -84,7 +84,7 @@ const ThaiseBenamingenSection = () => {
             variants={itemVariants}
             className="text-gray-600"
           >
-            Vanwege de Thaise achtergrond van de sport worden er ook Thaise benamingen voor de technieken gebruikt. In het begin lijkt dit moeilijk, maar het is vrij eenvoudig te leren. Zo heet een 'directe stoot' een 'mahd trong'. Als je weet dat 'mahd' het Thaise woord is voor 'stoot' en 'trong' het Thaise woord is voor 'direct' of 'voorwaarts' dan is een voorwaartse knie 'khao trong' en een afhoudtrap 'teep trong'.
+            Vanwege de Thaise achtergrond van de sport worden er ook Thaise benamingen voor de technieken gebruikt. In het begin lijkt dit moeilijk, maar het is vrij eenvoudig te leren. Zo heet een &quot;directe stoot&quot; een &quot;mahd trong&quot;. Als je weet dat &quot;mahd&quot; het Thaise woord is voor &quot;stoot&quot; en &quot;trong&quot; het Thaise woord is voor &quot;direct&quot; of &quot;voorwaarts&quot; dan is een voorwaartse knie &quot;khao trong&quot; en een afhoudtrap &quot;teep trong&quot;.
           </motion.p>
 
           <motion.div 

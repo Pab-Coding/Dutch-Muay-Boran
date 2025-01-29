@@ -1,8 +1,8 @@
-'use client'
+"use client"
 
-import { motion, AnimatePresence } from 'framer-motion'
-import { useState, useRef } from 'react'
-import { useInView } from 'framer-motion'
+import { motion, AnimatePresence } from "framer-motion"
+import { useState, useRef } from "react"
+import { useInView } from "framer-motion"
 
 const HistorySection = () => {
   const [isExpanded, setIsExpanded] = useState(false)
@@ -30,7 +30,7 @@ const HistorySection = () => {
       }
     },
     expanded: {
-      height: "auto",
+      height: "auto", 
       transition: {
         duration: 0.8,
         ease: "easeInOut"
@@ -48,7 +48,7 @@ const HistorySection = () => {
       content: "De Thaise soldaten vochten met twee zwaarden. Deze gewapende gevechtskunst werd 'Krabi Krabong' genoemd. Wanneer de soldaten hun zwaarden verloren hadden, gingen zij verder met het ongewapende gevecht: Muay Thai Boran, oftewel 'Thais vechten'. De bedoeling was om de 8 harde delen van het lichaam als wapens te gebruiken."
     },
     {
-      title: "Evolutie",
+      title: "Evolutie", 
       content: "In de loop der tijd ontwikkelden zich verschillende stijlen, afkomstig uit verschillende regio's van het Thaise rijk. De gevechtskunst werd zo populair dat het niet alleen meer door soldaten werd beoefend, maar ook door burgers. Er werden wedstrijden georganiseerd tussen verschillende scholen en regio's.",
       expanded: "Deze wedstrijden waren echter niet te vergelijken met de huidige wedstrijden. Zo was er geen boksring, waren er geen rondes en geen gewichtsklassen. Als twee vechters akkoord gingen met een wedstrijd, werd er één ronde gevochten totdat er één opgaf of knock-out ging."
     },
@@ -70,12 +70,12 @@ const HistorySection = () => {
       initial="hidden"
       animate={isInView ? "visible" : "hidden"}
       variants={containerVariants}
-      className="pt-32 pb-16 px-4" // Ajustado el padding-top para evitar superposición
+      className="pt-32 pb-16 px-4"
     >
       <div className="max-w-7xl mx-auto">
         <motion.div
           className="bg-white/80 backdrop-blur-sm rounded-2xl shadow-xl overflow-hidden
-                     relative z-10" // Añadido z-index para asegurar el orden correcto
+                     relative z-10"
         >
           {/* Timeline Container */}
           <motion.div
@@ -93,7 +93,7 @@ const HistorySection = () => {
                   initial={{ opacity: 0, x: -20 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: index * 0.2 }}
-                  className={`relative ${!isExpanded && index > 2 ? 'hidden' : ''}`}
+                  className={`relative ${!isExpanded && index > 2 ? "hidden" : ""}`}
                 >
                   <div className="flex items-start space-x-4">
                     {/* Timeline dot and line */}
@@ -154,7 +154,7 @@ const HistorySection = () => {
                          transform transition-all duration-300
                          flex items-center space-x-2"
             >
-              <span>{isExpanded ? 'Lees Minder' : 'Lees Meer'}</span>
+              <span>{isExpanded ? "Lees Minder" : "Lees Meer"}</span>
               <motion.svg
                 xmlns="http://www.w3.org/2000/svg"
                 className="h-5 w-5"

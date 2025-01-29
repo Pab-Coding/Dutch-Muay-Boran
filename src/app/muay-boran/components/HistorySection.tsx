@@ -1,8 +1,8 @@
-'use client'
+"use client"
 
-import { motion, AnimatePresence } from 'framer-motion'
-import { useState, useRef } from 'react'
-import { useInView } from 'framer-motion'
+import { motion, AnimatePresence } from "framer-motion"
+import { useState, useRef } from "react"
+import { useInView } from "framer-motion"
 
 const HistorySection = () => {
   const [isExpanded, setIsExpanded] = useState(false)
@@ -95,7 +95,7 @@ const HistorySection = () => {
                   initial={{ opacity: 0, x: -20 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: index * 0.2 }}
-                  className={`relative ${!isExpanded && index > 2 ? 'hidden' : ''}`}
+                  className={`relative ${!isExpanded && index > 2 ? "hidden" : ""}`}
                 >
                   <div className="flex items-start space-x-4">
                     {/* Timeline dot and line */}
@@ -156,7 +156,7 @@ const HistorySection = () => {
                          transform transition-all duration-300
                          flex items-center space-x-2"
             >
-              <span>{isExpanded ? 'Lees Minder' : 'Lees Meer'}</span>
+              <span>{isExpanded ? "Lees Minder" : "Lees Meer"}</span>
               <motion.svg
                 xmlns="http://www.w3.org/2000/svg"
                 className="h-5 w-5"

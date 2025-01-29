@@ -18,7 +18,7 @@ const titleVariants = {
     rotateX: 0,
     y: 0,
     transition: {
-      duration: 1,
+      duration: 1.5,
       ease: "easeOut"
     }
   }
@@ -29,15 +29,14 @@ const cardVariants = {
     opacity: 0, 
     x: -200,
   },
-  visible: (index: number) => ({
+  visible: {
     opacity: 1,
     x: 0,
     transition: {
-      duration: 0.8,
-      delay: index * 0.3,
+      duration: 1.3,
       ease: "easeOut"
     }
-  })
+  }
 }
 
 const iconVariants = {
@@ -48,7 +47,7 @@ const iconVariants = {
     transition: {
       type: "spring",
       bounce: 0.4,
-      duration: 1
+      duration: 1.5
     }
   }
 }
@@ -83,7 +82,6 @@ const courses = [
 const OpleidingenSection = () => {
   const sectionRef = useRef(null)
   const titleRef = useRef(null)
-  const cardRefs = useRef(courses.map(() => useRef(null)))
   const isInView = useInView(sectionRef, { once: true, margin: "-100px" })
   const isTitleInView = useInView(titleRef, { once: true, margin: "-100px" })
   
@@ -92,7 +90,7 @@ const OpleidingenSection = () => {
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-        transition={{ duration: 0.8 }}
+        transition={{ duration: 1.3 }}
         className="max-w-7xl mx-auto"
       >
         <motion.h2
@@ -110,11 +108,10 @@ const OpleidingenSection = () => {
           {courses.map((course, index) => (
             <motion.div
               key={course.title}
-              ref={cardRefs.current[index]}
-              custom={index}
               variants={cardVariants}
               initial="hidden"
               animate={isInView ? "visible" : "hidden"}
+              transition={{ delay: index * 0.4 }}
               whileHover={{ scale: 1.02, translateY: -5 }}
               className="relative group"
             >
@@ -145,7 +142,7 @@ const OpleidingenSection = () => {
                 <p className="text-gray-100 mb-6 font-light">{course.description}</p>
                 
                 <div className="flex gap-4">
-                <Link href="/opleidingen/inschrijven">
+                  <Link href="/opleidingen/inschrijven">
                     <motion.button
                       whileHover={{ scale: 1.05 }}
                       whileTap={{ scale: 0.95 }}

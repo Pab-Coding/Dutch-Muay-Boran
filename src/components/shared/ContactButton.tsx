@@ -33,7 +33,7 @@ const ContactButton = () => {
       }, 2000)
     }
     return () => clearTimeout(timeout)
-  }, [isVisible])
+  }, [isVisible, isTooltipVisible])
 
   const buttonVariants = {
     hidden: { 
