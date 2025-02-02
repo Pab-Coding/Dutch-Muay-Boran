@@ -12,6 +12,9 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "jsx": "preserve",
+    "jsxImportSource": "react",
+    "allowImportingTsExtensions": true,
+    "allowArbitraryExtensions": true,
     "incremental": true,
     "plugins": [
       {

@@ -1,6 +1,6 @@
 'use client'
 
-import { motion } from 'framer-motion'
+import { MotionSection, MotionDiv, MotionH2, MotionP, MotionButton } from '../../../../components/shared/MotionWrapper'
 import Image from 'next/image'
 import { useState } from 'react'
 
@@ -53,7 +53,7 @@ const ThaiseBenamingenSection = () => {
   ]
 
   return (
-    <motion.section
+    <MotionSection
       variants={containerVariants}
       initial="hidden"
       whileInView="visible"
@@ -61,33 +61,34 @@ const ThaiseBenamingenSection = () => {
       className="relative bg-white rounded-2xl shadow-lg p-8"
     >
       <div className="flex flex-col lg:flex-row gap-8">
-        <motion.div variants={itemVariants} className="lg:w-1/3">
+        <MotionDiv variants={itemVariants} className="lg:w-1/3">
           <div className="relative h-[300px] rounded-xl overflow-hidden">
             <Image
-              src="/images/thaise-benamingen.jpg"
+              src="/images/thaise-benamingen.webp"
               alt="Thaise Benamingen"
               fill
+              sizes="(max-width: 768px) 100vw, 50vw"
               className="object-cover"
             />
           </div>
-        </motion.div>
+        </MotionDiv>
 
         <div className="lg:w-2/3 space-y-6">
-          <motion.h2 
+          <MotionH2 
             variants={itemVariants}
             className="text-3xl font-bold text-gray-800"
           >
             Thaise benamingen
-          </motion.h2>
+          </MotionH2>
 
-          <motion.p 
+          <MotionP 
             variants={itemVariants}
             className="text-gray-600"
           >
             Vanwege de Thaise achtergrond van de sport worden er ook Thaise benamingen voor de technieken gebruikt. In het begin lijkt dit moeilijk, maar het is vrij eenvoudig te leren. Zo heet een &quot;directe stoot&quot; een &quot;mahd trong&quot;. Als je weet dat &quot;mahd&quot; het Thaise woord is voor &quot;stoot&quot; en &quot;trong&quot; het Thaise woord is voor &quot;direct&quot; of &quot;voorwaarts&quot; dan is een voorwaartse knie &quot;khao trong&quot; en een afhoudtrap &quot;teep trong&quot;.
-          </motion.p>
+          </MotionP>
 
-          <motion.div 
+          <MotionDiv 
             variants={itemVariants}
             className="grid md:grid-cols-2 gap-6"
           >
@@ -105,9 +106,9 @@ const ThaiseBenamingenSection = () => {
                 </ul>
               </div>
             ))}
-          </motion.div>
+          </MotionDiv>
 
-          <motion.button
+          <MotionButton
             variants={itemVariants}
             onClick={() => window.open('/documents/thaise-benamingen.pdf', '_blank')}
             className="mt-6 inline-flex items-center px-6 py-3 rounded-xl 
@@ -129,10 +130,10 @@ const ThaiseBenamingenSection = () => {
               />
             </svg>
             Download Thaise benamingen PDF
-          </motion.button>
+          </MotionButton>
         </div>
       </div>
-    </motion.section>
+    </MotionSection>
   )
 }
 

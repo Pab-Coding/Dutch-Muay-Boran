@@ -64,12 +64,13 @@ const HeroSection = () => {
         className="absolute inset-0"
       >
         <Image
-          src="/images/boran.jpg"
+          src="/images/boran.webp"
           alt="Muay Boran"
           fill
+          sizes="100vw"
           className="object-cover"
           priority
-          quality={100}
+          quality={80}
         />
         {/* Degradados y efectos */}
         <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/50 to-black/70" />

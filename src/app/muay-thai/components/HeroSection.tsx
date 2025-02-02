@@ -1,9 +1,10 @@
 'use client'
 
-import { motion, useScroll, useTransform } from 'framer-motion'
+import { useScroll, useTransform } from 'framer-motion'
 import Image from 'next/image'
 import Link from 'next/link'
 import { useRef } from 'react'
+import { MotionSection, MotionDiv, MotionButton, MotionSpan, MotionH1, MotionP } from '@/components/shared/MotionWrapper'
 
 const HeroSection = () => {
   const sectionRef = useRef<HTMLDivElement>(null)
@@ -51,7 +52,7 @@ const HeroSection = () => {
   }
 
   return (
-    <motion.section
+    <MotionSection
       ref={sectionRef}
       variants={heroVariants}
       initial="hidden"
@@ -59,14 +60,15 @@ const HeroSection = () => {
       className="relative h-[80vh] min-h-[600px] w-full overflow-hidden"
     >
       {/* Imagen de fondo con efecto parallax */}
-      <motion.div
+      <MotionDiv
         style={{ scale }}
         className="absolute inset-0"
       >
         <Image
-          src="/images/muay-thai.jpeg"
+          src="/images/muay-thai.webp"
           alt="Muay Thai Boran"
           fill
+          sizes="100vw"
           className="object-cover"
           priority
           quality={100}
@@ -75,54 +77,54 @@ const HeroSection = () => {
         <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/50 to-black/70" />
         <div className="absolute inset-0 bg-gradient-to-r from-red-900/20 to-blue-900/20" />
         <div className="absolute inset-0 backdrop-blur-[1px]" />
-      </motion.div>
+      </MotionDiv>
 
       {/* Contenido principal */}
-      <motion.div
+      <MotionDiv
         style={{ y: textY, opacity }}
         className="relative z-10 h-full max-w-7xl mx-auto px-4"
       >
         <div className="flex flex-col justify-center h-full max-w-4xl">
-          <motion.div
+          <MotionDiv
             variants={childVariants}
             className="space-y-6"
           >
-            <motion.div
+            <MotionDiv
               className="inline-block bg-gradient-to-r from-red-500/20 to-blue-500/20
                          backdrop-blur-sm rounded-lg px-4 py-2"
             >
               <span className="text-white/90 font-medium">
                 Dutch Muay Boran Foundation
               </span>
-            </motion.div>
+            </MotionDiv>
 
             <div className="space-y-4">
-              <motion.h1
+              <MotionH1
                 variants={childVariants}
                 className="text-6xl md:text-7xl font-bold text-transparent bg-clip-text
                            bg-gradient-to-r from-white via-gray-200 to-white
                            leading-[1.1] py-2"
               >
                 Muay Thai Boran
-              </motion.h1>
+              </MotionH1>
 
-              <motion.p
+              <MotionP
                 variants={childVariants}
                 className="text-xl md:text-2xl text-gray-200 font-medium
                            leading-relaxed max-w-2xl drop-shadow-lg"
               >
                 De nationale sport van Thailand met meer dan 1000 jaar geschiedenis
-              </motion.p>
+              </MotionP>
             </div>
-          </motion.div>
+          </MotionDiv>
 
           {/* Botón con animación */}
-          <motion.div
+          <MotionDiv
             variants={childVariants}
             className="mt-10"
           >
             <Link href="/opleidingen/inschrijven">
-              <motion.button
+              <MotionButton
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 className="px-8 py-4 bg-gradient-to-r from-red-600 to-blue-600
@@ -133,7 +135,7 @@ const HeroSection = () => {
                            flex items-center space-x-3"
               >
                 <span>Inschrijven</span>
-                <motion.span
+                <MotionSpan
                   animate={{ x: [0, 5, 0] }}
                   transition={{
                     duration: 1.5,
@@ -154,13 +156,13 @@ const HeroSection = () => {
                       d="M9 5l7 7-7 7" 
                     />
                   </svg>
-                </motion.span>
-              </motion.button>
+                </MotionSpan>
+              </MotionButton>
             </Link>
-          </motion.div>
+          </MotionDiv>
 
           {/* Efectos decorativos */}
-          <motion.div
+          <MotionDiv
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 1.2, duration: 1 }}
@@ -168,7 +170,7 @@ const HeroSection = () => {
                        bg-gradient-to-t from-black/40 to-transparent"
           />
 
-          <motion.div
+          <MotionDiv
             initial={{ opacity: 0 }}
             animate={{ opacity: 0.5 }}
             transition={{ delay: 1.5, duration: 1 }}
@@ -177,29 +179,29 @@ const HeroSection = () => {
                        bg-gradient-to-r from-red-600/20 to-blue-600/20"
           />
         </div>
-      </motion.div>
+      </MotionDiv>
 
       {/* Indicador de scroll */}
-      <motion.div
+      <MotionDiv
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 2, duration: 1 }}
         className="absolute bottom-8 left-1/2 transform -translate-x-1/2"
       >
-        <motion.div
+        <MotionDiv
           animate={{ y: [0, 10, 0] }}
           transition={{ duration: 1.5, repeat: Infinity }}
           className="w-6 h-10 border-2 border-white/30 rounded-full
                      flex justify-center items-start p-2"
         >
-          <motion.div
+          <MotionDiv
             animate={{ height: ["20%", "80%", "20%"] }}
             transition={{ duration: 1.5, repeat: Infinity }}
             className="w-1 bg-white/50 rounded-full"
           />
-        </motion.div>
-      </motion.div>
-    </motion.section>
+        </MotionDiv>
+      </MotionDiv>
+    </MotionSection>
   )
 }
 

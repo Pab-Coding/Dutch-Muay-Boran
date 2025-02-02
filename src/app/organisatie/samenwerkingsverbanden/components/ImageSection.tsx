@@ -1,9 +1,10 @@
 'use client'
 
-import { motion, useScroll, useTransform } from 'framer-motion'
+import { useScroll, useTransform } from 'framer-motion'
 import Image from 'next/image'
 import { useRef } from 'react'
 import { ImageSectionProps } from '@/types'
+import { MotionSection, MotionDiv, MotionH1, MotionH2, MotionP } from '@/components/shared/MotionWrapper'
 
 const ImageSection = ({ textConfig }: ImageSectionProps) => {
   const ref = useRef<HTMLDivElement>(null)
@@ -86,7 +87,7 @@ const ImageSection = ({ textConfig }: ImageSectionProps) => {
   }
 
   return (
-    <motion.section
+    <MotionSection
       ref={ref}
       variants={containerVariants}
       initial="hidden"
@@ -96,33 +97,34 @@ const ImageSection = ({ textConfig }: ImageSectionProps) => {
     >
       <div className="max-w-7xl mx-auto px-4">
         {/* Main title */}
-        <motion.div
+        <MotionDiv
           variants={titleVariants}
           style={{ opacity: headerOpacity }}
           className="mb-12"
         >
-          <h1 className="text-4xl md:text-5xl font-bold text-center
+          <MotionH1 className="text-4xl md:text-5xl font-bold text-center
                        bg-gradient-to-r from-red-600 via-blue-600 to-red-600 
                        bg-clip-text text-transparent
                        leading-relaxed tracking-wide py-4"
           >
             {textConfig.mainTitle}
-          </h1>
-        </motion.div>
+          </MotionH1>
+        </MotionDiv>
 
-        <motion.div
+        <MotionDiv
           variants={imageContainerVariants}
           className="relative rounded-2xl overflow-hidden shadow-2xl"
         >
           {/* Image container with scroll-based scale */}
-          <motion.div 
+          <MotionDiv 
             className="relative aspect-[21/9] w-full transform-gpu"
             style={{ scale: imageScale }}
           >
             <Image
-              src="/images/samenwerkingsverbanden.jpg"
+              src="/images/samenwerkingsverbanden.webp"
               alt="Marco de Cesaris en Dale Tan op de WMF wereldkampioenschappen in Thailand"
               fill
+              sizes="100vw"
               className="object-cover"
               priority
               quality={100}
@@ -134,7 +136,7 @@ const ImageSection = ({ textConfig }: ImageSectionProps) => {
                           transition-opacity duration-300" />
 
             {/* Dynamic light effect */}
-            <motion.div
+            <MotionDiv
               className="absolute inset-0 bg-gradient-to-r from-white/10 to-transparent"
               animate={{
                 opacity: [0, 0.1, 0],
@@ -146,10 +148,10 @@ const ImageSection = ({ textConfig }: ImageSectionProps) => {
                 ease: "linear"
               }}
             />
-          </motion.div>
+          </MotionDiv>
 
           {/* Text content with configurable positioning */}
-          <motion.div
+          <MotionDiv
             variants={contentVariants}
             className="absolute"
             style={{
@@ -163,7 +165,7 @@ const ImageSection = ({ textConfig }: ImageSectionProps) => {
               className="space-y-6"
               style={{ maxWidth: textConfig.textPosition.maxWidth }}
             >
-              <motion.div 
+              <MotionDiv 
                 className="space-y-1"
                 variants={{
                   hidden: { opacity: 0, x: -20 },
@@ -178,21 +180,21 @@ const ImageSection = ({ textConfig }: ImageSectionProps) => {
                   }
                 }}
               >
-                <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold
+                <MotionH2 className="text-4xl md:text-5xl lg:text-6xl font-bold
                              text-white whitespace-nowrap
                              leading-[1.2] tracking-wide"
                 >
                   {textConfig.heroTitle.line1}
-                </h2>
-                <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold
+                </MotionH2>
+                <MotionH2 className="text-4xl md:text-5xl lg:text-6xl font-bold
                              text-white whitespace-nowrap
                              leading-[1.2] tracking-wide pb-2"
                 >
                   {textConfig.heroTitle.line2}
-                </h2>
-              </motion.div>
+                </MotionH2>
+              </MotionDiv>
 
-              <motion.p
+              <MotionP
                 variants={contentVariants}
                 className="text-xl md:text-2xl text-gray-200 
                          font-medium leading-relaxed
@@ -200,12 +202,12 @@ const ImageSection = ({ textConfig }: ImageSectionProps) => {
                          mt-4"
               >
                 {textConfig.description}
-              </motion.p>
+              </MotionP>
             </div>
-          </motion.div>
+          </MotionDiv>
 
           {/* Shine effect border */}
-          <motion.div
+          <MotionDiv
             className="absolute inset-0 border-2 border-white/20 rounded-2xl"
             animate={{
               opacity: [0.2, 0.4, 0.2],
@@ -216,9 +218,9 @@ const ImageSection = ({ textConfig }: ImageSectionProps) => {
               ease: "easeInOut"
             }}
           />
-        </motion.div>
+        </MotionDiv>
       </div>
-    </motion.section>
+    </MotionSection>
   )
 }
 

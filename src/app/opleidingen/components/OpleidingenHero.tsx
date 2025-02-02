@@ -1,8 +1,9 @@
 'use client'
 
-import { motion, useScroll, useTransform } from 'framer-motion'
+import { useScroll, useTransform } from 'framer-motion'
 import Image from 'next/image'
 import { useRef } from 'react'
+import { MotionSection, MotionDiv, MotionH1, MotionP } from '@/components/shared/MotionWrapper'
 
 const OpleidingenHero = () => {
   const sectionRef = useRef<HTMLDivElement>(null)
@@ -50,21 +51,22 @@ const OpleidingenHero = () => {
   }
 
   return (
-    <motion.section
+    <MotionSection
       ref={sectionRef}
       variants={heroVariants}
       initial="hidden"
       animate="visible"
       className="relative h-[70vh] min-h-[600px] w-full overflow-hidden"
     >
-      <motion.div
+      <MotionDiv
         style={{ scale }}
         className="absolute inset-0"
       >
         <Image
-          src="/images/opleidingen.jpg"
+          src="/images/opleidingen.webp"
           alt="Opleidingen Muay Thai"
           fill
+          sizes="100vw"
           className="object-cover"
           priority
           quality={100}
@@ -72,49 +74,49 @@ const OpleidingenHero = () => {
         <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/30 to-black/40" />
         <div className="absolute inset-0 bg-gradient-to-r from-red-900/5 to-blue-900/5" />
         <div className="absolute inset-0 backdrop-blur-[0.5px]" />
-      </motion.div>
+      </MotionDiv>
 
-      <motion.div
+      <MotionDiv
         style={{ y: textY, opacity }}
         className="relative z-10 h-full max-w-7xl mx-auto px-4"
       >
         <div className="flex flex-col justify-center h-full max-w-4xl">
-          <motion.div
+          <MotionDiv
             variants={childVariants}
             className="space-y-2"
           >
-            <motion.div
+            <MotionDiv
               className="inline-block bg-gradient-to-r from-red-500/20 to-blue-500/20
                          backdrop-blur-sm rounded-lg px-4 py-2 mb-4"
             >
               <span className="text-white/90 font-medium">
                 Dutch Muay Boran Foundation
               </span>
-            </motion.div>
+            </MotionDiv>
 
-            <div className="mb-4"> {/* Contenedor adicional con margen inferior */}
-              <motion.h1
+            <div className="mb-4">
+              <MotionH1
                 variants={childVariants}
                 className="text-6xl md:text-7xl font-bold text-transparent bg-clip-text
                            bg-gradient-to-r from-white via-gray-200 to-white
-                           leading-[1.2] pb-4" // Ajustado leading y añadido padding-bottom
+                           leading-[1.2] pb-4"
               >
                 Opleidingen
-              </motion.h1>
+              </MotionH1>
             </div>
 
-            <motion.p
+            <MotionP
               variants={childVariants}
               className="mt-6 text-xl md:text-2xl text-gray-200 font-medium
                          leading-relaxed max-w-2xl drop-shadow-lg"
             >
               Ontwikkel je vaardigheden en start je professionele carrière
               in de authentieke kunst van Muay Thai Boran en Muay Boran
-            </motion.p>
-          </motion.div>
+            </MotionP>
+          </MotionDiv>
         </div>
-      </motion.div>
-    </motion.section>
+      </MotionDiv>
+    </MotionSection>
   )
 }
 

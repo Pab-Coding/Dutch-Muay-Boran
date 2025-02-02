@@ -1,8 +1,8 @@
 'use client'
-import { motion } from 'framer-motion'
+import { useState, useEffect } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
-import { useState, useEffect } from 'react'
+import { MotionSection, MotionDiv, MotionH2, MotionP, MotionButton } from '@/components/shared/MotionWrapper'
 
 const TeamSection = () => {
   const [showContent, setShowContent] = useState(false)
@@ -19,7 +19,7 @@ const TeamSection = () => {
   }, [])
 
   return (
-    <motion.section
+    <MotionSection
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.8 }}
@@ -27,7 +27,7 @@ const TeamSection = () => {
     >
       <div className="relative w-full h-[600px] rounded-xl overflow-hidden shadow-2xl">
         <Image
-          src="/images/team-photo.png"
+          src="/images/team-photo.webp"
           alt="Dutch Muay Boran Foundation Team"
           fill
           className="object-cover object-center transform hover:scale-105 transition-transform duration-700"
@@ -37,10 +37,10 @@ const TeamSection = () => {
                  70vw"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent">
-          <motion.div
+          <MotionDiv
             className="absolute top-[45%] left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-center w-full px-4"
           >
-            <motion.h2
+            <MotionH2
               initial={{ 
                 opacity: 0,
                 filter: "blur(10px)",
@@ -58,33 +58,33 @@ const TeamSection = () => {
               className="text-5xl font-bold bg-gradient-to-r from-slate-100 via-blue-400 to-slate-100 bg-clip-text text-transparent tracking-tight"
             >
               Welkom bij Dutch Muay Boran Foundation
-            </motion.h2>
-          </motion.div>
+            </MotionH2>
+          </MotionDiv>
 
-          <motion.div 
+          <MotionDiv 
             className="absolute bottom-[-20px] left-0 p-12 text-white max-w-3xl"
             initial={{ opacity: 0 }}
             animate={{ opacity: showContent ? 1 : 0 }}
             transition={{ duration: 0.5 }}
           >
-            <motion.p
+            <MotionP
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: showContent ? 1 : 0, y: showContent ? 0 : 20 }}
               transition={{ duration: 0.5, delay: 0.2 }}
               className="text-lg leading-relaxed mb-4 text-gray-100"
             >
               Wij zijn de toonaangevende organisatie gespecialiseerd in het onderwijzen en behouden van authentiek Muay Thai en Muay Boran. Wij zijn erkend door de World Muaythai Federation (WMF) en de International Muay Boran Academy.
-            </motion.p>
-            <motion.p
+            </MotionP>
+            <MotionP
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: showContent ? 1 : 0, y: showContent ? 0 : 20 }}
               transition={{ duration: 0.5, delay: 0.4 }}
               className="text-base leading-relaxed text-gray-200 mb-6"
             >
               Ons team van gekwalificeerde leraren en instructeurs houdt de essentie van de Thaise vechtkunsten levend, waarbij de oude traditie van Muay Boran wordt gecombineerd met de moderne effectiviteit van Muay Thai.
-            </motion.p>
+            </MotionP>
             <Link href="/organisatie">
-              <motion.button
+              <MotionButton
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: showContent ? 1 : 0, y: showContent ? 0 : 20 }}
                 whileHover={{ scale: 1.05, y: -2 }}
@@ -119,12 +119,12 @@ const TeamSection = () => {
                     />
                   </svg>
                 </span>
-              </motion.button>
+              </MotionButton>
             </Link>
-          </motion.div>
+          </MotionDiv>
         </div>
       </div>
-    </motion.section>
+    </MotionSection>
   )
 }
 

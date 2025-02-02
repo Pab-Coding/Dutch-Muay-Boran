@@ -19,6 +19,14 @@
 AppData/
 .vscode/
 
+# Backup files
+*.bak  # <--- Nueva regla para todos los archivos .bak
+
+# Images (originales)
+public/images/*.png  # <--- Nueva regla
+public/images/*.jpg  # <--- Nueva regla
+public/images/*.jpeg # <--- Nueva regla
+
 # debug
 npm-debug.log*
 yarn-debug.log*

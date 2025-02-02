@@ -1,6 +1,7 @@
 'use client'
 
-import { motion, useScroll, useTransform } from 'framer-motion'
+import { useScroll, useTransform } from 'framer-motion'
+import { MotionSection, MotionDiv } from '../../../components/shared/MotionWrapper'
 import Image from 'next/image'
 import { useRef } from 'react'
 
@@ -39,13 +40,13 @@ const HistorySection = () => {
   }
 
   return (
-    <motion.section
+    <MotionSection
       ref={sectionRef}
       style={{ opacity, scale }}
       className="w-full py-16 bg-gradient-to-b from-gray-50 via-white to-gray-100"
     >
       <div className="max-w-4xl mx-auto px-4 space-y-12">
-        <motion.div
+        <MotionDiv
           variants={imageVariants}
           initial="hidden"
           whileInView="visible"
@@ -53,15 +54,16 @@ const HistorySection = () => {
           className="flex justify-center"
         >
           <Image
-            src="/images/logo.png"
+            src="/images/logo.webp"
             alt="Dutch Muay Boran Foundation Logo"
             width={200}
             height={200}
+            sizes="(max-width: 768px) 100vw, 50vw"
             className="transform hover:scale-105 transition-transform duration-300"
           />
-        </motion.div>
+        </MotionDiv>
 
-        <motion.div
+        <MotionDiv
           variants={textVariants}
           initial="hidden"
           whileInView="visible"
@@ -89,9 +91,9 @@ const HistorySection = () => {
               Met steun vanuit Thailand werd geprobeerd om rijkserkenning te krijgen voor Muay Thai. Het doel was om één overkoepelende bond in Nederland te creëren. Om de erkenning te krijgen moest de IAMTF samengaan met een bond met meer leden. Dit resulteerde in een fusie met de MTBN, waaruit de Muaythai Organisatie Nederland (MON) ontstond. De MON werd de eerste bond in Nederland met rijkserkenning voor Muay Thai. Dale Tan was hierin verantwoordelijk voor de portefeuilles &quot;Opleidingen&quot; en &quot;Breedtesport&quot;. Na onenigheid met enkele andere bestuursleden stapten Dale Tan en Mies Stolp uit de MON. De MON verloor vervolgens haar rijkserkenning.
             </p>
           </div>
-        </motion.div>
+        </MotionDiv>
 
-        <motion.div
+        <MotionDiv
           variants={imageVariants}
           initial="hidden"
           whileInView="visible"
@@ -99,15 +101,16 @@ const HistorySection = () => {
           className="flex justify-center"
         >
           <Image
-            src="/images/otro-logo.jpg"
+            src="/images/otro-logo.webp"
             alt="DMBF Secondary Logo"
             width={200}
             height={200}
+            sizes="(max-width: 768px) 100vw, 50vw"
             className="transform hover:scale-105 transition-transform duration-300"
           />
-        </motion.div>
+        </MotionDiv>
 
-        <motion.div
+        <MotionDiv
           variants={textVariants}
           initial="hidden"
           whileInView="visible"
@@ -117,9 +120,9 @@ const HistorySection = () => {
           <p>
             Dale Tan en Mies Stolp zagen nog steeds het belang in van een bond met rijkserkenning en richtten de Dutch Muay Boran Foundation (DMBF) op. Deze organisatie richt zich specifiek op Muay Thai en Muay Boran, en niet op kickboksen. Een belangrijk doel van de bond is om de Thaise stijlen meer bekendheid te geven en de Thaise achtergrond van de sport meer naar voren te brengen. De DMBF is aangesloten bij de Thaise wereldbond voor Muay Thai, de WMF, en bij de International Muay Boran Academy voor traditionele Thaise gevechtskunsten.
           </p>
-        </motion.div>
+        </MotionDiv>
 
-        <motion.div
+        <MotionDiv
           initial={{ opacity: 0 }}
           animate={{ opacity: 0.5 }}
           transition={{ delay: 0.5, duration: 1 }}
@@ -128,7 +131,7 @@ const HistorySection = () => {
                      bg-gradient-to-r from-red-600/20 to-blue-600/20"
         />
       </div>
-    </motion.section>
+    </MotionSection>
   )
 }
 

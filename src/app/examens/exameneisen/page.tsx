@@ -1,6 +1,6 @@
 'use client'
 
-import { motion } from 'framer-motion'
+import { MotionDiv, MotionSection, MotionH1 } from '../../../components/shared/MotionWrapper'
 import Image from 'next/image'
 // Importaciones de los componentes de layout
 import Header from '../../../components/layout/Header'
@@ -17,14 +17,14 @@ const ExamensEisenPage = () => {
       <Header />
       <Navigation />
       
-      <motion.div
+      <MotionDiv
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.6 }}
         className="min-h-screen bg-gradient-to-b from-gray-50 via-white to-gray-100"
       >
         {/* Hero Section */}
-        <motion.section
+        <MotionSection
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
@@ -32,37 +32,38 @@ const ExamensEisenPage = () => {
         >
           <div className="absolute inset-0 bg-black/40" />
           <div className="relative z-10 h-full max-w-7xl mx-auto px-4 flex flex-col justify-center items-center">
-            <motion.div
+            <MotionDiv
               initial={{ scale: 0.8, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               transition={{ delay: 0.2, duration: 0.6 }}
               className="w-32 h-32 relative mb-6"
             >
               <Image
-                src="/images/logo.png"
+                src="/images/logo.webp"
                 alt="Dutch Muay Boran Logo"
                 fill
+                sizes="(max-width: 768px) 100vw, 50vw"
                 className="object-contain"
                 priority
               />
-            </motion.div>
+            </MotionDiv>
 
-            <motion.h1
+            <MotionH1
               initial={{ y: 20, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
               transition={{ delay: 0.4, duration: 0.6 }}
               className="text-4xl md:text-5xl font-bold text-white text-center"
             >
               Exameneisen
-            </motion.h1>
+            </MotionH1>
           </div>
-        </motion.section>
+        </MotionSection>
 
         {/* Main Content */}
         <main className="max-w-7xl mx-auto px-4 py-16">
           <div className="space-y-16">
             {/* Intro Text */}
-            <motion.div
+            <MotionDiv
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.6, duration: 0.6 }}
@@ -72,30 +73,30 @@ const ExamensEisenPage = () => {
                 Hier vindt u alle informatie over de exameneisen voor het Muay Boran systeem,
                 inclusief de Thaise benamingen en het Khan-systeem
               </p>
-            </motion.div>
+            </MotionDiv>
 
             {/* Thaise Benamingen Section */}
-            <motion.div
+            <MotionDiv
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6 }}
             >
               <ThaiseBenamingenSection />
-            </motion.div>
+            </MotionDiv>
 
             {/* Khan System Section */}
-            <motion.div
+            <MotionDiv
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6 }}
             >
               <KhanSystemSection />
-            </motion.div>
+            </MotionDiv>
 
             {/* Contact Section */}
-<motion.section
+<MotionSection
   initial={{ opacity: 0, y: 20 }}
   whileInView={{ opacity: 1, y: 0 }}
   viewport={{ once: true }}
@@ -118,10 +119,10 @@ const ExamensEisenPage = () => {
       Contact opnemen
     </Link>
   </div>
-</motion.section>
+</MotionSection>
           </div>
         </main>
-      </motion.div>
+      </MotionDiv>
 
       <Footer />
     </>

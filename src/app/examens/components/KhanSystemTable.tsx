@@ -1,6 +1,7 @@
 'use client'
 
-import { motion, useScroll, useTransform } from 'framer-motion'
+import { useScroll, useTransform } from 'framer-motion'
+import { MotionSection, MotionDiv } from '../../../components/shared/MotionWrapper'
 import Image from 'next/image'
 import { useRef } from 'react'
 import { BsAward } from 'react-icons/bs'
@@ -64,7 +65,7 @@ const KhanSystemTable = () => {
   }
 
   return (
-    <motion.section
+    <MotionSection
       ref={sectionRef}
       style={{ opacity, scale }}
       variants={containerVariants}
@@ -73,7 +74,7 @@ const KhanSystemTable = () => {
       className="w-full py-16 bg-gradient-to-b from-gray-50 via-white to-gray-100"
     >
       <div className="max-w-7xl mx-auto px-4">
-        <motion.div
+        <MotionDiv
           variants={titleVariants}
           className="text-center mb-12"
         >
@@ -87,9 +88,9 @@ const KhanSystemTable = () => {
           <p className="text-gray-600 max-w-2xl mx-auto">
             Ontdek de verschillende niveaus en vereisten voor elke khan-graad
           </p>
-        </motion.div>
+        </MotionDiv>
 
-        <motion.div
+        <MotionDiv
           variants={imageVariants}
           className="relative max-w-4xl mx-auto"
         >
@@ -100,7 +101,7 @@ const KhanSystemTable = () => {
                          rounded-2xl transform rotate-1" />
           
           {/* Contenedor de la imagen */}
-          <motion.div
+          <MotionDiv
             className="relative bg-white rounded-2xl shadow-2xl overflow-hidden
                        transform hover:scale-[1.02] transition-all duration-300"
             whileHover={{
@@ -108,20 +109,21 @@ const KhanSystemTable = () => {
             }}
           >
             <Image
-              src="/images/khans.png"
+              src="/images/khans.webp"
               alt="Khan System Table"
               width={1200}
               height={800}
+              sizes="(max-width: 768px) 100vw, 50vw"
               className="w-full h-auto"
               priority
             />
             
             {/* Overlay con gradiente sutil */}
             <div className="absolute inset-0 bg-gradient-to-t from-black/5 to-transparent" />
-          </motion.div>
+          </MotionDiv>
 
           {/* Decoración adicional */}
-          <motion.div
+          <MotionDiv
             className="absolute -bottom-4 left-1/2 transform -translate-x-1/2 w-3/4 h-8
                        bg-gradient-to-r from-red-600/10 via-blue-600/10 to-red-600/10
                        blur-2xl rounded-full"
@@ -135,19 +137,19 @@ const KhanSystemTable = () => {
               repeatType: "reverse"
             }}
           />
-        </motion.div>
+        </MotionDiv>
 
         {/* Nota informativa */}
-        <motion.div
+        <MotionDiv
           variants={titleVariants}
           className="mt-12 text-center"
         >
           <p className="text-lg text-gray-700 max-w-3xl mx-auto">
             Bekijk op de volgende pagina de exameneisen voor de 1e tot en met de 6e khan
           </p>
-        </motion.div>
+        </MotionDiv>
       </div>
-    </motion.section>
+    </MotionSection>
   )
 }
 

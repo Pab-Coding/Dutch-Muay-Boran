@@ -1,6 +1,7 @@
 'use client'
 
-import { motion, useInView } from 'framer-motion'
+import { useInView } from 'framer-motion'
+import { MotionDiv, MotionSpan } from '../shared/MotionWrapper'
 import Image from 'next/image'
 import Link from 'next/link'
 import { useRef } from 'react'
@@ -29,34 +30,35 @@ const LatestNewsHighlight = () => {
   const isInView = useInView(ref, { once: true, margin: "-100px" })
 
   return (
-    <div ref={ref} className="w-full mb-16"> {/* Añadido mb-16 para espacio con el footer */}
-      <motion.div
+    <div ref={ref} className="w-full mb-16">
+      <MotionDiv
         initial={{ opacity: 0, y: 50 }}
         animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
         transition={{ duration: 0.8 }}
         className="max-w-4xl mx-auto"
       >
-        <motion.div
+        <MotionDiv
           animate={pulseAnimation}
           className="bg-white rounded-xl overflow-hidden shadow-2xl"
         >
           <div className="relative">
             <Image
-              src="/images/nk-muaythai-2025.jpg"
+              src="/images/nk-muaythai-2025.webp"
               alt="Nederlandse Kampioenschappen Muay Thai Boran 2025"
               width={1200}
               height={600}
+              sizes="(max-width: 768px) 100vw, 50vw"
               className="w-full h-[250px] object-cover"
             />
-            <motion.div
+            <MotionDiv
               initial={{ opacity: 0, scale: 0 }}
               animate={isInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0 }}
               className="absolute top-4 right-4 bg-red-600 text-white px-4 py-2 rounded-full 
                          flex items-center space-x-2 shadow-lg"
             >
               <BsNewspaper className="animate-bounce" />
-              <motion.span animate={shakeAnimation}>NIEUWS!</motion.span>
-            </motion.div>
+              <MotionSpan animate={shakeAnimation}>NIEUWS!</MotionSpan>
+            </MotionDiv>
           </div>
 
           <div className="p-6">
@@ -80,7 +82,7 @@ const LatestNewsHighlight = () => {
               </div>
 
               <Link href="/contact">
-                <motion.button
+                <MotionDiv
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                   className="px-6 py-2.5 bg-gradient-to-r from-red-600 to-blue-600 text-white 
@@ -91,12 +93,12 @@ const LatestNewsHighlight = () => {
                   <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                   </svg>
-                </motion.button>
+                </MotionDiv>
               </Link>
             </div>
           </div>
-        </motion.div>
-      </motion.div>
+        </MotionDiv>
+      </MotionDiv>
     </div>
   )
 }

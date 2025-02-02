@@ -1,6 +1,7 @@
 'use client'
 
-import { motion, useScroll, useTransform } from 'framer-motion'
+import { useScroll, useTransform } from 'framer-motion'
+import { MotionSection, MotionDiv } from '../../../components/shared/MotionWrapper'
 import Image from 'next/image'
 import { useRef } from 'react'
 
@@ -61,7 +62,7 @@ const ExamensInfo = () => {
   }
 
   return (
-    <motion.section
+    <MotionSection
       ref={sectionRef}
       style={{ opacity, scale }}
       variants={containerVariants}
@@ -72,11 +73,11 @@ const ExamensInfo = () => {
       <div className="max-w-7xl mx-auto px-4">
         <div className="grid md:grid-cols-2 gap-8 items-center">
           {/* Texto informativo */}
-          <motion.div
+          <MotionDiv
             variants={textVariants}
             className="space-y-6"
           >
-            <motion.div
+            <MotionDiv
               variants={textVariants}
               className="relative overflow-hidden rounded-2xl shadow-xl"
             >
@@ -108,16 +109,16 @@ const ExamensInfo = () => {
                   Muay Thai en Muay Boran.
                 </p>
               </div>
-            </motion.div>
-          </motion.div>
+            </MotionDiv>
+          </MotionDiv>
 
           {/* Imagen del puño */}
-          <motion.div
+          <MotionDiv
             variants={imageVariants}
             className="relative"
           >
             <div className="relative aspect-square max-w-md mx-auto">
-              <motion.div
+              <MotionDiv
                 className="absolute inset-0 bg-gradient-to-br from-red-600/20 to-blue-600/20 
                            rounded-2xl transform -rotate-3"
                 animate={{
@@ -130,7 +131,7 @@ const ExamensInfo = () => {
                   repeatType: "reverse"
                 }}
               />
-              <motion.div
+              <MotionDiv
                 className="absolute inset-0 backdrop-blur-sm bg-white/40 rounded-2xl 
                            transform rotate-3"
                 animate={{
@@ -143,24 +144,25 @@ const ExamensInfo = () => {
                   repeatType: "reverse"
                 }}
               />
-              <motion.div
+              <MotionDiv
                 className="relative rounded-2xl overflow-hidden shadow-2xl"
                 whileHover={{ scale: 1.02 }}
                 transition={{ duration: 0.3 }}
               >
                 <Image
-                  src="/images/examens-fist.png"
+                  src="/images/examens-fist.webp"
                   alt="Muay Thai Fist"
                   width={400}
                   height={400}
+                  sizes="(max-width: 768px) 100vw, 50vw"
                   className="object-cover rounded-2xl"
                 />
-              </motion.div>
+              </MotionDiv>
             </div>
-          </motion.div>
+          </MotionDiv>
         </div>
       </div>
-    </motion.section>
+    </MotionSection>
   )
 }
 
