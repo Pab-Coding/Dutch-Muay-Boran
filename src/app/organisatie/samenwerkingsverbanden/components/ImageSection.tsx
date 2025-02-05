@@ -120,10 +120,10 @@ const ImageSection = ({ textConfig }: ImageSectionProps) => {
             className="relative aspect-[21/9] w-full transform-gpu"
             style={{ scale: imageScale }}
           >
-            <Image sizes="(max-width: 768px) 100vw, 50vw"
+            <Image
               src="/images/samenwerkingsverbanden.webp"
               alt="Marco de Cesaris en Dale Tan op de WMF wereldkampioenschappen in Thailand"
-              fill sizes="100vw"
+              fill
               sizes="100vw"
               className="object-cover"
               priority

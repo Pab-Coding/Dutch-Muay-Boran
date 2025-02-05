@@ -20,10 +20,10 @@ const HeroSection = () => {
           transition={{ delay: 0.2, duration: 0.6 }}
           className="w-32 h-32 relative mb-6"
         >
-          <Image sizes="(max-width: 768px) 100vw, 50vw"
+          <Image
             src="/images/logo.webp"
             alt="Dutch Muay Boran Logo"
-            fill sizes="100vw"
+            fill
             sizes="(max-width: 768px) 100vw, 50vw"
             className="object-contain"
             priority

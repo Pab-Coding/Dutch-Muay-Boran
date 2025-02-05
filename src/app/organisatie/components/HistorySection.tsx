@@ -53,7 +53,7 @@ const HistorySection = () => {
           viewport={{ once: true }}
           className="flex justify-center"
         >
-          <Image sizes="(max-width: 768px) 100vw, 50vw"
+          <Image
             src="/images/logo.webp"
             alt="Dutch Muay Boran Foundation Logo"
             width={200}
@@ -100,7 +100,7 @@ const HistorySection = () => {
           viewport={{ once: true }}
           className="flex justify-center"
         >
-          <Image sizes="(max-width: 768px) 100vw, 50vw"
+          <Image
             src="/images/otro-logo.webp"
             alt="DMBF Secondary Logo"
             width={200}

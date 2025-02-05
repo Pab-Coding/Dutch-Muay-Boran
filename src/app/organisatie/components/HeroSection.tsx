@@ -63,10 +63,10 @@ const HeroSection = () => {
         style={{ scale }}
         className="absolute inset-0"
       >
-        <Image sizes="(max-width: 768px) 100vw, 50vw"
+        <Image
           src="/images/flyer-amsterdam.webp"
           alt="Dutch Muay Boran Foundation Amsterdam"
-          fill sizes="100vw"
+          fill
           sizes="100vw"
           className="object-cover"
           priority
