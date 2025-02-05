@@ -57,7 +57,7 @@ const HeroSection = () => {
       variants={heroVariants}
       initial="hidden"
       animate="visible"
-      className="relative h-[80vh] min-h-[600px] w-full overflow-hidden"
+      className="relative h-[70vh] min-h-[600px] w-full overflow-hidden"
     >
       {/* Imagen de fondo con efecto parallax */}
       <MotionDiv
@@ -74,9 +74,9 @@ const HeroSection = () => {
           quality={100}
         />
         {/* Degradados y efectos */}
-        <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/50 to-black/70" />
-        <div className="absolute inset-0 bg-gradient-to-r from-red-900/20 to-blue-900/20" />
-        <div className="absolute inset-0 backdrop-blur-[1px]" />
+        <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/30 to-black/40" />
+        <div className="absolute inset-0 bg-gradient-to-r from-red-900/5 to-blue-900/5" />
+        <div className="absolute inset-0 backdrop-blur-[0.5px]" />
       </MotionDiv>
 
       {/* Contenido principal */}
@@ -87,38 +87,36 @@ const HeroSection = () => {
         <div className="flex flex-col justify-center h-full max-w-4xl">
           <MotionDiv
             variants={childVariants}
-            className="space-y-6"
+            className="space-y-2"
           >
             <MotionDiv
+              variants={childVariants}
               className="inline-block bg-gradient-to-r from-red-500/20 to-blue-500/20
-                         backdrop-blur-sm rounded-lg px-4 py-2"
+                         backdrop-blur-sm rounded-lg px-4 py-2 mb-4"
             >
               <span className="text-white/90 font-medium">
                 Dutch Muay Boran Foundation
               </span>
             </MotionDiv>
 
-            <div className="space-y-4">
-              <MotionH1
-                variants={childVariants}
-                className="text-6xl md:text-7xl font-bold text-transparent bg-clip-text
-                           bg-gradient-to-r from-white via-gray-200 to-white
-                           leading-[1.1] py-2"
-              >
-                Muay Thai Boran
-              </MotionH1>
+            <MotionH1
+              variants={childVariants}
+              className="text-6xl md:text-7xl font-bold text-transparent bg-clip-text
+                         bg-gradient-to-r from-white via-gray-200 to-white
+                         leading-[1.2] pb-4"
+            >
+              Muay Thai Boran
+            </MotionH1>
 
-              <MotionP
-                variants={childVariants}
-                className="text-xl md:text-2xl text-gray-200 font-medium
-                           leading-relaxed max-w-2xl drop-shadow-lg"
-              >
-                De nationale sport van Thailand met meer dan 1000 jaar geschiedenis
-              </MotionP>
-            </div>
+            <MotionP
+              variants={childVariants}
+              className="mt-6 text-xl md:text-2xl text-gray-200 font-medium
+                         leading-relaxed max-w-2xl drop-shadow-lg"
+            >
+              De nationale sport van Thailand met meer dan 1000 jaar geschiedenis
+            </MotionP>
           </MotionDiv>
 
-          {/* Botón con animación */}
           <MotionDiv
             variants={childVariants}
             className="mt-10"
@@ -161,45 +159,7 @@ const HeroSection = () => {
             </Link>
           </MotionDiv>
 
-          {/* Efectos decorativos */}
-          <MotionDiv
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 1.2, duration: 1 }}
-            className="absolute bottom-0 left-0 w-full h-32
-                       bg-gradient-to-t from-black/40 to-transparent"
-          />
-
-          <MotionDiv
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 0.5 }}
-            transition={{ delay: 1.5, duration: 1 }}
-            className="absolute -bottom-8 left-1/2 transform -translate-x-1/2
-                       w-1/2 h-16 blur-3xl
-                       bg-gradient-to-r from-red-600/20 to-blue-600/20"
-          />
         </div>
-      </MotionDiv>
-
-      {/* Indicador de scroll */}
-      <MotionDiv
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 2, duration: 1 }}
-        className="absolute bottom-8 left-1/2 transform -translate-x-1/2"
-      >
-        <MotionDiv
-          animate={{ y: [0, 10, 0] }}
-          transition={{ duration: 1.5, repeat: Infinity }}
-          className="w-6 h-10 border-2 border-white/30 rounded-full
-                     flex justify-center items-start p-2"
-        >
-          <MotionDiv
-            animate={{ height: ["20%", "80%", "20%"] }}
-            transition={{ duration: 1.5, repeat: Infinity }}
-            className="w-1 bg-white/50 rounded-full"
-          />
-        </MotionDiv>
       </MotionDiv>
     </MotionSection>
   )

@@ -16,9 +16,9 @@ const VideoCard = ({ videoId, title, description, onPlay }: VideoCardProps) => {
   const [thumbnailError, setThumbnailError] = useState(false)
 
   const defaultThumbnails: { [key: string]: string } = {
-    '0fNkU_APRU8': '/images/saenchai.jpg',
-    'GbmdhnMPB3M': '/images/kard-chuek.jpg',
-    'SGl9vOE_rj8': '/images/marco.jpg'
+    '0fNkU_APRU8': '/images/saenchai.webp',
+    'GbmdhnMPB3M': '/images/kard-chuek.webp',
+    'SGl9vOE_rj8': '/images/marco.webp'
   }
 
   // Posiciones personalizadas del botón de play según el videoId

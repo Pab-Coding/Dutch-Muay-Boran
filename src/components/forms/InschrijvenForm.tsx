@@ -15,18 +15,13 @@ type FormData = {
 const opleidingOptions = [
   {
     id: 'assistant',
-    name: 'Assistent Muay Thai Boran leraar',
+    name: 'Trainer / Coach niveau 3',
     startDate: 'Januari 2025'
   },
   {
     id: 'zelfstandig',
-    name: 'Zelfstandig Muay Thai Boran leraar',
+    name: 'Leraar niveau 4 & 5',
     startDate: 'Januari 2025'
-  },
-  {
-    id: 'jury',
-    name: 'Jury & Scheidsrechtercursus',
-    startDate: 'Februari 2025'
   }
 ]
 

@@ -1,4 +1,5 @@
 'use client'
+
 import { useScroll, useTransform } from 'framer-motion'
 import Image from 'next/image'
 import Link from 'next/link'
@@ -17,7 +18,7 @@ const HeroSection = () => {
   const textY = useTransform(scrollYProgress, [0, 0.5], [0, 100])
 
   const heroVariants = {
-    hidden: {
+    hidden: { 
       opacity: 0,
       scale: 1.1
     },
@@ -34,7 +35,7 @@ const HeroSection = () => {
   }
 
   const childVariants = {
-    hidden: {
+    hidden: { 
       opacity: 0,
       y: 30,
       scale: 0.9
@@ -43,7 +44,7 @@ const HeroSection = () => {
       opacity: 1,
       y: 0,
       scale: 1,
-      transition: {
+      transition: { 
         duration: 0.6,
         ease: "easeOut"
       }
@@ -58,14 +59,14 @@ const HeroSection = () => {
       animate="visible"
       className="relative h-[80vh] min-h-[600px] w-full overflow-hidden"
     >
-      {/* Imagen de fondo con efecto parallax */}
-      <MotionDiv
+      {/* Background Image with Parallax Effect */}
+      <MotionDiv 
         style={{ scale }}
         className="absolute inset-0"
       >
         <Image
-          src="/images/zelf-standig.webp"
-          alt="Zelfstandig Muay Thai Boran Training"
+          src="/images/aanglesloten-sportschole.webp"
+          alt="Aangesloten Sportschole"
           fill
           sizes="100vw"
           className="object-cover"
@@ -74,13 +75,13 @@ const HeroSection = () => {
         />
         <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/50 to-black/70" />
         
-        {/* Efectos decorativos */}
-        <div className="absolute inset-0 bg-gradient-to-r from-blue-900/20 to-purple-900/20" />
+        {/* Decorative Effects */}
+        <div className="absolute inset-0 bg-gradient-to-r from-red-900/20 to-blue-900/20" />
         <div className="absolute inset-0 backdrop-blur-[2px]" />
       </MotionDiv>
 
-      {/* Contenido principal */}
-      <MotionDiv
+      {/* Main Content */}
+      <MotionDiv 
         style={{ y: textY, opacity }}
         className="relative z-10 h-full max-w-7xl mx-auto px-4"
       >
@@ -89,8 +90,8 @@ const HeroSection = () => {
             variants={childVariants}
             className="space-y-2"
           >
-            <MotionDiv
-              className="inline-block bg-gradient-to-r from-blue-500/20 to-purple-500/20
+            <MotionDiv 
+              className="inline-block bg-gradient-to-r from-red-500/20 to-blue-500/20 
                          backdrop-blur-sm rounded-lg px-4 py-2 mb-4"
             >
               <span className="text-white/90 font-medium">
@@ -104,7 +105,7 @@ const HeroSection = () => {
                          bg-gradient-to-r from-white via-gray-200 to-white
                          leading-tight drop-shadow-lg"
             >
-              Zelfstandig Muay Thai Boran Leraar
+              Aangesloten Sportschole
             </MotionH1>
 
             <MotionP
@@ -112,7 +113,7 @@ const HeroSection = () => {
               className="mt-6 text-xl md:text-2xl text-gray-200 font-medium
                          leading-relaxed max-w-2xl drop-shadow-lg"
             >
-              Word een gecertificeerde NOC/NSF niveau 3 Muay Thai Boran leraar
+              Word lid van onze aangesloten sportscholen en train onder de beste instructeurs in Muay Thai Boran
             </MotionP>
           </MotionDiv>
 
@@ -124,11 +125,11 @@ const HeroSection = () => {
               <MotionDiv
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                className="px-8 py-4 bg-gradient-to-r from-blue-600 to-purple-700
+                className="px-8 py-4 bg-gradient-to-r from-red-600 to-red-700 
                          text-white font-semibold rounded-lg shadow-lg
-                         hover:from-blue-500 hover:to-purple-600
+                         hover:from-red-500 hover:to-red-600 
                          transform transition-all duration-300
-                         border border-blue-400/20 backdrop-blur-sm
+                         border border-red-400/20 backdrop-blur-sm
                          cursor-pointer"
               >
                 Schrijf je nu in
@@ -139,8 +140,8 @@ const HeroSection = () => {
               <MotionDiv
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                className="px-8 py-4 bg-gradient-to-r from-purple-600/10 to-blue-700/10
-                         backdrop-blur-sm border-2 border-white/30 text-white
+                className="px-8 py-4 bg-gradient-to-r from-blue-600/10 to-blue-700/10
+                         backdrop-blur-sm border-2 border-white/30 text-white 
                          font-semibold rounded-lg hover:bg-white/20
                          transform transition-all duration-300
                          cursor-pointer"
@@ -150,22 +151,22 @@ const HeroSection = () => {
             </Link>
           </MotionDiv>
 
-          {/* Decorative elements */}
+          {/* Decorative Elements */}
           <MotionDiv
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 1.2, duration: 1 }}
-            className="absolute bottom-0 left-0 w-full h-32
+            className="absolute bottom-0 left-0 w-full h-32 
                        bg-gradient-to-t from-black/50 to-transparent"
           />
-         
-          <MotionDiv
+          
+          <MotionDiv 
             initial={{ opacity: 0 }}
             animate={{ opacity: 0.5 }}
             transition={{ delay: 1.5, duration: 1 }}
             className="absolute -bottom-8 left-1/2 transform -translate-x-1/2
                        w-1/2 h-16 blur-3xl
-                       bg-gradient-to-r from-blue-600/30 to-purple-600/30"
+                       bg-gradient-to-r from-red-600/30 to-blue-600/30"
           />
         </div>
       </MotionDiv>

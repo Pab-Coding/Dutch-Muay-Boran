@@ -108,7 +108,7 @@ const KhanSystemTable = () => {
               boxShadow: "0 20px 40px rgba(0,0,0,0.2)"
             }}
           >
-            <Image
+            <Image sizes="(max-width: 768px) 100vw, 50vw"
               src="/images/khans.webp"
               alt="Khan System Table"
               width={1200}

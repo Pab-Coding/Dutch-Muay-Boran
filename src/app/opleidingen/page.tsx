@@ -2,7 +2,6 @@
 
 import { motion, useScroll, useTransform } from 'framer-motion'
 import { useRef } from 'react'
-import Header from '@/components/layout/Header'
 import Navigation from '@/components/layout/Navigation'
 import Footer from '@/components/layout/Footer'
 import OpleidingenHero from './components/OpleidingenHero'
@@ -93,7 +92,6 @@ export default function OpleidingenPage() {
 
       {/* Content Container */}
       <div className="relative z-10">
-        <Header />
         <Navigation />
 
         <main className="relative">
@@ -112,7 +110,7 @@ export default function OpleidingenPage() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.2 }}
-                className="-mt-12"
+                className="mt-16"
               >
                 <OpleidingenSection />
               </motion.div>
@@ -125,7 +123,7 @@ export default function OpleidingenPage() {
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, margin: "-100px" }}
-            className="relative z-10 py-16"
+            className="relative z-10 mt-16 mb-16"
           >
             <div className="max-w-7xl mx-auto px-4">
               <motion.div 
@@ -134,16 +132,16 @@ export default function OpleidingenPage() {
                   boxShadow: "0 20px 40px rgba(0,0,0,0.1)"
                 }}
               >
-                <motion.h2
+              <motion.h2
                   variants={titleVariants}
-                  className="text-3xl font-bold mb-6 bg-gradient-to-r from-red-600 to-blue-600 bg-clip-text text-transparent"
+                  className="text-3xl font-bold mb-8 bg-gradient-to-r from-red-600 to-blue-600 bg-clip-text text-transparent"
                 >
                   Waarom kiezen voor DMBF?
                 </motion.h2>
                 
                 <motion.div
                   variants={infoCardVariants}
-                  className="grid md:grid-cols-2 gap-8"
+                  className="grid md:grid-cols-2 gap-6"
                 >
                   <motion.div 
                     variants={infoItemVariants}

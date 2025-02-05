@@ -2,7 +2,6 @@
 
 import { motion, useScroll, useTransform } from 'framer-motion'
 import { useRef } from 'react'
-import Header from '@/components/layout/Header'
 import Navigation from '@/components/layout/Navigation'
 import HeroSection from './components/HeroSection'
 import ExamensInfo from './components/ExamensInfo'
@@ -65,7 +64,6 @@ export default function ExamensPage() {
 
       {/* Content Container */}
       <div className="relative z-10">
-        <Header />
         <Navigation />
 
         <main className="relative">

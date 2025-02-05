@@ -4,8 +4,8 @@ import { useScroll, useTransform } from 'framer-motion'
 import Image from 'next/image'
 import Link from 'next/link'
 import { useRef } from 'react'
-import { ArrowRightIcon } from '@heroicons/react/24/outline'
-import { MotionSection, MotionDiv, MotionButton, MotionSpan, MotionH1, MotionP } from '@/components/shared/MotionWrapper'
+import { CalendarIcon } from '@heroicons/react/24/outline'
+import { MotionSection, MotionDiv, MotionH1, MotionP } from '@/components/shared/MotionWrapper'
 
 const HeroSection = () => {
   const sectionRef = useRef<HTMLDivElement>(null)
@@ -19,7 +19,7 @@ const HeroSection = () => {
   const textY = useTransform(scrollYProgress, [0, 0.5], [0, 100])
 
   const heroVariants = {
-    hidden: {
+    hidden: { 
       opacity: 0,
       scale: 1.1
     },
@@ -36,7 +36,7 @@ const HeroSection = () => {
   }
 
   const childVariants = {
-    hidden: {
+    hidden: { 
       opacity: 0,
       y: 30,
       scale: 0.9
@@ -45,7 +45,7 @@ const HeroSection = () => {
       opacity: 1,
       y: 0,
       scale: 1,
-      transition: {
+      transition: { 
         duration: 0.6,
         ease: "easeOut"
       }
@@ -60,14 +60,16 @@ const HeroSection = () => {
       animate="visible"
       className="relative h-[70vh] min-h-[600px] w-full overflow-hidden"
     >
-      <MotionDiv
+      {/* Imagen de fondo con efecto parallax */}
+      <MotionDiv 
         style={{ scale }}
         className="absolute inset-0"
       >
         <Image
-          src="/images/examens-muay.webp"
-          alt="Muay Thai Boran Examens"
+          src="/images/zelf-standig.webp"
+          alt="Muay Thai Boran Training"
           fill
+          sizes="100vw"
           className="object-cover"
           priority
           quality={100}
@@ -78,7 +80,7 @@ const HeroSection = () => {
       </MotionDiv>
 
       {/* Contenido principal */}
-      <MotionDiv
+      <MotionDiv 
         style={{ y: textY, opacity }}
         className="relative z-10 h-full max-w-7xl mx-auto px-4"
       >
@@ -87,7 +89,7 @@ const HeroSection = () => {
             variants={childVariants}
             className="space-y-2"
           >
-            <MotionDiv
+            <MotionDiv 
               variants={childVariants}
               className="inline-block bg-gradient-to-r from-red-500/20 to-blue-500/20
                          backdrop-blur-sm rounded-lg px-4 py-2 mb-4"
@@ -103,7 +105,7 @@ const HeroSection = () => {
                          bg-gradient-to-r from-white via-gray-200 to-white
                          leading-[1.2] pb-4"
             >
-              Examens & Khan-systeem
+              Leraar niveau 4 & 5
             </MotionH1>
 
             <MotionP
@@ -111,37 +113,60 @@ const HeroSection = () => {
               className="mt-6 text-xl md:text-2xl text-gray-200 font-medium
                          leading-relaxed max-w-2xl drop-shadow-lg"
             >
-              Ontwikkel je vaardigheden en bereik nieuwe niveaus in Muay Thai Boran
+              Start je reis als Muay Thai Boran instructeur en word deel van een 
+              eeuwenoude traditie
             </MotionP>
+
+            <Link href="/opleidingen/cursusdata">
+              <MotionDiv
+                variants={childVariants}
+                whileHover={{ scale: 1.05, backgroundColor: "rgba(255,255,255,0.1)" }}
+                whileTap={{ scale: 0.95 }}
+                className="mt-6 inline-flex items-center gap-2 px-4 py-2
+                         bg-gradient-to-r from-blue-500/20 to-purple-500/20
+                         hover:from-blue-600/20 hover:to-purple-600/20
+                         backdrop-blur-sm rounded-lg border border-white/20
+                         cursor-pointer transition-all duration-300"
+              >
+                <CalendarIcon className="w-5 h-5 text-white" />
+                <span className="text-white/90 font-medium">
+                  Zie geplande data
+                </span>
+              </MotionDiv>
+            </Link>
           </MotionDiv>
 
           <MotionDiv
             variants={childVariants}
-            className="mt-10 flex flex-wrap gap-4"
+            className="mt-12 flex flex-wrap gap-4"
           >
-            <Link href="/examens/exameneisen">
-              <MotionButton
+            <Link href="/opleidingen/inschrijven">
+              <MotionDiv
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                className="px-8 py-4 bg-gradient-to-r from-red-600 to-blue-600
-                         text-white font-semibold rounded-xl shadow-lg
-                         hover:from-red-500 hover:to-blue-500
+                className="px-8 py-4 bg-gradient-to-r from-red-600 to-red-700 
+                         text-white font-semibold rounded-lg shadow-lg
+                         hover:from-red-500 hover:to-red-600 
                          transform transition-all duration-300
-                         border border-white/20 backdrop-blur-sm
-                         flex items-center space-x-3"
+                         border border-red-400/20 backdrop-blur-sm
+                         cursor-pointer"
               >
-                <span>Bekijk Exameneisen</span>
-                <MotionSpan
-                  animate={{ x: [0, 5, 0] }}
-                  transition={{
-                    duration: 1.5,
-                    repeat: Infinity,
-                    repeatType: "reverse"
-                  }}
-                >
-                  <ArrowRightIcon className="w-5 h-5" />
-                </MotionSpan>
-              </MotionButton>
+                Schrijf je nu in
+              </MotionDiv>
+            </Link>
+
+            <Link href="/examens">
+              <MotionDiv
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                className="px-8 py-4 bg-gradient-to-r from-blue-600/10 to-blue-700/10
+                         backdrop-blur-sm border-2 border-white/30 text-white 
+                         font-semibold rounded-lg hover:bg-white/20
+                         transform transition-all duration-300
+                         cursor-pointer"
+              >
+                Meer over examens
+              </MotionDiv>
             </Link>
           </MotionDiv>
 

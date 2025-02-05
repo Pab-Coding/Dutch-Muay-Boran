@@ -149,7 +149,7 @@ const ExamensInfo = () => {
                 whileHover={{ scale: 1.02 }}
                 transition={{ duration: 0.3 }}
               >
-                <Image
+                <Image sizes="(max-width: 768px) 100vw, 50vw"
                   src="/images/examens-fist.webp"
                   alt="Muay Thai Fist"
                   width={400}

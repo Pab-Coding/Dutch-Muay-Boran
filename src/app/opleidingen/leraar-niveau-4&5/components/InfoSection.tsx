@@ -69,12 +69,14 @@ const InfoSection = () => {
         >
           <div className="bg-white/90 rounded-2xl shadow-xl p-8 transform hover:scale-[1.02] transition-all duration-300">
             <div className="relative z-10">
-              <h2 className="text-3xl font-bold mb-6 bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
-                Word Zelfstandig Leraar
-              </h2>
+              <div className="flex flex-col space-y-4">
+                <h2 className="text-3xl font-bold mb-4 bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+                  Word Leraar niveau 4 & 5
+                </h2>
+              </div>
               <p className="text-gray-700 mb-6 text-lg">
                 Deze geavanceerde opleiding is specifiek ontwikkeld voor ervaren instructeurs die zich 
-                willen ontwikkelen tot zelfstandig leraar.
+                willen ontwikkelen tot Leraar niveau 4 & 5.
               </p>
 
               <h3 className="text-xl font-semibold mb-4 text-gray-900">
@@ -140,7 +142,7 @@ const InfoSection = () => {
               </h2>
               <ul className="space-y-3">
                 {[
-                  'DMBF assistent-leraar diploma',
+                  'DMBF Trainer / Coach niveau 3 diploma',
                   'Aantoonbaar gewenst kennisniveau voor directe toelating',
                   'Mogelijkheid tot individuele beoordeling via mail bij afwijkende kwalificaties'
                 ].map((item, index) => (

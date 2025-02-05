@@ -3,7 +3,6 @@
 import { MotionDiv, MotionSection, MotionH1 } from '../../../components/shared/MotionWrapper'
 import Image from 'next/image'
 // Importaciones de los componentes de layout
-import Header from '../../../components/layout/Header'
 import Navigation from '../../../components/layout/Navigation'
 import Footer from '../../../components/layout/Footer'
 // Importaciones de los componentes locales
@@ -14,7 +13,6 @@ import Link from 'next/link'
 const ExamensEisenPage = () => {
   return (
     <>
-      <Header />
       <Navigation />
       
       <MotionDiv

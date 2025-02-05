@@ -52,7 +52,7 @@ const SchoolsList = () => {
             className="relative group"
           >
             {/* Card container */}
-            <div className="relative overflow-hidden rounded-xl bg-white/80 backdrop-blur-sm
+            <div className="relative overflow-hidden rounded-xl bg-white
                           border border-gray-200 shadow-lg
                           hover:shadow-xl transition-all duration-300">
               {/* Gradient overlay */}

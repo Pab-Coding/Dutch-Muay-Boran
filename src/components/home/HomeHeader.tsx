@@ -2,7 +2,7 @@
 import Image from 'next/image'
 import { MotionHeader } from '../shared/MotionWrapper'
 
-const Header = () => {
+const HomeHeader = () => {
   return (
     <MotionHeader 
       className="w-full relative"
@@ -11,11 +11,10 @@ const Header = () => {
       transition={{ duration: 0.8 }}
     >
       <div className="w-full h-[180px] relative bg-gradient-to-r from-red-600 via-white to-blue-600">
-        <Image
+        <Image sizes="(max-width: 768px) 100vw, 50vw"
           src="/images/banner-principal.webp"
           alt="Dutch Muay Boran Foundation Banner"
           fill
-          sizes="(max-width: 768px) 100vw, 50vw"
           style={{ 
             objectFit: 'contain',
             objectPosition: 'center'
@@ -28,4 +27,4 @@ const Header = () => {
   )
 }
 
-export default Header
+export default HomeHeader

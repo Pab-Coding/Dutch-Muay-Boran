@@ -1,8 +1,10 @@
 'use client'
+
 import { useScroll, useTransform } from 'framer-motion'
 import Image from 'next/image'
 import Link from 'next/link'
 import { useRef } from 'react'
+import { CalendarIcon } from '@heroicons/react/24/outline'
 import { MotionSection, MotionDiv, MotionH1, MotionP } from '@/components/shared/MotionWrapper'
 
 const HeroSection = () => {
@@ -56,30 +58,28 @@ const HeroSection = () => {
       variants={heroVariants}
       initial="hidden"
       animate="visible"
-      className="relative h-[80vh] min-h-[600px] w-full overflow-hidden"
+      className="relative h-[70vh] min-h-[600px] w-full overflow-hidden"
     >
-      {/* Imagen de fondo con efecto parallax */}
+      {/* Background Image with Parallax Effect */}
       <MotionDiv 
         style={{ scale }}
         className="absolute inset-0"
       >
         <Image
           src="/images/Muay-thai-boran.webp"
-          alt="Muay Thai Boran Training"
+          alt="Traditional Muay Thai Boran Training Techniques"
           fill
           sizes="100vw"
           className="object-cover"
           priority
           quality={100}
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/50 to-black/70" />
-        
-        {/* Efectos decorativos */}
-        <div className="absolute inset-0 bg-gradient-to-r from-red-900/20 to-blue-900/20" />
-        <div className="absolute inset-0 backdrop-blur-[2px]" />
+        <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/30 to-black/40" />
+        <div className="absolute inset-0 bg-gradient-to-r from-red-900/5 to-blue-900/5" />
+        <div className="absolute inset-0 backdrop-blur-[0.5px]" />
       </MotionDiv>
 
-      {/* Contenido principal */}
+      {/* Main Content */}
       <MotionDiv 
         style={{ y: textY, opacity }}
         className="relative z-10 h-full max-w-7xl mx-auto px-4"
@@ -90,7 +90,8 @@ const HeroSection = () => {
             className="space-y-2"
           >
             <MotionDiv 
-              className="inline-block bg-gradient-to-r from-red-500/20 to-blue-500/20 
+              variants={childVariants}
+              className="inline-block bg-gradient-to-r from-red-500/20 to-blue-500/20
                          backdrop-blur-sm rounded-lg px-4 py-2 mb-4"
             >
               <span className="text-white/90 font-medium">
@@ -102,9 +103,9 @@ const HeroSection = () => {
               variants={childVariants}
               className="text-6xl md:text-7xl font-bold text-transparent bg-clip-text
                          bg-gradient-to-r from-white via-gray-200 to-white
-                         leading-tight drop-shadow-lg"
+                         leading-[1.2] pb-4"
             >
-              Assistent Muay Thai Boran Leraar
+              Trainer / Coach niveau 3
             </MotionH1>
 
             <MotionP
@@ -115,6 +116,24 @@ const HeroSection = () => {
               Start je reis als Muay Thai Boran instructeur en word deel van een 
               eeuwenoude traditie
             </MotionP>
+
+            <Link href="/opleidingen/cursusdata">
+              <MotionDiv
+                variants={childVariants}
+                whileHover={{ scale: 1.05, backgroundColor: "rgba(255,255,255,0.1)" }}
+                whileTap={{ scale: 0.95 }}
+                className="mt-6 inline-flex items-center gap-2 px-4 py-2
+                         bg-gradient-to-r from-red-500/20 to-blue-500/20
+                         hover:from-red-600/20 hover:to-blue-600/20
+                         backdrop-blur-sm rounded-lg border border-white/20
+                         cursor-pointer transition-all duration-300"
+              >
+                <CalendarIcon className="w-5 h-5 text-white" />
+                <span className="text-white/90 font-medium">
+                  Zie geplande data
+                </span>
+              </MotionDiv>
+            </Link>
           </MotionDiv>
 
           <MotionDiv
@@ -151,45 +170,7 @@ const HeroSection = () => {
             </Link>
           </MotionDiv>
 
-          {/* Decorative elements */}
-          <MotionDiv
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 1.2, duration: 1 }}
-            className="absolute bottom-0 left-0 w-full h-32 
-                       bg-gradient-to-t from-black/50 to-transparent"
-          />
-          
-          <MotionDiv 
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 0.5 }}
-            transition={{ delay: 1.5, duration: 1 }}
-            className="absolute -bottom-8 left-1/2 transform -translate-x-1/2
-                       w-1/2 h-16 blur-3xl
-                       bg-gradient-to-r from-red-600/30 to-blue-600/30"
-          />
         </div>
-      </MotionDiv>
-
-      {/* Scroll Indicator */}
-      <MotionDiv
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 2, duration: 1 }}
-        className="absolute bottom-8 left-1/2 transform -translate-x-1/2"
-      >
-        <MotionDiv
-          animate={{ y: [0, 10, 0] }}
-          transition={{ duration: 1.5, repeat: Infinity }}
-          className="w-6 h-10 border-2 border-white/30 rounded-full
-                     flex justify-center items-start p-2"
-        >
-          <MotionDiv
-            animate={{ height: ["20%", "80%", "20%"] }}
-            transition={{ duration: 1.5, repeat: Infinity }}
-            className="w-1 bg-white/50 rounded-full"
-          />
-        </MotionDiv>
       </MotionDiv>
     </MotionSection>
   )

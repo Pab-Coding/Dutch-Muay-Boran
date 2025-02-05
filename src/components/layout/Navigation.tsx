@@ -9,6 +9,7 @@ const Navigation = () => {
 
   const menuItems = [
     { name: 'HOME', path: '/' },
+    { name: 'INSCHRIJVEN', path: '/opleidingen/inschrijven' },
     { name: 'NIEUWS', path: '/nieuws' },
     { name: 'MUAY BORAN', path: '/muay-boran' },
     { name: 'MUAY THAI', path: '/muay-thai' },
@@ -25,9 +26,8 @@ const Navigation = () => {
       name: 'OPLEIDINGEN',
       path: '/opleidingen',
       submenu: [
-        { name: 'Assistent Muay Thai Boran leraar', path: '/opleidingen/assistent-leraar' },
-        { name: 'Zelfstandig Muay Thai Boran leraar', path: '/opleidingen/zelfstandig-leraar' },
-        { name: 'Jury & Scheidsrechtercursus', path: '/opleidingen/jury-scheidsrechter' }
+        { name: 'Trainer / Coach niveau 3', path: '/opleidingen/trainer-niveau-3' },
+        { name: 'Leraar niveau 4 & 5', path: '/opleidingen/leraar-niveau-4&5' }
       ]
     },
     {
@@ -38,13 +38,7 @@ const Navigation = () => {
       ]
     },
     { name: "VIDEO'S", path: '/videos' },
-    { 
-      name: 'CONTACT', 
-      path: '/contact',
-      submenu: [
-        { name: 'Promoter informatie', path: '/contact/promoter' }
-      ]
-    }
+    { name: 'CONTACT', path: '/contact' }
   ]
 
   const handleMouseEnter = useCallback((itemName: string) => {
@@ -62,9 +56,9 @@ const Navigation = () => {
 
   return (
     <nav className="bg-gradient-to-r from-red-900 from-45% via-red-800 via-50% to-blue-900 to-55% shadow-lg">
-      <div className="container mx-auto">
+      <div className="container mx-auto min-w-[1024px]">
         <div className="flex justify-between items-center h-12">
-          <div className="hidden md:flex w-full justify-between px-4">
+          <div className="flex flex-row flex-nowrap justify-between items-center w-full px-2">
             {menuItems.map((item) => (
               <div 
                 key={item.path} 
@@ -72,15 +66,10 @@ const Navigation = () => {
                 onMouseEnter={() => handleMouseEnter(item.name)}
                 onMouseLeave={handleMouseLeave}
               >
-                <motion.div
-                  whileHover={{ scale: 1.05 }}
-                  className="relative"
-                >
+                <motion.div whileHover={{ scale: 1.05 }} className="relative">
                   <Link 
                     href={item.path}
-                    className="text-white hover:text-gray-200 px-3 py-2
-                             text-sm tracking-wider font-bold
-                             transition-all duration-200 ease-in-out"
+                    className="text-white hover:text-gray-200 px-2 py-2 text-sm tracking-wider font-bold transition-all duration-200 ease-in-out whitespace-nowrap"
                   >
                     {item.name}
                   </Link>
@@ -96,7 +85,7 @@ const Navigation = () => {
                       className="absolute z-20 w-56 mt-1"
                     >
                       <div className="bg-gradient-to-b from-red-700 to-blue-800 p-[1px] rounded-sm">
-                        <div className="bg-white/95 backdrop-blur-sm">
+                        <div className="bg-white/95">
                           {item.submenu.map((subItem) => (
                             <motion.div
                               key={subItem.path}
@@ -107,10 +96,7 @@ const Navigation = () => {
                             >
                               <Link
                                 href={subItem.path}
-                                className="block px-4 py-2.5 text-sm text-gray-700 
-                                         hover:bg-gradient-to-r hover:from-red-700 hover:to-blue-800
-                                         hover:text-white transition-all duration-200
-                                         border-b border-gray-100 last:border-b-0"
+                                className="block px-4 py-2.5 text-sm text-gray-700 hover:bg-gradient-to-r hover:from-red-700 hover:to-blue-800 hover:text-white transition-all duration-200 border-b border-gray-100 last:border-b-0"
                               >
                                 {subItem.name}
                               </Link>

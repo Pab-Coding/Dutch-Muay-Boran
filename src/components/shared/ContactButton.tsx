@@ -8,6 +8,13 @@ import { ChatBubbleBottomCenterTextIcon, XMarkIcon } from '@heroicons/react/24/o
 const ContactButton = () => {
   const [isVisible, setIsVisible] = useState(false)
   const [isTooltipVisible, setIsTooltipVisible] = useState(false)
+  const [hasClosedTooltip, setHasClosedTooltip] = useState(false)
+
+  // Check if user has previously closed the tooltip
+  useEffect(() => {
+    const tooltipClosed = localStorage.getItem('tooltipClosed') === 'true'
+    setHasClosedTooltip(tooltipClosed)
+  }, [])
 
   // Mostrar el botón después de scroll
   useEffect(() => {
@@ -24,16 +31,16 @@ const ContactButton = () => {
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
-  // Mostrar tooltip después de 2 segundos si el botón es visible
+  // Mostrar tooltip después de 2 segundos si el botón es visible y el usuario no lo ha cerrado antes
   useEffect(() => {
     let timeout: NodeJS.Timeout
-    if (isVisible && !isTooltipVisible) {
+    if (isVisible && !isTooltipVisible && !hasClosedTooltip) {
       timeout = setTimeout(() => {
         setIsTooltipVisible(true)
       }, 2000)
     }
     return () => clearTimeout(timeout)
-  }, [isVisible, isTooltipVisible])
+  }, [isVisible, isTooltipVisible, hasClosedTooltip])
 
   const buttonVariants = {
     hidden: { 
@@ -113,7 +120,11 @@ const ContactButton = () => {
           >
             <div className="relative bg-white rounded-lg shadow-xl p-4 max-w-xs">
               <button
-                onClick={() => setIsTooltipVisible(false)}
+                onClick={() => {
+                  setIsTooltipVisible(false)
+                  setHasClosedTooltip(true)
+                  localStorage.setItem('tooltipClosed', 'true')
+                }}
                 className="absolute -top-2 -right-2 bg-red-500 rounded-full p-1
                           hover:bg-red-600 transition-colors"
               >

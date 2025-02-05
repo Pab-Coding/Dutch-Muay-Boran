@@ -68,12 +68,21 @@ const ContactSection = () => {
           </p>
           <p className="text-gray-600 text-lg">
             Of stuur ons direct een e-mail:{' '}
-            <a 
-              href="mailto:info@dmbf.nl" 
-              className="inline-block text-xl font-bold text-gray-900 hover:text-blue-600 transition-colors"
-            >
-              info@dmbf.nl
-            </a>
+            <span className="space-x-2">
+              <a 
+                href="mailto:info@dmbf.nl" 
+                className="inline-block text-xl font-bold text-gray-900 hover:text-blue-600 transition-colors"
+              >
+                info@dmbf.nl
+              </a>
+              <span className="text-gray-400">|</span>
+              <a 
+                href="mailto:mtbacademy.nl@gmail.com" 
+                className="inline-block text-xl font-bold text-gray-900 hover:text-blue-600 transition-colors"
+              >
+                mtbacademy.nl@gmail.com
+              </a>
+            </span>
           </p>
         </motion.div>
 

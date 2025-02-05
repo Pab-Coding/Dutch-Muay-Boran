@@ -65,19 +65,28 @@ const LatestNewsHighlight = () => {
             <h2 className="text-2xl font-bold mb-4 text-gray-800">
               Nederlandse Kampioenschappen Muay Thai Boran 2025
             </h2>
-            <p className="text-gray-600 mb-6 line-clamp-3">
+            <p className="text-gray-600 mb-2 line-clamp-3">
               De Dutch Muay Boran Foundation (DMBF) kondigt met trots aan dat op 15 en 16 maart 2025 
               de Nederlandse Kampioenschappen Muay Thai Boran zullen plaatsvinden. In samenwerking met de WFCA 
-              organiseert de DMBF dit prestigieuze evenement dat zich richt op het authentieke Muay Thai Boran. Voor meer informatie kunt u contact met ons opnemen.
+              organiseert de DMBF dit prestigieuze evenement dat zich richt op het authentieke Muay Thai Boran.
+            </p>
+            <p className="text-gray-600 mb-6 italic">
+              Voor meer informatie kunt u contact met ons opnemen.
             </p>
             
             <div className="flex justify-between items-center">
               <div className="text-sm text-gray-500">
                 <div className="flex items-center space-x-2">
                   <span>Contact:</span>
-                  <a href="mailto:info@dmbf.nl" className="text-blue-600 hover:underline">
-                    info@dmbf.nl
-                  </a>
+                  <div className="flex space-x-2">
+                    <a href="mailto:info@dmbf.nl" className="text-blue-600 hover:underline">
+                      info@dmbf.nl
+                    </a>
+                    <span>|</span>
+                    <a href="mailto:mtbacademy.nl@gmail.com" className="text-blue-600 hover:underline">
+                      mtbacademy.nl@gmail.com
+                    </a>
+                  </div>
                 </div>
               </div>
 

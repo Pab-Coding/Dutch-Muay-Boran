@@ -68,12 +68,14 @@ const InfoSection = () => {
         >
           <div className="bg-white/90 rounded-2xl shadow-xl p-8 transform hover:scale-[1.02] transition-all duration-300">
             <div className="relative z-10">
-              <h2 className="text-3xl font-bold mb-6 bg-gradient-to-r from-red-600 to-blue-600 bg-clip-text text-transparent">
-                Word Assistent Leraar
-              </h2>
+              <div className="flex flex-col space-y-4">
+                <h2 className="text-3xl font-bold mb-4 bg-gradient-to-r from-red-600 to-blue-600 bg-clip-text text-transparent">
+                  Word Trainer / Coach niveau 3
+                </h2>
+              </div>
               <p className="text-gray-700 mb-6 text-lg">
                 Wil jij je passie voor Muay Thai Boran delen en anderen inspireren? 
-                De DMBF biedt een uitgebreide NOC/NSF-erkende opleiding tot assistent leraar aan.
+                De DMBF biedt een uitgebreide NOC/NSF-erkende opleiding tot Trainer / Coach niveau 3 aan.
               </p>
               <h3 className="text-xl font-semibold mb-4 text-gray-900">
                 Deze opleiding is perfect voor:

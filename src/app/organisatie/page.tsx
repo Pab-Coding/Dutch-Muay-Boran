@@ -3,7 +3,6 @@
 import { motion } from 'framer-motion'
 import { useRef } from 'react'
 
-import Header from '@/components/layout/Header'
 import Navigation from '@/components/layout/Navigation'
 import Footer from '@/components/layout/Footer'
 
@@ -59,7 +58,6 @@ export default function OrganisatiePage() {
 
       {/* Content Container */}
       <div className="relative z-10">
-        <Header />
         <Navigation />
 
         <main className="relative">

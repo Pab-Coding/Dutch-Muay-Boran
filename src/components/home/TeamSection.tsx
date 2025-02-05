@@ -26,10 +26,10 @@ const TeamSection = () => {
       className="w-full"
     >
       <div className="relative w-full h-[600px] rounded-xl overflow-hidden shadow-2xl">
-        <Image
+        <Image sizes="(max-width: 768px) 100vw, 50vw"
           src="/images/team-photo.webp"
           alt="Dutch Muay Boran Foundation Team"
-          fill
+          fill sizes="100vw"
           className="object-cover object-center transform hover:scale-105 transition-transform duration-700"
           priority
           sizes="(max-width: 768px) 100vw,

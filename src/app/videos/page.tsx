@@ -2,7 +2,6 @@
 
 import { motion, useScroll, useTransform } from 'framer-motion'
 import { useRef } from 'react'
-import Header from '@/components/layout/Header'
 import Navigation from '@/components/layout/Navigation'
 import Footer from '@/components/layout/Footer'
 import VideoGrid from './components/VideoGrid'
@@ -71,7 +70,6 @@ export default function VideosPage() {
       animate="visible"
       className="min-h-screen bg-gradient-to-b from-gray-50 to-white"
     >
-      <Header />
       <Navigation />
 
       <main className="relative max-w-7xl mx-auto px-4">

@@ -81,10 +81,16 @@ const Footer = () => {
           >
             <h3 className="text-gray-800 font-medium mb-2">Contact</h3>
             <div className="space-y-1">
-              <a href="mailto:info@dmbf.nl"
-                 className="block text-gray-600 hover:text-blue-600 transition-colors">
-                info@dmbf.nl
-              </a>
+              <div className="flex flex-col space-y-1">
+                <a href="mailto:info@dmbf.nl"
+                   className="text-gray-600 hover:text-blue-600 transition-colors">
+                  info@dmbf.nl
+                </a>
+                <a href="mailto:mtbacademy.nl@gmail.com"
+                   className="text-gray-600 hover:text-blue-600 transition-colors">
+                  mtbacademy.nl@gmail.com
+                </a>
+              </div>
             </div>
           </motion.div>
 

@@ -1,7 +1,6 @@
 'use client'
 
 import { motion, useScroll, useTransform } from 'framer-motion'
-import Header from '@/components/layout/Header'
 import Navigation from '@/components/layout/Navigation'
 import Footer from '@/components/layout/Footer'
 import ImageSection from './components/ImageSection'
@@ -68,7 +67,6 @@ export default function SamenwerkingsPage() {
       variants={pageVariants}
       className="min-h-screen flex flex-col bg-white"
     >
-      <Header />
       <Navigation />
 
       <motion.main 

@@ -12,9 +12,9 @@ const OpleidingenHero = () => {
     offset: ["start start", "end start"]
   })
 
-  const opacity = useTransform(scrollYProgress, [0, 0.8], [1, 0])
-  const scale = useTransform(scrollYProgress, [0, 0.8], [1, 1.05])
-  const textY = useTransform(scrollYProgress, [0, 0.8], [0, 50])
+  const opacity = useTransform(scrollYProgress, [0, 0.5], [1, 0])
+  const scale = useTransform(scrollYProgress, [0, 0.5], [1, 1.1])
+  const textY = useTransform(scrollYProgress, [0, 0.5], [0, 100])
 
   const heroVariants = {
     hidden: {
@@ -86,15 +86,16 @@ const OpleidingenHero = () => {
             className="space-y-2"
           >
             <MotionDiv
+              variants={childVariants}
               className="inline-block bg-gradient-to-r from-red-500/20 to-blue-500/20
-                         backdrop-blur-sm rounded-lg px-4 py-2 mb-4"
+                         backdrop-blur-sm rounded-lg px-4 py-2 mb-6"
             >
               <span className="text-white/90 font-medium">
                 Dutch Muay Boran Foundation
               </span>
             </MotionDiv>
 
-            <div className="mb-4">
+            <div className="mb-6">
               <MotionH1
                 variants={childVariants}
                 className="text-6xl md:text-7xl font-bold text-transparent bg-clip-text
@@ -107,7 +108,7 @@ const OpleidingenHero = () => {
 
             <MotionP
               variants={childVariants}
-              className="mt-6 text-xl md:text-2xl text-gray-200 font-medium
+              className="mt-8 text-xl md:text-2xl text-gray-200 font-medium
                          leading-relaxed max-w-2xl drop-shadow-lg"
             >
               Ontwikkel je vaardigheden en start je professionele carrière
