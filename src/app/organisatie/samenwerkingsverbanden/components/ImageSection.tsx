@@ -4,7 +4,7 @@ import { useScroll, useTransform } from 'framer-motion'
 import Image from 'next/image'
 import { useRef } from 'react'
 import { ImageSectionProps } from '@/types'
-import { MotionSection, MotionDiv, MotionH1, MotionH2, MotionP } from '@/components/shared/MotionWrapper'
+import { MotionSection, MotionDiv, MotionH1, MotionH2, MotionP } from '@/components/shared/MotionComponents'
 
 const ImageSection = ({ textConfig }: ImageSectionProps) => {
   const ref = useRef<HTMLDivElement>(null)

@@ -1,18 +1,19 @@
 'use client'
 
+import { useRef, memo } from 'react'
 import { useInView } from 'framer-motion'
-import { MotionDiv, MotionSpan } from '../shared/MotionWrapper'
+import { MotionDiv, MotionSpan } from '../shared/MotionComponents'
 import Image from 'next/image'
 import Link from 'next/link'
-import { useRef } from 'react'
 import { BsNewspaper } from 'react-icons/bs'
 
+// Define animation variants outside the component for performance.
 const pulseAnimation = {
   scale: [1, 1.02, 1],
   transition: {
     duration: 1.5,
     repeat: Infinity,
-    ease: "easeInOut"
+    ease: 'easeInOut'
   }
 }
 
@@ -21,13 +22,13 @@ const shakeAnimation = {
   transition: {
     duration: 0.5,
     repeat: 3,
-    ease: "easeInOut"
+    ease: 'easeInOut'
   }
 }
 
 const LatestNewsHighlight = () => {
   const ref = useRef(null)
-  const isInView = useInView(ref, { once: true, margin: "-100px" })
+  const isInView = useInView(ref, { once: true, margin: '-100px' })
 
   return (
     <div ref={ref} className="w-full mb-16">
@@ -73,7 +74,7 @@ const LatestNewsHighlight = () => {
             <p className="text-gray-600 mb-6 italic">
               Voor meer informatie kunt u contact met ons opnemen.
             </p>
-            
+
             <div className="flex justify-between items-center">
               <div className="text-sm text-gray-500">
                 <div className="flex items-center space-x-2">
@@ -112,4 +113,4 @@ const LatestNewsHighlight = () => {
   )
 }
 
-export default LatestNewsHighlight
+export default memo(LatestNewsHighlight)

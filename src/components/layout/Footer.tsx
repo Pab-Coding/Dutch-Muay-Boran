@@ -1,13 +1,13 @@
 'use client'
 import { motion } from 'framer-motion'
 import Link from 'next/link'
-import { useCallback } from 'react'
+import { useCallback, useMemo, memo } from 'react'
 import { usePathname } from 'next/navigation'
 
 const Footer = () => {
   const currentYear = new Date().getFullYear()
   const pathname = usePathname()
- 
+
   const scrollToTop = useCallback(() => {
     window.scrollTo({
       top: 0,
@@ -15,13 +15,11 @@ const Footer = () => {
     })
   }, [])
 
-  const getBreadcrumbItems = () => {
+  const breadcrumbItems = useMemo(() => {
     if (pathname === '/') return []
     const pathSegments = pathname.split('/').filter(Boolean)
     return pathSegments
-  }
-
-  const breadcrumbItems = getBreadcrumbItems()
+  }, [pathname])
 
   return (
     <footer className="w-full bg-gradient-to-b from-gray-50 to-gray-100">
@@ -38,7 +36,6 @@ const Footer = () => {
               <Link href="/" className="hover:text-blue-600 transition-colors">
                 Home
               </Link>
-             
               {breadcrumbItems.map((item, index) => (
                 <div key={index} className="flex items-center">
                   <div className="text-gray-400 mx-1">›</div>
@@ -69,10 +66,10 @@ const Footer = () => {
           </div>
         </motion.div>
 
-        {/* Separador */}
+        {/* Separator */}
         <div className="w-full h-[0.5px] bg-gray-200" />
 
-        {/* Contenido */}
+        {/* Content */}
         <div className="py-4 text-center">
           <motion.div
             initial={{ opacity: 0 }}
@@ -82,12 +79,16 @@ const Footer = () => {
             <h3 className="text-gray-800 font-medium mb-2">Contact</h3>
             <div className="space-y-1">
               <div className="flex flex-col space-y-1">
-                <a href="mailto:info@dmbf.nl"
-                   className="text-gray-600 hover:text-blue-600 transition-colors">
+                <a
+                  href="mailto:info@dmbf.nl"
+                  className="text-gray-600 hover:text-blue-600 transition-colors"
+                >
                   info@dmbf.nl
                 </a>
-                <a href="mailto:mtbacademy.nl@gmail.com"
-                   className="text-gray-600 hover:text-blue-600 transition-colors">
+                <a
+                  href="mailto:mtbacademy.nl@gmail.com"
+                  className="text-gray-600 hover:text-blue-600 transition-colors"
+                >
                   mtbacademy.nl@gmail.com
                 </a>
               </div>
@@ -110,4 +111,4 @@ const Footer = () => {
   )
 }
 
-export default Footer
+export default memo(Footer)

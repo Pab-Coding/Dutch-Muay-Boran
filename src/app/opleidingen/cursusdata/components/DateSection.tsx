@@ -3,7 +3,7 @@
 import { useScroll, useTransform } from 'framer-motion'
 import Image from 'next/image'
 import { useRef } from 'react'
-import { MotionDiv, MotionH1 } from '@/components/shared/MotionWrapper'
+import { MotionDiv, MotionH1 } from '@/components/shared/MotionComponents'
 
 const DateSection = () => {
   const sectionRef = useRef<HTMLDivElement>(null)

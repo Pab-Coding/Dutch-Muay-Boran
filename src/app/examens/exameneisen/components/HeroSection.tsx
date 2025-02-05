@@ -1,6 +1,6 @@
 'use client'
 
-import { MotionSection, MotionDiv, MotionH1 } from '../../../../components/shared/MotionWrapper'
+import { MotionSection, MotionDiv, MotionH1 } from '../../../../components/shared/MotionComponents'
 import Image from 'next/image'
 
 const HeroSection = () => {

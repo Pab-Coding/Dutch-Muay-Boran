@@ -1,6 +1,6 @@
 'use client'
 
-import { MotionSection, MotionDiv, MotionH2, MotionP, MotionButton } from '../../../../components/shared/MotionWrapper'
+import { MotionSection, MotionDiv, MotionH2, MotionP, MotionButton } from '../../../../components/shared/MotionComponents'
 import Image from 'next/image'
 import { useState } from 'react'
 

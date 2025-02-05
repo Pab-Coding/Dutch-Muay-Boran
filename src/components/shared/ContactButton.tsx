@@ -2,8 +2,74 @@
 
 import { motion, AnimatePresence } from 'framer-motion'
 import Link from 'next/link'
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useCallback, memo } from 'react'
 import { ChatBubbleBottomCenterTextIcon, XMarkIcon } from '@heroicons/react/24/outline'
+
+const BUTTON_VARIANTS = {
+  hidden: { 
+    opacity: 0,
+    scale: 0.8,
+    y: 20
+  },
+  visible: { 
+    opacity: 1,
+    scale: 1,
+    y: 0,
+    transition: {
+      type: "spring",
+      stiffness: 260,
+      damping: 20
+    }
+  },
+  hover: { 
+    scale: 1.1,
+    transition: {
+      duration: 0.3,
+      type: "spring",
+      stiffness: 400,
+      damping: 10
+    }
+  },
+  tap: { 
+    scale: 0.95 
+  }
+}
+
+const TOOLTIP_VARIANTS = {
+  hidden: { 
+    opacity: 0,
+    x: 20,
+    scale: 0.8
+  },
+  visible: { 
+    opacity: 1,
+    x: 0,
+    scale: 1,
+    transition: {
+      type: "spring",
+      stiffness: 500,
+      damping: 30
+    }
+  },
+  exit: { 
+    opacity: 0,
+    x: 20,
+    scale: 0.8,
+    transition: {
+      duration: 0.2
+    }
+  }
+}
+
+// Cast the scale array explicitly as number[]
+const PULSE_ANIMATION = {
+  scale: [1, 1.05, 1] as number[],
+  transition: {
+    duration: 2,
+    repeat: Infinity,
+    repeatType: "reverse" as "reverse"
+  }
+}
 
 const ContactButton = () => {
   const [isVisible, setIsVisible] = useState(false)
@@ -16,24 +82,25 @@ const ContactButton = () => {
     setHasClosedTooltip(tooltipClosed)
   }, [])
 
-  // Mostrar el botón después de scroll
-  useEffect(() => {
-    const handleScroll = () => {
-      if (window.scrollY > 300) {
-        setIsVisible(true)
-      } else {
-        setIsVisible(false)
-        setIsTooltipVisible(false)
-      }
+  // Scroll event handler wrapped in useCallback for optimization
+  const handleScroll = useCallback(() => {
+    if (window.scrollY > 300) {
+      setIsVisible(true)
+    } else {
+      setIsVisible(false)
+      setIsTooltipVisible(false)
     }
-
-    window.addEventListener('scroll', handleScroll)
-    return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
-  // Mostrar tooltip después de 2 segundos si el botón es visible y el usuario no lo ha cerrado antes
+  // Attach scroll event listener
   useEffect(() => {
-    let timeout: NodeJS.Timeout
+    window.addEventListener('scroll', handleScroll)
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [handleScroll])
+
+  // Show tooltip after 2 seconds if the button is visible and the user hasn't closed it before
+  useEffect(() => {
+    let timeout: ReturnType<typeof setTimeout>
     if (isVisible && !isTooltipVisible && !hasClosedTooltip) {
       timeout = setTimeout(() => {
         setIsTooltipVisible(true)
@@ -42,77 +109,12 @@ const ContactButton = () => {
     return () => clearTimeout(timeout)
   }, [isVisible, isTooltipVisible, hasClosedTooltip])
 
-  const buttonVariants = {
-    hidden: { 
-      opacity: 0,
-      scale: 0.8,
-      y: 20
-    },
-    visible: { 
-      opacity: 1,
-      scale: 1,
-      y: 0,
-      transition: {
-        type: "spring",
-        stiffness: 260,
-        damping: 20
-      }
-    },
-    hover: { 
-      scale: 1.1,
-      transition: {
-        duration: 0.3,
-        type: "spring",
-        stiffness: 400,
-        damping: 10
-      }
-    },
-    tap: { 
-      scale: 0.95 
-    }
-  }
-
-  const tooltipVariants = {
-    hidden: { 
-      opacity: 0,
-      x: 20,
-      scale: 0.8
-    },
-    visible: { 
-      opacity: 1,
-      x: 0,
-      scale: 1,
-      transition: {
-        type: "spring",
-        stiffness: 500,
-        damping: 30
-      }
-    },
-    exit: { 
-      opacity: 0,
-      x: 20,
-      scale: 0.8,
-      transition: {
-        duration: 0.2
-      }
-    }
-  }
-
-  const pulseAnimation = {
-    scale: [1, 1.05, 1],
-    transition: {
-      duration: 2,
-      repeat: Infinity,
-      repeatType: "reverse" as const
-    }
-  }
-
   return (
     <div className="fixed bottom-8 right-8 z-50 flex items-center">
       <AnimatePresence>
         {isTooltipVisible && (
           <motion.div
-            variants={tooltipVariants}
+            variants={TOOLTIP_VARIANTS}
             initial="hidden"
             animate="visible"
             exit="exit"
@@ -125,8 +127,7 @@ const ContactButton = () => {
                   setHasClosedTooltip(true)
                   localStorage.setItem('tooltipClosed', 'true')
                 }}
-                className="absolute -top-2 -right-2 bg-red-500 rounded-full p-1
-                          hover:bg-red-600 transition-colors"
+                className="absolute -top-2 -right-2 bg-red-500 rounded-full p-1 hover:bg-red-600 transition-colors"
               >
                 <XMarkIcon className="w-4 h-4 text-white" />
               </button>
@@ -145,7 +146,7 @@ const ContactButton = () => {
         {isVisible && (
           <Link href="/contact">
             <motion.div
-              variants={buttonVariants}
+              variants={BUTTON_VARIANTS}
               initial="hidden"
               animate="visible"
               exit="hidden"
@@ -153,20 +154,17 @@ const ContactButton = () => {
               whileTap="tap"
               className="relative"
             >
-              {/* Botón principal */}
+              {/* Main Button */}
               <motion.div
-                className="relative bg-gradient-to-r from-red-600 to-blue-600
-                          rounded-full p-4 shadow-lg cursor-pointer
-                          hover:shadow-xl transition-shadow"
+                className="relative bg-gradient-to-r from-red-600 to-blue-600 rounded-full p-4 shadow-lg cursor-pointer hover:shadow-xl transition-shadow"
               >
                 <ChatBubbleBottomCenterTextIcon className="w-6 h-6 text-white" />
               </motion.div>
 
-              {/* Efecto de pulso */}
+              {/* Pulse Effect */}
               <motion.div
-                animate={pulseAnimation}
-                className="absolute inset-0 bg-gradient-to-r from-red-400 to-blue-400
-                          rounded-full -z-10 opacity-30 blur-sm"
+                animate={PULSE_ANIMATION}
+                className="absolute inset-0 bg-gradient-to-r from-red-400 to-blue-400 rounded-full -z-10 opacity-30 blur-sm"
               />
             </motion.div>
           </Link>
@@ -176,4 +174,4 @@ const ContactButton = () => {
   )
 }
 
-export default ContactButton
+export default memo(ContactButton)

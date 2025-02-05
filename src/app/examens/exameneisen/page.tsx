@@ -1,6 +1,6 @@
 'use client'
 
-import { MotionDiv, MotionSection, MotionH1 } from '../../../components/shared/MotionWrapper'
+import { MotionDiv, MotionSection, MotionH1 } from '../../../components/shared/MotionComponents'
 import Image from 'next/image'
 // Importaciones de los componentes de layout
 import Navigation from '../../../components/layout/Navigation'

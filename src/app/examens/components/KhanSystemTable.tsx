@@ -1,7 +1,7 @@
 'use client'
 
 import { useScroll, useTransform } from 'framer-motion'
-import { MotionSection, MotionDiv } from '../../../components/shared/MotionWrapper'
+import { MotionSection, MotionDiv } from '../../../components/shared/MotionComponents'
 import Image from 'next/image'
 import { useRef } from 'react'
 import { BsAward } from 'react-icons/bs'
