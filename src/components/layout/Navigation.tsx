@@ -2,6 +2,7 @@
 import { useState, useCallback, memo } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import Link from 'next/link'
+import { useRouter } from 'next/navigation'
 import Image from 'next/image'
 import { FaBars, FaTimes, FaChevronDown, FaChevronUp } from 'react-icons/fa'
 
@@ -40,6 +41,7 @@ const MENU_ITEMS = [
 ]
 
 const Navigation = () => {
+  const router = useRouter()
   // For desktop hover dropdowns
   const [hoveredItem, setHoveredItem] = useState<string | null>(null)
   // For mobile menu open/close state
@@ -64,19 +66,20 @@ const Navigation = () => {
   }, [])
 
   return (
-    <nav className="relative h-12 shadow-lg z-50">
+    <nav className="relative h-16 shadow-lg z-50">
       {/* Full-width Banner Background */}
       <Image
         src="/images/banner-principal.webp"
         alt="Banner Principal"
         fill
-        className="object-cover"
+        className="object-cover object-center"
+        priority
       />
       {/* Overlay for improved contrast */}
-      <div className="absolute inset-0 bg-black opacity-30"></div>
+      <div className="absolute inset-0 bg-black opacity-40"></div>
 
       {/* Navigation Content */}
-      <div className="relative z-10 container mx-auto px-4 h-12 flex items-center justify-between">
+      <div className="relative z-10 container mx-auto px-4 h-16 flex items-center justify-between">
         {/* Desktop Navigation */}
         <div className="hidden md:flex w-full items-center justify-center">
           {MENU_ITEMS.map((item) => (
@@ -150,7 +153,10 @@ const Navigation = () => {
               exit={{ opacity: 0 }}
               transition={{ duration: 0.2 }}
               className="md:hidden fixed inset-0 bg-black/60 z-40"
-              onClick={() => setIsMenuOpen(false)}
+              onClick={() => {
+                setIsMenuOpen(false)
+                router.push('/')
+              }}
             />
             {/* Menu */}
             <motion.div
@@ -158,7 +164,7 @@ const Navigation = () => {
               animate={{ x: 0 }}
               exit={{ x: '100%' }}
               transition={{ type: "spring", stiffness: 300, damping: 30 }}
-              className="md:hidden fixed top-12 right-0 bottom-0 w-80 overflow-y-auto z-50 shadow-xl"
+              className="md:hidden fixed top-16 right-0 bottom-0 w-80 overflow-y-auto z-50 shadow-xl"
             >
             <div className="bg-gradient-to-r from-red-200 to-blue-200 p-[1px] h-full">
               <div className="relative flex flex-col h-full bg-gradient-to-r from-red-100/80 via-white/90 to-blue-100/80">
@@ -169,7 +175,10 @@ const Navigation = () => {
                       <Link
                         href={item.path}
                         className="text-sm tracking-wider font-bold transition-all duration-200 ease-in-out relative group-hover:opacity-90"
-                        onClick={() => setIsMenuOpen(false)}
+                        onClick={() => {
+                          setIsMenuOpen(false)
+                          router.push('/')
+                        }}
                       >
                         <span className="bg-gradient-to-r from-red-600 via-red-500 to-blue-600 bg-clip-text text-transparent">
                           {item.name}
@@ -200,8 +209,11 @@ const Navigation = () => {
                                 <Link
                                   key={subItem.path}
                                   href={subItem.path}
-                  className="block px-8 py-3 text-sm hover:bg-gradient-to-r hover:from-red-100/50 hover:via-white/80 hover:to-blue-100/50 transition-all duration-300 relative group/item"
-                                  onClick={() => setIsMenuOpen(false)}
+                                  className="block px-8 py-3 text-sm hover:bg-gradient-to-r hover:from-red-100/50 hover:via-white/80 hover:to-blue-100/50 transition-all duration-300 relative group/item"
+                                  onClick={() => {
+                                    setIsMenuOpen(false)
+                                    router.push('/')
+                                  }}
                                 >
                                   <span className="relative">
                                     <span className="bg-gradient-to-r from-red-600 via-red-500 to-blue-600 bg-clip-text text-transparent">

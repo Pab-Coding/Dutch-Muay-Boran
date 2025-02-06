@@ -80,11 +80,11 @@ const LatestNewsHighlight = () => {
                 <div className="flex flex-col sm:flex-row sm:items-center space-y-1 sm:space-y-0">
                   <span className="whitespace-nowrap">Contact:</span>
                   <div className="flex flex-col sm:flex-row sm:ml-2 space-y-1 sm:space-y-0 sm:space-x-2">
-                    <a href="mailto:info@dmbf.nl" className="text-blue-600 hover:underline break-all">
+                    <a href="mailto:info@dmbf.nl" className="text-blue-600 hover:underline break-all text-[11px] sm:text-sm">
                       info@dmbf.nl
                     </a>
                     <span className="hidden sm:inline">|</span>
-                    <a href="mailto:mtbacademy.nl@gmail.com" className="text-blue-600 hover:underline break-all">
+                    <a href="mailto:mtbacademy.nl@gmail.com" className="text-blue-600 hover:underline break-all text-[11px] sm:text-sm">
                       mtbacademy.nl@gmail.com
                     </a>
                   </div>

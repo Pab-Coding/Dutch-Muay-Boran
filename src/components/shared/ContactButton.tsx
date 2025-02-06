@@ -120,7 +120,7 @@ const ContactButton = () => {
             exit="exit"
             className="mr-4"
           >
-            <div className="relative bg-white rounded-lg shadow-xl p-4 max-w-xs">
+            <div className="relative bg-white rounded-lg shadow-xl p-4 max-w-[200px] sm:max-w-xs">
               <button
                 onClick={() => {
                   setIsTooltipVisible(false)

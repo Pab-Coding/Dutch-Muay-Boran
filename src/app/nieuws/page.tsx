@@ -13,7 +13,7 @@ const newsData = [
     id: 1,
     title: 'Nederlandse Kampioenschappen Muay Thai Boran 2025',
     date: '2025-03-15',
-    image: '/images/nieuws.webp',
+    image: '/images/nk-muaythai-2025.webp',
     excerpt: 'De Dutch Muay Boran Foundation (DMBF) kondigt met trots aan dat op 15 en 16 maart 2025 de Nederlandse Kampioenschappen Muay Thai Boran zullen plaatsvinden. In samenwerking met de WFCA organiseert de DMBF dit prestigieuze evenement dat zich richt op het authentieke Muay Thai Boran. Voor meer informatie kunt u contact met ons opnemen.',
     slug: 'contact', // Cambiado para redirigir a la página de contacto
     category: 'Evenementen'

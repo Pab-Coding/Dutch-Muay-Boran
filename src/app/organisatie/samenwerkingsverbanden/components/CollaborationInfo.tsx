@@ -97,7 +97,7 @@ const CollaborationInfo = () => {
           />
 
           {/* Main content grid */}
-          <div className="grid sm:grid-cols-2 gap-6 sm:gap-8 p-4 sm:p-8 md:p-12 relative">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 p-6 sm:p-8 md:p-12 relative">
             {/* DMBF Section */}
             <motion.div
               variants={sectionVariants}
@@ -163,10 +163,10 @@ const CollaborationInfo = () => {
                       initial="initial"
                       whileHover="hover"
                       whileTap="tap"
-                      className="group w-full sm:w-auto px-4 sm:px-6 py-3 bg-gradient-to-r from-red-600 
+                      className="group w-full px-6 py-4 bg-gradient-to-r from-red-600 
                                to-blue-600 text-white font-semibold rounded-xl 
-                               flex items-center justify-center sm:justify-start space-x-2 transform-gpu
-                               min-h-[44px] touch-manipulation"
+                               flex items-center justify-center space-x-3 transform-gpu
+                               min-h-[56px] touch-manipulation shadow-md"
                     >
                       <span>Meer over Khan Systeem</span>
                       <motion.span
@@ -202,23 +202,24 @@ const CollaborationInfo = () => {
                   delay: 0.2
                 }}
                 className="bg-gradient-to-br from-blue-50 to-red-50 
-                         rounded-xl p-4 sm:p-6 md:p-8 border border-gray-200
-                         h-full relative overflow-hidden transform-gpu"
+                         rounded-xl p-6 md:p-8 border border-gray-200
+                         h-full relative overflow-hidden transform-gpu
+                         shadow-md"
                 whileHover={{ 
                   scale: 1.02,
                   transition: { duration: 0.3 }
                 }}
               >
                 <motion.h3 
-                  className="text-lg sm:text-xl md:text-2xl font-semibold 
-                           text-gray-800 mb-4"
+                  className="text-xl md:text-2xl font-semibold 
+                           text-gray-800 mb-6"
                   variants={sectionVariants}
                 >
                   Verzekeringen via de bond
                 </motion.h3>
                 
                 <motion.p 
-                  className="text-gray-700 leading-relaxed text-sm sm:text-base"
+                  className="text-gray-700 leading-relaxed text-base"
                   variants={sectionVariants}
                 >
                   Via de FOG heeft DMBF een collectieve ongevallenverzekering 

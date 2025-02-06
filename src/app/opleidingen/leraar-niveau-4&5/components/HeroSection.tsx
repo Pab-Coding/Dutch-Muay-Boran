@@ -1,6 +1,6 @@
 'use client'
 
-import { useScroll, useTransform } from 'framer-motion'
+import { motion } from 'framer-motion'
 import Image from 'next/image'
 import Link from 'next/link'
 import { useRef } from 'react'
@@ -9,44 +9,34 @@ import { MotionSection, MotionDiv, MotionH1, MotionP } from '@/components/shared
 
 const HeroSection = () => {
   const sectionRef = useRef<HTMLDivElement>(null)
-  const { scrollYProgress } = useScroll({
-    target: sectionRef,
-    offset: ["start start", "end start"]
-  })
+  const isMobile = typeof window !== 'undefined' && window.innerWidth < 768
 
-  const opacity = useTransform(scrollYProgress, [0, 0.5], [1, 0])
-  const scale = useTransform(scrollYProgress, [0, 0.5], [1, 1.1])
-  const textY = useTransform(scrollYProgress, [0, 0.5], [0, 100])
-
+  // Simplified animations for mobile
   const heroVariants = {
-    hidden: { 
-      opacity: 0,
-      scale: 1.1
+    hidden: {
+      opacity: 0
     },
     visible: {
       opacity: 1,
-      scale: 1,
       transition: {
-        duration: 0.8,
+        duration: isMobile ? 0.5 : 0.8,
         ease: "easeOut",
         when: "beforeChildren",
-        staggerChildren: 0.2
+        staggerChildren: isMobile ? 0.1 : 0.2
       }
     }
   }
 
   const childVariants = {
-    hidden: { 
+    hidden: {
       opacity: 0,
-      y: 30,
-      scale: 0.9
+      y: 20
     },
     visible: {
       opacity: 1,
       y: 0,
-      scale: 1,
-      transition: { 
-        duration: 0.6,
+      transition: {
+        duration: isMobile ? 0.4 : 0.6,
         ease: "easeOut"
       }
     }
@@ -58,12 +48,10 @@ const HeroSection = () => {
       variants={heroVariants}
       initial="hidden"
       animate="visible"
-      className="relative min-h-[500px] w-full overflow-hidden lg:h-[70vh] lg:min-h-[600px]"
+      className="relative h-[60vh] md:h-[70vh] min-h-[400px] md:min-h-[600px] w-full overflow-hidden"
     >
-      {/* Imagen de fondo con efecto parallax */}
       <MotionDiv 
-        style={{ scale }}
-        className="absolute inset-0"
+        className="absolute inset-0 transform transition-transform duration-700 ease-out will-change-transform"
       >
         <Image
           src="/images/zelf-standig.webp"
@@ -79,9 +67,7 @@ const HeroSection = () => {
         <div className="absolute inset-0 backdrop-blur-[0.5px]" />
       </MotionDiv>
 
-      {/* Contenido principal */}
       <MotionDiv 
-        style={{ y: textY, opacity }}
         className="relative z-10 h-full max-w-7xl mx-auto px-4"
       >
         <div className="flex flex-col justify-center h-full max-w-4xl">
@@ -110,8 +96,8 @@ const HeroSection = () => {
 
             <MotionP
               variants={childVariants}
-              className="mt-4 sm:mt-6 text-lg sm:text-xl md:text-2xl text-gray-200 font-medium
-                         leading-relaxed max-w-2xl drop-shadow-lg"
+              className="mt-4 md:mt-6 text-lg sm:text-xl md:text-2xl text-gray-200 font-medium
+                         leading-relaxed max-w-2xl drop-shadow-lg px-4 md:px-0"
             >
               Start je reis als Muay Thai Boran instructeur en word deel van een 
               eeuwenoude traditie
@@ -120,7 +106,7 @@ const HeroSection = () => {
             <Link href="/opleidingen/cursusdata">
               <MotionDiv
                 variants={childVariants}
-                whileHover={{ scale: 1.05, backgroundColor: "rgba(255,255,255,0.1)" }}
+                whileHover={{ scale: isMobile ? 1 : 1.05, backgroundColor: "rgba(255,255,255,0.1)" }}
                 whileTap={{ scale: 0.95 }}
                 className="mt-6 inline-flex items-center gap-2 px-4 py-2
                          bg-gradient-to-r from-blue-500/20 to-purple-500/20
@@ -142,7 +128,7 @@ const HeroSection = () => {
           >
             <Link href="/opleidingen/inschrijven">
               <MotionDiv
-                whileHover={{ scale: 1.05 }}
+                whileHover={{ scale: isMobile ? 1 : 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 className="w-full sm:w-auto px-6 sm:px-8 py-3 sm:py-4 bg-gradient-to-r from-red-600 to-red-700 
                          text-white font-semibold rounded-lg shadow-lg
@@ -157,7 +143,7 @@ const HeroSection = () => {
 
             <Link href="/examens">
               <MotionDiv
-                whileHover={{ scale: 1.05 }}
+                whileHover={{ scale: isMobile ? 1 : 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 className="w-full sm:w-auto px-6 sm:px-8 py-3 sm:py-4 bg-gradient-to-r from-blue-600/10 to-blue-700/10
                          border-2 border-white/30 text-white 

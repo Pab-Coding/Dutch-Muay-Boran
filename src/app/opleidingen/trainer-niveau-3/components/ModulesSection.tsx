@@ -168,7 +168,7 @@ const ModulesSection = () => {
                   >
                     <module.icon className="w-8 h-8 text-gray-800" />
                   </motion.div>
-                  <h3 className="text-2xl font-bold text-gray-900">{module.title}</h3>
+                  <h3 className="text-xl sm:text-2xl font-bold text-gray-900">{module.title}</h3>
                 </div>
 
                 <motion.ul 
@@ -203,15 +203,15 @@ const ModulesSection = () => {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
           className="w-full bg-gradient-to-r from-red-600/5 via-transparent to-blue-600/5 
-                     rounded-2xl p-4 sm:p-8 shadow-lg backdrop-blur-sm mx-4"
+                     rounded-2xl p-6 sm:p-8 shadow-lg"
         >
           <div className="max-w-4xl mx-auto">
-            <div className="flex flex-col sm:flex-row justify-center items-stretch gap-4 sm:gap-6">
+            <div className="flex flex-col justify-center items-stretch gap-4 sm:gap-6">
               <motion.div
                 variants={buttonVariants}
                 whileHover="hover"
                 whileTap="tap"
-                className="w-full sm:w-auto"
+                className="w-full"
               >
                 <Link href="/opleidingen/inschrijven?course=assistant">
                   <div className="w-full px-6 py-3 sm:px-8 sm:py-4 bg-gradient-to-r from-red-600 to-red-700 
@@ -229,7 +229,7 @@ const ModulesSection = () => {
                 variants={buttonVariants}
                 whileHover="hover"
                 whileTap="tap"
-                className="w-full sm:w-auto"
+                className="w-full"
               >
                 <Link href="/examens">
                   <div className="w-full px-6 py-3 sm:px-8 sm:py-4 bg-gradient-to-r from-blue-600/10 to-blue-700/10
@@ -248,16 +248,16 @@ const ModulesSection = () => {
               initial={{ opacity: 0, y: 10 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.2 }}
-              className="mt-8 text-center"
+              className="mt-8 text-center px-4"
             >
-              <p className="text-gray-600">
-                Voor meer informatie: 
-                <span className="ml-1">
-                  <a href="mailto:info@dmbf.nl" className="text-blue-600 hover:underline">
+              <p className="text-gray-600 flex flex-col sm:flex-row items-center justify-center gap-2 sm:gap-4">
+                <span>Voor meer informatie:</span>
+                <span className="flex flex-col sm:flex-row items-center gap-2 sm:gap-4">
+                  <a href="mailto:info@dmbf.nl" className="text-blue-600 hover:underline whitespace-nowrap">
                     info@dmbf.nl
                   </a>
-                  <span className="mx-2">|</span>
-                  <a href="mailto:mtbacademy.nl@gmail.com" className="text-blue-600 hover:underline">
+                  <span className="hidden sm:inline">|</span>
+                  <a href="mailto:mtbacademy.nl@gmail.com" className="text-blue-600 hover:underline whitespace-nowrap">
                     mtbacademy.nl@gmail.com
                   </a>
                 </span>

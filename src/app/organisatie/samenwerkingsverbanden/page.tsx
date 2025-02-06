@@ -65,7 +65,7 @@ export default function SamenwerkingsPage() {
       animate="visible"
       exit="exit"
       variants={pageVariants}
-      className="min-h-screen flex flex-col bg-white"
+      className="min-h-screen flex flex-col bg-white overflow-x-hidden"
     >
       <Navigation />
 
@@ -128,7 +128,7 @@ export default function SamenwerkingsPage() {
           }}
           className="relative z-10"
         >
-          <div className="container mx-auto px-4">
+          <div className="container mx-auto px-4 max-w-[100vw]">
             {/* Content sections */}
             <motion.div
               variants={{
@@ -143,7 +143,7 @@ export default function SamenwerkingsPage() {
                   }
                 }
               }}
-              className="space-y-12 py-8"
+              className="space-y-12 py-8 overflow-x-hidden"
             >
               <ImageSection 
                 textConfig={imageTextConfig}

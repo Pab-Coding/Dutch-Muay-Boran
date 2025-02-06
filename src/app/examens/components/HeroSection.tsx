@@ -1,6 +1,6 @@
 'use client'
 
-import { useScroll, useTransform } from 'framer-motion'
+import { motion } from 'framer-motion'
 import Image from 'next/image'
 import Link from 'next/link'
 import { useRef } from 'react'
@@ -9,28 +9,20 @@ import { MotionSection, MotionDiv, MotionButton, MotionSpan, MotionH1, MotionP }
 
 const HeroSection = () => {
   const sectionRef = useRef<HTMLDivElement>(null)
-  const { scrollYProgress } = useScroll({
-    target: sectionRef,
-    offset: ["start start", "end start"]
-  })
+  const isMobile = typeof window !== 'undefined' && window.innerWidth < 768
 
-  const opacity = useTransform(scrollYProgress, [0, 0.5], [1, 0])
-  const scale = useTransform(scrollYProgress, [0, 0.5], [1, 1.1])
-  const textY = useTransform(scrollYProgress, [0, 0.5], [0, 100])
-
+  // Simplified animations for mobile
   const heroVariants = {
     hidden: {
-      opacity: 0,
-      scale: 1.1
+      opacity: 0
     },
     visible: {
       opacity: 1,
-      scale: 1,
       transition: {
-        duration: 0.8,
+        duration: isMobile ? 0.5 : 0.8,
         ease: "easeOut",
         when: "beforeChildren",
-        staggerChildren: 0.2
+        staggerChildren: isMobile ? 0.1 : 0.2
       }
     }
   }
@@ -38,15 +30,13 @@ const HeroSection = () => {
   const childVariants = {
     hidden: {
       opacity: 0,
-      y: 30,
-      scale: 0.9
+      y: 20
     },
     visible: {
       opacity: 1,
       y: 0,
-      scale: 1,
       transition: {
-        duration: 0.6,
+        duration: isMobile ? 0.4 : 0.6,
         ease: "easeOut"
       }
     }
@@ -58,11 +48,10 @@ const HeroSection = () => {
       variants={heroVariants}
       initial="hidden"
       animate="visible"
-      className="relative h-[60vh] min-h-[500px] w-full overflow-hidden"
+      className="relative h-[60vh] md:h-[70vh] min-h-[400px] md:min-h-[600px] w-full overflow-hidden"
     >
       <MotionDiv
-        style={{ scale }}
-        className="absolute inset-0"
+        className="absolute inset-0 transform transition-transform duration-700 ease-out will-change-transform"
       >
         <Image
           src="/images/examens-muay.webp"
@@ -77,9 +66,7 @@ const HeroSection = () => {
         <div className="absolute inset-0 backdrop-blur-[0.5px]" />
       </MotionDiv>
 
-      {/* Contenido principal */}
       <MotionDiv
-        style={{ y: textY, opacity }}
         className="relative z-10 h-full max-w-7xl mx-auto px-4"
       >
         <div className="flex flex-col justify-center h-full max-w-4xl">
@@ -108,8 +95,8 @@ const HeroSection = () => {
 
             <MotionP
               variants={childVariants}
-              className="mt-6 text-lg sm:text-xl md:text-2xl text-gray-200 font-medium
-                         leading-relaxed max-w-2xl drop-shadow-lg"
+              className="mt-4 md:mt-6 text-lg sm:text-xl md:text-2xl text-gray-200 font-medium
+                         leading-relaxed max-w-2xl drop-shadow-lg px-4 md:px-0"
             >
               Ontwikkel je vaardigheden en bereik nieuwe niveaus in Muay Thai Boran
             </MotionP>
@@ -131,16 +118,16 @@ const HeroSection = () => {
                          flex items-center space-x-3"
               >
                 <span>Bekijk Exameneisen</span>
-                <MotionSpan
-                  animate={{ x: [0, 5, 0] }}
-                  transition={{
+                <motion.div
+                  animate={isMobile ? {} : { x: [0, 5, 0] }}
+                  transition={isMobile ? {} : {
                     duration: 1.5,
                     repeat: Infinity,
                     repeatType: "reverse"
                   }}
                 >
                   <ArrowRightIcon className="w-5 h-5" />
-                </MotionSpan>
+                </motion.div>
               </MotionButton>
             </Link>
           </MotionDiv>

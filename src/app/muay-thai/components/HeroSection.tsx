@@ -1,6 +1,6 @@
 'use client'
 
-import { useScroll, useTransform } from 'framer-motion'
+import { motion } from 'framer-motion'
 import Image from 'next/image'
 import Link from 'next/link'
 import { useRef } from 'react'
@@ -8,29 +8,20 @@ import { MotionSection, MotionDiv, MotionButton, MotionSpan, MotionH1, MotionP }
 
 const HeroSection = () => {
   const sectionRef = useRef<HTMLDivElement>(null)
-  const { scrollYProgress } = useScroll({
-    target: sectionRef,
-    offset: ["start start", "end start"]
-  })
+  const isMobile = typeof window !== 'undefined' && window.innerWidth < 768
 
-  // Reduced animation complexity for better mobile performance
-  const opacity = useTransform(scrollYProgress, [0, 0.7], [1, 0.8])
-  const scale = useTransform(scrollYProgress, [0, 0.7], [1, 1.05])
-  const textY = useTransform(scrollYProgress, [0, 0.7], [0, 50])
-
+  // Simplified animations for mobile
   const heroVariants = {
     hidden: {
-      opacity: 0,
-      scale: 1.05
+      opacity: 0
     },
     visible: {
       opacity: 1,
-      scale: 1,
       transition: {
-        duration: 0.6,
+        duration: isMobile ? 0.5 : 0.8,
         ease: "easeOut",
         when: "beforeChildren",
-        staggerChildren: 0.15
+        staggerChildren: isMobile ? 0.1 : 0.2
       }
     }
   }
@@ -38,15 +29,13 @@ const HeroSection = () => {
   const childVariants = {
     hidden: {
       opacity: 0,
-      y: 20,
-      scale: 0.95
+      y: 20
     },
     visible: {
       opacity: 1,
       y: 0,
-      scale: 1,
       transition: {
-        duration: 0.4,
+        duration: isMobile ? 0.4 : 0.6,
         ease: "easeOut"
       }
     }
@@ -58,43 +47,39 @@ const HeroSection = () => {
       variants={heroVariants}
       initial="hidden"
       animate="visible"
-      className="relative min-h-[400px] sm:min-h-[500px] md:min-h-[600px] w-full overflow-hidden"
+      className="relative h-[60vh] md:h-[70vh] min-h-[400px] md:min-h-[600px] w-full overflow-hidden"
     >
-      {/* Background image with optimized loading */}
       <MotionDiv
-        style={{ scale }}
-        className="absolute inset-0"
+        className="absolute inset-0 transform transition-transform duration-700 ease-out will-change-transform"
       >
         <Image
           src="/images/muay-thai.webp"
           alt="Muay Thai Boran"
           fill
-          sizes="(max-width: 640px) 100vw, (max-width: 1024px) 80vw, 100vw"
-          className="object-cover object-center"
+          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 100vw, 100vw"
+          className="object-cover"
           priority
-          quality={90}
+          quality={100}
         />
-        {/* Simplified gradients for better performance */}
-        <div className="absolute inset-0 bg-gradient-to-b from-black/50 to-black/30" />
+        <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/30 to-black/40" />
+        <div className="absolute inset-0 bg-gradient-to-r from-red-900/5 to-blue-900/5" />
         <div className="absolute inset-0 backdrop-blur-[0.5px]" />
       </MotionDiv>
 
-      {/* Main content with improved mobile spacing */}
       <MotionDiv
-        style={{ y: textY, opacity }}
-        className="relative z-10 h-full max-w-7xl mx-auto px-4 sm:px-6"
+        className="relative z-10 h-full max-w-7xl mx-auto px-4"
       >
         <div className="flex flex-col justify-center h-full max-w-4xl">
           <MotionDiv
             variants={childVariants}
-            className="space-y-2 sm:space-y-4"
+            className="space-y-2"
           >
             <MotionDiv
               variants={childVariants}
               className="inline-block bg-gradient-to-r from-red-500/20 to-blue-500/20
-                         backdrop-blur-sm rounded-lg px-3 py-1.5 sm:px-4 sm:py-2 mb-2 sm:mb-4"
+                         backdrop-blur-sm rounded-lg px-4 py-2 mb-4"
             >
-              <span className="text-white/90 font-medium text-sm sm:text-base">
+              <span className="text-white/90 font-medium">
                 Dutch Muay Boran Foundation
               </span>
             </MotionDiv>
@@ -110,8 +95,8 @@ const HeroSection = () => {
 
             <MotionP
               variants={childVariants}
-              className="mt-4 sm:mt-6 text-lg sm:text-xl md:text-2xl text-gray-200 font-medium
-                         leading-relaxed max-w-2xl drop-shadow-lg px-2 sm:px-0"
+              className="mt-4 md:mt-6 text-lg sm:text-xl md:text-2xl text-gray-200 font-medium
+                         leading-relaxed max-w-2xl drop-shadow-lg px-4 md:px-0"
             >
               De nationale sport van Thailand met meer dan 1000 jaar geschiedenis
             </MotionP>
@@ -119,30 +104,30 @@ const HeroSection = () => {
 
           <MotionDiv
             variants={childVariants}
-            className="mt-8 sm:mt-10"
+            className="mt-10"
           >
             <Link href="/opleidingen/inschrijven">
-              <MotionButton
-                whileHover={{ scale: 1.03 }}
-                whileTap={{ scale: 0.98 }}
-                className="w-full sm:w-auto px-6 sm:px-8 py-3 sm:py-4 bg-gradient-to-r from-red-600 to-blue-600
+              <motion.button
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                className="px-8 py-4 bg-gradient-to-r from-red-600 to-blue-600
                            text-white font-semibold rounded-xl shadow-lg
                            hover:from-red-500 hover:to-blue-500
-                           transform transition-all duration-200
+                           transform transition-all duration-300
                            border border-white/20 backdrop-blur-sm
-                           flex items-center justify-center sm:justify-start space-x-3"
+                           flex items-center space-x-3"
               >
                 <span>Inschrijven</span>
-                <MotionSpan
-                  animate={{ x: [0, 4, 0] }}
-                  transition={{
+                <motion.div
+                  animate={isMobile ? {} : { x: [0, 5, 0] }}
+                  transition={isMobile ? {} : {
                     duration: 1.5,
                     repeat: Infinity,
                     repeatType: "reverse"
                   }}
                 >
                   <svg 
-                    className="w-4 h-4 sm:w-5 sm:h-5" 
+                    className="w-5 h-5" 
                     fill="none" 
                     stroke="currentColor" 
                     viewBox="0 0 24 24"
@@ -154,8 +139,8 @@ const HeroSection = () => {
                       d="M9 5l7 7-7 7" 
                     />
                   </svg>
-                </MotionSpan>
-              </MotionButton>
+                </motion.div>
+              </motion.button>
             </Link>
           </MotionDiv>
         </div>

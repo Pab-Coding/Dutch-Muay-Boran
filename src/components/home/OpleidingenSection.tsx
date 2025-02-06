@@ -121,7 +121,7 @@ const OpleidingenSection = () => {
 
         <div className="flex flex-col md:flex-row justify-center items-center -mx-3">
           {courses.map((course, index) => (
-            <div key={course.title} className="w-[340px] px-3">
+            <div key={course.title} className="w-[340px] px-3 md:mb-0 mb-8">
               <motion.div
                 variants={cardVariants}
                 initial="hidden"
