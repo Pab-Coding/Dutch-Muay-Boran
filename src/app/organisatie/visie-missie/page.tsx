@@ -25,22 +25,22 @@ export default function VisieMissiePage() {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 0.5 }}
-      className="min-h-screen bg-gradient-to-b from-gray-50 to-gray-100"
+      className="min-h-screen bg-gradient-to-b from-gray-50 to-gray-100 overflow-x-hidden"
     >
       {/* Efectos de fondo decorativos */}
-      <div className="fixed inset-0 bg-gradient-to-br from-red-500/5 via-transparent to-blue-500/5 pointer-events-none" />
-      <div className="fixed inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-transparent via-white/50 to-transparent pointer-events-none" />
+      <div className="absolute inset-0 bg-gradient-to-br from-red-500/5 via-transparent to-blue-500/5 pointer-events-none" />
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-transparent via-white/50 to-transparent pointer-events-none" />
 
       {/* Contenido principal */}
       <div className="relative z-10">
         <Navigation />
 
-        <main className="relative max-w-7xl mx-auto px-4 py-12">
+        <main className="relative w-full max-w-7xl mx-auto px-3 sm:px-4 py-8 sm:py-12">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
-            className="space-y-16"
+            className="space-y-8 sm:space-y-16"
           >
             {/* Título principal */}
             <div className="text-center">
@@ -48,7 +48,7 @@ export default function VisieMissiePage() {
                 initial={{ opacity: 0, y: -20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.2 }}
-                className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-red-600 via-blue-600 to-red-600 bg-clip-text text-transparent"
+                className="text-3xl sm:text-4xl md:text-5xl font-bold bg-gradient-to-r from-red-600 via-blue-600 to-red-600 bg-clip-text text-transparent px-2"
               >
                 Visie / Missie
               </motion.h1>

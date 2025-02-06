@@ -97,14 +97,14 @@ const CollaborationInfo = () => {
           />
 
           {/* Main content grid */}
-          <div className="grid md:grid-cols-2 gap-8 p-8 md:p-12 relative">
+          <div className="grid sm:grid-cols-2 gap-6 sm:gap-8 p-4 sm:p-8 md:p-12 relative">
             {/* DMBF Section */}
             <motion.div
               variants={sectionVariants}
               className="space-y-6"
             >
               <motion.h2 
-                className="text-2xl md:text-3xl font-bold bg-gradient-to-r 
+                className="text-xl sm:text-2xl md:text-3xl font-bold bg-gradient-to-r 
                          from-red-600 to-blue-600 bg-clip-text text-transparent"
                 variants={{
                   hidden: { opacity: 0, y: -20 },
@@ -163,9 +163,10 @@ const CollaborationInfo = () => {
                       initial="initial"
                       whileHover="hover"
                       whileTap="tap"
-                      className="group px-6 py-3 bg-gradient-to-r from-red-600 
+                      className="group w-full sm:w-auto px-4 sm:px-6 py-3 bg-gradient-to-r from-red-600 
                                to-blue-600 text-white font-semibold rounded-xl 
-                               flex items-center space-x-2 transform-gpu"
+                               flex items-center justify-center sm:justify-start space-x-2 transform-gpu
+                               min-h-[44px] touch-manipulation"
                     >
                       <span>Meer over Khan Systeem</span>
                       <motion.span
@@ -201,7 +202,7 @@ const CollaborationInfo = () => {
                   delay: 0.2
                 }}
                 className="bg-gradient-to-br from-blue-50 to-red-50 
-                         rounded-xl p-6 md:p-8 border border-gray-200
+                         rounded-xl p-4 sm:p-6 md:p-8 border border-gray-200
                          h-full relative overflow-hidden transform-gpu"
                 whileHover={{ 
                   scale: 1.02,
@@ -209,7 +210,7 @@ const CollaborationInfo = () => {
                 }}
               >
                 <motion.h3 
-                  className="text-xl md:text-2xl font-semibold 
+                  className="text-lg sm:text-xl md:text-2xl font-semibold 
                            text-gray-800 mb-4"
                   variants={sectionVariants}
                 >
@@ -217,7 +218,7 @@ const CollaborationInfo = () => {
                 </motion.h3>
                 
                 <motion.p 
-                  className="text-gray-700 leading-relaxed"
+                  className="text-gray-700 leading-relaxed text-sm sm:text-base"
                   variants={sectionVariants}
                 >
                   Via de FOG heeft DMBF een collectieve ongevallenverzekering 

@@ -72,14 +72,14 @@ export default function VideosPage() {
     >
       <Navigation />
 
-      <main className="relative max-w-7xl mx-auto px-4">
+      <main className="relative max-w-7xl mx-auto px-3 sm:px-4 overflow-x-hidden">
         {/* Título y descripción */}
-        <div className="text-center pt-12 pb-16">
+        <div className="text-center pt-8 sm:pt-12 pb-12 sm:pb-16">
           <motion.div
             variants={titleVariants}
-            className="mb-6"
+            className="mb-4 sm:mb-6"
           >
-            <h1 className="text-6xl font-bold tracking-tight relative">
+            <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold tracking-tight relative">
               <span className="bg-gradient-to-r from-red-600 via-red-500 
                              to-blue-600 bg-clip-text text-transparent 
                              drop-shadow-sm">
@@ -92,8 +92,8 @@ export default function VideosPage() {
           </motion.div>
           <motion.p
             variants={descriptionVariants}
-            className="text-gray-600 text-lg max-w-3xl mx-auto 
-                     leading-relaxed"
+            className="text-gray-600 text-base sm:text-lg max-w-3xl mx-auto 
+                     leading-relaxed px-4"
           >
             Ontdek onze collectie van Muay Thai en Muay Boran videos, 
             van historische gevechten tot technische demonstraties
@@ -101,12 +101,12 @@ export default function VideosPage() {
         </div>
 
         {/* Sección de Videotheek */}
-        <div className="pb-16">
+        <div className="pb-12 sm:pb-16">
           <motion.div
             variants={sectionTitleVariants}
-            className="mb-12"
+            className="mb-8 sm:mb-12"
           >
-            <h2 className="text-4xl font-bold text-center relative">
+            <h2 className="text-3xl sm:text-4xl font-bold text-center relative">
               <span className="bg-gradient-to-r from-blue-600 via-blue-500 
                              to-red-600 bg-clip-text text-transparent 
                              drop-shadow-sm">

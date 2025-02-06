@@ -137,14 +137,14 @@ const PartnersGrid = () => {
             }}
           />
 
-          <div className="p-8 md:p-12 relative space-y-12">
+          <div className="p-4 sm:p-8 md:p-12 relative space-y-8 sm:space-y-12">
             {/* Intro text */}
             <motion.div
               variants={sectionVariants}
-              className="text-center max-w-3xl mx-auto mb-8"
+              className="text-center max-w-3xl mx-auto mb-6 sm:mb-8"
             >
               <motion.p 
-                className="text-gray-600 text-lg md:text-xl font-medium leading-relaxed"
+                className="text-gray-600 text-base sm:text-lg md:text-xl font-medium leading-relaxed px-2 sm:px-0"
                 variants={cardVariants}
               >
                 <span className="bg-gradient-to-r from-red-600 to-blue-600 
@@ -175,7 +175,7 @@ const PartnersGrid = () => {
                   {category.title}
                 </motion.h2>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
                   {category.organizations.map((org) => (
                     <motion.div
                       key={org.name}
@@ -204,11 +204,11 @@ const PartnersGrid = () => {
                             }}
                           />
                           
-                          <div className="p-6">
-                            <div className="flex items-start justify-between mb-4">
+                          <div className="p-4 sm:p-6">
+                            <div className="flex items-start justify-between mb-3 sm:mb-4">
                               <motion.h3
-                                className="text-xl font-semibold text-gray-800 
-                                         transition-colors duration-300"
+                                className="text-lg sm:text-xl font-semibold text-gray-800 
+                                         transition-colors duration-300 break-words"
                                 variants={{
                                   hover: {
                                     background: "linear-gradient(to right, #DC2626, #2563EB)",
@@ -229,18 +229,18 @@ const PartnersGrid = () => {
                               </motion.div>
                             </div>
 
-                            <motion.p 
-                              className="text-gray-600 transition-colors duration-300"
-                              variants={{
-                                hover: { color: "#374151" }
-                              }}
-                            >
+                              <motion.p 
+                                className="text-gray-600 text-sm sm:text-base transition-colors duration-300"
+                                variants={{
+                                  hover: { color: "#374151" }
+                                }}
+                              >
                               {org.description}
                             </motion.p>
 
                             {/* Visit website indicator */}
                             <motion.div
-                              className="mt-4 flex items-center text-sm text-gray-500
+                              className="mt-3 sm:mt-4 flex items-center text-xs sm:text-sm text-gray-500
                                        transition-colors duration-300"
                               variants={{
                                 hover: { color: "#2563EB" }

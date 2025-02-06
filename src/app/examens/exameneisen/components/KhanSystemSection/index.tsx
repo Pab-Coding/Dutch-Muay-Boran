@@ -482,14 +482,14 @@ const khanContent: KhanContentType = {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
             transition={{ duration: 0.3 }}
-            className="bg-white rounded-xl shadow-lg p-8"
+            className="bg-white rounded-xl shadow-lg p-4 sm:p-6 md:p-8"
           >
             {khanContent[activeTab] && (
               <>
                 <motion.h3
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
-                  className="text-2xl font-bold text-gray-800 mb-8 pb-4 border-b"
+                className="text-xl sm:text-2xl font-bold text-gray-800 mb-4 sm:mb-6 md:mb-8 pb-4 border-b"
                 >
                   {khanContent[activeTab].title}
                 </motion.h3>
@@ -501,14 +501,14 @@ const khanContent: KhanContentType = {
                       initial={{ opacity: 0, y: 20 }}
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ delay: index * 0.1 }}
-                      className="space-y-4"
+                      className="space-y-3 sm:space-y-4"
                     >
-                      <h4 className="text-xl font-semibold text-gray-800">
+                      <h4 className="text-lg sm:text-xl font-semibold text-gray-800">
                         {section.title}
                       </h4>
-                      <ul className="space-y-2 list-disc pl-5">
+                      <ul className="space-y-2 list-disc pl-5 text-sm sm:text-base">
                         {section.items.map((item, idx) => (
-                          <li key={idx} className="text-gray-600">
+                          <li key={idx} className="text-gray-600 break-words">
                             {item}
                           </li>
                         ))}

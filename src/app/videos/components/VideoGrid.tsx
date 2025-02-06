@@ -70,19 +70,19 @@ const VideoGrid = () => {
     <motion.div
       ref={gridRef}
       style={{ opacity, scale }}
-      className="relative w-full"
+      className="relative w-full max-w-[100vw] overflow-x-hidden"
     >
       {/* Contenedor principal */}
       <div className="relative rounded-3xl bg-white/50 shadow-[0_0_45px_-5px_rgba(0,0,0,0.1)] 
                      backdrop-blur-sm border border-white/20">
         <div className="relative rounded-3xl overflow-hidden">
-          <div className="px-6 py-8">
+          <div className="px-3 sm:px-4 md:px-6 py-4 sm:py-6 md:py-8">
             {/* Grid de videos */}
             <motion.div
               variants={containerVariants}
               initial="hidden"
               animate="visible"
-              className="grid grid-cols-1 md:grid-cols-2 gap-8 relative z-20"
+              className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6 md:gap-8 relative z-20"
             >
               {videosData.map((video) => (
                 <VideoCard

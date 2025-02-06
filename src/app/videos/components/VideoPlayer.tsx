@@ -89,8 +89,9 @@ const VideoPlayer = ({ videoId, isOpen, onClose, title, description }: VideoPlay
     <AnimatePresence>
       {isOpen && videoId && (
         <motion.div
-          className="fixed inset-0 z-50 flex items-center justify-center 
-                     px-4 py-8 overflow-y-auto bg-black/60"
+          className="fixed inset-0 z-50 flex items-start sm:items-center 
+                     justify-center px-0 sm:px-4 py-4 sm:py-8 overflow-y-auto 
+                     bg-black/80 touch-manipulation"
           variants={backdropVariants}
           initial="hidden"
           animate="visible"
@@ -99,30 +100,29 @@ const VideoPlayer = ({ videoId, isOpen, onClose, title, description }: VideoPlay
         >
           {/* Modal Container */}
           <motion.div
-            className="relative w-full max-w-5xl mx-auto bg-gradient-to-br 
-                       from-gray-900 to-black rounded-2xl overflow-hidden 
-                       shadow-2xl my-8"
+            className="relative w-full h-full sm:h-auto sm:max-w-5xl mx-auto 
+                       bg-gradient-to-br from-gray-900 to-black rounded-none 
+                       sm:rounded-2xl overflow-hidden shadow-2xl sm:my-8"
             variants={modalVariants}
             onClick={e => e.stopPropagation()}
           >
             {/* Close Button */}
             <motion.button
-              className="absolute top-4 right-4 z-10 p-2 rounded-full 
-                         bg-black/50 text-white hover:bg-black/70 
+              className="absolute top-2 sm:top-4 right-2 sm:right-4 z-10 p-2 
+                         rounded-full bg-black/50 text-white hover:bg-black/70 
                          backdrop-blur-sm border border-white/10
-                         transition-colors duration-200"
-              whileHover={{ scale: 1.1 }}
+                         transition-colors duration-200 touch-manipulation"
               whileTap={{ scale: 0.9 }}
               onClick={onClose}
             >
-              <XMarkIcon className="w-6 h-6" />
+              <XMarkIcon className="w-5 h-5 sm:w-6 sm:h-6" />
             </motion.button>
 
             {/* Video Container with Gradient Border */}
-            <div className="relative p-[1px] bg-gradient-to-r from-red-500/20 
-                           via-white/20 to-blue-500/20 rounded-t-2xl">
-              <div className="relative aspect-video rounded-t-2xl overflow-hidden 
-                             bg-black">
+            <div className="relative bg-gradient-to-r from-red-500/20 
+                           via-white/20 to-blue-500/20 sm:rounded-t-2xl">
+              <div className="relative aspect-video overflow-hidden bg-black 
+                             sm:rounded-t-2xl">
                 <iframe
                   src={`https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0`}
                   title="YouTube video player"
@@ -140,7 +140,8 @@ const VideoPlayer = ({ videoId, isOpen, onClose, title, description }: VideoPlay
                 variants={infoVariants}
                 initial="hidden"
                 animate="visible"
-                className="p-6 bg-gradient-to-b from-black/80 to-black"
+                className="p-4 sm:p-6 bg-gradient-to-b from-black/80 to-black 
+                           max-h-[40vh] sm:max-h-[50vh] overflow-y-auto"
               >
                 {title && (
                   <h2 className="text-2xl font-bold text-white mb-4 

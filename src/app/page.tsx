@@ -3,7 +3,7 @@
 import { motion } from 'framer-motion'
 import HomeHeader from '@/components/home/HomeHeader'
 import Navigation from '@/components/layout/Navigation'
-import TeamSection from '@/components/home/TeamSection'
+import WelcomeSection from '@/components/home/WelcomeSection'
 import OpleidingenSection from '@/components/home/OpleidingenSection'
 import LatestNewsHighlight from '@/components/home/LatestNewsHighlight'
 import ContactButton from '@/components/shared/ContactButton' // Añadimos esta importación
@@ -21,13 +21,13 @@ export default function Home() {
       <Navigation />
      
       <main className="container mx-auto px-4 flex-grow mt-6">
-        <TeamSection />
+        <WelcomeSection />
        
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.2 }}
-          className="mt-16"
+          className="mt-4"
         >
           <OpleidingenSection />
         </motion.div>
@@ -36,7 +36,7 @@ export default function Home() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.4 }}
-          className="mt-20"
+          className="mt-12"
         >
           <LatestNewsHighlight />
         </motion.div>

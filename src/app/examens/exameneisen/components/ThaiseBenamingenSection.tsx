@@ -58,11 +58,11 @@ const ThaiseBenamingenSection = () => {
       initial="hidden"
       whileInView="visible"
       viewport={{ once: true }}
-      className="relative bg-white rounded-2xl shadow-lg p-8"
+      className="relative bg-white rounded-2xl shadow-lg p-4 sm:p-6 md:p-8"
     >
       <div className="flex flex-col lg:flex-row gap-8">
         <MotionDiv variants={itemVariants} className="lg:w-1/3">
-          <div className="relative h-[300px] rounded-xl overflow-hidden">
+          <div className="relative h-[200px] sm:h-[250px] md:h-[300px] rounded-xl overflow-hidden">
             <Image
               src="/images/thaise-benamingen.webp"
               alt="Thaise Benamingen"
@@ -76,14 +76,14 @@ const ThaiseBenamingenSection = () => {
         <div className="lg:w-2/3 space-y-6">
           <MotionH2 
             variants={itemVariants}
-            className="text-3xl font-bold text-gray-800"
+            className="text-2xl sm:text-3xl font-bold text-gray-800"
           >
             Thaise benamingen
           </MotionH2>
 
           <MotionP 
             variants={itemVariants}
-            className="text-gray-600"
+            className="text-sm sm:text-base text-gray-600"
           >
             Vanwege de Thaise achtergrond van de sport worden er ook Thaise benamingen voor de technieken gebruikt. In het begin lijkt dit moeilijk, maar het is vrij eenvoudig te leren. Zo heet een &quot;directe stoot&quot; een &quot;mahd trong&quot;. Als je weet dat &quot;mahd&quot; het Thaise woord is voor &quot;stoot&quot; en &quot;trong&quot; het Thaise woord is voor &quot;direct&quot; of &quot;voorwaarts&quot; dan is een voorwaartse knie &quot;khao trong&quot; en een afhoudtrap &quot;teep trong&quot;.
           </MotionP>
@@ -94,12 +94,12 @@ const ThaiseBenamingenSection = () => {
           >
             {sections.map((section, index) => (
               <div key={index} className="space-y-3">
-                <h3 className="text-xl font-semibold text-gray-800">
+                <h3 className="text-lg sm:text-xl font-semibold text-gray-800">
                   {section.title}
                 </h3>
                 <ul className="space-y-2">
                   {section.content.map((item, idx) => (
-                    <li key={idx} className="text-gray-600">
+                    <li key={idx} className="text-sm sm:text-base text-gray-600">
                       {item}
                     </li>
                   ))}
@@ -111,9 +111,9 @@ const ThaiseBenamingenSection = () => {
           <MotionButton
             variants={itemVariants}
             onClick={() => window.open('/documents/thaise-benamingen.pdf', '_blank')}
-            className="mt-6 inline-flex items-center px-6 py-3 rounded-xl 
+            className="mt-4 sm:mt-6 w-full sm:w-auto inline-flex items-center justify-center px-4 sm:px-6 py-2.5 sm:py-3 rounded-xl 
                      bg-gradient-to-r from-red-600 to-red-700 
-                     text-white font-semibold shadow-lg
+                     text-white font-semibold shadow-lg text-sm sm:text-base
                      hover:scale-[1.02] transition-transform duration-200"
           >
             <svg 

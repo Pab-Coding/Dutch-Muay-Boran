@@ -39,20 +39,20 @@ const InfoSection = () => {
       variants={containerVariants}
       initial="hidden"
       animate="visible"
-      className="w-full py-16 bg-gradient-to-b from-gray-50 via-white to-gray-100"
+      className="w-full py-8 sm:py-16 bg-gradient-to-b from-gray-50 via-white to-gray-100 overflow-x-hidden"
     >
-      <div className="max-w-7xl mx-auto px-4 space-y-8">
-        {/* Historia y Antecedentes */}
+      <div className="max-w-7xl mx-auto px-4 space-y-6 sm:space-y-8">
+        {/* Historie & Achtergrond */}
         <motion.div
           variants={itemVariants}
           className="relative overflow-hidden rounded-2xl shadow-xl"
         >
           <div className="absolute inset-0 bg-gradient-to-br from-blue-600/10 via-white/20 to-purple-600/10" />
-          <div className="relative backdrop-blur-sm bg-white/80 p-8 md:p-12">
-            <h2 className="text-4xl font-bold mb-6 bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+          <div className="relative bg-white/80 p-6 sm:p-8 md:p-12">
+            <h2 className="text-3xl sm:text-4xl font-bold mb-4 sm:mb-6 bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
               Historie & Achtergrond
             </h2>
-            <p className="text-gray-700 leading-relaxed text-lg">
+            <p className="text-base sm:text-lg text-gray-700 leading-relaxed">
               Muay Thai, de nationale sport van Thailand, heeft een rijke geschiedenis van meer dan 1000 jaar 
               en is geëvolueerd van militaire gevechtskunst tot een wereldwijd beoefende vechtsport. 
               Bij de Dutch Muay Boran Foundation (DMBF) bewaren en onderwijzen we deze authentieke kunst 
@@ -65,24 +65,24 @@ const InfoSection = () => {
         {/* Word Zelfstandig Leraar */}
         <motion.div
           variants={itemVariants}
-          className="grid md:grid-cols-2 gap-8"
+          className="grid md:grid-cols-2 gap-4 sm:gap-8"
         >
-          <div className="bg-white/90 rounded-2xl shadow-xl p-8 transform hover:scale-[1.02] transition-all duration-300">
+          <div className="bg-white/90 rounded-2xl shadow-xl p-6 sm:p-8 transform hover:scale-[1.02] transition-all duration-300">
             <div className="relative z-10">
               <div className="flex flex-col space-y-4">
-                <h2 className="text-3xl font-bold mb-4 bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+                <h2 className="text-2xl sm:text-3xl font-bold mb-4 bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
                   Word Leraar niveau 4 & 5
                 </h2>
               </div>
-              <p className="text-gray-700 mb-6 text-lg">
+              <p className="text-base sm:text-lg text-gray-700 mb-6">
                 Deze geavanceerde opleiding is specifiek ontwikkeld voor ervaren instructeurs die zich 
                 willen ontwikkelen tot Leraar niveau 4 & 5.
               </p>
 
-              <h3 className="text-xl font-semibold mb-4 text-gray-900">
+              <h3 className="text-lg sm:text-xl font-semibold mb-4 text-gray-900">
                 Deze opleiding is perfect voor:
               </h3>
-              <ul className="space-y-3">
+              <ul className="space-y-2 sm:space-y-3">
                 {[
                   'Gediplomeerde DMBF assistent-leraren',
                   'Ervaren instructeurs die zich willen ontwikkelen tot zelfstandig leraar',
@@ -93,9 +93,9 @@ const InfoSection = () => {
                     initial={{ opacity: 0, x: -20 }}
                     whileInView={{ opacity: 1, x: 0 }}
                     transition={{ delay: index * 0.1 }}
-                    className="flex items-center space-x-2 text-gray-700"
+                    className="flex items-center space-x-2 text-gray-700 text-sm sm:text-base"
                   >
-                    <span className="h-2 w-2 rounded-full bg-gradient-to-r from-blue-500 to-purple-500" />
+                    <span className="h-2 w-2 rounded-full bg-gradient-to-r from-blue-500 to-purple-500 flex-shrink-0" />
                     <span>{item}</span>
                   </motion.li>
                 ))}
@@ -103,16 +103,16 @@ const InfoSection = () => {
             </div>
           </div>
 
-          <div className="space-y-8">
+          <div className="space-y-4 sm:space-y-8">
             {/* Certificering */}
             <motion.div
               variants={itemVariants}
-              className="bg-white/90 rounded-2xl shadow-xl p-8 transform hover:scale-[1.02] transition-all duration-300"
+              className="bg-white/90 rounded-2xl shadow-xl p-6 sm:p-8 transform hover:scale-[1.02] transition-all duration-300"
             >
-              <h2 className="text-2xl font-bold mb-4 bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+              <h2 className="text-xl sm:text-2xl font-bold mb-4 bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
                 Professionele Certificering & Erkenning
               </h2>
-              <ul className="space-y-3">
+              <ul className="space-y-2 sm:space-y-3">
                 {[
                   'Intensieve tien maanden durende opleiding',
                   'NOC/NSF niveau 3 gecertificeerd',
@@ -123,9 +123,9 @@ const InfoSection = () => {
                     initial={{ opacity: 0, x: -20 }}
                     whileInView={{ opacity: 1, x: 0 }}
                     transition={{ delay: index * 0.1 }}
-                    className="flex items-center space-x-2 text-gray-700"
+                    className="flex items-center space-x-2 text-gray-700 text-sm sm:text-base"
                   >
-                    <span className="text-purple-600">•</span>
+                    <span className="text-purple-600 flex-shrink-0">•</span>
                     <span>{item}</span>
                   </motion.li>
                 ))}
@@ -135,12 +135,12 @@ const InfoSection = () => {
             {/* Toelatingseisen */}
             <motion.div
               variants={itemVariants}
-              className="bg-white/90 rounded-2xl shadow-xl p-8 transform hover:scale-[1.02] transition-all duration-300"
+              className="bg-white/90 rounded-2xl shadow-xl p-6 sm:p-8 transform hover:scale-[1.02] transition-all duration-300"
             >
-              <h2 className="text-2xl font-bold mb-4 bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+              <h2 className="text-xl sm:text-2xl font-bold mb-4 bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
                 Toelatingseisen
               </h2>
-              <ul className="space-y-3">
+              <ul className="space-y-2 sm:space-y-3">
                 {[
                   'DMBF Trainer / Coach niveau 3 diploma',
                   'Aantoonbaar gewenst kennisniveau voor directe toelating',
@@ -151,9 +151,9 @@ const InfoSection = () => {
                     initial={{ opacity: 0, x: -20 }}
                     whileInView={{ opacity: 1, x: 0 }}
                     transition={{ delay: index * 0.1 }}
-                    className="flex items-center space-x-2 text-gray-700"
+                    className="flex items-center space-x-2 text-gray-700 text-sm sm:text-base"
                   >
-                    <span className="text-blue-600">•</span>
+                    <span className="text-blue-600 flex-shrink-0">•</span>
                     <span>{item}</span>
                   </motion.li>
                 ))}
@@ -162,21 +162,21 @@ const InfoSection = () => {
           </div>
         </motion.div>
 
-        {/* Inversión y Materiales */}
+        {/* Investering */}
         <motion.div
           variants={itemVariants}
-          className="bg-gradient-to-r from-blue-600/5 via-transparent to-purple-600/5 rounded-2xl p-8 md:p-12 shadow-xl"
+          className="bg-gradient-to-r from-blue-600/5 via-transparent to-purple-600/5 rounded-2xl p-6 sm:p-8 md:p-12 shadow-xl"
         >
-          <h2 className="text-3xl font-bold mb-8 bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+          <h2 className="text-2xl sm:text-3xl font-bold mb-6 sm:mb-8 bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
             Investering in je Toekomst
           </h2>
          
-          <div className="grid md:grid-cols-2 gap-8">
+          <div className="grid md:grid-cols-2 gap-6 sm:gap-8">
             <div>
-              <h3 className="text-xl font-semibold mb-4 text-gray-900">
+              <h3 className="text-lg sm:text-xl font-semibold mb-4 text-gray-900">
                 Complete Opleiding & Certificering
               </h3>
-              <ul className="space-y-3">
+              <ul className="space-y-2 sm:space-y-3">
                 {[
                   '14 uitgebreide lesdagen',
                   'Professionele scheidsrechter- en jurycursus',
@@ -188,9 +188,9 @@ const InfoSection = () => {
                     initial={{ opacity: 0, x: -20 }}
                     whileInView={{ opacity: 1, x: 0 }}
                     transition={{ delay: index * 0.1 }}
-                    className="flex items-center space-x-2 text-gray-700"
+                    className="flex items-center space-x-2 text-gray-700 text-sm sm:text-base"
                   >
-                    <span className="text-purple-600">•</span>
+                    <span className="text-purple-600 flex-shrink-0">•</span>
                     <span>{item}</span>
                   </motion.li>
                 ))}
@@ -198,10 +198,10 @@ const InfoSection = () => {
             </div>
 
             <div>
-              <h3 className="text-xl font-semibold mb-4 text-gray-900">
+              <h3 className="text-lg sm:text-xl font-semibold mb-4 text-gray-900">
                 Extra Ondersteuning & Faciliteiten
               </h3>
-              <ul className="space-y-3">
+              <ul className="space-y-2 sm:space-y-3">
                 {[
                   'Uitgebreide lunch en verversingen tijdens lesdagen',
                   'Persoonlijke stagebegeleiding (20 uur)',
@@ -212,9 +212,9 @@ const InfoSection = () => {
                     initial={{ opacity: 0, x: -20 }}
                     whileInView={{ opacity: 1, x: 0 }}
                     transition={{ delay: index * 0.1 }}
-                    className="flex items-center space-x-2 text-gray-700"
+                    className="flex items-center space-x-2 text-gray-700 text-sm sm:text-base"
                   >
-                    <span className="text-blue-600">•</span>
+                    <span className="text-blue-600 flex-shrink-0">•</span>
                     <span>{item}</span>
                   </motion.li>
                 ))}
@@ -226,12 +226,12 @@ const InfoSection = () => {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2 }}
-            className="mt-8 p-6 bg-gradient-to-r from-blue-600/10 via-purple-600/10 to-blue-600/10 rounded-xl backdrop-blur-sm"
+            className="mt-6 sm:mt-8 p-4 sm:p-6 bg-gradient-to-r from-blue-600/10 via-purple-600/10 to-blue-600/10 rounded-xl"
           >
-            <p className="text-2xl font-bold text-gray-900 mb-2">
+            <p className="text-xl sm:text-2xl font-bold text-gray-900 mb-2">
               Opleidingskosten: €1150,00
             </p>
-            <p className="text-gray-600">
+            <p className="text-gray-600 text-sm sm:text-base">
               Er zijn verschillende mogelijkheden voor belastingaftrek en subsidie.
               Neem contact met ons op voor meer informatie.
             </p>

@@ -31,7 +31,7 @@ const LatestNewsHighlight = () => {
   const isInView = useInView(ref, { once: true, margin: '-100px' })
 
   return (
-    <div ref={ref} className="w-full mb-16">
+    <div ref={ref} className="w-full mb-12">
       <MotionDiv
         initial={{ opacity: 0, y: 50 }}
         animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
@@ -77,14 +77,14 @@ const LatestNewsHighlight = () => {
 
             <div className="flex justify-between items-center">
               <div className="text-sm text-gray-500">
-                <div className="flex items-center space-x-2">
-                  <span>Contact:</span>
-                  <div className="flex space-x-2">
-                    <a href="mailto:info@dmbf.nl" className="text-blue-600 hover:underline">
+                <div className="flex flex-col sm:flex-row sm:items-center space-y-1 sm:space-y-0">
+                  <span className="whitespace-nowrap">Contact:</span>
+                  <div className="flex flex-col sm:flex-row sm:ml-2 space-y-1 sm:space-y-0 sm:space-x-2">
+                    <a href="mailto:info@dmbf.nl" className="text-blue-600 hover:underline break-all">
                       info@dmbf.nl
                     </a>
-                    <span>|</span>
-                    <a href="mailto:mtbacademy.nl@gmail.com" className="text-blue-600 hover:underline">
+                    <span className="hidden sm:inline">|</span>
+                    <a href="mailto:mtbacademy.nl@gmail.com" className="text-blue-600 hover:underline break-all">
                       mtbacademy.nl@gmail.com
                     </a>
                   </div>

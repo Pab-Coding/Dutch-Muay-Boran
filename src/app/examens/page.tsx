@@ -56,14 +56,14 @@ export default function ExamensPage() {
       variants={pageVariants}
       initial="hidden"
       animate="visible"
-      className="min-h-screen bg-gradient-to-b from-gray-50 to-white"
+      className="min-h-screen bg-gradient-to-b from-gray-50 to-white overflow-x-hidden"
     >
       {/* Background Effects */}
-      <div className="fixed inset-0 bg-gradient-to-br from-red-500/5 via-transparent to-blue-500/5 pointer-events-none" />
-      <div className="fixed inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-transparent via-white/50 to-transparent pointer-events-none" />
+      <div className="fixed inset-0 bg-gradient-to-br from-red-500/5 via-transparent to-blue-500/5 pointer-events-none max-w-[100vw]" />
+      <div className="fixed inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-transparent via-white/50 to-transparent pointer-events-none max-w-[100vw]" />
 
       {/* Content Container */}
-      <div className="relative z-10">
+      <div className="relative z-10 w-full overflow-x-hidden">
         <Navigation />
 
         <main className="relative">
@@ -76,10 +76,10 @@ export default function ExamensPage() {
 
           <motion.div
             variants={sectionVariants}
-            className="relative z-20 -mt-20"
+            className="relative z-20 -mt-16 sm:-mt-20"
           >
             <div className="max-w-7xl mx-auto px-4">
-              <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-transparent to-transparent pointer-events-none" />
+              <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-transparent to-transparent pointer-events-none max-w-[100vw]" />
             </div>
           </motion.div>
 
@@ -115,7 +115,7 @@ export default function ExamensPage() {
       </div>
 
       {/* Decorative Elements */}
-      <div className="fixed inset-0 bottom-[5%] bg-gradient-to-t from-transparent via-transparent to-transparent pointer-events-none" />
+      <div className="fixed inset-0 bottom-[5%] bg-gradient-to-t from-transparent via-transparent to-transparent pointer-events-none max-w-[100vw]" />
     </motion.div>
   )
 }

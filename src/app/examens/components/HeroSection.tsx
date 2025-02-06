@@ -58,7 +58,7 @@ const HeroSection = () => {
       variants={heroVariants}
       initial="hidden"
       animate="visible"
-      className="relative h-[70vh] min-h-[600px] w-full overflow-hidden"
+      className="relative h-[60vh] min-h-[500px] w-full overflow-hidden"
     >
       <MotionDiv
         style={{ scale }}
@@ -99,7 +99,7 @@ const HeroSection = () => {
 
             <MotionH1
               variants={childVariants}
-              className="text-6xl md:text-7xl font-bold text-transparent bg-clip-text
+              className="text-4xl sm:text-5xl md:text-7xl font-bold text-transparent bg-clip-text
                          bg-gradient-to-r from-white via-gray-200 to-white
                          leading-[1.2] pb-4"
             >
@@ -108,7 +108,7 @@ const HeroSection = () => {
 
             <MotionP
               variants={childVariants}
-              className="mt-6 text-xl md:text-2xl text-gray-200 font-medium
+              className="mt-6 text-lg sm:text-xl md:text-2xl text-gray-200 font-medium
                          leading-relaxed max-w-2xl drop-shadow-lg"
             >
               Ontwikkel je vaardigheden en bereik nieuwe niveaus in Muay Thai Boran
@@ -123,7 +123,7 @@ const HeroSection = () => {
               <MotionButton
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                className="px-8 py-4 bg-gradient-to-r from-red-600 to-blue-600
+                className="px-6 sm:px-8 py-3 sm:py-4 bg-gradient-to-r from-red-600 to-blue-600
                          text-white font-semibold rounded-xl shadow-lg
                          hover:from-red-500 hover:to-blue-500
                          transform transition-all duration-300

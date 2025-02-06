@@ -84,7 +84,7 @@ export default function OpleidingenPage() {
       ref={pageRef}
       initial="hidden"
       animate="visible"
-      className="min-h-screen bg-gradient-to-b from-gray-50 to-white"
+      className="min-h-screen bg-gradient-to-b from-gray-50 to-white overflow-x-hidden"
     >
       {/* Background Effects */}
       <div className="fixed inset-0 bg-gradient-to-br from-red-500/5 via-transparent to-blue-500/5 pointer-events-none" />
@@ -105,12 +105,12 @@ export default function OpleidingenPage() {
             variants={cardVariants}
             className="relative z-10"
           >
-            <div className="container mx-auto">
+            <div className="container mx-auto px-4 sm:px-6 lg:px-8">
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.2 }}
-                className="mt-16"
+                className="mt-8 sm:mt-16"
               >
                 <OpleidingenSection />
               </motion.div>
@@ -123,42 +123,42 @@ export default function OpleidingenPage() {
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, margin: "-100px" }}
-            className="relative z-10 mt-16 mb-16"
+            className="relative z-10 mt-8 sm:mt-16 mb-8 sm:mb-16"
           >
-            <div className="max-w-7xl mx-auto px-4">
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
               <motion.div 
-                className="bg-white/90 backdrop-blur-sm rounded-2xl shadow-xl p-8 transform hover:scale-[1.01] transition-all duration-300"
+                className="bg-white/90 backdrop-blur-sm rounded-2xl shadow-xl p-4 sm:p-8 transform hover:scale-[1.01] transition-all duration-300"
                 whileHover={{
                   boxShadow: "0 20px 40px rgba(0,0,0,0.1)"
                 }}
               >
-              <motion.h2
+                <motion.h2
                   variants={titleVariants}
-                  className="text-3xl font-bold mb-8 bg-gradient-to-r from-red-600 to-blue-600 bg-clip-text text-transparent"
+                  className="text-2xl sm:text-3xl font-bold mb-6 sm:mb-8 bg-gradient-to-r from-red-600 to-blue-600 bg-clip-text text-transparent"
                 >
                   Waarom kiezen voor DMBF?
                 </motion.h2>
                 
                 <motion.div
                   variants={infoCardVariants}
-                  className="grid md:grid-cols-2 gap-6"
+                  className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6"
                 >
                   <motion.div 
                     variants={infoItemVariants}
-                    className="space-y-4 p-6 rounded-xl bg-gradient-to-br from-red-50 to-white"
+                    className="space-y-3 sm:space-y-4 p-4 sm:p-6 rounded-xl bg-gradient-to-br from-red-50 to-white"
                   >
-                    <h3 className="text-xl font-semibold text-gray-800">Professionele Certificering</h3>
-                    <p className="text-gray-600">
+                    <h3 className="text-lg sm:text-xl font-semibold text-gray-800">Professionele Certificering</h3>
+                    <p className="text-sm sm:text-base text-gray-600">
                       Al onze opleidingen zijn NOC/NSF erkend en voldoen aan de hoogste kwaliteitsstandaarden in de vechtsportwereld.
                     </p>
                   </motion.div>
                   
                   <motion.div 
                     variants={infoItemVariants}
-                    className="space-y-4 p-6 rounded-xl bg-gradient-to-br from-blue-50 to-white"
+                    className="space-y-3 sm:space-y-4 p-4 sm:p-6 rounded-xl bg-gradient-to-br from-blue-50 to-white"
                   >
-                    <h3 className="text-xl font-semibold text-gray-800">Ervaren Instructeurs</h3>
-                    <p className="text-gray-600">
+                    <h3 className="text-lg sm:text-xl font-semibold text-gray-800">Ervaren Instructeurs</h3>
+                    <p className="text-sm sm:text-base text-gray-600">
                       Onze instructeurs hebben jarenlange ervaring in het lesgeven en de praktijk van Muay Thai Boran.
                     </p>
                   </motion.div>

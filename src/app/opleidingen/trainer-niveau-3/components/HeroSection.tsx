@@ -58,7 +58,7 @@ const HeroSection = () => {
       variants={heroVariants}
       initial="hidden"
       animate="visible"
-      className="relative h-[70vh] min-h-[600px] w-full overflow-hidden"
+className="relative min-h-[500px] w-full overflow-hidden lg:min-h-[600px]"
     >
       {/* Background Image with Parallax Effect */}
       <MotionDiv 
@@ -101,17 +101,17 @@ const HeroSection = () => {
 
             <MotionH1
               variants={childVariants}
-              className="text-6xl md:text-7xl font-bold text-transparent bg-clip-text
+              className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-transparent bg-clip-text
                          bg-gradient-to-r from-white via-gray-200 to-white
-                         leading-[1.2] pb-4"
+                         leading-[1.2] pb-4 max-w-full break-words"
             >
               Trainer / Coach niveau 3
             </MotionH1>
 
             <MotionP
               variants={childVariants}
-              className="mt-6 text-xl md:text-2xl text-gray-200 font-medium
-                         leading-relaxed max-w-2xl drop-shadow-lg"
+              className="mt-4 sm:mt-6 text-lg sm:text-xl md:text-2xl text-gray-200 font-medium
+                         leading-relaxed max-w-2xl drop-shadow-lg px-1"
             >
               Start je reis als Muay Thai Boran instructeur en word deel van een 
               eeuwenoude traditie
@@ -138,14 +138,14 @@ const HeroSection = () => {
 
           <MotionDiv
             variants={childVariants}
-            className="mt-12 flex flex-wrap gap-4"
+            className="mt-8 sm:mt-12 flex flex-wrap gap-4 w-full px-2 sm:px-0"
           >
             <Link href="/opleidingen/inschrijven">
               <MotionDiv
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                className="px-8 py-4 bg-gradient-to-r from-red-600 to-red-700 
-                         text-white font-semibold rounded-lg shadow-lg
+                className="w-full sm:w-auto px-6 sm:px-8 py-3 sm:py-4 bg-gradient-to-r from-red-600 to-red-700 
+                         text-white font-semibold rounded-lg shadow-lg text-center
                          hover:from-red-500 hover:to-red-600 
                          transform transition-all duration-300
                          border border-red-400/20 backdrop-blur-sm
@@ -159,8 +159,8 @@ const HeroSection = () => {
               <MotionDiv
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                className="px-8 py-4 bg-gradient-to-r from-blue-600/10 to-blue-700/10
-                         backdrop-blur-sm border-2 border-white/30 text-white 
+                className="w-full sm:w-auto px-6 sm:px-8 py-3 sm:py-4 bg-gradient-to-r from-blue-600/10 to-blue-700/10
+                         backdrop-blur-sm border-2 border-white/30 text-white text-center
                          font-semibold rounded-lg hover:bg-white/20
                          transform transition-all duration-300
                          cursor-pointer"

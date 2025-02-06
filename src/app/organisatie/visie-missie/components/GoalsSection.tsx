@@ -52,8 +52,8 @@ const GoalsSection = () => {
     visible: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.2,
-        delayChildren: 0.3
+        staggerChildren: 0.1,
+        delayChildren: 0.2
       }
     }
   }
@@ -71,33 +71,23 @@ const GoalsSection = () => {
     <motion.section
       ref={sectionRef}
       style={{ opacity, scale }}
-      className="relative py-16"
+      className="relative py-8 sm:py-16 overflow-hidden"
     >
-      {/* Header with floating icon */}
+      {/* Header with icon */}
       <motion.div
-        initial={{ y: -20, opacity: 0 }}
-        animate={{ y: 0, opacity: 1 }}
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
         transition={{ duration: 0.8 }}
-        className="text-center mb-16"
+        className="text-center mb-8 sm:mb-16"
       >
-        <motion.div
-          animate={{
-            y: [0, -10, 0],
-          }}
-          transition={{
-            duration: 2,
-            repeat: Infinity,
-            repeatType: "reverse"
-          }}
-          className="inline-block mb-6"
-        >
-          <div className="w-16 h-16 bg-gradient-to-br from-red-500 to-blue-500 rounded-full flex items-center justify-center">
-            <FaFlagCheckered className="w-8 h-8 text-white" />
+        <div className="inline-block mb-4 sm:mb-6">
+          <div className="w-12 h-12 sm:w-16 sm:h-16 bg-gradient-to-br from-red-500 to-blue-500 rounded-full flex items-center justify-center">
+            <FaFlagCheckered className="w-6 h-6 sm:w-8 sm:h-8 text-white" />
           </div>
-        </motion.div>
+        </div>
 
         <motion.h2
-          className="text-3xl font-bold mb-4 bg-gradient-to-r from-red-600 to-blue-600 bg-clip-text text-transparent"
+          className="text-2xl sm:text-3xl font-bold mb-4 bg-gradient-to-r from-red-600 to-blue-600 bg-clip-text text-transparent px-2"
         >
           Onze Doelstellingen
         </motion.h2>
@@ -108,69 +98,49 @@ const GoalsSection = () => {
         variants={containerVariants}
         initial="hidden"
         animate="visible"
-        className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-6xl mx-auto px-4"
+        className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-8 max-w-6xl mx-auto px-4"
       >
         {goals.map((goal, index) => (
           <motion.div
             key={index}
             variants={itemVariants}
-            whileHover={{ scale: 1.02 }}
-            className="relative group"
+            className="relative"
           >
-            {/* Card with glassmorphism effect */}
-            <div className="relative bg-white/90 backdrop-blur-sm rounded-xl overflow-hidden shadow-lg">
-              {/* Gradient overlay */}
-              <div className={`absolute inset-0 bg-gradient-to-br ${goal.color} opacity-0 group-hover:opacity-5 transition-opacity duration-300`} />
+            {/* Card with simplified effects */}
+            <div className="relative bg-white/90 backdrop-blur-sm rounded-xl overflow-hidden shadow-md border border-gray-100">
+              {/* Subtle gradient overlay */}
+              <div className={`absolute inset-0 bg-gradient-to-br ${goal.color} opacity-5`} />
 
-              <div className="p-6">
-                <motion.div
-                  whileHover={{ rotate: 360 }}
-                  transition={{ duration: 0.5 }}
-                  className={`w-12 h-12 rounded-lg bg-gradient-to-br ${goal.color} flex items-center justify-center mb-4`}
+              <div className="p-4 sm:p-6">
+                <div
+                  className={`w-10 h-10 sm:w-12 sm:h-12 rounded-lg bg-gradient-to-br ${goal.color} flex items-center justify-center mb-3 sm:mb-4`}
                 >
-                  <goal.icon className="w-6 h-6 text-white" />
-                </motion.div>
+                  <goal.icon className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
+                </div>
 
-                <h3 className="text-xl font-semibold text-gray-800 mb-2">
+                <h3 className="text-lg sm:text-xl font-semibold text-gray-800 mb-2">
                   {goal.title}
                 </h3>
-                <p className="text-gray-600 group-hover:text-gray-800 transition-colors duration-200">
+                <p className="text-sm sm:text-base text-gray-600">
                   {goal.text}
                 </p>
 
-                {/* Animated border */}
-                <motion.div
-                  initial={{ scale: 0 }}
-                  whileHover={{ scale: 1 }}
-                  className={`absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r ${goal.color} transform origin-left`}
+                {/* Simplified border - hidden on mobile */}
+                <div
+                  className="hidden sm:block absolute bottom-0 left-0 w-full h-0.5 bg-gradient-to-r from-red-500/20 to-blue-500/20"
                 />
               </div>
             </div>
-
-            {/* Floating particles effect */}
-            <motion.div
-              animate={{
-                opacity: [0, 1, 0],
-                scale: [0.8, 1.2, 0.8],
-              }}
-              transition={{
-                duration: 3,
-                repeat: Infinity,
-                repeatType: "reverse",
-                delay: index * 0.5
-              }}
-              className={`absolute -z-10 w-32 h-32 bg-gradient-to-br ${goal.color} rounded-full blur-3xl opacity-0 group-hover:opacity-20 -bottom-16 -right-16`}
-            />
           </motion.div>
         ))}
       </motion.div>
 
-      {/* Final decorative element */}
+      {/* Decorative element - hidden on mobile */}
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 0.5 }}
         transition={{ delay: 1 }}
-        className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-3/4 h-32 blur-3xl bg-gradient-to-r from-red-600/20 via-blue-600/20 to-red-600/20"
+        className="hidden sm:block absolute bottom-0 left-1/2 transform -translate-x-1/2 w-3/4 h-32 blur-3xl bg-gradient-to-r from-red-600/20 via-blue-600/20 to-red-600/20"
       />
     </motion.section>
   )

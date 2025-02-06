@@ -103,10 +103,10 @@ const VideoCard = ({ videoId, title, description, onPlay }: VideoCardProps) => {
       variants={cardVariants}
       initial="hidden"
       animate="visible"
-      className="relative group rounded-xl overflow-hidden shadow-xl 
-                 bg-gradient-to-r from-red-500/10 to-blue-500/10 cursor-pointer"
-      onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={() => setIsHovered(false)}
+      className="relative group rounded-xl overflow-hidden shadow-lg 
+                 bg-gradient-to-r from-red-500/10 to-blue-500/10 cursor-pointer
+                 hover:shadow-xl transition-shadow duration-300
+                 active:scale-[0.98] touch-manipulation"
       onClick={onPlay}
     >
       <div className="relative aspect-video">
@@ -114,89 +114,50 @@ const VideoCard = ({ videoId, title, description, onPlay }: VideoCardProps) => {
           src={thumbnailUrl}
           alt={title}
           fill
-          className="object-cover transform transition-transform duration-500 
-                     group-hover:scale-105"
-          quality={100}
+          className="object-cover"
+          quality={85}
           onError={() => setThumbnailError(true)}
+          sizes="(max-width: 768px) 100vw, 50vw"
+          priority
         />
 
-        <motion.div
-          variants={overlayVariants}
-          initial="hidden"
-          animate={isHovered ? "visible" : "hidden"}
-          className="absolute inset-0 bg-gradient-to-t from-black/90 
-                     via-black/50 to-transparent"
-        />
+        {/* Always visible overlay with gradient */}
+        <div className="absolute inset-0 bg-gradient-to-t from-black/90 
+                       via-black/40 to-transparent opacity-90" />
 
-        <motion.div
-          variants={playButtonVariants}
-          initial="hidden"
-          animate={isHovered ? "visible" : "hidden"}
-          whileHover="hover"
-          className={`absolute ${playButtonPositions[videoId] || 'top-[30%]'} left-1/2 
-                     transform -translate-x-1/2 -translate-y-1/2 z-20`}
-        >
-          <div className="w-16 h-16 bg-gradient-to-r from-red-600 to-blue-600 
-                         rounded-full flex items-center justify-center shadow-lg 
-                         backdrop-blur-sm border border-white/20">
+        {/* Centered play button */}
+        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 
+                       -translate-y-1/2 z-20">
+          <div className="w-12 h-12 sm:w-16 sm:h-16 bg-gradient-to-r 
+                         from-red-600 to-blue-600 rounded-full flex items-center 
+                         justify-center shadow-lg backdrop-blur-sm border 
+                         border-white/20 transition-transform duration-200
+                         hover:scale-110 active:scale-95">
             <svg
-              className="w-8 h-8 text-white translate-x-0.5"
+              className="w-6 h-6 sm:w-8 sm:h-8 text-white translate-x-0.5"
               fill="currentColor"
               viewBox="0 0 24 24"
             >
               <path d="M8 5v14l11-7z" />
             </svg>
           </div>
-        </motion.div>
+        </div>
 
-        <motion.div
-          variants={textVariants}
-          initial="hidden"
-          animate={isHovered ? "visible" : "hidden"}
-          className="absolute bottom-0 left-0 right-0 p-6 z-10"
-        >
-          <h3 className="text-xl font-bold text-white mb-2 
+        {/* Video info */}
+        <div className="absolute bottom-0 left-0 right-0 p-4 sm:p-6 z-10">
+          <h3 className="text-lg sm:text-xl font-bold text-white mb-2 
                          line-clamp-2">
             {title}
           </h3>
-          <p className="text-gray-200 text-sm line-clamp-3 
+          <p className="text-gray-200 text-sm line-clamp-2 sm:line-clamp-3 
                        leading-relaxed">
             {description}
           </p>
-        </motion.div>
-
-        {/* Efectos decorativos */}
-        <div className="absolute inset-0 bg-gradient-to-r from-red-600/10 
-                       to-blue-600/10 mix-blend-overlay" />
-        
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: isHovered ? 1 : 0 }}
-          transition={{ duration: 0.3 }}
-          className="absolute inset-0 bg-gradient-to-br from-red-500/20 
-                     via-transparent to-blue-500/20"
-        />
+        </div>
       </div>
 
-      {/* Borde con gradiente */}
+      {/* Simple border */}
       <div className="absolute inset-0 border border-white/10 rounded-xl" />
-      
-      {/* Efecto de brillo en hover */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: isHovered ? 0.5 : 0 }}
-        className="absolute inset-0 bg-gradient-to-r from-red-500/10 
-                   via-white/20 to-blue-500/10 mix-blend-overlay"
-      />
-
-      {/* Efecto de sombra adicional */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: isHovered ? 1 : 0 }}
-        transition={{ duration: 0.3 }}
-        className="absolute -inset-px bg-gradient-to-r from-red-500/10 
-                   to-blue-500/10 rounded-xl blur-lg"
-      />
     </motion.div>
   )
 }

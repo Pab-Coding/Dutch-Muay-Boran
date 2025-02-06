@@ -18,15 +18,15 @@ const KhanTabs = ({ activeTab, setActiveTab }: KhanTabsProps) => {
   ]
 
   return (
-    <div className="w-full overflow-x-auto">
-      <div className="flex space-x-2 min-w-max p-2">
+    <div className="w-full">
+      <div className="grid grid-cols-2 md:grid-cols-3 lg:flex lg:flex-row gap-2 p-2">
         {tabs.map((tab) => (
           <motion.button
             key={tab.id}
             onClick={() => setActiveTab(tab.id)}
             className={`
-              relative px-6 py-3 rounded-lg font-semibold
-              transition-all duration-200 
+              relative w-full px-3 sm:px-4 py-2 sm:py-3 rounded-lg font-semibold text-sm sm:text-base
+              transition-all duration-200 flex justify-center items-center
               ${activeTab === tab.id 
                 ? 'bg-gradient-to-r from-gray-800 to-gray-900 text-white shadow-lg' 
                 : 'bg-white text-gray-600 hover:bg-gray-50'
@@ -35,7 +35,7 @@ const KhanTabs = ({ activeTab, setActiveTab }: KhanTabsProps) => {
             whileHover={{ scale: 1.02 }}
             whileTap={{ scale: 0.98 }}
           >
-            <div className="flex flex-col items-center space-y-1">
+            <div className="flex flex-col items-center space-y-0.5 sm:space-y-1">
               <span>{tab.title}</span>
               <div 
                 className={`h-1 w-12 rounded ${
@@ -47,7 +47,7 @@ const KhanTabs = ({ activeTab, setActiveTab }: KhanTabsProps) => {
                   'bg-blue-500'
                 }`} 
               />
-              <span className="text-xs opacity-75">{tab.prajeat}</span>
+              <span className="text-[10px] sm:text-xs opacity-75 text-center">{tab.prajeat}</span>
             </div>
 
             {activeTab === tab.id && (

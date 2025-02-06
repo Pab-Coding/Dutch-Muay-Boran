@@ -15,8 +15,8 @@ export default function MuayThaiPage() {
     offset: ["start start", "end end"]
   })
 
-  const opacity = useTransform(scrollYProgress, [0, 0.8], [1, 0])
-  const scale = useTransform(scrollYProgress, [0, 0.8], [1, 0.98])
+  // Simplified scroll effects for better mobile performance
+  const opacity = useTransform(scrollYProgress, [0, 0.9], [1, 0.95])
 
   const pageVariants = {
     hidden: {
@@ -56,12 +56,8 @@ export default function MuayThaiPage() {
       animate="visible"
       className="min-h-screen bg-gradient-to-b from-gray-50 to-white"
     >
-      {/* Efectos de fondo */}
-      <div className="fixed inset-0 bg-gradient-to-br from-red-500/5 via-transparent to-blue-500/5 pointer-events-none" />
-      <div 
-        className="fixed inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] 
-                   from-transparent via-white/50 to-transparent pointer-events-none" 
-      />
+      {/* Simplified background effects for mobile */}
+      <div className="absolute inset-0 bg-gradient-to-br from-red-500/5 via-transparent to-blue-500/5 pointer-events-none" />
 
       {/* Contenedor principal */}
       <div className="relative z-10">
@@ -71,7 +67,8 @@ export default function MuayThaiPage() {
           {/* Hero Section */}
           <motion.div
             variants={sectionVariants}
-            style={{ opacity, scale }}
+            style={{ opacity }}
+            className="sm:transform-none"
           >
             <HeroSection />
           </motion.div>
@@ -114,35 +111,10 @@ export default function MuayThaiPage() {
         </motion.footer>
       </div>
 
-      {/* Elementos decorativos */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 0.5, duration: 1 }}
-        className="fixed inset-0 pointer-events-none"
-      >
-        <div 
-          className="absolute inset-0 bg-gradient-to-t from-transparent 
-                     via-transparent to-transparent opacity-20"
-        />
-        <div 
-          className="absolute bottom-0 left-0 right-0 h-32 
-                     bg-gradient-to-t from-white via-transparent to-transparent"
-        />
-      </motion.div>
-
-      {/* Efecto de partículas o destellos (opcional) */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 0.5 }}
-        transition={{ delay: 1, duration: 1 }}
-        className="fixed inset-0 pointer-events-none"
-      >
-        <div 
-          className="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] 
-                     from-blue-500/5 via-transparent to-transparent"
-        />
-      </motion.div>
+      {/* Simplified decorative elements */}
+      <div className="absolute inset-0 pointer-events-none">
+        <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-white via-transparent to-transparent" />
+      </div>
     </motion.div>
   )
 }

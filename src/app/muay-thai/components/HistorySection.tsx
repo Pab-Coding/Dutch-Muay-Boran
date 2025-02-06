@@ -7,32 +7,34 @@ import { useInView } from "framer-motion"
 const HistorySection = () => {
   const [isExpanded, setIsExpanded] = useState(false)
   const sectionRef = useRef(null)
-  const isInView = useInView(sectionRef, { once: true, margin: "-100px" })
+  const isInView = useInView(sectionRef, { once: true, margin: "-50px" })
 
   const containerVariants = {
-    hidden: { opacity: 0, y: 50 },
+    hidden: { opacity: 0, y: 30 },
     visible: {
       opacity: 1,
       y: 0,
       transition: {
-        duration: 0.8,
-        staggerChildren: 0.2
+        duration: 0.6,
+        staggerChildren: 0.15
       }
     }
   }
 
   const contentVariants = {
     collapsed: {
-      height: "280px",
+      height: "auto",
+      maxHeight: "400px",
       transition: {
-        duration: 0.8,
+        duration: 0.4,
         ease: "easeInOut"
       }
     },
     expanded: {
-      height: "auto", 
+      height: "auto",
+      maxHeight: "none",
       transition: {
-        duration: 0.8,
+        duration: 0.4,
         ease: "easeInOut"
       }
     }
@@ -70,11 +72,11 @@ const HistorySection = () => {
       initial="hidden"
       animate={isInView ? "visible" : "hidden"}
       variants={containerVariants}
-      className="pt-32 pb-16 px-4"
+      className="pt-16 sm:pt-24 pb-8 sm:pb-16 px-4 sm:px-6"
     >
       <div className="max-w-7xl mx-auto">
         <motion.div
-          className="bg-white/80 backdrop-blur-sm rounded-2xl shadow-xl overflow-hidden
+          className="bg-white/90 backdrop-blur-sm rounded-2xl shadow-lg overflow-hidden
                      relative z-10"
         >
           {/* Timeline Container */}
@@ -86,21 +88,21 @@ const HistorySection = () => {
           >
             <div className="absolute inset-0 bg-gradient-to-br from-red-50 via-white to-blue-50 opacity-50" />
             
-            <div className="relative p-8 space-y-8">
+            <div className="relative p-4 sm:p-8 space-y-6 sm:space-y-8">
               {paragraphs.map((paragraph, index) => (
                 <motion.div
                   key={index}
                   initial={{ opacity: 0, x: -20 }}
                   animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: index * 0.2 }}
+                  transition={{ delay: index * 0.1 }}
                   className={`relative ${!isExpanded && index > 2 ? "hidden" : ""}`}
                 >
-                  <div className="flex items-start space-x-4">
+                  <div className="flex items-start space-x-3 sm:space-x-4">
                     {/* Timeline dot and line */}
                     <div className="flex flex-col items-center">
                       <motion.div
-                        whileHover={{ scale: 1.2 }}
-                        className="w-4 h-4 rounded-full bg-gradient-to-r from-red-500 to-blue-500"
+                        whileHover={{ scale: 1.1 }}
+                        className="w-3 h-3 sm:w-4 sm:h-4 rounded-full bg-gradient-to-r from-red-500 to-blue-500 flex-shrink-0"
                       />
                       {index !== paragraphs.length - 1 && (
                         <div className="w-0.5 h-full bg-gradient-to-b from-red-500 to-blue-500 opacity-20" />
@@ -108,19 +110,19 @@ const HistorySection = () => {
                     </div>
                     
                     {/* Content */}
-                    <div className="flex-1">
-                      <h3 className="text-xl font-bold mb-2 bg-gradient-to-r from-red-600 to-blue-600 bg-clip-text text-transparent">
+                    <div className="flex-1 min-w-0">
+                      <h3 className="text-lg sm:text-xl font-bold mb-2 bg-gradient-to-r from-red-600 to-blue-600 bg-clip-text text-transparent">
                         {paragraph.title}
                       </h3>
-                      <p className="text-gray-700 leading-relaxed">
+                      <p className="text-gray-700 text-sm sm:text-base leading-relaxed">
                         {paragraph.content}
                       </p>
                       {isExpanded && paragraph.expanded && (
                         <motion.p
                           initial={{ opacity: 0 }}
                           animate={{ opacity: 1 }}
-                          transition={{ duration: 0.5 }}
-                          className="text-gray-700 leading-relaxed mt-2"
+                          transition={{ duration: 0.4 }}
+                          className="text-gray-700 text-sm sm:text-base leading-relaxed mt-2"
                         >
                           {paragraph.expanded}
                         </motion.p>
@@ -133,7 +135,7 @@ const HistorySection = () => {
 
             {/* Gradient overlay for collapsed state */}
             {!isExpanded && (
-              <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-white to-transparent" />
+              <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-white to-transparent" />
             )}
           </motion.div>
 
@@ -142,22 +144,22 @@ const HistorySection = () => {
             className="p-4 flex justify-center"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ delay: 0.5 }}
+            transition={{ delay: 0.3 }}
           >
             <motion.button
               onClick={() => setIsExpanded(!isExpanded)}
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className="px-8 py-3 bg-gradient-to-r from-red-600 to-blue-600
-                         text-white font-semibold rounded-xl shadow-lg
+              whileHover={{ scale: 1.02 }}
+              whileTap={{ scale: 0.98 }}
+              className="w-full sm:w-auto px-6 sm:px-8 py-2.5 sm:py-3 bg-gradient-to-r from-red-600 to-blue-600
+                         text-white font-semibold rounded-xl shadow-md
                          hover:from-red-500 hover:to-blue-500
-                         transform transition-all duration-300
-                         flex items-center space-x-2"
+                         transform transition-all duration-200
+                         flex items-center justify-center space-x-2"
             >
               <span>{isExpanded ? "Lees Minder" : "Lees Meer"}</span>
               <motion.svg
                 xmlns="http://www.w3.org/2000/svg"
-                className="h-5 w-5"
+                className="h-4 w-4 sm:h-5 sm:w-5"
                 fill="none"
                 viewBox="0 0 24 24"
                 stroke="currentColor"

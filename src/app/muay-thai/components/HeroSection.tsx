@@ -13,23 +13,24 @@ const HeroSection = () => {
     offset: ["start start", "end start"]
   })
 
-  const opacity = useTransform(scrollYProgress, [0, 0.5], [1, 0])
-  const scale = useTransform(scrollYProgress, [0, 0.5], [1, 1.1])
-  const textY = useTransform(scrollYProgress, [0, 0.5], [0, 100])
+  // Reduced animation complexity for better mobile performance
+  const opacity = useTransform(scrollYProgress, [0, 0.7], [1, 0.8])
+  const scale = useTransform(scrollYProgress, [0, 0.7], [1, 1.05])
+  const textY = useTransform(scrollYProgress, [0, 0.7], [0, 50])
 
   const heroVariants = {
     hidden: {
       opacity: 0,
-      scale: 1.1
+      scale: 1.05
     },
     visible: {
       opacity: 1,
       scale: 1,
       transition: {
-        duration: 0.8,
+        duration: 0.6,
         ease: "easeOut",
         when: "beforeChildren",
-        staggerChildren: 0.2
+        staggerChildren: 0.15
       }
     }
   }
@@ -37,15 +38,15 @@ const HeroSection = () => {
   const childVariants = {
     hidden: {
       opacity: 0,
-      y: 30,
-      scale: 0.9
+      y: 20,
+      scale: 0.95
     },
     visible: {
       opacity: 1,
       y: 0,
       scale: 1,
       transition: {
-        duration: 0.6,
+        duration: 0.4,
         ease: "easeOut"
       }
     }
@@ -57,9 +58,9 @@ const HeroSection = () => {
       variants={heroVariants}
       initial="hidden"
       animate="visible"
-      className="relative h-[70vh] min-h-[600px] w-full overflow-hidden"
+      className="relative min-h-[400px] sm:min-h-[500px] md:min-h-[600px] w-full overflow-hidden"
     >
-      {/* Imagen de fondo con efecto parallax */}
+      {/* Background image with optimized loading */}
       <MotionDiv
         style={{ scale }}
         className="absolute inset-0"
@@ -68,50 +69,49 @@ const HeroSection = () => {
           src="/images/muay-thai.webp"
           alt="Muay Thai Boran"
           fill
-          sizes="100vw"
-          className="object-cover"
+          sizes="(max-width: 640px) 100vw, (max-width: 1024px) 80vw, 100vw"
+          className="object-cover object-center"
           priority
-          quality={100}
+          quality={90}
         />
-        {/* Degradados y efectos */}
-        <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/30 to-black/40" />
-        <div className="absolute inset-0 bg-gradient-to-r from-red-900/5 to-blue-900/5" />
+        {/* Simplified gradients for better performance */}
+        <div className="absolute inset-0 bg-gradient-to-b from-black/50 to-black/30" />
         <div className="absolute inset-0 backdrop-blur-[0.5px]" />
       </MotionDiv>
 
-      {/* Contenido principal */}
+      {/* Main content with improved mobile spacing */}
       <MotionDiv
         style={{ y: textY, opacity }}
-        className="relative z-10 h-full max-w-7xl mx-auto px-4"
+        className="relative z-10 h-full max-w-7xl mx-auto px-4 sm:px-6"
       >
         <div className="flex flex-col justify-center h-full max-w-4xl">
           <MotionDiv
             variants={childVariants}
-            className="space-y-2"
+            className="space-y-2 sm:space-y-4"
           >
             <MotionDiv
               variants={childVariants}
               className="inline-block bg-gradient-to-r from-red-500/20 to-blue-500/20
-                         backdrop-blur-sm rounded-lg px-4 py-2 mb-4"
+                         backdrop-blur-sm rounded-lg px-3 py-1.5 sm:px-4 sm:py-2 mb-2 sm:mb-4"
             >
-              <span className="text-white/90 font-medium">
+              <span className="text-white/90 font-medium text-sm sm:text-base">
                 Dutch Muay Boran Foundation
               </span>
             </MotionDiv>
 
             <MotionH1
               variants={childVariants}
-              className="text-6xl md:text-7xl font-bold text-transparent bg-clip-text
+              className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-transparent bg-clip-text
                          bg-gradient-to-r from-white via-gray-200 to-white
-                         leading-[1.2] pb-4"
+                         leading-[1.2] pb-2 sm:pb-4"
             >
               Muay Thai Boran
             </MotionH1>
 
             <MotionP
               variants={childVariants}
-              className="mt-6 text-xl md:text-2xl text-gray-200 font-medium
-                         leading-relaxed max-w-2xl drop-shadow-lg"
+              className="mt-4 sm:mt-6 text-lg sm:text-xl md:text-2xl text-gray-200 font-medium
+                         leading-relaxed max-w-2xl drop-shadow-lg px-2 sm:px-0"
             >
               De nationale sport van Thailand met meer dan 1000 jaar geschiedenis
             </MotionP>
@@ -119,22 +119,22 @@ const HeroSection = () => {
 
           <MotionDiv
             variants={childVariants}
-            className="mt-10"
+            className="mt-8 sm:mt-10"
           >
             <Link href="/opleidingen/inschrijven">
               <MotionButton
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="px-8 py-4 bg-gradient-to-r from-red-600 to-blue-600
+                whileHover={{ scale: 1.03 }}
+                whileTap={{ scale: 0.98 }}
+                className="w-full sm:w-auto px-6 sm:px-8 py-3 sm:py-4 bg-gradient-to-r from-red-600 to-blue-600
                            text-white font-semibold rounded-xl shadow-lg
                            hover:from-red-500 hover:to-blue-500
-                           transform transition-all duration-300
+                           transform transition-all duration-200
                            border border-white/20 backdrop-blur-sm
-                           flex items-center space-x-3"
+                           flex items-center justify-center sm:justify-start space-x-3"
               >
                 <span>Inschrijven</span>
                 <MotionSpan
-                  animate={{ x: [0, 5, 0] }}
+                  animate={{ x: [0, 4, 0] }}
                   transition={{
                     duration: 1.5,
                     repeat: Infinity,
@@ -142,7 +142,7 @@ const HeroSection = () => {
                   }}
                 >
                   <svg 
-                    className="w-5 h-5" 
+                    className="w-4 h-4 sm:w-5 sm:h-5" 
                     fill="none" 
                     stroke="currentColor" 
                     viewBox="0 0 24 24"
@@ -158,7 +158,6 @@ const HeroSection = () => {
               </MotionButton>
             </Link>
           </MotionDiv>
-
         </div>
       </MotionDiv>
     </MotionSection>

@@ -117,7 +117,7 @@ const ImageSection = ({ textConfig }: ImageSectionProps) => {
         >
           {/* Image container with scroll-based scale */}
           <MotionDiv 
-            className="relative aspect-[21/9] w-full transform-gpu"
+            className="relative aspect-[16/9] sm:aspect-[21/9] w-full transform-gpu"
             style={{ scale: imageScale }}
           >
             <Image
@@ -150,21 +150,12 @@ const ImageSection = ({ textConfig }: ImageSectionProps) => {
             />
           </MotionDiv>
 
-          {/* Text content with configurable positioning */}
+          {/* Text content with responsive positioning */}
           <MotionDiv
             variants={contentVariants}
-            className="absolute"
-            style={{
-              bottom: textConfig.textPosition.bottomOffset,
-              left: textConfig.textPosition.leftOffset,
-              right: 0,
-              paddingRight: "2rem"
-            }}
+            className="absolute bottom-4 sm:bottom-[12%] left-4 sm:left-[8%] right-4 sm:right-0 sm:pr-8"
           >
-            <div 
-              className="space-y-6"
-              style={{ maxWidth: textConfig.textPosition.maxWidth }}
-            >
+            <div className="space-y-4 sm:space-y-6 w-full sm:max-w-[70%]">
               <MotionDiv 
                 className="space-y-1"
                 variants={{
@@ -180,14 +171,14 @@ const ImageSection = ({ textConfig }: ImageSectionProps) => {
                   }
                 }}
               >
-                <MotionH2 className="text-4xl md:text-5xl lg:text-6xl font-bold
-                             text-white whitespace-nowrap
+                <MotionH2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold
+                             text-white break-words sm:whitespace-nowrap
                              leading-[1.2] tracking-wide"
                 >
                   {textConfig.heroTitle.line1}
                 </MotionH2>
-                <MotionH2 className="text-4xl md:text-5xl lg:text-6xl font-bold
-                             text-white whitespace-nowrap
+                <MotionH2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold
+                             text-white break-words sm:whitespace-nowrap
                              leading-[1.2] tracking-wide pb-2"
                 >
                   {textConfig.heroTitle.line2}
@@ -196,7 +187,7 @@ const ImageSection = ({ textConfig }: ImageSectionProps) => {
 
               <MotionP
                 variants={contentVariants}
-                className="text-xl md:text-2xl text-gray-200 
+                className="text-lg sm:text-xl md:text-2xl text-gray-200 
                          font-medium leading-relaxed
                          border-l-4 border-red-500 pl-4
                          mt-4"

@@ -71,16 +71,16 @@ const KhanSystemTable = () => {
       variants={containerVariants}
       initial="hidden"
       animate="visible"
-      className="w-full py-16 bg-gradient-to-b from-gray-50 via-white to-gray-100"
+      className="w-full py-8 sm:py-12 md:py-16 bg-gradient-to-b from-gray-50 via-white to-gray-100 overflow-x-hidden"
     >
       <div className="max-w-7xl mx-auto px-4">
         <MotionDiv
           variants={titleVariants}
-          className="text-center mb-12"
+          className="text-center mb-8 sm:mb-12 px-4"
         >
           <div className="flex items-center justify-center gap-3 mb-4">
             <BsAward className="w-8 h-8 text-red-600" />
-            <h2 className="text-3xl font-bold bg-gradient-to-r from-red-600 to-blue-600 bg-clip-text text-transparent">
+            <h2 className="text-2xl sm:text-3xl font-bold bg-gradient-to-r from-red-600 to-blue-600 bg-clip-text text-transparent">
               Khan Graduatie Systeem
             </h2>
             <BsAward className="w-8 h-8 text-blue-600" />
@@ -92,7 +92,7 @@ const KhanSystemTable = () => {
 
         <MotionDiv
           variants={imageVariants}
-          className="relative max-w-4xl mx-auto"
+          className="relative max-w-[90vw] sm:max-w-2xl md:max-w-4xl mx-auto"
         >
           {/* Efectos decorativos de fondo */}
           <div className="absolute inset-0 bg-gradient-to-br from-red-600/5 to-blue-600/5 
@@ -114,7 +114,7 @@ const KhanSystemTable = () => {
               width={1200}
               height={800}
               sizes="(max-width: 768px) 100vw, 50vw"
-              className="w-full h-auto"
+              className="w-full h-auto object-contain"
               priority
             />
             
@@ -142,9 +142,9 @@ const KhanSystemTable = () => {
         {/* Nota informativa */}
         <MotionDiv
           variants={titleVariants}
-          className="mt-12 text-center"
+          className="mt-8 sm:mt-12 text-center px-4"
         >
-          <p className="text-lg text-gray-700 max-w-3xl mx-auto">
+          <p className="text-base sm:text-lg text-gray-700 max-w-3xl mx-auto">
             Bekijk op de volgende pagina de exameneisen voor de 1e tot en met de 6e khan
           </p>
         </MotionDiv>

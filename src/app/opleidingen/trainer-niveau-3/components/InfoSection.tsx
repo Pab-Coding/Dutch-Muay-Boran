@@ -39,17 +39,17 @@ const InfoSection = () => {
       variants={containerVariants}
       initial="hidden"
       animate="visible"
-      className="w-full py-16 bg-gradient-to-b from-gray-50 via-white to-gray-100"
+      className="w-full py-8 sm:py-16 bg-gradient-to-b from-gray-50 via-white to-gray-100 overflow-x-hidden"
     >
-      <div className="max-w-7xl mx-auto px-4 space-y-8">
+      <div className="max-w-7xl mx-auto px-4 space-y-6 sm:space-y-8">
         {/* Historia y Antecedentes */}
         <motion.div
           variants={itemVariants}
           className="relative overflow-hidden rounded-2xl shadow-xl"
         >
           <div className="absolute inset-0 bg-gradient-to-br from-red-600/10 via-white/20 to-blue-600/10" />
-          <div className="relative backdrop-blur-sm bg-white/80 p-8 md:p-12">
-            <h2 className="text-4xl font-bold mb-6 bg-gradient-to-r from-red-600 to-blue-600 bg-clip-text text-transparent">
+          <div className="relative backdrop-blur-sm bg-white/80 p-6 sm:p-8 md:p-12">
+            <h2 className="text-3xl sm:text-4xl font-bold mb-4 sm:mb-6 bg-gradient-to-r from-red-600 to-blue-600 bg-clip-text text-transparent">
               Historie & Achtergrond
             </h2>
             <p className="text-gray-700 leading-relaxed text-lg">
@@ -64,7 +64,7 @@ const InfoSection = () => {
         {/* Word Assistent Leraar */}
         <motion.div
           variants={itemVariants}
-          className="grid md:grid-cols-2 gap-8"
+          className="grid md:grid-cols-2 gap-6 sm:gap-8"
         >
           <div className="bg-white/90 rounded-2xl shadow-xl p-8 transform hover:scale-[1.02] transition-all duration-300">
             <div className="relative z-10">
@@ -164,13 +164,13 @@ const InfoSection = () => {
         {/* Inversión y Materiales */}
         <motion.div
           variants={itemVariants}
-          className="bg-gradient-to-r from-red-600/5 via-transparent to-blue-600/5 rounded-2xl p-8 md:p-12 shadow-xl"
+          className="bg-gradient-to-r from-red-600/5 via-transparent to-blue-600/5 rounded-2xl p-6 sm:p-8 md:p-12 shadow-xl"
         >
           <h2 className="text-3xl font-bold mb-8 bg-gradient-to-r from-red-600 to-blue-600 bg-clip-text text-transparent">
             Investering in je Toekomst
           </h2>
           
-          <div className="grid md:grid-cols-2 gap-8">
+          <div className="grid md:grid-cols-2 gap-6 sm:gap-8">
             <div>
               <h3 className="text-xl font-semibold mb-4 text-gray-900">
                 Complete Opleiding & Certificering
@@ -225,9 +225,9 @@ const InfoSection = () => {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2 }}
-            className="mt-8 p-6 bg-gradient-to-r from-red-600/10 via-blue-600/10 to-red-600/10 rounded-xl backdrop-blur-sm"
+            className="mt-6 sm:mt-8 p-4 sm:p-6 bg-gradient-to-r from-red-600/10 via-blue-600/10 to-red-600/10 rounded-xl backdrop-blur-sm"
           >
-            <p className="text-2xl font-bold text-gray-900 mb-2">
+            <p className="text-xl sm:text-2xl font-bold text-gray-900 mb-2">
               Opleidingskosten: €1150,00
             </p>
             <p className="text-gray-600">

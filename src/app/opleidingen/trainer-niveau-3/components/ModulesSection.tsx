@@ -133,19 +133,19 @@ const ModulesSection = () => {
     <motion.section
       ref={sectionRef}
       style={{ opacity, scale }}
-      className="w-full py-16 bg-gradient-to-b from-gray-50 via-white to-gray-100"
+      className="w-full py-8 sm:py-16 bg-gradient-to-b from-gray-50 via-white to-gray-100 overflow-x-hidden"
     >
       <div className="max-w-7xl mx-auto px-4">
         <motion.h2
           initial={{ opacity: 0, y: -20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
-          className="text-4xl font-bold mb-12 text-center bg-gradient-to-r from-red-600 to-blue-600 bg-clip-text text-transparent"
+          className="text-3xl sm:text-4xl font-bold mb-8 sm:mb-12 text-center bg-gradient-to-r from-red-600 to-blue-600 bg-clip-text text-transparent px-4"
         >
           Opleidingsmodules
         </motion.h2>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 mb-8 sm:mb-16 px-4">
           {modules.map((module, index) => (
             <motion.div
               key={module.title}
@@ -154,8 +154,9 @@ const ModulesSection = () => {
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true, margin: "-50px" }}
-              className="bg-white rounded-2xl shadow-lg overflow-hidden
-                         transform hover:scale-[1.02] transition-all duration-300"
+              className="bg-white rounded-2xl shadow-lg overflow-hidden w-full
+                         transform hover:scale-[1.02] transition-all duration-300
+                         max-w-full"
             >
               <div className="p-6">
                 <div className="flex items-center gap-4 mb-6">
@@ -202,10 +203,10 @@ const ModulesSection = () => {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
           className="w-full bg-gradient-to-r from-red-600/5 via-transparent to-blue-600/5 
-                     rounded-2xl p-8 shadow-lg backdrop-blur-sm"
+                     rounded-2xl p-4 sm:p-8 shadow-lg backdrop-blur-sm mx-4"
         >
           <div className="max-w-4xl mx-auto">
-            <div className="flex flex-col sm:flex-row justify-center items-center gap-6">
+            <div className="flex flex-col sm:flex-row justify-center items-stretch gap-4 sm:gap-6">
               <motion.div
                 variants={buttonVariants}
                 whileHover="hover"
@@ -213,11 +214,11 @@ const ModulesSection = () => {
                 className="w-full sm:w-auto"
               >
                 <Link href="/opleidingen/inschrijven?course=assistant">
-                  <div className="w-full px-8 py-4 bg-gradient-to-r from-red-600 to-red-700 
+                  <div className="w-full px-6 py-3 sm:px-8 sm:py-4 bg-gradient-to-r from-red-600 to-red-700 
                                 text-white font-semibold rounded-xl shadow-lg
                                 hover:from-red-500 hover:to-red-600 
                                 flex items-center justify-center gap-2
-                                transform transition-all duration-300">
+                                transform transition-all duration-300 text-center">
                     <span>Direct Inschrijven</span>
                     <ArrowRightIcon className="w-5 h-5" />
                   </div>
@@ -231,11 +232,11 @@ const ModulesSection = () => {
                 className="w-full sm:w-auto"
               >
                 <Link href="/examens">
-                  <div className="w-full px-8 py-4 bg-gradient-to-r from-blue-600/10 to-blue-700/10
+                  <div className="w-full px-6 py-3 sm:px-8 sm:py-4 bg-gradient-to-r from-blue-600/10 to-blue-700/10
                                 backdrop-blur-sm border-2 border-blue-600 text-blue-600 
                                 font-semibold rounded-xl hover:bg-blue-600 hover:text-white
                                 flex items-center justify-center gap-2
-                                transform transition-all duration-300">
+                                transform transition-all duration-300 text-center">
                     <span>Exameninformatie</span>
                     <ArrowRightIcon className="w-5 h-5" />
                   </div>
