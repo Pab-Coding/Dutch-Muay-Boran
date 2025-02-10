@@ -23,10 +23,10 @@ const VideoCard = ({ videoId, title, description, onPlay }: VideoCardProps) => {
 
   // Posiciones personalizadas del botón de play según el videoId
   const playButtonPositions: { [key: string]: string } = {
-    'AI2MD0wuXXo': 'top-[45%]', // Video 1 - ajustado a una posición más alta
-    '0fNkU_APRU8': 'top-[30%]', // Video 2
-    'GbmdhnMPB3M': 'top-[30%]', // Video 3
-    'SGl9vOE_rj8': 'top-[25%]'  // Marco Caesaris video - ajustado más arriba
+    'AI2MD0wuXXo': 'top-[35%]', // De Geschiedenis van Muay Thai - considerably higher
+    '0fNkU_APRU8': 'top-[30%]', // Saenchai video
+    'GbmdhnMPB3M': 'top-[20%]', // Muay Kard Chiek - higher
+    'SGl9vOE_rj8': 'top-[20%]'  // Marco de Cesaris - slightly higher
   }
 
   const thumbnailUrl = defaultThumbnails[videoId] || 

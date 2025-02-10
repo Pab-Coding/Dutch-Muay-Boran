@@ -6,6 +6,7 @@ import Footer from '@/components/layout/Footer'
 import PageWrapper from './components/PageWrapper'
 import DateSection from './components/DateSection'
 import CoursesList from './components/CoursesList'
+import CallToAction from './components/CallToAction'
 
 export default function CursusDataPage() {
   return (
@@ -44,6 +45,9 @@ export default function CursusDataPage() {
             </motion.div>
           </div>
         </motion.div>
+
+        {/* Call to Action Section */}
+        <CallToAction />
       </main>
 
       <Footer />

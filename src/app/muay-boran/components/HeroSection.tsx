@@ -53,14 +53,14 @@ const HeroSection = () => {
         className="absolute inset-0 transform transition-transform duration-700 ease-out will-change-transform"
       >
         <Image
-          src="/images/boran.webp"
+          src="/images/boran-optimized.webp"
           alt="Muay Boran"
           fill
-          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 100vw, 100vw"
+          sizes="(max-width: 640px) 100vw, (max-width: 768px) 85vw, (max-width: 1024px) 80vw, 75vw"
           loading="eager"
-          className="object-cover"
+          className="object-cover object-center"
           priority
-          quality={100}
+          quality={85}
         />
         <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/30 to-black/40" />
         <div className="absolute inset-0 bg-gradient-to-r from-red-900/5 to-blue-900/5" />

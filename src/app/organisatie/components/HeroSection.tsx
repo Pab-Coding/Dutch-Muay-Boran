@@ -85,7 +85,7 @@ const HeroSection = () => {
             <MotionH1
               variants={childVariants}
               className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-transparent bg-clip-text
-                         bg-gradient-to-r from-blue-300 via-blue-400 to-blue-200
+                         bg-gradient-to-r from-blue-500 via-blue-600 to-blue-400
                          leading-[1.2] pb-2 md:pb-4"
             >
               Organisatie
@@ -93,7 +93,7 @@ const HeroSection = () => {
 
             <MotionP
               variants={childVariants}
-              className="mt-4 md:mt-6 text-lg sm:text-xl md:text-2xl text-blue-200 font-medium
+              className="mt-4 md:mt-6 text-lg sm:text-xl md:text-2xl text-blue-400 font-medium
                          leading-relaxed max-w-2xl drop-shadow-lg px-4 md:px-0"
             >
               Leer meer over onze organisatie en haar rol in de ontwikkeling van Muay Boran

@@ -103,23 +103,6 @@ const HeroSection = () => {
               eeuwenoude traditie
             </MotionP>
 
-            <Link href="/opleidingen/cursusdata">
-              <MotionDiv
-                variants={childVariants}
-                whileHover={{ scale: isMobile ? 1 : 1.05, backgroundColor: "rgba(255,255,255,0.1)" }}
-                whileTap={{ scale: 0.95 }}
-                className="mt-6 inline-flex items-center gap-2 px-4 py-2
-                         bg-gradient-to-r from-blue-500/20 to-purple-500/20
-                         hover:from-blue-600/20 hover:to-purple-600/20
-                         backdrop-blur-sm rounded-lg border border-white/20
-                         cursor-pointer transition-all duration-300"
-              >
-                <CalendarIcon className="w-5 h-5 text-white" />
-                <span className="text-white/90 font-medium">
-                  Zie geplande data
-                </span>
-              </MotionDiv>
-            </Link>
           </MotionDiv>
 
           <MotionDiv
@@ -141,17 +124,20 @@ const HeroSection = () => {
               </MotionDiv>
             </Link>
 
-            <Link href="/examens">
+            <Link href="/opleidingen/cursusdata">
               <MotionDiv
                 whileHover={{ scale: isMobile ? 1 : 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 className="w-full sm:w-auto px-6 sm:px-8 py-3 sm:py-4 bg-gradient-to-r from-blue-600/10 to-blue-700/10
-                         border-2 border-white/30 text-white 
+                         backdrop-blur-sm border-2 border-white/30 text-white text-center
                          font-semibold rounded-lg hover:bg-white/20
                          transform transition-all duration-300
-                         cursor-pointer text-center"
+                         cursor-pointer"
               >
-                Meer over examens
+                <div className="flex items-center justify-center gap-2">
+                  <CalendarIcon className="w-5 h-5 text-white" />
+                  <span>Zie geplande data</span>
+                </div>
               </MotionDiv>
             </Link>
           </MotionDiv>

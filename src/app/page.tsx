@@ -20,7 +20,7 @@ export default function Home() {
       <HomeHeader />
       <Navigation />
      
-      <main className="container mx-auto px-4 flex-grow mt-6">
+      <main className="container mx-auto px-4 flex-grow mt-8">
         <WelcomeSection />
        
         <motion.div
@@ -36,7 +36,7 @@ export default function Home() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.4 }}
-          className="mt-12"
+          className="mt-8"
         >
           <LatestNewsHighlight />
         </motion.div>

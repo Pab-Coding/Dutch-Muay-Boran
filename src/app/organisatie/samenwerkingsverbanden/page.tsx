@@ -11,7 +11,7 @@ import { TextConfig } from '@/types'
 
 // Configuración del texto para ImageSection
 const imageTextConfig: TextConfig = {
-  mainTitle: "Samenwerkingsverbanden",
+  mainTitle: "Samenwerking",
   heroTitle: {
     line1: "Internationale",
     line2: "Samenwerkingsverbanden"
