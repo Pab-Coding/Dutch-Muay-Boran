@@ -162,7 +162,12 @@ const InschrijvenForm = () => {
         variants={formAnimation}
         initial="hidden"
         animate="visible"
-        className="bg-white/90 rounded-2xl shadow-xl relative backdrop-blur-sm overflow-hidden transform-gpu"
+        className="bg-white/90 rounded-2xl shadow-xl relative backdrop-blur-sm overflow-hidden transform-gpu
+                  ring-1 ring-red-500/5 ring-offset-0
+                  before:absolute before:inset-x-0 before:top-0 before:h-12 
+                  before:bg-gradient-to-b before:from-white/30 before:to-transparent
+                  after:absolute after:inset-x-0 after:top-0 after:h-[2px]
+                  after:bg-gradient-to-r after:from-red-500/10 after:via-blue-500/10 after:to-red-500/10"
       >
         {/* Background Gradients with Animation */}
         <motion.div 
