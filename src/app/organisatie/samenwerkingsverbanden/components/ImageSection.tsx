@@ -105,7 +105,8 @@ const ImageSection = ({ textConfig }: ImageSectionProps) => {
           <MotionH1 className="text-4xl md:text-5xl font-bold text-center
                        bg-gradient-to-r from-red-600 via-blue-600 to-red-600 
                        bg-clip-text text-transparent
-                       leading-relaxed tracking-wide py-4"
+                       leading-relaxed tracking-wide py-4
+                       break-words hyphens-auto px-2"
           >
             {textConfig.mainTitle}
           </MotionH1>
@@ -117,7 +118,7 @@ const ImageSection = ({ textConfig }: ImageSectionProps) => {
         >
           {/* Image container with scroll-based scale */}
           <MotionDiv 
-            className="relative aspect-[16/9] sm:aspect-[21/9] w-full transform-gpu"
+          className="relative aspect-[4/3] sm:aspect-[16/9] md:aspect-[21/9] w-full transform-gpu"
             style={{ scale: imageScale }}
           >
             <Image
@@ -153,8 +154,8 @@ const ImageSection = ({ textConfig }: ImageSectionProps) => {
           {/* Text content with improved mobile positioning */}
           <MotionDiv
             variants={contentVariants}
-            className="absolute bottom-0 left-0 right-0 p-4 sm:p-8 md:p-12
-                     bg-gradient-to-t from-black/80 to-transparent"
+          className="absolute bottom-0 left-0 right-0 p-6 sm:p-8 md:p-12
+                     bg-gradient-to-t from-black/90 via-black/80 to-transparent"
           >
             <div className="max-w-7xl mx-auto">
               <MotionDiv 

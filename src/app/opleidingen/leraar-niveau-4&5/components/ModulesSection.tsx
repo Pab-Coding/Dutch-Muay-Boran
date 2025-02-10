@@ -242,10 +242,6 @@ const ModulesSection = () => {
                   <a href="mailto:info@dmbf.nl" className="text-purple-600 hover:underline whitespace-nowrap">
                     info@dmbf.nl
                   </a>
-                  <span className="hidden sm:inline">|</span>
-                  <a href="mailto:mtbacademy.nl@gmail.com" className="text-purple-600 hover:underline whitespace-nowrap">
-                    mtbacademy.nl@gmail.com
-                  </a>
                 </span>
               </p>
             </motion.div>

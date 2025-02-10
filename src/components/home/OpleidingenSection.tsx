@@ -133,7 +133,7 @@ const OpleidingenSection = () => {
                   rotateZ: 1,
                   boxShadow: "0 20px 30px rgba(0,0,0,0.2)",
                 }}
-                className="relative group w-full h-[400px] rounded-xl shadow-lg overflow-hidden"
+              className="relative group w-full h-[320px] sm:h-[400px] rounded-xl shadow-lg overflow-hidden"
               >
               {/* Background gradient */}
               <div
@@ -141,7 +141,7 @@ const OpleidingenSection = () => {
               />
 
               <motion.div
-                className="relative flex flex-col justify-between p-4 sm:p-6 text-white h-full"
+                className="relative flex flex-col justify-between p-3 sm:p-6 text-white h-full"
                 variants={cardContentVariants}
                 initial="initial"
                 whileHover="hover"
@@ -152,7 +152,7 @@ const OpleidingenSection = () => {
                     variants={iconVariants}
                     initial="hidden"
                     animate={isInView ? "visible" : "hidden"}
-                    className="mb-3 sm:mb-4"
+                    className="mb-2 sm:mb-4"
                   >
                     <motion.div variants={cardElementVariants}>
                       <course.icon
@@ -164,14 +164,14 @@ const OpleidingenSection = () => {
 
                   <motion.h3
                     variants={cardElementVariants}
-                    className="text-lg sm:text-xl font-bold mb-3 sm:mb-4 tracking-wide"
+                    className="text-base sm:text-xl font-bold mb-2 sm:mb-4 tracking-wide"
                   >
                     {course.title}
                   </motion.h3>
 
                   <motion.div
                     variants={cardElementVariants}
-                    className="flex items-center mb-3 sm:mb-4 text-gray-100"
+                    className="flex items-center mb-2 sm:mb-4 text-gray-100"
                   >
                     <CalendarIcon className="h-4 w-4 sm:h-5 sm:w-5 mr-2" />
                     <span className="font-medium text-sm sm:text-base">Start: {course.startDate}</span>
@@ -186,14 +186,14 @@ const OpleidingenSection = () => {
                 </div>
 
                 {/* Bottom buttons */}
-                <motion.div variants={cardElementVariants} className="mt-3 sm:mt-4 space-y-3">
+                <motion.div variants={cardElementVariants} className="mt-2 sm:mt-4 space-y-2 sm:space-y-3">
                   {/* Zie geplande data button */}
                   <Link href="/opleidingen/cursusdata" className="block max-w-fit">
                     <MotionDiv
                       variants={cardElementVariants}
                       whileHover={{ scale: 1.02 }}
                       whileTap={{ scale: 0.98 }}
-                      className="flex items-center justify-center gap-2 px-3 sm:px-4 py-2 bg-gradient-to-r from-red-500/30 to-blue-500/30 hover:from-red-500/40 hover:to-blue-500/40 backdrop-blur-sm rounded-lg cursor-pointer transition-all duration-300"
+                      className="flex items-center justify-center gap-1.5 sm:gap-2 px-2.5 sm:px-4 py-1.5 sm:py-2 bg-gradient-to-r from-red-500/30 to-blue-500/30 hover:from-red-500/40 hover:to-blue-500/40 backdrop-blur-sm rounded-lg cursor-pointer transition-all duration-300"
                     >
                       <CalendarIcon className="h-4 w-4 sm:h-5 sm:w-5 text-white" />
                       <span className="text-white font-medium text-sm sm:text-base">
@@ -203,12 +203,12 @@ const OpleidingenSection = () => {
                   </Link>
 
                   {/* Inschrijven and Meer Info buttons */}
-                  <div className="flex flex-row items-start justify-start gap-4">
+                  <div className="flex flex-row items-start justify-start gap-2 sm:gap-4">
                     <Link href="/opleidingen/inschrijven" className="w-full sm:w-auto">
                       <motion.button
                         whileHover={{ scale: 1.05 }}
                         whileTap={{ scale: 0.95 }}
-                        className="w-full px-4 py-2 bg-white text-gray-900 rounded-lg font-semibold flex items-center justify-center space-x-2 hover:bg-gray-100 transition-colors shadow-md hover:shadow-xl"
+                        className="w-full px-3 sm:px-4 py-1.5 sm:py-2 bg-white text-gray-900 rounded-lg font-semibold flex items-center justify-center space-x-1.5 sm:space-x-2 hover:bg-gray-100 transition-colors shadow-md hover:shadow-xl"
                       >
                         <span className="text-sm sm:text-base">Inschrijven</span>
                         <ArrowRightIcon className="h-4 w-4" />
@@ -219,7 +219,7 @@ const OpleidingenSection = () => {
                       <motion.button
                         whileHover={{ scale: 1.05 }}
                         whileTap={{ scale: 0.95 }}
-                        className="w-full px-4 py-2 border-2 border-white text-white rounded-lg font-semibold hover:bg-white hover:text-gray-900 transition-all backdrop-blur-sm hover:shadow-xl"
+                        className="w-full px-3 sm:px-4 py-1.5 sm:py-2 border-2 border-white text-white rounded-lg font-semibold hover:bg-white hover:text-gray-900 transition-all backdrop-blur-sm hover:shadow-xl"
                       >
                         <span className="text-sm sm:text-base">Meer Info</span>
                       </motion.button>

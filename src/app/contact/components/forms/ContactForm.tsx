@@ -89,7 +89,7 @@ const ContactForm = () => {
   const onSubmit = async (data: FormData) => {
     setIsSubmitting(true)
     try {
-      const response = await fetch('https://formspree.io/f/xpwzljvd', {
+      const response = await fetch('https://formspree.io/f/mkgovwon', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
@@ -133,7 +133,7 @@ const ContactForm = () => {
           animate={{ opacity: 1 }}
           transition={{ delay: 0.4, duration: 0.5 }}
         >
-          Heeft u een vraag of wilt u meer informatie? Wij staan voor u klaar! Vul onderstaand formulier in en we nemen binnen 48 uur contact met u op. Of stuur ons direct een e-mail: info@dmbf.nl of mtbacademy.nl@gmail.com
+          Heeft u een vraag of wilt u meer informatie? Wij staan voor u klaar! Vul onderstaand formulier in en we nemen binnen 48 uur contact met u op. Of stuur ons direct een e-mail: info@dmbf.nl
         </motion.p>
       </motion.div>
 

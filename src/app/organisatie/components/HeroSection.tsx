@@ -60,7 +60,7 @@ const HeroSection = () => {
           priority
           quality={100}
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/30 to-black/40" />
+        <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/50 to-black/60" />
         <div className="absolute inset-0 bg-gradient-to-r from-red-900/5 to-blue-900/5" />
         <div className="absolute inset-0 backdrop-blur-[0.5px]" />
       </MotionDiv>
@@ -77,7 +77,7 @@ const HeroSection = () => {
               className="inline-block bg-gradient-to-r from-red-500/20 to-blue-500/20
                          backdrop-blur-sm rounded-lg px-4 py-2 mb-4"
             >
-              <span className="text-white/90 font-medium">
+              <span className="text-white font-medium">
                 Dutch Muay Boran Foundation
               </span>
             </MotionDiv>
@@ -85,19 +85,18 @@ const HeroSection = () => {
             <MotionH1
               variants={childVariants}
               className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-transparent bg-clip-text
-                         bg-gradient-to-r from-white via-gray-200 to-white
+                         bg-gradient-to-r from-blue-300 via-blue-400 to-blue-200
                          leading-[1.2] pb-2 md:pb-4"
             >
-              Organisatie - Ons{' '}
-              <span className="block">Erfgoed</span>
+              Organisatie
             </MotionH1>
 
             <MotionP
               variants={childVariants}
-              className="mt-4 md:mt-6 text-lg sm:text-xl md:text-2xl text-gray-200 font-medium
+              className="mt-4 md:mt-6 text-lg sm:text-xl md:text-2xl text-blue-200 font-medium
                          leading-relaxed max-w-2xl drop-shadow-lg px-4 md:px-0"
             >
-              Ontdek de geschiedenis, visie en missie achter de Dutch Muay Boran Foundation
+              Leer meer over onze organisatie en haar rol in de ontwikkeling van Muay Boran
             </MotionP>
           </MotionDiv>
         </div>

@@ -19,7 +19,7 @@ const imageTextConfig: TextConfig = {
   description: "Marco de Cesaris en Dale Tan op de WMF wereldkampioenschappen in Thailand",
   textPosition: {
     maxWidth: "70%",
-    leftOffset: "8%", // Ajusta este valor para mover el texto más a la izquierda
+    leftOffset: "8%",
     bottomOffset: "12%"
   }
 }
@@ -128,7 +128,7 @@ export default function SamenwerkingsPage() {
           }}
           className="relative z-10"
         >
-          <div className="container mx-auto px-4 max-w-[100vw]">
+          <div className="container mx-auto px-4 sm:px-6 max-w-[95vw] sm:max-w-[90vw]">
             {/* Content sections */}
             <motion.div
               variants={{

@@ -16,12 +16,12 @@ const opleidingOptions = [
   {
     id: 'assistant',
     name: 'Trainer / Coach niveau 3',
-    startDate: 'Januari 2025'
+    startDate: 'Februari 2025'
   },
   {
     id: 'zelfstandig',
     name: 'Leraar niveau 4 & 5',
-    startDate: 'Januari 2025'
+    startDate: 'Februari 2025'
   }
 ]
 
@@ -105,7 +105,7 @@ const InschrijvenForm = () => {
   const onSubmit = async (data: FormData) => {
     setIsSubmitting(true)
     try {
-      const response = await fetch('https://formspree.io/f/mwpkbvol', {
+      const response = await fetch('https://formspree.io/f/mvgzbpzg', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'

@@ -18,36 +18,36 @@ const courses: Course[] = [
   {
     title: "Trainer / Coach niveau 3",
     dates: [
-      { date: "8 februari", isExam: false },
-      { date: "15 maart", isExam: false },
-      { date: "19 april", isExam: false },
-      { date: "10 mei", isExam: false },
-      { date: "14 juni", isExam: false },
-      { date: "13 september", isExam: false },
-      { date: "11 oktober", isExam: false },
-      { date: "8 november", isExam: false },
-      { date: "13 december", isExam: false },
-      { date: "10 januari", isExam: false },
-      { date: "7 februari", isExam: true }
+      { date: "15 maart 2025", isExam: false },
+      { date: "19 april 2025", isExam: false },
+      { date: "10 mei 2025", isExam: false },
+      { date: "14 juni 2025", isExam: false },
+      { date: "13 september 2025", isExam: false },
+      { date: "11 oktober 2025", isExam: false },
+      { date: "8 november 2025", isExam: false },
+      { date: "13 december 2025", isExam: false },
+      { date: "10 januari 2026", isExam: false },
+      { date: "7 februari 2026", isExam: false },
+      { date: "7 maart 2026", isExam: true }
     ]
   },
   {
     title: "Leraar niveau 4 & 5",
     dates: [
-      { date: "15 februari", isExam: false },
-      { date: "22 maart", isExam: false },
-      { date: "26 april", isExam: false },
-      { date: "17 mei", isExam: false },
-      { date: "21 juni", isExam: false },
-      { date: "20 september", isExam: false },
-      { date: "18 oktober", isExam: false },
-      { date: "15 november", isExam: false },
-      { date: "20 december", isExam: false },
-      { date: "17 januari", isExam: false },
-      { date: "14 februari", isExam: false },
-      { date: "21 maart", isExam: false },
-      { date: "18 april", isExam: false },
-      { date: "16 mei", isExam: true }
+      { date: "22 maart 2025", isExam: false },
+      { date: "26 april 2025", isExam: false },
+      { date: "17 mei 2025", isExam: false },
+      { date: "21 juni 2025", isExam: false },
+      { date: "20 september 2025", isExam: false },
+      { date: "18 oktober 2025", isExam: false },
+      { date: "15 november 2025", isExam: false },
+      { date: "20 december 2025", isExam: false },
+      { date: "17 januari 2026", isExam: false },
+      { date: "14 februari 2026", isExam: false },
+      { date: "21 maart 2026", isExam: false },
+      { date: "18 april 2026", isExam: false },
+      { date: "16 mei 2026", isExam: false },
+      { date: "20 juni 2026", isExam: true }
     ]
   }
 ]

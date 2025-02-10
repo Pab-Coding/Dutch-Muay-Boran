@@ -126,7 +126,7 @@ const VideoCard = ({ videoId, title, description, onPlay }: VideoCardProps) => {
                        via-black/40 to-transparent opacity-90" />
 
         {/* Play button - positioned higher on mobile and using custom positions */}
-        <div className={`absolute ${playButtonPositions[videoId] || 'top-[35%] sm:top-1/2'} left-1/2 transform -translate-x-1/2 
+        <div className={`absolute ${playButtonPositions[videoId] || 'top-[25%] sm:top-1/2'} left-1/2 transform -translate-x-1/2 
                        -translate-y-1/2 z-20`}>
           <div className="w-12 h-12 sm:w-16 sm:h-16 bg-gradient-to-r 
                          from-red-600 to-blue-600 rounded-full flex items-center 

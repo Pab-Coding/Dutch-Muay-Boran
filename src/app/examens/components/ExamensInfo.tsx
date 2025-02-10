@@ -68,9 +68,9 @@ const ExamensInfo = () => {
       variants={containerVariants}
       initial="hidden"
       animate="visible"
-      className="w-full py-8 sm:py-12 md:py-16 bg-gradient-to-b from-gray-50 via-white to-gray-100"
+      className="relative z-10 w-full pt-32 pb-16 bg-gradient-to-b from-gray-50/90 via-white to-gray-100"
     >
-      <div className="max-w-7xl mx-auto px-4">
+      <div className="relative max-w-7xl mx-auto px-4">
         <div className="grid md:grid-cols-2 gap-8 items-center">
           {/* Texto informativo */}
           <MotionDiv
@@ -81,8 +81,8 @@ const ExamensInfo = () => {
               variants={textVariants}
               className="relative overflow-hidden rounded-2xl shadow-xl"
             >
-              <div className="absolute inset-0 bg-gradient-to-br from-red-600/10 via-white/20 to-blue-600/10" />
-              <div className="relative backdrop-blur-sm bg-white/80 p-4 sm:p-6 md:p-12">
+              <div className="absolute inset-0 bg-gradient-to-br from-red-600/10 via-white/30 to-blue-600/10" />
+              <div className="relative backdrop-blur-sm bg-white/90 p-4 sm:p-6 md:p-12">
                 <p className="text-gray-700 leading-relaxed mb-6">
                   De Dutch Muay Boran Foundation onderscheidt zich van andere thaiboks- en 
                   kickboksorganisaties door niet alleen wedstrijden te organiseren, maar ook 

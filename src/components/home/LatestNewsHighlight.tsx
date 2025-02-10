@@ -83,10 +83,6 @@ const LatestNewsHighlight = () => {
                     <a href="mailto:info@dmbf.nl" className="text-blue-600 hover:underline break-all text-[11px] sm:text-sm">
                       info@dmbf.nl
                     </a>
-                    <span className="hidden sm:inline">|</span>
-                    <a href="mailto:mtbacademy.nl@gmail.com" className="text-blue-600 hover:underline break-all text-[11px] sm:text-sm">
-                      mtbacademy.nl@gmail.com
-                    </a>
                   </div>
                 </div>
               </div>

@@ -29,8 +29,8 @@ const InfoSection = () => {
     offset: ["start end", "end start"]
   })
 
-  const opacity = useTransform(scrollYProgress, [0, 0.3], [0, 1])
-  const scale = useTransform(scrollYProgress, [0, 0.3], [0.8, 1])
+  const opacity = useTransform(scrollYProgress, [0, 0.15], [0, 1])
+  const scale = useTransform(scrollYProgress, [0, 0.15], [0.8, 1])
 
   return (
     <motion.section

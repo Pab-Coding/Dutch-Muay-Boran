@@ -75,13 +75,6 @@ const ContactSection = () => {
               >
                 info@dmbf.nl
               </a>
-              <span className="text-gray-400">|</span>
-              <a 
-                href="mailto:mtbacademy.nl@gmail.com" 
-                className="inline-block text-xl font-bold text-gray-900 hover:text-blue-600 transition-colors"
-              >
-                mtbacademy.nl@gmail.com
-              </a>
             </span>
           </p>
         </motion.div>

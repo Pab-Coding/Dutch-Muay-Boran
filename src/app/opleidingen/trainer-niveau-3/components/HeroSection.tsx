@@ -78,7 +78,7 @@ className="relative h-[60vh] md:h-[70vh] min-h-[400px] md:min-h-[600px] w-full o
             <MotionDiv 
               variants={childVariants}
               className="inline-block bg-gradient-to-r from-red-500/20 to-blue-500/20
-                         backdrop-blur-sm rounded-lg px-4 py-2 mb-4"
+                         backdrop-blur-sm rounded-lg px-4 py-2"
             >
               <span className="text-white/90 font-medium">
                 Dutch Muay Boran Foundation
@@ -124,7 +124,7 @@ className="relative h-[60vh] md:h-[70vh] min-h-[400px] md:min-h-[600px] w-full o
 
           <MotionDiv
             variants={childVariants}
-            className="mt-8 sm:mt-12 flex flex-wrap gap-4 w-full px-2 sm:px-0"
+            className="mt-8 sm:mt-12 flex flex-wrap gap-4 w-full px-4 sm:px-0"
           >
             <Link href="/opleidingen/inschrijven">
               <MotionDiv

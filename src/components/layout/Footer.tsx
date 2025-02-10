@@ -85,12 +85,6 @@ const Footer = () => {
                 >
                   info@dmbf.nl
                 </a>
-                <a
-                  href="mailto:mtbacademy.nl@gmail.com"
-                  className="text-gray-600 hover:text-blue-600 transition-colors"
-                >
-                  mtbacademy.nl@gmail.com
-                </a>
               </div>
             </div>
           </motion.div>
