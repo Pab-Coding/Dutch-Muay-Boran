@@ -17,9 +17,9 @@ const activities = [
     description: 'Een opleiding voor leraren vanaf 23 jaar met minimaal 3 jaar ervaring in Muay Thai, Muay Boran of kickboksen. Hierin worden personen opgeleid tot verantwoordelijke leraren met een hoge technische vaardigheid op het gebied van Muay Thai. Tevens worden kickboksleraren omgeschoold tot Muay Thai leraren, die gebruik maken van elleboogtechnieken, clinchen en Thaise benamingen.',
   },
   {
-    title: 'Assistent-lerarenopleiding',
+    title: 'Trainer / coach niveau 3',
     icon: UserGroupIcon,
-    description: 'Bedoeld voor assistent-leraren vanaf 21 jaar met minimaal 2 jaar ervaring in Muay Thai.',
+    description: 'Bedoeld voor trainers vanaf 21 jaar met minimaal 2 jaar ervaring in Muay Thai.',
   },
   {
     title: 'Scheidsrechter- en jury cursus',

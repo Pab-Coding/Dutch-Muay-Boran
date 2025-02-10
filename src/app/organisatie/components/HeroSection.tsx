@@ -85,7 +85,7 @@ const HeroSection = () => {
             <MotionH1
               variants={childVariants}
               className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold text-transparent bg-clip-text
-                         bg-gradient-to-b from-blue-400 to-blue-500
+                         bg-gradient-to-b from-white to-blue-400
                          leading-[1.2] pb-2 md:pb-4"
             >
               Organisatie

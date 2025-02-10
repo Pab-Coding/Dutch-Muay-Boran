@@ -65,7 +65,7 @@ const HistorySection = () => {
       initial="hidden"
       animate={isInView ? "visible" : "hidden"}
       variants={containerVariants}
-      className="pt-32 pb-16 px-4"
+      className="pt-16 md:pt-32 pb-8 md:pb-16 px-2 md:px-4"
     >
       <div className="max-w-7xl mx-auto">
         <motion.div
@@ -75,12 +75,12 @@ const HistorySection = () => {
           {/* Timeline Container */}
           <motion.div
             className={`relative overflow-hidden transition-all duration-500 ease-in-out
-                       ${isExpanded ? 'max-h-[2000px]' : 'max-h-[280px]'}`}
+                       ${isExpanded ? 'max-h-[4000px]' : 'max-h-[400px] md:max-h-[280px]'}`}
             style={{ willChange: 'max-height' }}
           >
             <div className="absolute inset-0 bg-gradient-to-br from-red-50 via-white to-blue-50 opacity-30" />
             
-            <div className="relative p-4 md:p-8 space-y-6 md:space-y-8">
+            <div className="relative p-3 md:p-8 space-y-3 md:space-y-8">
               {paragraphs.map((paragraph, index) => (
                 <motion.div
                   key={index}
@@ -102,10 +102,10 @@ const HistorySection = () => {
                     
                     {/* Content */}
                     <div className="flex-1">
-                      <h3 className="text-lg md:text-xl font-bold mb-2 bg-gradient-to-r from-red-600 to-blue-600 bg-clip-text text-transparent">
+                      <h3 className="text-base md:text-xl font-bold mb-1.5 md:mb-2 bg-gradient-to-r from-red-600 to-blue-600 bg-clip-text text-transparent">
                         {paragraph.title}
                       </h3>
-                      <p className="text-gray-700 leading-relaxed text-sm md:text-base">
+                      <p className="text-gray-700 leading-relaxed text-[13px] md:text-base">
                         {paragraph.content}
                       </p>
                       {isExpanded && paragraph.expanded && (
@@ -113,7 +113,7 @@ const HistorySection = () => {
                           initial={{ opacity: 0 }}
                           animate={{ opacity: 1 }}
                           transition={{ duration: 0.5 }}
-                          className="text-gray-700 leading-relaxed mt-2 text-sm md:text-base"
+                          className="text-gray-700 leading-relaxed mt-1.5 md:mt-2 text-[13px] md:text-base"
                         >
                           {paragraph.expanded}
                         </motion.p>
@@ -126,7 +126,7 @@ const HistorySection = () => {
 
             {/* Gradient overlay for collapsed state */}
             <div 
-              className={`absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-white to-transparent
+              className={`absolute bottom-0 left-0 right-0 h-24 md:h-32 bg-gradient-to-t from-white to-transparent
                          transition-opacity duration-500 ${isExpanded ? 'opacity-0' : 'opacity-100'}`}
             />
           </motion.div>
@@ -140,10 +140,11 @@ const HistorySection = () => {
           >
             <motion.button
               onClick={() => setIsExpanded(!isExpanded)}
-              className="px-6 md:px-8 py-2 md:py-3 bg-gradient-to-r from-red-600 to-blue-600
-                         text-white font-semibold rounded-xl shadow-lg
+              className="px-5 md:px-8 py-1.5 md:py-3 bg-gradient-to-r from-red-600 to-blue-600
+                         text-white font-semibold rounded-lg md:rounded-xl shadow-lg
                          active:scale-95 transition-transform duration-150
-                         flex items-center space-x-2 mx-auto text-sm md:text-base"
+                         flex items-center space-x-1.5 md:space-x-2 mx-auto text-sm md:text-base
+                         sticky bottom-0"
             >
               <span>{isExpanded ? "Lees Minder" : "Lees Meer"}</span>
               <motion.svg
