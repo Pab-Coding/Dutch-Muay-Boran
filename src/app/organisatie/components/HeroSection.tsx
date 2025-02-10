@@ -84,20 +84,12 @@ const HeroSection = () => {
 
             <MotionH1
               variants={childVariants}
-              className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-transparent bg-clip-text
-                         bg-gradient-to-r from-blue-500 via-blue-600 to-blue-400
+              className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold text-transparent bg-clip-text
+                         bg-gradient-to-b from-blue-400 to-blue-500
                          leading-[1.2] pb-2 md:pb-4"
             >
               Organisatie
             </MotionH1>
-
-            <MotionP
-              variants={childVariants}
-              className="mt-4 md:mt-6 text-lg sm:text-xl md:text-2xl text-blue-400 font-medium
-                         leading-relaxed max-w-2xl drop-shadow-lg px-4 md:px-0"
-            >
-              Leer meer over onze organisatie en haar rol in de ontwikkeling van Muay Boran
-            </MotionP>
           </MotionDiv>
         </div>
       </MotionDiv>

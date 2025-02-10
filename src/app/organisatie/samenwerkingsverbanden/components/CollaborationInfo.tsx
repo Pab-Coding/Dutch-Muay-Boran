@@ -211,7 +211,7 @@ const CollaborationInfo = () => {
                 }}
               >
                 <motion.h3 
-                  className="text-xl md:text-2xl font-semibold 
+                  className="text-lg md:text-2xl font-semibold 
                            text-gray-800 mb-6"
                   variants={sectionVariants}
                 >
@@ -219,7 +219,7 @@ const CollaborationInfo = () => {
                 </motion.h3>
                 
                 <motion.p 
-                  className="text-gray-700 leading-relaxed text-base"
+                  className="text-gray-700 leading-relaxed text-sm md:text-base"
                   variants={sectionVariants}
                 >
                   Via de FOG heeft DMBF een collectieve ongevallenverzekering 

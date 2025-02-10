@@ -16,12 +16,12 @@ const opleidingOptions = [
   {
     id: 'assistant',
     name: 'Trainer / Coach niveau 3',
-    startDate: 'Februari 2025'
+    startDate: 'Maart 2025'
   },
   {
     id: 'zelfstandig',
     name: 'Leraar niveau 4 & 5',
-    startDate: 'Februari 2025'
+    startDate: 'Maart 2025'
   }
 ]
 
