@@ -67,7 +67,7 @@ const OpleidingenSection = () => {
     <motion.section
       ref={sectionRef}
       style={{ opacity, scale }}
-      className="w-full px-4 sm:px-6 lg:px-8 pb-6 sm:pb-8 bg-gradient-to-b from-gray-50 via-white to-gray-100"
+      className="w-full px-4 sm:px-6 lg:px-8 pb-9 sm:pb-8 bg-gradient-to-b from-gray-50 via-white to-gray-100"
     >
       <div className="max-w-7xl mx-auto">
         <motion.h2
