@@ -57,7 +57,7 @@ const WelcomeSection = () => {
         className="absolute inset-0"
       >
         <Image
-          src="/images/new-team-photo.jpg"
+          src="/images/new-team-photo.webp"
           alt="DMBF Team"
           fill
           sizes="100vw"
