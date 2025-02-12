@@ -57,8 +57,8 @@ const InfoSection = () => {
           variants={itemVariants}
           className="relative overflow-hidden rounded-2xl shadow-xl"
         >
-          <div className="absolute inset-0 bg-gradient-to-br from-blue-600/10 via-white/20 to-purple-600/10" style={{ transform: 'translateZ(0)', willChange: 'transform' }} />
-          <div className="relative backdrop-blur-[8px] bg-white/80 p-6 sm:p-8 md:p-12" style={{ transform: 'translateZ(0)', willChange: 'transform' }}>
+          <div className="absolute inset-0 bg-gradient-to-br from-blue-600/10 via-white/20 to-purple-600/10 backdrop-blur-[4px]" />
+          <div className="relative bg-white/80 p-6 sm:p-8 md:p-12">
             <h2 className="text-3xl sm:text-4xl font-bold mb-4 sm:mb-6 bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
               Historie & Achtergrond
             </h2>
