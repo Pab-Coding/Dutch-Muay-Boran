@@ -150,9 +150,11 @@ const Navigation = () => {
 
         {/* Mobile Hamburger Button placed on the right */}
         <div className="md:hidden flex justify-end w-full">
-          <button onClick={toggleMobileMenu} className="text-white focus:outline-none">
-            {isMenuOpen ? <FaTimes size={24} /> : <FaBars size={24} />}
-          </button>
+          <div className="bg-white/10 p-1.5 rounded-md backdrop-blur-sm border border-white/20">
+            <button onClick={toggleMobileMenu} className="text-white focus:outline-none">
+              {isMenuOpen ? <FaTimes size={24} /> : <FaBars size={24} />}
+            </button>
+          </div>
         </div>
       </div>
 
