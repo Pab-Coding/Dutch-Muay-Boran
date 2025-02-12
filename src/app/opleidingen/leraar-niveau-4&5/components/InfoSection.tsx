@@ -24,13 +24,23 @@ const itemVariants = {
 
 const InfoSection = () => {
   const sectionRef = useRef<HTMLDivElement>(null)
+  const isMobile = typeof window !== 'undefined' && window.innerWidth < 768
+  
   const { scrollYProgress } = useScroll({
     target: sectionRef,
     offset: ["start end", "end start"]
   })
 
-  const opacity = useTransform(scrollYProgress, [0, 0.15], [0, 1])
-  const scale = useTransform(scrollYProgress, [0, 0.15], [0.8, 1])
+  const opacity = useTransform(
+    scrollYProgress, 
+    [0, isMobile ? 0.1 : 0.15], 
+    [0, 1]
+  )
+  const scale = useTransform(
+    scrollYProgress, 
+    [0, isMobile ? 0.1 : 0.15], 
+    [isMobile ? 0.9 : 0.8, 1]
+  )
 
   return (
     <motion.section
