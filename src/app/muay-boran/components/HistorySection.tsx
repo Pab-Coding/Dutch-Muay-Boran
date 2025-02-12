@@ -65,7 +65,7 @@ const HistorySection = () => {
       initial="hidden"
       animate={isInView ? "visible" : "hidden"}
       variants={containerVariants}
-      className="pt-12 md:pt-32 pb-8 md:pb-16 px-2 md:px-4"
+      className="pt-32 pb-8 sm:pb-16 px-4 sm:px-6"
     >
       <div className="max-w-7xl mx-auto">
         <motion.div
@@ -80,7 +80,7 @@ const HistorySection = () => {
           >
             <div className="absolute inset-0 bg-gradient-to-br from-red-50 via-white to-blue-50 opacity-30" />
             
-            <div className="relative p-4 md:p-8 space-y-3 md:space-y-8">
+            <div className="relative p-4 sm:p-8 space-y-6 sm:space-y-8">
               {paragraphs.map((paragraph, index) => (
                 <motion.div
                   key={index}
