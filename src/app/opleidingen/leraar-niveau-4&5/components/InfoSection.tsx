@@ -48,7 +48,7 @@ const InfoSection = () => {
           className="relative overflow-hidden rounded-2xl shadow-xl"
         >
           <div className="absolute inset-0 bg-gradient-to-br from-blue-600/10 via-white/20 to-purple-600/10" />
-          <div className="relative bg-white/80 p-6 sm:p-8 md:p-12">
+          <div className="relative backdrop-blur-sm bg-white/80 p-6 sm:p-8 md:p-12">
             <h2 className="text-3xl sm:text-4xl font-bold mb-4 sm:mb-6 bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
               Historie & Achtergrond
             </h2>
@@ -65,9 +65,9 @@ const InfoSection = () => {
         {/* Word Zelfstandig Leraar */}
         <motion.div
           variants={itemVariants}
-          className="grid md:grid-cols-2 gap-4 sm:gap-8"
+          className="grid md:grid-cols-2 gap-6 sm:gap-8"
         >
-          <div className="bg-white/90 rounded-2xl shadow-xl p-6 sm:p-8 transform hover:scale-[1.02] transition-all duration-300">
+          <div className="bg-white/90 rounded-2xl shadow-xl p-8 transform hover:scale-[1.02] transition-all duration-300">
             <div className="relative z-10">
               <div className="flex flex-col space-y-4">
                 <h2 className="text-2xl sm:text-3xl font-bold mb-4 bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
@@ -82,7 +82,7 @@ const InfoSection = () => {
               <h3 className="text-lg sm:text-xl font-semibold mb-4 text-gray-900">
                 Deze opleiding is perfect voor:
               </h3>
-              <ul className="space-y-2 sm:space-y-3">
+              <ul className="space-y-3">
                 {[
                   'Gediplomeerde DMBF assistent-leraren',
                   'Ervaren instructeurs die zich willen ontwikkelen tot zelfstandig leraar',
@@ -103,16 +103,16 @@ const InfoSection = () => {
             </div>
           </div>
 
-          <div className="space-y-4 sm:space-y-8">
+          <div className="space-y-8">
             {/* Certificering */}
             <motion.div
               variants={itemVariants}
-              className="bg-white/90 rounded-2xl shadow-xl p-6 sm:p-8 transform hover:scale-[1.02] transition-all duration-300"
+              className="bg-white/90 rounded-2xl shadow-xl p-8 transform hover:scale-[1.02] transition-all duration-300"
             >
               <h2 className="text-xl sm:text-2xl font-bold mb-4 bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
                 Professionele Certificering & Erkenning
               </h2>
-              <ul className="space-y-2 sm:space-y-3">
+              <ul className="space-y-3">
                 {[
                   'Intensieve tien maanden durende opleiding',
                   'NOC/NSF niveau 3 gecertificeerd',
@@ -135,12 +135,12 @@ const InfoSection = () => {
             {/* Toelatingseisen */}
             <motion.div
               variants={itemVariants}
-              className="bg-white/90 rounded-2xl shadow-xl p-6 sm:p-8 transform hover:scale-[1.02] transition-all duration-300"
+              className="bg-white/90 rounded-2xl shadow-xl p-8 transform hover:scale-[1.02] transition-all duration-300"
             >
               <h2 className="text-xl sm:text-2xl font-bold mb-4 bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
                 Toelatingseisen
               </h2>
-              <ul className="space-y-2 sm:space-y-3">
+              <ul className="space-y-3">
                 {[
                   'DMBF Trainer / Coach niveau 3 diploma',
                   'Aantoonbaar gewenst kennisniveau voor directe toelating',
@@ -176,7 +176,7 @@ const InfoSection = () => {
               <h3 className="text-lg sm:text-xl font-semibold mb-4 text-gray-900">
                 Complete Opleiding & Certificering
               </h3>
-              <ul className="space-y-2 sm:space-y-3">
+              <ul className="space-y-3">
                 {[
                   '14 uitgebreide lesdagen',
                   'Professionele scheidsrechter- en jurycursus',
@@ -201,7 +201,7 @@ const InfoSection = () => {
               <h3 className="text-lg sm:text-xl font-semibold mb-4 text-gray-900">
                 Extra Ondersteuning & Faciliteiten
               </h3>
-              <ul className="space-y-2 sm:space-y-3">
+              <ul className="space-y-3">
                 {[
                   'Uitgebreide lunch en verversingen tijdens lesdagen',
                   'Persoonlijke stagebegeleiding (20 uur)',
@@ -226,7 +226,7 @@ const InfoSection = () => {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2 }}
-            className="mt-6 sm:mt-8 p-4 sm:p-6 bg-gradient-to-r from-blue-600/10 via-purple-600/10 to-blue-600/10 rounded-xl"
+            className="mt-6 sm:mt-8 p-4 sm:p-6 bg-gradient-to-r from-blue-600/10 via-purple-600/10 to-blue-600/10 rounded-xl backdrop-blur-sm"
           >
             <p className="text-xl sm:text-2xl font-bold text-gray-900 mb-2">
               Opleidingskosten: €1150,00
