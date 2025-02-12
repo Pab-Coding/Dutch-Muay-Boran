@@ -30,16 +30,21 @@ const InfoSection = () => {
   const isMobile = typeof window !== 'undefined' && window.innerWidth < 768
   const { scrollYProgress } = useScroll({
     target: sectionRef,
-    offset: ["start 80%", "center start"]
+    offset: ["start 95%", "end 5%"]
   })
 
   const opacity = useTransform(scrollYProgress, [0, 0.2], [0, 1])
-  const scale = useTransform(scrollYProgress, [0, 0.2], [0.97, 1])
+  const scale = useTransform(scrollYProgress, [0, 0.2], [0.98, 1])
 
   return (
     <motion.section
       ref={sectionRef}
-      style={{ opacity, scale }}
+      style={{ 
+        opacity, 
+        scale,
+        willChange: "opacity, transform",
+        backfaceVisibility: "hidden"
+      }}
       variants={containerVariants}
       initial="hidden"
       animate="visible"
@@ -51,8 +56,8 @@ const InfoSection = () => {
           variants={itemVariants}
           className="relative overflow-hidden rounded-2xl shadow-xl"
         >
-          <div className="absolute inset-0 bg-gradient-to-br from-red-600/10 via-white/20 to-blue-600/10" />
-          <div className="relative backdrop-blur-sm bg-white/80 p-6 sm:p-8 md:p-12">
+          <div className="absolute inset-0 bg-gradient-to-br from-red-600/10 via-white/20 to-blue-600/10" style={{ transform: 'translateZ(0)', willChange: 'transform' }} />
+          <div className="relative backdrop-blur-[8px] bg-white/80 p-6 sm:p-8 md:p-12" style={{ transform: 'translateZ(0)', willChange: 'transform' }}>
             <h2 className="text-3xl sm:text-4xl font-bold mb-4 sm:mb-6 bg-gradient-to-r from-red-600 to-blue-600 bg-clip-text text-transparent">
               Historie & Achtergrond
             </h2>
