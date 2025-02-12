@@ -44,7 +44,7 @@ const TeamSection = () => {
       {/* Desktop Version (sm and above): Overlay layout */}
       <div className="hidden sm:block relative w-full h-[600px] rounded-xl overflow-hidden shadow-2xl">
         <Image
-          src="/images/team-photo.webp"
+          src="/images/new-team-photo.jpg"
           alt="Dutch Muay Boran Foundation Team"
           fill
           className="object-cover object-center transform hover:scale-105 transition-transform duration-700"
@@ -132,7 +132,7 @@ const TeamSection = () => {
         {/* Image container with a reduced height */}
         <div className="relative w-full h-[300px] rounded-t-xl overflow-hidden shadow-2xl">
           <Image
-            src="/images/team-photo.webp"
+            src="/images/new-team-photo.jpg"
             alt="Dutch Muay Boran Foundation Team"
             fill
             className="object-cover object-center transform hover:scale-105 transition-transform duration-700"
