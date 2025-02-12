@@ -103,13 +103,13 @@ const OpleidingenSection = () => {
 
                 <div className="relative flex flex-col justify-between p-4 sm:p-6 text-white h-full">
                   {/* Top section: icon, title, date, description */}
-                  <div>
+                  <div className="flex flex-col">
                     <motion.div
                       variants={iconVariants}
                       initial="hidden"
                       whileInView="visible"
                       viewport={{ once: true }}
-                      className="mb-3 sm:mb-4"
+                      className="h-12 mb-4 sm:mb-5 flex items-center"
                     >
                       <course.icon
                         size={40}
@@ -117,33 +117,33 @@ const OpleidingenSection = () => {
                       />
                     </motion.div>
 
-                    <h3 className="text-base sm:text-xl font-bold mb-2 sm:mb-4 tracking-wide">
+                    <h3 className="text-base sm:text-xl font-bold mb-3 sm:mb-4 tracking-wide h-[48px] sm:h-[56px] flex items-center">
                       {course.title}
                     </h3>
 
-                    <div className="flex items-center mb-2 sm:mb-4 text-gray-100">
+                    <div className="flex items-center mb-3 sm:mb-4 text-gray-100 h-6 sm:h-7">
                       <CalendarIcon className="h-4 w-4 sm:h-5 sm:w-5 mr-2" />
                       <span className="font-medium text-sm sm:text-base">Start: {course.startDate}</span>
                     </div>
 
-                    <p className="text-gray-100 font-light text-sm sm:text-base">
+                    <p className="text-gray-100 font-light text-sm sm:text-base min-h-[48px] sm:min-h-[56px]">
                       {course.description}
                     </p>
                   </div>
 
                   {/* Bottom buttons container */}
-                  <div className="mt-4 sm:mt-6 flex flex-col gap-3 sm:gap-4">
+                  <div className="mt-6 sm:mt-8 flex flex-col gap-3 sm:gap-4">
                     {/* Zie geplande data button */}
-                    <div className="flex justify-start pl-[4%]">
-                      <Link href="/opleidingen/cursusdata">
+                    <div className="flex w-full">
+                      <Link href="/opleidingen/cursusdata" className="w-full">
                         <motion.div
                           whileHover={{ scale: 1.02 }}
                           whileTap={{ scale: 0.98 }}
-                          className="flex items-center gap-2 px-4 py-1.5 sm:py-2
+                                   className="flex items-center gap-2 px-4 py-1.5 sm:py-2
                                    bg-gradient-to-r from-red-500/30 to-blue-500/30 
                                    hover:from-red-500/40 hover:to-blue-500/40 
                                    backdrop-blur-sm rounded-lg cursor-pointer 
-                                   transition-all duration-300"
+                                   transition-all duration-300 w-fit"
                         >
                           <CalendarIcon className="h-4 w-4 sm:h-5 sm:w-5 text-white" />
                           <span className="text-white font-medium text-sm sm:text-base">
@@ -154,23 +154,23 @@ const OpleidingenSection = () => {
                     </div>
 
                     {/* Inschrijven and Meer Info buttons */}
-                    <div className="flex flex-row items-center justify-center gap-3 sm:gap-4 w-full">
-                      <Link href="/opleidingen/inschrijven" className="w-full sm:w-auto">
+                    <div className="flex flex-row items-center gap-3 sm:gap-4">
+                      <Link href="/opleidingen/inschrijven" className="w-fit">
                         <motion.button
                           whileHover={{ scale: 1.05 }}
                           whileTap={{ scale: 0.95 }}
-                          className="w-full px-3 sm:px-4 py-1.5 sm:py-2 bg-white text-gray-900 rounded-lg font-semibold flex items-center justify-center space-x-1.5 sm:space-x-2 hover:bg-gray-100 transition-colors shadow-md hover:shadow-xl"
+                          className="px-3 sm:px-4 py-1.5 sm:py-2 bg-white text-gray-900 rounded-lg font-semibold flex items-center space-x-1.5 sm:space-x-2 hover:bg-gray-100 transition-colors shadow-md hover:shadow-xl"
                         >
                           <span className="text-sm sm:text-base">Inschrijven</span>
                           <ArrowRightIcon className="h-4 w-4" />
                         </motion.button>
                       </Link>
 
-                      <Link href={course.path} className="w-full sm:w-auto">
+                      <Link href={course.path} className="w-fit">
                         <motion.button
                           whileHover={{ scale: 1.05 }}
                           whileTap={{ scale: 0.95 }}
-                          className="w-full px-3 sm:px-4 py-1.5 sm:py-2 border-2 border-white text-white rounded-lg font-semibold hover:bg-white hover:text-gray-900 transition-all backdrop-blur-sm hover:shadow-xl"
+                          className="px-3 sm:px-4 py-1.5 sm:py-2 border-2 border-white text-white rounded-lg font-semibold hover:bg-white hover:text-gray-900 transition-all backdrop-blur-sm hover:shadow-xl"
                         >
                           <span className="text-sm sm:text-base">Meer Info</span>
                         </motion.button>
