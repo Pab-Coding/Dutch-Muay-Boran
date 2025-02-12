@@ -36,7 +36,7 @@ export default function Home() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.4 }}
-          className="mt-8"
+          className="mt-4 sm:mt-8"
         >
           <LatestNewsHighlight />
         </motion.div>

@@ -5,10 +5,23 @@ import { Inter } from 'next/font/google'
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
-  title: 'Dutch Muay Boran Foundation',
+  metadataBase: new URL('https://dutchmuayboran.nl'),
+  title: {
+    default: 'Dutch Muay Boran Foundation',
+    template: '%s - DMBF'
+  },
   description: 'Official website of the Dutch Muay Boran Foundation',
   icons: {
-    icon: '/images/logo.webp'
+    icon: [
+      {
+        url: '/images/logo.webp',
+        sizes: '32x32',
+      },
+      {
+        url: '/images/logo.webp',
+        sizes: '16x16',
+      }
+    ]
   }
 }
 

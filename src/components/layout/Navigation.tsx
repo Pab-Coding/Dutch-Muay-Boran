@@ -1,5 +1,5 @@
 'use client'
-import { useState, useCallback, memo } from 'react'
+import { useState, useCallback, memo, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
@@ -64,6 +64,20 @@ const Navigation = () => {
   const toggleMobileSubmenu = useCallback((itemName: string) => {
     setMobileExpanded(prev => (prev === itemName ? null : itemName))
   }, [])
+
+  // Manage body scroll when mobile menu is open
+  useEffect(() => {
+    if (isMenuOpen) {
+      document.body.style.overflow = 'hidden'
+    } else {
+      document.body.style.overflow = 'auto'
+    }
+    
+    // Cleanup on unmount
+    return () => {
+      document.body.style.overflow = 'auto'
+    }
+  }, [isMenuOpen])
 
   return (
     <nav className="relative h-16 shadow-lg z-50">
@@ -153,10 +167,7 @@ const Navigation = () => {
               exit={{ opacity: 0 }}
               transition={{ duration: 0.2 }}
               className="md:hidden fixed inset-0 bg-black/60 z-40"
-              onClick={() => {
-                setIsMenuOpen(false)
-                router.push('/')
-              }}
+              onClick={() => setIsMenuOpen(false)}
             />
             {/* Menu */}
             <motion.div
@@ -175,10 +186,7 @@ const Navigation = () => {
                       <Link
                         href={item.path}
                         className="text-sm tracking-wider font-bold transition-all duration-200 ease-in-out relative group-hover:opacity-90"
-                        onClick={() => {
-                          setIsMenuOpen(false)
-                          router.push('/')
-                        }}
+                        onClick={() => setIsMenuOpen(false)}
                       >
                         <span className="bg-gradient-to-r from-red-600 via-red-500 to-blue-600 bg-clip-text text-transparent">
                           {item.name}
@@ -210,10 +218,7 @@ const Navigation = () => {
                                   key={subItem.path}
                                   href={subItem.path}
                                   className="block px-8 py-3 text-sm hover:bg-gradient-to-r hover:from-red-100/50 hover:via-white/80 hover:to-blue-100/50 transition-all duration-300 relative group/item"
-                                  onClick={() => {
-                                    setIsMenuOpen(false)
-                                    router.push('/')
-                                  }}
+                                  onClick={() => setIsMenuOpen(false)}
                                 >
                                   <span className="relative">
                                     <span className="bg-gradient-to-r from-red-600 via-red-500 to-blue-600 bg-clip-text text-transparent">

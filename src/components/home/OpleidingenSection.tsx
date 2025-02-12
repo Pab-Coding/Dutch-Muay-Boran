@@ -1,75 +1,33 @@
 "use client";
 
-import { motion, useInView } from "framer-motion";
+import { motion, useInView, useScroll, useTransform } from "framer-motion";
 import Link from "next/link";
 import { ArrowRightIcon, CalendarIcon } from "@heroicons/react/24/outline";
-import { MotionDiv } from "@/components/shared/MotionComponents";
 import { FaMedal } from "react-icons/fa";
 import { GiBoxingGlove } from "react-icons/gi";
 import { useRef, memo } from "react";
 
-const titleVariants = {
-  hidden: {
-    opacity: 0,
-    rotateX: 90,
-    y: -50,
-  },
+const fadeInUpVariants = {
+  hidden: { opacity: 0, y: 20 },
   visible: {
     opacity: 1,
-    rotateX: 0,
     y: 0,
     transition: {
-      duration: 1.5,
-      ease: "easeOut",
-    },
-  },
-};
-
-const cardVariants = {
-  hidden: {
-    opacity: 0,
-    x: -200,
-  },
-  visible: {
-    opacity: 1,
-    x: 0,
-    transition: {
-      duration: 1.3,
+      duration: 0.5,
       ease: "easeOut",
     },
   },
 };
 
 const iconVariants = {
-  hidden: { y: -50, opacity: 0 },
+  hidden: { scale: 0.8, opacity: 0 },
   visible: {
-    y: 0,
+    scale: 1,
     opacity: 1,
     transition: {
       type: "spring",
-      bounce: 0.4,
-      duration: 1.5,
-    },
-  },
-};
-
-const cardContentVariants = {
-  initial: {},
-  hover: {
-    transition: {
-      staggerChildren: 0.1,
-    },
-  },
-};
-
-const cardElementVariants = {
-  initial: { y: 0, opacity: 1 },
-  hover: {
-    y: -3,
-    opacity: 1,
-    transition: {
-      duration: 0.3,
-      ease: "easeOut",
+      bounce: 0.3,
+      duration: 0.6,
     },
   },
 };
@@ -97,142 +55,133 @@ const courses = [
 
 const OpleidingenSection = () => {
   const sectionRef = useRef(null);
-  const titleRef = useRef(null);
-  const isInView = useInView(sectionRef, { once: true, margin: "-100px" });
-  const isTitleInView = useInView(titleRef, { once: true, margin: "-100px" });
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ["start end", "end start"],
+  });
+
+  const opacity = useTransform(scrollYProgress, [0, 0.2], [0, 1]);
+  const scale = useTransform(scrollYProgress, [0, 0.2], [0.95, 1]);
 
   return (
-    <section ref={sectionRef} className="w-full px-4 sm:px-6 lg:px-8 pb-6 sm:pb-8">
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-        transition={{ duration: 1.3 }}
-        className="mx-auto"
-      >
+    <motion.section
+      ref={sectionRef}
+      style={{ opacity, scale }}
+      className="w-full px-4 sm:px-6 lg:px-8 pb-6 sm:pb-8 bg-gradient-to-b from-gray-50 via-white to-gray-100"
+    >
+      <div className="max-w-7xl mx-auto">
         <motion.h2
-          ref={titleRef}
-          variants={titleVariants}
+          variants={fadeInUpVariants}
           initial="hidden"
-          animate={isTitleInView ? "visible" : "hidden"}
+          whileInView="visible"
+          viewport={{ once: true }}
           className="text-3xl sm:text-4xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-gray-800 via-blue-600 to-gray-800 mb-6 sm:mb-8 text-center tracking-tight"
         >
           Onze Opleidingen
         </motion.h2>
 
-        <div className="flex flex-col md:flex-row justify-center items-center -mx-3">
+        <div className="flex flex-col md:flex-row justify-center items-center gap-6 md:gap-8">
           {courses.map((course, index) => (
-            <div key={course.title} className="w-[340px] px-3 md:mb-0 mb-8">
-              <motion.div
-                variants={cardVariants}
-                initial="hidden"
-                animate={isInView ? "visible" : "hidden"}
-                transition={{ delay: index * 0.4 }}
-                whileHover={{
-                  scale: 1.02,
-                  translateY: -5,
-                  rotateZ: 1,
-                  boxShadow: "0 20px 30px rgba(0,0,0,0.2)",
-                }}
-              className="relative group w-full h-[320px] sm:h-[400px] rounded-xl shadow-lg overflow-hidden"
-              >
-              {/* Background gradient */}
+            <motion.div
+              key={course.title}
+              variants={fadeInUpVariants}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+              transition={{ delay: index * 0.1 }}
+              className="w-[340px]"
+            >
               <div
-                className={`absolute inset-0 bg-gradient-to-r ${course.color} opacity-90 transform transition-all duration-500 group-hover:opacity-100 group-hover:bg-gradient-to-br`}
-              />
-
-              <motion.div
-                className="relative flex flex-col justify-between p-3 sm:p-6 text-white h-full"
-                variants={cardContentVariants}
-                initial="initial"
-                whileHover="hover"
+                className="relative group h-[320px] sm:h-[450px] rounded-xl shadow-lg overflow-hidden 
+                         transform transition-all duration-300 hover:shadow-xl 
+                         hover:translate-y-[-4px] hover:scale-[1.02]"
               >
-                {/* Top section: icon, title, date, description */}
-                <div>
-                  <motion.div
-                    variants={iconVariants}
-                    initial="hidden"
-                    animate={isInView ? "visible" : "hidden"}
-                    className="mb-2 sm:mb-4"
-                  >
-                    <motion.div variants={cardElementVariants}>
+                {/* Background gradient */}
+                <div
+                  className={`absolute inset-0 bg-gradient-to-r ${course.color} opacity-90 transform transition-all duration-500 group-hover:opacity-100 group-hover:bg-gradient-to-br`}
+                />
+
+                <div className="relative flex flex-col justify-between p-4 sm:p-6 text-white h-full">
+                  {/* Top section: icon, title, date, description */}
+                  <div>
+                    <motion.div
+                      variants={iconVariants}
+                      initial="hidden"
+                      whileInView="visible"
+                      viewport={{ once: true }}
+                      className="mb-3 sm:mb-4"
+                    >
                       <course.icon
                         size={40}
-                        className="transform group-hover:scale-110 transition-transform duration-300"
+                        className="transform transition-transform duration-300 group-hover:scale-110"
                       />
                     </motion.div>
-                  </motion.div>
 
-                  <motion.h3
-                    variants={cardElementVariants}
-                    className="text-base sm:text-xl font-bold mb-2 sm:mb-4 tracking-wide"
-                  >
-                    {course.title}
-                  </motion.h3>
+                    <h3 className="text-base sm:text-xl font-bold mb-2 sm:mb-4 tracking-wide">
+                      {course.title}
+                    </h3>
 
-                  <motion.div
-                    variants={cardElementVariants}
-                    className="flex items-center mb-2 sm:mb-4 text-gray-100"
-                  >
-                    <CalendarIcon className="h-4 w-4 sm:h-5 sm:w-5 mr-2" />
-                    <span className="font-medium text-sm sm:text-base">Start: {course.startDate}</span>
-                  </motion.div>
+                    <div className="flex items-center mb-2 sm:mb-4 text-gray-100">
+                      <CalendarIcon className="h-4 w-4 sm:h-5 sm:w-5 mr-2" />
+                      <span className="font-medium text-sm sm:text-base">Start: {course.startDate}</span>
+                    </div>
 
-                  <motion.p
-                    variants={cardElementVariants}
-                    className="text-gray-100 font-light text-sm sm:text-base"
-                  >
-                    {course.description}
-                  </motion.p>
-                </div>
-
-                {/* Bottom buttons */}
-                <motion.div variants={cardElementVariants} className="mt-2 sm:mt-4 space-y-2 sm:space-y-3">
-                  {/* Zie geplande data button */}
-                  <Link href="/opleidingen/cursusdata" className="block max-w-fit">
-                    <MotionDiv
-                      variants={cardElementVariants}
-                      whileHover={{ scale: 1.02 }}
-                      whileTap={{ scale: 0.98 }}
-                      className="flex items-center justify-center gap-1.5 sm:gap-2 px-2.5 sm:px-4 py-1.5 sm:py-2 bg-gradient-to-r from-red-500/30 to-blue-500/30 hover:from-red-500/40 hover:to-blue-500/40 backdrop-blur-sm rounded-lg cursor-pointer transition-all duration-300"
-                    >
-                      <CalendarIcon className="h-4 w-4 sm:h-5 sm:w-5 text-white" />
-                      <span className="text-white font-medium text-sm sm:text-base">
-                        Zie geplande data
-                      </span>
-                    </MotionDiv>
-                  </Link>
-
-                  {/* Inschrijven and Meer Info buttons */}
-                  <div className="flex flex-row items-start justify-start gap-2 sm:gap-4">
-                    <Link href="/opleidingen/inschrijven" className="w-full sm:w-auto">
-                      <motion.button
-                        whileHover={{ scale: 1.05 }}
-                        whileTap={{ scale: 0.95 }}
-                        className="w-full px-3 sm:px-4 py-1.5 sm:py-2 bg-white text-gray-900 rounded-lg font-semibold flex items-center justify-center space-x-1.5 sm:space-x-2 hover:bg-gray-100 transition-colors shadow-md hover:shadow-xl"
-                      >
-                        <span className="text-sm sm:text-base">Inschrijven</span>
-                        <ArrowRightIcon className="h-4 w-4" />
-                      </motion.button>
-                    </Link>
-
-                    <Link href={course.path} className="w-full sm:w-auto">
-                      <motion.button
-                        whileHover={{ scale: 1.05 }}
-                        whileTap={{ scale: 0.95 }}
-                        className="w-full px-3 sm:px-4 py-1.5 sm:py-2 border-2 border-white text-white rounded-lg font-semibold hover:bg-white hover:text-gray-900 transition-all backdrop-blur-sm hover:shadow-xl"
-                      >
-                        <span className="text-sm sm:text-base">Meer Info</span>
-                      </motion.button>
-                    </Link>
+                    <p className="text-gray-100 font-light text-sm sm:text-base">
+                      {course.description}
+                    </p>
                   </div>
-                </motion.div>
-              </motion.div>
-              </motion.div>
-            </div>
+
+                  {/* Bottom buttons */}
+                  <div className="mt-4 sm:mt-6 space-y-3">
+                    {/* Zie geplande data button */}
+                    <Link href="/opleidingen/cursusdata" className="block max-w-fit">
+                      <motion.div
+                        whileHover={{ scale: 1.02 }}
+                        whileTap={{ scale: 0.98 }}
+                        className="flex items-center justify-center gap-2 px-4 py-2 
+                                 bg-gradient-to-r from-red-500/30 to-blue-500/30 
+                                 hover:from-red-500/40 hover:to-blue-500/40 
+                                 backdrop-blur-sm rounded-lg cursor-pointer 
+                                 transition-all duration-300"
+                      >
+                        <CalendarIcon className="h-4 w-4 sm:h-5 sm:w-5 text-white" />
+                        <span className="text-white font-medium text-sm sm:text-base">
+                          Zie geplande data
+                        </span>
+                      </motion.div>
+                    </Link>
+
+                    {/* Inschrijven and Meer Info buttons */}
+                    <div className="flex flex-row items-center justify-center gap-3 sm:gap-4">
+                      <Link href="/opleidingen/inschrijven" className="w-full sm:w-auto">
+                        <motion.button
+                          whileHover={{ scale: 1.05 }}
+                          whileTap={{ scale: 0.95 }}
+                          className="w-full px-3 sm:px-4 py-1.5 sm:py-2 bg-white text-gray-900 rounded-lg font-semibold flex items-center justify-center space-x-1.5 sm:space-x-2 hover:bg-gray-100 transition-colors shadow-md hover:shadow-xl"
+                        >
+                          <span className="text-sm sm:text-base">Inschrijven</span>
+                          <ArrowRightIcon className="h-4 w-4" />
+                        </motion.button>
+                      </Link>
+
+                      <Link href={course.path} className="w-full sm:w-auto">
+                        <motion.button
+                          whileHover={{ scale: 1.05 }}
+                          whileTap={{ scale: 0.95 }}
+                          className="w-full px-3 sm:px-4 py-1.5 sm:py-2 border-2 border-white text-white rounded-lg font-semibold hover:bg-white hover:text-gray-900 transition-all backdrop-blur-sm hover:shadow-xl"
+                        >
+                          <span className="text-sm sm:text-base">Meer Info</span>
+                        </motion.button>
+                      </Link>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </motion.div>
           ))}
         </div>
-      </motion.div>
-    </section>
+      </div>
+    </motion.section>
   );
 };
 
