@@ -14,23 +14,27 @@ const containerVariants = {
 }
 
 const itemVariants = {
-  hidden: { opacity: 0, y: 50 },
+  hidden: { opacity: 0, y: 30 },
   visible: {
     opacity: 1,
     y: 0,
-    transition: { duration: 0.5 }
+    transition: { 
+      duration: 0.8,
+      ease: "easeOut"
+    }
   }
 }
 
 const InfoSection = () => {
   const sectionRef = useRef<HTMLDivElement>(null)
+  const isMobile = typeof window !== 'undefined' && window.innerWidth < 768
   const { scrollYProgress } = useScroll({
     target: sectionRef,
-    offset: ["start end", "end start"]
+    offset: ["start center", isMobile ? "start center" : "center start"]
   })
 
-  const opacity = useTransform(scrollYProgress, [0, 0.225], [0, 1])
-  const scale = useTransform(scrollYProgress, [0, 0.225], [0.8, 1])
+  const opacity = useTransform(scrollYProgress, [0, 0.1], [0, 1])
+  const scale = useTransform(scrollYProgress, [0, 0.1], [0.9, 1])
 
   return (
     <motion.section
@@ -91,7 +95,11 @@ const InfoSection = () => {
                     key={index}
                     initial={{ opacity: 0, x: -20 }}
                     whileInView={{ opacity: 1, x: 0 }}
-                    transition={{ delay: index * 0.1 }}
+                    transition={{ 
+                      delay: isMobile ? index * 0.03 : index * 0.08,
+                      duration: isMobile ? 0.5 : 0.8,
+                      ease: "easeOut"
+                    }}
                     className="flex items-center space-x-2 text-gray-700"
                   >
                     <span className="h-2 w-2 rounded-full bg-gradient-to-r from-red-500 to-blue-500" />
@@ -121,7 +129,11 @@ const InfoSection = () => {
                     key={index}
                     initial={{ opacity: 0, x: -20 }}
                     whileInView={{ opacity: 1, x: 0 }}
-                    transition={{ delay: index * 0.1 }}
+                    transition={{ 
+                      delay: isMobile ? index * 0.03 : index * 0.08,
+                      duration: isMobile ? 0.5 : 0.8,
+                      ease: "easeOut"
+                    }}
                     className="flex items-center space-x-2 text-gray-700"
                   >
                     <span className="text-blue-600">•</span>
@@ -149,7 +161,11 @@ const InfoSection = () => {
                     key={index}
                     initial={{ opacity: 0, x: -20 }}
                     whileInView={{ opacity: 1, x: 0 }}
-                    transition={{ delay: index * 0.1 }}
+                    transition={{ 
+                      delay: isMobile ? index * 0.03 : index * 0.08,
+                      duration: isMobile ? 0.5 : 0.8,
+                      ease: "easeOut"
+                    }}
                     className="flex items-center space-x-2 text-gray-700"
                   >
                     <span className="text-red-600">•</span>
@@ -186,7 +202,11 @@ const InfoSection = () => {
                     key={index}
                     initial={{ opacity: 0, x: -20 }}
                     whileInView={{ opacity: 1, x: 0 }}
-                    transition={{ delay: index * 0.1 }}
+                    transition={{ 
+                      delay: isMobile ? index * 0.03 : index * 0.08,
+                      duration: isMobile ? 0.5 : 0.8,
+                      ease: "easeOut"
+                    }}
                     className="flex items-center space-x-2 text-gray-700"
                   >
                     <span className="text-blue-600">•</span>
@@ -210,7 +230,11 @@ const InfoSection = () => {
                     key={index}
                     initial={{ opacity: 0, x: -20 }}
                     whileInView={{ opacity: 1, x: 0 }}
-                    transition={{ delay: index * 0.1 }}
+                    transition={{ 
+                      delay: isMobile ? index * 0.03 : index * 0.08,
+                      duration: isMobile ? 0.5 : 0.8,
+                      ease: "easeOut"
+                    }}
                     className="flex items-center space-x-2 text-gray-700"
                   >
                     <span className="text-red-600">•</span>
@@ -224,7 +248,11 @@ const InfoSection = () => {
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.2 }}
+            transition={{ 
+              delay: isMobile ? 0.1 : 0.15,
+              duration: isMobile ? 0.5 : 0.8,
+              ease: "easeOut"
+            }}
             className="mt-6 sm:mt-8 p-4 sm:p-6 bg-gradient-to-r from-red-600/10 via-blue-600/10 to-red-600/10 rounded-xl backdrop-blur-sm"
           >
             <p className="text-xl sm:text-2xl font-bold text-gray-900 mb-2">
