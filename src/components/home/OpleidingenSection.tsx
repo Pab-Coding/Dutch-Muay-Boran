@@ -134,7 +134,7 @@ const OpleidingenSection = () => {
                   {/* Bottom buttons container */}
                   <div className="mt-4 md:mt-6 flex flex-col gap-3 md:gap-4">
                     {/* Zie geplande data button */}
-                    <div className="flex justify-start pl-[4%] md:pl-0 md:w-full">
+                    <div className="flex w-full md:w-full">
                       <Link href="/opleidingen/cursusdata" className="md:w-full">
                         <motion.div
                           whileHover={{ scale: 1.02 }}
