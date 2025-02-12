@@ -73,7 +73,7 @@ export default function LeraarNiveau4en5Page() {
 
           <motion.div
             variants={sectionVariants}
-            className="relative z-10 mt-12 sm:mt-16"
+            className="relative z-10 mt-8 sm:mt-12"
           >
             <InfoSection />
           </motion.div>
