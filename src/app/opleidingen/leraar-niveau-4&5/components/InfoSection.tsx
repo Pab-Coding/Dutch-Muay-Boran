@@ -7,8 +7,8 @@ const containerVariants = {
   visible: {
     opacity: 1,
     transition: {
-      staggerChildren: 0.2,
-      delayChildren: 0.3
+      staggerChildren: 0.15,
+      delayChildren: 0.2
     }
   }
 }
@@ -31,11 +31,11 @@ const InfoSection = () => {
   
   const { scrollYProgress } = useScroll({
     target: sectionRef,
-    offset: ["start end", "end start"]
+    offset: ["start 80%", "center start"]
   })
 
-  const opacity = useTransform(scrollYProgress, [0, 0.3], [0, 1])
-  const scale = useTransform(scrollYProgress, [0, 0.3], [0.95, 1])
+  const opacity = useTransform(scrollYProgress, [0, 0.2], [0, 1])
+  const scale = useTransform(scrollYProgress, [0, 0.2], [0.97, 1])
 
   return (
     <motion.section
@@ -44,7 +44,7 @@ const InfoSection = () => {
       variants={containerVariants}
       initial="hidden"
       animate="visible"
-      className="w-full py-8 sm:py-16 bg-gradient-to-b from-gray-50 via-white to-gray-100 overflow-x-hidden"
+      className="w-full py-6 sm:py-12 -mt-8 sm:-mt-12 bg-gradient-to-b from-gray-50 via-white to-gray-100 overflow-x-hidden"
     >
       <div className="max-w-7xl mx-auto px-4 space-y-6 sm:space-y-8">
         {/* Historie & Achtergrond */}
