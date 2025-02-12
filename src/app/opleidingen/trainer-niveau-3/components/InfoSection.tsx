@@ -30,11 +30,11 @@ const InfoSection = () => {
   const isMobile = typeof window !== 'undefined' && window.innerWidth < 768
   const { scrollYProgress } = useScroll({
     target: sectionRef,
-    offset: ["start center", isMobile ? "start center" : "center start"]
+    offset: ["start end", "end start"]
   })
 
-  const opacity = useTransform(scrollYProgress, [0, 0.1], [0, 1])
-  const scale = useTransform(scrollYProgress, [0, 0.1], [0.9, 1])
+  const opacity = useTransform(scrollYProgress, [0, 0.3], [0, 1])
+  const scale = useTransform(scrollYProgress, [0, 0.3], [0.95, 1])
 
   return (
     <motion.section

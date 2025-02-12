@@ -73,16 +73,7 @@ export default function TrainerNiveau3Page() {
 
           <motion.div
             variants={sectionVariants}
-            className="relative z-20 -mt-12 sm:-mt-20"
-          >
-            <div className="max-w-7xl mx-auto px-4">
-              <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-transparent to-transparent pointer-events-none" />
-            </div>
-          </motion.div>
-
-          <motion.div
-            variants={sectionVariants}
-            className="relative z-10"
+            className="relative z-10 mt-12 sm:mt-16"
           >
             <InfoSection />
           </motion.div>
