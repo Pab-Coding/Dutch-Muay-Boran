@@ -31,7 +31,7 @@ const LatestNewsHighlight = () => {
   const isInView = useInView(ref, { once: true, margin: '-100px' })
 
   return (
-    <div ref={ref} className="w-full mb-8">
+    <div ref={ref} className="w-full mb-12">
       <MotionDiv
         initial={{ opacity: 0, y: 50 }}
         animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
