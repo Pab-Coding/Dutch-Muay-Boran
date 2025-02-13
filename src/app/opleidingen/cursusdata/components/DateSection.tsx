@@ -1,27 +1,19 @@
 'use client'
 
-import { useScroll, useTransform } from 'framer-motion'
+import { motion } from 'framer-motion'
 import Image from 'next/image'
 import { useRef } from 'react'
 import { MotionDiv, MotionH1 } from '@/components/shared/MotionComponents'
 
 const DateSection = () => {
   const sectionRef = useRef<HTMLDivElement>(null)
-  const { scrollYProgress } = useScroll({
-    target: sectionRef,
-    offset: ["start end", "end start"]
-  })
-
-  // Only use scale animation on non-touch devices
-  const opacity = useTransform(scrollYProgress, [0, 0.15], [0, 1])
-  
-  // Check if we're in a browser environment and if hover is available
-  const isHoverDevice = typeof window !== 'undefined' ? window.matchMedia('(hover: hover)').matches : false
+  const isMobile = typeof window !== 'undefined' && window.innerWidth < 768
 
   return (
     <MotionDiv
       ref={sectionRef}
-      style={{ opacity }}
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
       className="w-full max-w-4xl mx-auto px-4 py-12"
       transition={{ duration: 0.3 }}
     >
@@ -33,7 +25,8 @@ const DateSection = () => {
       >
         {/* Circular image container */}
         <MotionDiv
-          whileHover={isHoverDevice ? { scale: 1.05 } : undefined}
+          whileHover={{ scale: isMobile ? 1 : 1.05 }}
+          whileTap={{ scale: 0.95 }}
           transition={{ duration: 0.3 }}
           className="relative w-48 h-48 mx-auto rounded-full overflow-hidden"
         >
@@ -42,10 +35,9 @@ const DateSection = () => {
             src="/images/dates.webp"
             alt="Cursusdata"
             fill
-            sizes="(max-width: 768px) 100vw, 50vw"
+            sizes="100vw"
             className="object-cover rounded-full"
             priority
-            loading="eager"
             quality={90}
             placeholder="blur"
             blurDataURL="data:image/webp;base64,UklGRlIAAABXRUJQVlA4IEYAAAAwAQCdASoIAAUAAUAmJaQAA3AA/v89WAAAAP7/2T5G1NLf/8elPp36k9P/d8JvkH9D/Y32G9gD+AP4A/gD+AP4A/gD+AMAA"
