@@ -50,7 +50,7 @@ const HeroSection = () => {
           src="/images/flyer-amsterdam.webp"
           alt="Dutch Muay Boran Foundation Amsterdam"
           fill
-          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 100vw, 100vw"
+          sizes="100vw"
           className="object-cover"
           priority
           quality={90}

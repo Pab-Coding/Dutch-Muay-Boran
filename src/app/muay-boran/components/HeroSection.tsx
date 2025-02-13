@@ -1,6 +1,6 @@
 'use client'
 
-import { motion, useScroll, useTransform } from 'framer-motion'
+import { motion } from 'framer-motion'
 import Image from 'next/image'
 import Link from 'next/link'
 import { useRef } from 'react'
@@ -51,11 +51,10 @@ const HeroSection = () => {
           src="/images/boran-optimized.webp"
           alt="Muay Boran"
           fill
-          sizes="(max-width: 640px) 100vw, (max-width: 768px) 85vw, (max-width: 1024px) 80vw, 75vw"
-          className="object-cover object-center"
+          sizes="100vw"
+          className="object-cover"
           priority
           quality={90}
-          loading="eager"
           placeholder="blur"
           blurDataURL="data:image/webp;base64,UklGRlIAAABXRUJQVlA4IEYAAAAwAQCdASoIAAUAAUAmJaQAA3AA/v89WAAAAP7/2T5G1NLf/8elPp36k9P/d8JvkH9D/Y32G9gD+AP4A/gD+AP4A/gD+AMAA"
         />

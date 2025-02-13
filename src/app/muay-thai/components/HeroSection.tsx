@@ -51,11 +51,10 @@ const HeroSection = () => {
           src="/images/muay-thai.webp"
           alt="Muay Thai Boran"
           fill
-          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 100vw, 100vw"
+          sizes="100vw"
           className="object-cover"
           priority
           quality={90}
-          loading="eager"
           placeholder="blur"
           blurDataURL="data:image/webp;base64,UklGRlIAAABXRUJQVlA4IEYAAAAwAQCdASoIAAUAAUAmJaQAA3AA/v89WAAAAP7/2T5G1NLf/8elPp36k9P/d8JvkH9D/Y32G9gD+AP4A/gD+AP4A/gD+AMAA"
         />
