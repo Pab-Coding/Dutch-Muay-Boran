@@ -1,12 +1,20 @@
 'use client'
 
 import { motion, useScroll, useTransform } from 'framer-motion'
-import { useRef } from 'react'
+import { useRef, Suspense, lazy } from 'react'
+import dynamic from 'next/dynamic'
 import Navigation from '@/components/layout/Navigation'
 import Footer from '@/components/layout/Footer'
 import HeroSection from './components/HeroSection'
-import HistorySection from './components/HistorySection'
-import CallToAction from './components/CallToAction'
+
+// Lazy load below-fold components
+const HistorySection = lazy(() => import('./components/HistorySection'))
+const CallToAction = lazy(() => import('./components/CallToAction'))
+
+// Loading fallbacks
+const LoadingSection = () => (
+  <div className="w-full h-96 bg-gray-50 animate-pulse" />
+)
 
 export default function MuayBoranPage() {
   const pageRef = useRef<HTMLDivElement>(null)
@@ -15,35 +23,28 @@ export default function MuayBoranPage() {
     offset: ["start start", "end end"]
   })
 
-  const opacity = useTransform(scrollYProgress, [0, 0.8], [1, 0])
-  const scale = useTransform(scrollYProgress, [0, 0.8], [1, 0.98])
+  // Simplified animations with reduced range
+  const opacity = useTransform(scrollYProgress, [0, 0.5], [1, 0])
+  const scale = useTransform(scrollYProgress, [0, 0.5], [1, 0.99])
 
+  // Simplified animation variants
   const pageVariants = {
-    hidden: {
-      opacity: 0
-    },
+    hidden: { opacity: 0 },
     visible: {
       opacity: 1,
       transition: {
-        duration: 0.6,
-        ease: "easeOut",
-        when: "beforeChildren",
-        staggerChildren: 0.2
+        duration: 0.4,
+        ease: "easeOut"
       }
     }
   }
 
   const sectionVariants = {
-    hidden: {
-      opacity: 0,
-      y: 20
-    },
+    hidden: { opacity: 0 },
     visible: {
       opacity: 1,
-      y: 0,
       transition: {
-        duration: 0.5,
-        ease: "easeOut"
+        duration: 0.3
       }
     }
   }
@@ -56,12 +57,8 @@ export default function MuayBoranPage() {
       animate="visible"
       className="min-h-screen bg-gradient-to-b from-gray-50 to-white"
     >
-      {/* Efectos de fondo */}
-      <div className="fixed inset-0 bg-gradient-to-br from-red-500/5 via-transparent to-blue-500/5 pointer-events-none" />
-      <div 
-        className="fixed inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] 
-                   from-transparent via-white/50 to-transparent pointer-events-none" 
-      />
+      {/* Simplified background effects */}
+      <div className="fixed inset-0 bg-gradient-to-br from-red-500/5 to-blue-500/5 pointer-events-none" />
 
       {/* Contenedor principal */}
       <div className="relative z-10">
@@ -89,21 +86,24 @@ export default function MuayBoranPage() {
             </div>
           </motion.div>
 
-          {/* Historia Section */}
-          <motion.div
-            variants={sectionVariants}
-            className="relative z-10"
-          >
-            <HistorySection />
-          </motion.div>
+          {/* Lazy loaded sections */}
+          <Suspense fallback={<LoadingSection />}>
+            <motion.div
+              variants={sectionVariants}
+              className="relative z-10"
+            >
+              <HistorySection />
+            </motion.div>
+          </Suspense>
 
-          {/* Call to Action */}
-          <motion.div
-            variants={sectionVariants}
-            className="relative z-10"
-          >
-            <CallToAction />
-          </motion.div>
+          <Suspense fallback={<LoadingSection />}>
+            <motion.div
+              variants={sectionVariants}
+              className="relative z-10"
+            >
+              <CallToAction />
+            </motion.div>
+          </Suspense>
         </main>
 
         {/* Footer */}
@@ -115,35 +115,10 @@ export default function MuayBoranPage() {
         </motion.footer>
       </div>
 
-      {/* Elementos decorativos */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 0.5, duration: 1 }}
-        className="fixed inset-0 pointer-events-none"
-      >
-        <div 
-          className="absolute inset-0 bg-gradient-to-t from-transparent 
-                     via-transparent to-transparent opacity-20"
-        />
-        <div 
-          className="absolute bottom-0 left-0 right-0 h-32 
-                     bg-gradient-to-t from-white via-transparent to-transparent"
-        />
-      </motion.div>
-
-      {/* Efecto de partículas */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 0.5 }}
-        transition={{ delay: 1, duration: 1 }}
-        className="fixed inset-0 pointer-events-none"
-      >
-        <div 
-          className="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] 
-                     from-blue-500/5 via-transparent to-transparent"
-        />
-      </motion.div>
+      {/* Simplified decorative elements */}
+      <div className="fixed inset-0 pointer-events-none">
+        <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-white to-transparent" />
+      </div>
     </motion.div>
   )
 }

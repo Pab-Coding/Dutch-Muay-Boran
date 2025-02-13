@@ -3,12 +3,21 @@
 import { motion } from 'framer-motion'
 import Image from 'next/image'
 import Link from 'next/link'
-import { useRef } from 'react'
+import { useRef, useEffect, useState, memo } from 'react'
 import { MotionSection, MotionDiv, MotionH1, MotionP } from '@/components/shared/MotionComponents'
 
-const HeroSection = () => {
+const HeroSection: React.FC = () => {
   const sectionRef = useRef<HTMLDivElement>(null)
-  const isMobile = typeof window !== 'undefined' && window.innerWidth < 768
+  const [isMobile, setIsMobile] = useState(false)
+
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768)
+    }
+    checkMobile()
+    window.addEventListener('resize', checkMobile)
+    return () => window.removeEventListener('resize', checkMobile)
+  }, [])
 
   // Simplified animation variants
   const heroVariants = {
@@ -44,17 +53,15 @@ const HeroSection = () => {
       variants={heroVariants}
       className="relative h-[60vh] md:h-[70vh] min-h-[400px] md:min-h-[600px] w-full overflow-hidden"
     >
-      <MotionDiv
-        className="absolute inset-0"
-      >
+      <MotionDiv className="absolute inset-0">
         <Image
           src="/images/boran-optimized.webp"
           alt="Muay Boran"
           fill
-          sizes="100vw"
+          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 80vw, 70vw"
           className="object-cover"
           priority
-          quality={90}
+          quality={75}
           placeholder="blur"
           blurDataURL="data:image/webp;base64,UklGRlIAAABXRUJQVlA4IEYAAAAwAQCdASoIAAUAAUAmJaQAA3AA/v89WAAAAP7/2T5G1NLf/8elPp36k9P/d8JvkH9D/Y32G9gD+AP4A/gD+AP4A/gD+AMAA"
         />
@@ -99,44 +106,32 @@ const HeroSection = () => {
             </MotionP>
           </MotionDiv>
 
-          <MotionDiv
-            variants={childVariants}
-            className="mt-10"
-          >
+          <MotionDiv variants={childVariants} className="mt-10">
             <Link href="/opleidingen/inschrijven">
               <motion.button
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="px-8 py-4 bg-gradient-to-r from-red-600 to-blue-600
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
+                className="group px-8 py-4 bg-gradient-to-r from-red-600 to-blue-600
                            text-white font-semibold rounded-xl shadow-lg
                            hover:from-red-500 hover:to-blue-500
-                           transform transition-all duration-300
+                           transform transition-all duration-200
                            border border-white/20 backdrop-blur-sm
                            flex items-center space-x-3"
               >
                 <span>Inschrijven</span>
-                <motion.div
-                animate={isMobile ? {} : { x: [0, 5, 0] }}
-                transition={isMobile ? {} : {
-                  duration: 1.5,
-                  repeat: Infinity,
-                  repeatType: "reverse"
-                }}
+                <svg 
+                  className="w-5 h-5 transform transition-transform duration-200 group-hover:translate-x-1" 
+                  fill="none" 
+                  stroke="currentColor" 
+                  viewBox="0 0 24 24"
                 >
-                  <svg 
-                    className="w-5 h-5" 
-                    fill="none" 
-                    stroke="currentColor" 
-                    viewBox="0 0 24 24"
-                  >
-                    <path 
-                      strokeLinecap="round" 
-                      strokeLinejoin="round" 
-                      strokeWidth={2} 
-                      d="M9 5l7 7-7 7" 
-                    />
-                  </svg>
-                </motion.div>
+                  <path 
+                    strokeLinecap="round" 
+                    strokeLinejoin="round" 
+                    strokeWidth={2} 
+                    d="M9 5l7 7-7 7" 
+                  />
+                </svg>
               </motion.button>
             </Link>
           </MotionDiv>
@@ -146,4 +141,4 @@ const HeroSection = () => {
   )
 }
 
-export default HeroSection
+export default memo(HeroSection, () => true)
