@@ -14,8 +14,8 @@ async function optimizeImage(filename) {
   const outputPath = path.join('public/images', `optimized-${filename}`);
   
   try {
-    // Start with original dimensions and quality 80
-    let quality = 80;
+    // Start with original dimensions and quality 70 to match Next.js Image settings
+    let quality = 70;
     let fileSize = Infinity;
     const targetSize = 250 * 1024; // 250 KB in bytes
     
@@ -26,10 +26,10 @@ async function optimizeImage(filename) {
     
     while (fileSize > targetSize) {
       // If quality is getting too low, focus on dimension reduction
-      if (quality < 20) {
+      if (quality < 30) {
         width = Math.round(width * 0.9);
         height = Math.round(height * 0.9);
-        quality = 20; // Reset quality to maintain some image clarity
+        quality = 30; // Reset quality to maintain good image clarity
       }
 
       await sharp(inputPath)

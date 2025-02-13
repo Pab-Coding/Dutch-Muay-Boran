@@ -3,17 +3,18 @@
 import { motion } from 'framer-motion'
 import Image from 'next/image'
 import Link from 'next/link'
-import { useRef } from 'react'
+import { useRef, useState } from 'react'
 import { MotionSection, MotionDiv, MotionButton, MotionSpan, MotionH1, MotionP } from '@/components/shared/MotionComponents'
 
 const HeroSection = () => {
   const sectionRef = useRef<HTMLDivElement>(null)
+  const [imageLoaded, setImageLoaded] = useState(false)
   const isMobile = typeof window !== 'undefined' && window.innerWidth < 768
 
-  // Simplified animations for mobile
+  // Animation variants coordinated with image loading
   const heroVariants = {
     hidden: {
-      opacity: 0
+      opacity: 0,
     },
     visible: {
       opacity: 1,
@@ -21,7 +22,8 @@ const HeroSection = () => {
         duration: isMobile ? 0.5 : 0.8,
         ease: "easeOut",
         when: "beforeChildren",
-        staggerChildren: isMobile ? 0.1 : 0.2
+        staggerChildren: isMobile ? 0.1 : 0.2,
+        delay: imageLoaded ? 0 : 0.2
       }
     }
   }
@@ -59,7 +61,10 @@ const HeroSection = () => {
           sizes="(max-width: 768px) 100vw, (max-width: 1200px) 100vw, 100vw"
           className="object-cover"
           priority
-          quality={100}
+          quality={70}
+          placeholder="blur"
+          blurDataURL="data:image/webp;base64,UklGRlIAAABXRUJQVlA4IEYAAAAwAQCdASoIAAUAAUAmJaQAA3AA/v89WAAAAP7/2T5G1NLf/8elPp36k9P/d8JvkH9D/Y32G9gD+AP4A/gD+AP4A/gD+AMAA"
+          onLoadingComplete={() => setImageLoaded(true)}
         />
         <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/30 to-black/40" />
         <div className="absolute inset-0 bg-gradient-to-r from-red-900/5 to-blue-900/5" />
