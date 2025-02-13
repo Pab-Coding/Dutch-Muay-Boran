@@ -9,6 +9,7 @@ import { MotionSection, MotionDiv, MotionH1, MotionP } from '@/components/shared
 const HeroSection: React.FC = () => {
   const sectionRef = useRef<HTMLDivElement>(null)
   const [isMobile, setIsMobile] = useState(false)
+  const [imageLoaded, setImageLoaded] = useState(false)
 
   useEffect(() => {
     const checkMobile = () => {
@@ -19,66 +20,69 @@ const HeroSection: React.FC = () => {
     return () => window.removeEventListener('resize', checkMobile)
   }, [])
 
-  // Simplified animation variants
-  const heroVariants = {
-    initial: { opacity: 0 },
-    animate: { 
+  // Content animation variants
+  const contentVariants = {
+    hidden: { opacity: 0 },
+    visible: { 
       opacity: 1,
       transition: {
-        duration: 0.3,
+        duration: 0.4,
         ease: "easeOut",
         when: "beforeChildren",
+        delayChildren: 0.2,
         staggerChildren: 0.1
       }
     }
   }
 
   const childVariants = {
-    initial: { opacity: 0, y: 10 },
-    animate: {
+    hidden: { opacity: 0, y: 10 },
+    visible: {
       opacity: 1,
       y: 0,
       transition: {
-        duration: 0.3,
+        duration: 0.4,
         ease: "easeOut"
       }
     }
   }
 
   return (
-    <MotionSection
+    <section
       ref={sectionRef}
-      initial="initial"
-      animate="animate"
-      variants={heroVariants}
       className="relative h-[60vh] md:h-[70vh] min-h-[400px] md:min-h-[600px] w-full overflow-hidden"
     >
-      <MotionDiv className="absolute inset-0">
+      {/* Image container without motion */}
+      <div className="absolute inset-0">
         <Image
           src="/images/boran-optimized.webp"
           alt="Muay Boran"
           fill
-          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 80vw, 70vw"
+          sizes="100vw"
           className="object-cover"
-          priority
-          quality={75}
+          quality={90}
+          loading="eager"
           placeholder="blur"
           blurDataURL="data:image/webp;base64,UklGRlIAAABXRUJQVlA4IEYAAAAwAQCdASoIAAUAAUAmJaQAA3AA/v89WAAAAP7/2T5G1NLf/8elPp36k9P/d8JvkH9D/Y32G9gD+AP4A/gD+AP4A/gD+AMAA"
+          onLoadingComplete={() => setImageLoaded(true)}
         />
         <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/30 to-black/40" />
         <div className="absolute inset-0 bg-gradient-to-r from-red-900/5 to-blue-900/5" />
-        <div className="absolute inset-0 backdrop-blur-[0.5px]" />
-      </MotionDiv>
+      </div>
 
-      <MotionDiv
+      {/* Content with animations */}
+      <motion.div
+        initial="hidden"
+        animate={imageLoaded ? "visible" : "hidden"}
+        variants={contentVariants}
         className="relative z-10 h-full max-w-7xl mx-auto px-4"
       >
         <div className="flex flex-col justify-center h-full max-w-4xl">
-          <MotionDiv
+          <motion.div
             variants={childVariants}
             className="space-y-2"
           >
-            <MotionDiv
+            <motion.div
               variants={childVariants}
               className="inline-block bg-gradient-to-r from-red-500/20 to-blue-500/20
                          backdrop-blur-sm rounded-lg px-4 py-2 mb-4"
@@ -86,16 +90,16 @@ const HeroSection: React.FC = () => {
               <span className="text-white/90 font-medium">
                 Dutch Muay Boran Foundation
               </span>
-            </MotionDiv>
+            </motion.div>
 
             <MotionH1
               variants={childVariants}
-          className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-transparent bg-clip-text
+              className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-transparent bg-clip-text
                          bg-gradient-to-r from-white via-gray-200 to-white
                          leading-[1.2] pb-2 md:pb-4"
-              >
-                Muay Boran
-              </MotionH1>
+            >
+              Muay Boran
+            </MotionH1>
 
             <MotionP
               variants={childVariants}
@@ -104,9 +108,9 @@ const HeroSection: React.FC = () => {
             >
               De traditionele gevechtskunst van Thailand - De oorsprong van het moderne Muay Thai
             </MotionP>
-          </MotionDiv>
+          </motion.div>
 
-          <MotionDiv variants={childVariants} className="mt-10">
+          <motion.div variants={childVariants} className="mt-10">
             <Link href="/opleidingen/inschrijven">
               <motion.button
                 whileHover={{ scale: 1.02 }}
@@ -134,11 +138,11 @@ const HeroSection: React.FC = () => {
                 </svg>
               </motion.button>
             </Link>
-          </MotionDiv>
+          </motion.div>
         </div>
-      </MotionDiv>
-    </MotionSection>
+      </motion.div>
+    </section>
   )
 }
 
-export default memo(HeroSection, () => true)
+export default memo(HeroSection)
