@@ -44,6 +44,7 @@ const OpleidingenHero = () => {
       className="relative h-[60vh] min-h-[400px] md:h-[70vh] md:min-h-[600px] w-full overflow-hidden"
     >
       <MotionDiv
+        variants={childVariants}
         className="absolute inset-0"
       >
         <Image
@@ -63,9 +64,10 @@ const OpleidingenHero = () => {
       </MotionDiv>
 
       <MotionDiv
+        variants={childVariants}
         className="relative z-10 h-full max-w-7xl mx-auto px-4"
       >
-        <div className="flex flex-col justify-center h-full max-w-4xl mx-auto">
+        <div className="flex flex-col justify-center h-full max-w-4xl">
           <MotionDiv
             variants={childVariants}
             className="space-y-2"
@@ -84,7 +86,7 @@ const OpleidingenHero = () => {
               variants={childVariants}
               className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-transparent bg-clip-text
                          bg-gradient-to-r from-white via-gray-200 to-white
-                         leading-[1.2] pb-2 md:pb-4"
+                         leading-[1.2] pb-4 max-w-full"
             >
               Opleidingen
             </MotionH1>
