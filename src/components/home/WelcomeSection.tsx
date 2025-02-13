@@ -12,34 +12,25 @@ import {
 
 const WelcomeSection = () => {
   const heroVariants = {
-    hidden: {
-      opacity: 0,
-      scale: 1.1
-    },
-    visible: {
+    initial: { opacity: 0 },
+    animate: {
       opacity: 1,
-      scale: 1,
       transition: {
-        duration: 0.8,
+        duration: 0.3,
         ease: "easeOut",
         when: "beforeChildren",
-        staggerChildren: 0.2
+        staggerChildren: 0.1
       }
     }
   }
 
   const childVariants = {
-    hidden: {
-      opacity: 0,
-      y: 30,
-      scale: 0.9
-    },
-    visible: {
+    initial: { opacity: 0, y: 10 },
+    animate: {
       opacity: 1,
       y: 0,
-      scale: 1,
       transition: {
-        duration: 0.6,
+        duration: 0.3,
         ease: "easeOut"
       }
     }
@@ -47,9 +38,9 @@ const WelcomeSection = () => {
 
   return (
     <MotionSection
+      initial="initial"
+      animate="animate"
       variants={heroVariants}
-      initial="hidden"
-      animate="visible"
       className="relative h-auto min-h-[600px] w-full overflow-hidden rounded-xl py-12 mb-12"
     >
       {/* Background with multiple layers */}
@@ -63,7 +54,10 @@ const WelcomeSection = () => {
           sizes="100vw"
           className="object-cover object-center"
           priority
-          quality={100}
+          quality={90}
+          loading="eager"
+          placeholder="blur"
+          blurDataURL="data:image/webp;base64,UklGRlIAAABXRUJQVlA4IEYAAAAwAQCdASoIAAUAAUAmJaQAA3AA/v89WAAAAP7/2T5G1NLf/8elPp36k9P/d8JvkH9D/Y32G9gD+AP4A/gD+AP4A/gD+AMAA"
         />
         {/* Multiple overlay layers for depth and readability */}
         <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/50 to-black/60 rounded-xl" />
@@ -91,6 +85,9 @@ const WelcomeSection = () => {
               sizes="(max-width: 768px) 192px, 256px"
               className="object-contain"
               priority
+              loading="eager"
+              placeholder="blur"
+              blurDataURL="data:image/webp;base64,UklGRlIAAABXRUJQVlA4IEYAAAAwAQCdASoIAAUAAUAmJaQAA3AA/v89WAAAAP7/2T5G1NLf/8elPp36k9P/d8JvkH9D/Y32G9gD+AP4A/gD+AP4A/gD+AMAA"
             />
           </MotionDiv>
 

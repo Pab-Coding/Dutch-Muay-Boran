@@ -13,39 +13,29 @@ const HeroSection = () => {
     offset: ["start start", "end start"]
   })
 
-  const opacity = useTransform(scrollYProgress, [0, 0.5], [1, 0])
-  const scale = useTransform(scrollYProgress, [0, 0.5], [1, 1.1])
-  const textY = useTransform(scrollYProgress, [0, 0.5], [0, 100])
+  const opacity = useTransform(scrollYProgress, [0, 0.3], [1, 0])
+  const textY = useTransform(scrollYProgress, [0, 0.3], [0, 50])
 
   const heroVariants = {
-    hidden: { 
-      opacity: 0,
-      scale: 1.1
-    },
-    visible: {
+    initial: { opacity: 0 },
+    animate: {
       opacity: 1,
-      scale: 1,
       transition: {
-        duration: 0.8,
+        duration: 0.3,
         ease: "easeOut",
         when: "beforeChildren",
-        staggerChildren: 0.2
+        staggerChildren: 0.1
       }
     }
   }
 
   const childVariants = {
-    hidden: { 
-      opacity: 0,
-      y: 30,
-      scale: 0.9
-    },
-    visible: {
+    initial: { opacity: 0, y: 10 },
+    animate: {
       opacity: 1,
       y: 0,
-      scale: 1,
-      transition: { 
-        duration: 0.6,
+      transition: {
+        duration: 0.3,
         ease: "easeOut"
       }
     }
@@ -54,14 +44,12 @@ const HeroSection = () => {
   return (
     <MotionSection
       ref={sectionRef}
+      initial="initial"
+      animate="animate"
       variants={heroVariants}
-      initial="hidden"
-      animate="visible"
       className="relative h-[80vh] min-h-[600px] w-full overflow-hidden"
     >
-      {/* Background Image with Parallax Effect */}
       <MotionDiv 
-        style={{ scale }}
         className="absolute inset-0"
       >
         <Image
@@ -71,16 +59,15 @@ const HeroSection = () => {
           sizes="100vw"
           className="object-cover"
           priority
-          quality={100}
+          quality={90}
+          placeholder="blur"
+          blurDataURL="data:image/webp;base64,UklGRlIAAABXRUJQVlA4IEYAAAAwAQCdASoIAAUAAUAmJaQAA3AA/v89WAAAAP7/2T5G1NLf/8elPp36k9P/d8JvkH9D/Y32G9gD+AP4A/gD+AP4A/gD+AMAA"
         />
         <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/50 to-black/70" />
-        
-        {/* Decorative Effects */}
         <div className="absolute inset-0 bg-gradient-to-r from-red-900/20 to-blue-900/20" />
-        <div className="absolute inset-0 backdrop-blur-[2px]" />
+        <div className="absolute inset-0 backdrop-blur-[0.5px]" />
       </MotionDiv>
 
-      {/* Main Content */}
       <MotionDiv 
         style={{ y: textY, opacity }}
         className="relative z-10 h-full max-w-7xl mx-auto px-4"
@@ -91,6 +78,7 @@ const HeroSection = () => {
             className="space-y-2"
           >
             <MotionDiv 
+              variants={childVariants}
               className="inline-block bg-gradient-to-r from-red-500/20 to-blue-500/20 
                          backdrop-blur-sm rounded-lg px-4 py-2 mb-4"
             >
@@ -151,42 +139,31 @@ const HeroSection = () => {
             </Link>
           </MotionDiv>
 
-          {/* Decorative Elements */}
           <MotionDiv
             initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 1.2, duration: 1 }}
+            animate={{ opacity: 0.5 }}
+            transition={{ delay: 0.4, duration: 0.3 }}
             className="absolute bottom-0 left-0 w-full h-32 
                        bg-gradient-to-t from-black/50 to-transparent"
-          />
-          
-          <MotionDiv 
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 0.5 }}
-            transition={{ delay: 1.5, duration: 1 }}
-            className="absolute -bottom-8 left-1/2 transform -translate-x-1/2
-                       w-1/2 h-16 blur-3xl
-                       bg-gradient-to-r from-red-600/30 to-blue-600/30"
           />
         </div>
       </MotionDiv>
 
-      {/* Scroll Indicator */}
       <MotionDiv
-        initial={{ opacity: 0, y: 20 }}
+        initial={{ opacity: 0, y: 10 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 2, duration: 1 }}
+        transition={{ delay: 0.5, duration: 0.3 }}
         className="absolute bottom-8 left-1/2 transform -translate-x-1/2"
       >
         <MotionDiv
-          animate={{ y: [0, 10, 0] }}
-          transition={{ duration: 1.5, repeat: Infinity }}
+          animate={{ y: [0, 6, 0] }}
+          transition={{ duration: 2, repeat: Infinity }}
           className="w-6 h-10 border-2 border-white/30 rounded-full
                      flex justify-center items-start p-2"
         >
           <MotionDiv
-            animate={{ height: ["20%", "80%", "20%"] }}
-            transition={{ duration: 1.5, repeat: Infinity }}
+            animate={{ height: ["20%", "60%", "20%"] }}
+            transition={{ duration: 2, repeat: Infinity }}
             className="w-1 bg-white/50 rounded-full"
           />
         </MotionDiv>

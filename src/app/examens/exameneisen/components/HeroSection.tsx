@@ -9,32 +9,27 @@ const HeroSection = () => {
   const sectionRef = useRef<HTMLDivElement>(null)
   const isMobile = typeof window !== 'undefined' && window.innerWidth < 768
 
-  // Simplified animations for mobile
+  // Optimized animation variants
   const heroVariants = {
-    hidden: {
-      opacity: 0
-    },
-    visible: {
+    initial: { opacity: 0 },
+    animate: {
       opacity: 1,
       transition: {
-        duration: isMobile ? 0.5 : 0.8,
+        duration: 0.3,
         ease: "easeOut",
         when: "beforeChildren",
-        staggerChildren: isMobile ? 0.1 : 0.2
+        staggerChildren: 0.1
       }
     }
   }
 
   const childVariants = {
-    hidden: {
-      opacity: 0,
-      y: 20
-    },
-    visible: {
+    initial: { opacity: 0, y: 10 },
+    animate: {
       opacity: 1,
       y: 0,
       transition: {
-        duration: isMobile ? 0.4 : 0.6,
+        duration: 0.3,
         ease: "easeOut"
       }
     }
@@ -43,13 +38,13 @@ const HeroSection = () => {
   return (
     <MotionSection
       ref={sectionRef}
+      initial="initial"
+      animate="animate"
       variants={heroVariants}
-      initial="hidden"
-      animate="visible"
       className="relative h-[60vh] md:h-[70vh] min-h-[400px] md:min-h-[600px] w-full overflow-hidden"
     >
       <MotionDiv
-        className="absolute inset-0 transform transition-transform duration-700 ease-out will-change-transform"
+        className="absolute inset-0"
       >
         <div className="absolute inset-0 bg-gradient-to-r from-red-600 via-white to-blue-600" />
         <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/30 to-black/40" />
@@ -76,6 +71,9 @@ const HeroSection = () => {
                 sizes="(max-width: 768px) 100vw, 50vw"
                 className="object-contain"
                 priority
+                loading="eager"
+                placeholder="blur"
+                blurDataURL="data:image/webp;base64,UklGRlIAAABXRUJQVlA4IEYAAAAwAQCdASoIAAUAAUAmJaQAA3AA/v89WAAAAP7/2T5G1NLf/8elPp36k9P/d8JvkH9D/Y32G9gD+AP4A/gD+AP4A/gD+AMAA"
               />
             </MotionDiv>
 

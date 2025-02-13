@@ -13,18 +13,15 @@ const HeroSection = () => {
   })
 
   // Ajustamos los valores de transformación para que sean más suaves
-  const opacity = useTransform(scrollYProgress, [0, 0.8], [1, 0])
-  const scale = useTransform(scrollYProgress, [0, 0.8], [1, 1.02])
-  const textY = useTransform(scrollYProgress, [0, 0.8], [0, 30])
+  const opacity = useTransform(scrollYProgress, [0, 0.5], [1, 0])
+  const textY = useTransform(scrollYProgress, [0, 0.5], [0, 20])
 
   const heroVariants = {
-    hidden: {
-      opacity: 0,
-    },
-    visible: {
+    initial: { opacity: 0 },
+    animate: {
       opacity: 1,
       transition: {
-        duration: 0.8, // Aumentamos la duración
+        duration: 0.3,
         ease: "easeOut",
         when: "beforeChildren",
         staggerChildren: 0.1
@@ -33,15 +30,12 @@ const HeroSection = () => {
   }
 
   const childVariants = {
-    hidden: {
-      opacity: 0,
-      y: 10, // Reducimos el valor inicial de y
-    },
-    visible: {
+    initial: { opacity: 0, y: 10 },
+    animate: {
       opacity: 1,
       y: 0,
       transition: {
-        duration: 0.6,
+        duration: 0.3,
         ease: "easeOut"
       }
     }
@@ -50,13 +44,12 @@ const HeroSection = () => {
   return (
     <MotionSection
       ref={sectionRef}
+      initial="initial"
+      animate="animate"
       variants={heroVariants}
-      initial="hidden"
-      animate="visible"
       className="relative h-[60vh] min-h-[500px] w-full overflow-hidden"
     >
       <MotionDiv
-        style={{ scale }}
         className="absolute inset-0"
       >
         <Image
@@ -66,15 +59,15 @@ const HeroSection = () => {
           sizes="100vw"
           className="object-cover"
           priority
-          quality={100}
+          quality={90}
+          placeholder="blur"
+          blurDataURL="data:image/webp;base64,UklGRlIAAABXRUJQVlA4IEYAAAAwAQCdASoIAAUAAUAmJaQAA3AA/v89WAAAAP7/2T5G1NLf/8elPp36k9P/d8JvkH9D/Y32G9gD+AP4A/gD+AP4A/gD+AMAA"
         />
         <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-black/20 to-black/30" />
         
-        {/* Subtle decorative effects */}
         <div className="absolute inset-0 bg-gradient-to-r from-red-900/5 to-blue-900/5" />
       </MotionDiv>
 
-      {/* Main Content */}
       <MotionDiv
         style={{ y: textY, opacity }}
         className="relative z-10 h-full max-w-7xl mx-auto px-4"
@@ -111,22 +104,20 @@ const HeroSection = () => {
             </MotionP>
           </MotionDiv>
 
-          {/* Decorative bottom gradient - Más sutil */}
           <MotionDiv
             initial={{ opacity: 0 }}
             animate={{ opacity: 0.6 }}
-            transition={{ delay: 0.8, duration: 0.8 }}
+            transition={{ delay: 0.3, duration: 0.3 }}
             className="absolute bottom-0 left-0 w-full h-32
                        bg-gradient-to-t from-black/20 to-transparent"
           />
         </div>
       </MotionDiv>
 
-      {/* Subtle scroll indicator */}
       <MotionDiv
         initial={{ opacity: 0, y: 10 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 1, duration: 0.8 }}
+        transition={{ delay: 0.4, duration: 0.3 }}
         className="absolute bottom-8 left-1/2 transform -translate-x-1/2"
       >
         <MotionDiv
