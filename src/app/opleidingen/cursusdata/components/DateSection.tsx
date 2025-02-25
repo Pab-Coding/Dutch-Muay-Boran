@@ -7,35 +7,47 @@ import { MotionDiv, MotionH1 } from '@/components/shared/MotionComponents'
 
 const DateSection = () => {
   const sectionRef = useRef<HTMLDivElement>(null)
-  const isMobile = typeof window !== 'undefined' && window.innerWidth < 768
+  // Simplified mobile detection with safe check
+  const isMobile = typeof window !== 'undefined' ? window.innerWidth < 768 : false
+
+  // Simple animation variants
+  const fadeIn = {
+    hidden: { opacity: 0 },
+    visible: { 
+      opacity: 1,
+      transition: { duration: 0.5 }
+    }
+  }
 
   return (
     <MotionDiv
       ref={sectionRef}
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
+      initial="hidden"
+      animate="visible"
+      variants={fadeIn}
       className="w-full max-w-4xl mx-auto px-4 py-12"
-      transition={{ duration: 0.3 }}
     >
       <MotionDiv
-        initial={{ opacity: 0, y: '1rem' }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.3 }}
         className="text-center space-y-8"
       >
-        {/* Circular image container */}
+        {/* Circular image container with simple animation */}
         <MotionDiv
-          whileHover={{ scale: isMobile ? 1 : 1.05 }}
+          initial={{ opacity: 0, scale: 0.9 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.5 }}
+          whileHover={{ 
+            scale: isMobile ? 1 : 1.05,
+            transition: { duration: 0.3 }
+          }}
           whileTap={{ scale: 0.95 }}
-          transition={{ duration: 0.3 }}
-          className="relative w-48 h-48 mx-auto rounded-full overflow-hidden"
+          className="relative w-48 h-48 mx-auto rounded-full overflow-hidden shadow-lg"
         >
           <div className="absolute inset-0 bg-gradient-to-br from-red-600/10 to-blue-600/10 rounded-full" />
           <Image
             src="/images/dates.webp"
             alt="Cursusdata"
             fill
-            sizes="100vw"
+            sizes="(max-width: 768px) 100vw, 192px"
             className="object-cover rounded-full"
             priority
             quality={90}
@@ -44,11 +56,11 @@ const DateSection = () => {
           />
         </MotionDiv>
 
-        {/* Title section */}
+        {/* Title section with simple fade-in */}
         <MotionDiv
-          initial={{ opacity: 0, y: '1rem' }}
+          initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.1, duration: 0.3 }}
+          transition={{ delay: 0.2, duration: 0.5 }}
           className="space-y-4"
         >
           <MotionH1 
@@ -64,11 +76,11 @@ const DateSection = () => {
           </p>
         </MotionDiv>
 
-        {/* Decorative line - optimized animation */}
+        {/* Decorative line with simple animation */}
         <MotionDiv
           initial={{ scaleX: 0 }}
           animate={{ scaleX: 1 }}
-          transition={{ delay: 0.2, duration: 0.3 }}
+          transition={{ delay: 0.4, duration: 0.5 }}
           className="w-32 h-1 mx-auto bg-gradient-to-r from-red-500 via-gray-500 to-blue-500 rounded-full"
         />
       </MotionDiv>

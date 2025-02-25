@@ -17,16 +17,16 @@ const PageWrapper = ({ children }: PageWrapperProps) => {
       className="min-h-screen flex flex-col bg-gradient-to-b from-gray-50 to-white"
       style={{ contain: 'content' }}
     >
-      {/* Background subtle patterns - optimized for mobile */}
+      {/* Background subtle patterns */}
       <div 
         className="absolute inset-0 bg-grid-gray-100/20 bg-repeat pointer-events-none"
-        style={{ willChange: 'transform', contain: 'paint' }}
+        style={{ contain: 'paint' }}
       />
       
-      {/* Decorative elements - combined gradients for better performance */}
+      {/* Decorative elements */}
       <div 
         className="absolute inset-0 pointer-events-none"
-        style={{ willChange: 'transform', contain: 'paint' }}
+        style={{ contain: 'paint' }}
       >
         <div className="absolute inset-0 bg-gradient-to-br from-red-500/5 via-transparent to-blue-500/5 [mask-image:radial-gradient(ellipse_at_top,white,transparent)]" />
       </div>
