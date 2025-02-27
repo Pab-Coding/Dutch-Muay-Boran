@@ -59,11 +59,11 @@ const CallToAction = () => {
               className="space-y-4 sm:space-y-6"
             >
               <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold bg-gradient-to-r from-red-600 to-blue-600 bg-clip-text text-transparent">
-                Begin Jouw Muay Thai Boran Reis
+                Begin Jouw Muay Thai Reis
               </h2>
 
               <p className="text-gray-600 max-w-2xl mx-auto text-base sm:text-lg">
-                Word onderdeel van een eeuwenoude traditie en start je training in Muay Thai Boran. 
+                Word onderdeel van een eeuwenoude traditie en start je training in Muay Thai. 
                 Bij DMBF krijg je les van gecertificeerde instructeurs die de authentieke technieken 
                 en waarden van deze nobele vechtsport doorgeven.
               </p>

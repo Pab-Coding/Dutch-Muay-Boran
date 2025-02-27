@@ -1,6 +1,6 @@
 'use client'
 
-import { useRef, memo } from 'react'
+import { useRef, memo, useState } from 'react'
 import { useInView } from 'framer-motion'
 import { MotionDiv, MotionSpan } from '../shared/MotionComponents'
 import Image from 'next/image'
@@ -29,6 +29,7 @@ const shakeAnimation = {
 const LatestNewsHighlight = () => {
   const ref = useRef(null)
   const isInView = useInView(ref, { once: true, margin: '-100px' })
+  const [showFullText, setShowFullText] = useState(false)
 
   return (
     <div ref={ref} className="w-full mb-12">
@@ -45,7 +46,7 @@ const LatestNewsHighlight = () => {
           <div className="relative">
             <Image
               src="/images/nk-muaythai-2025.webp"
-              alt="Nederlandse Kampioenschappen Muay Thai Boran 2025"
+              alt="Nederlandse Kampioenschappen Muay Thai 2025"
               width={1200}
               height={600}
               sizes="(max-width: 768px) 100vw, 50vw"
@@ -64,13 +65,32 @@ const LatestNewsHighlight = () => {
 
           <div className="p-6">
             <h2 className="text-2xl font-bold mb-4 text-gray-800">
-              Nederlandse Kampioenschappen Muay Thai Boran 2025
+              Nederlandse Kampioenschappen Muay Thai 2025
             </h2>
-            <p className="text-gray-600 mb-2 line-clamp-3">
-              De Dutch Muay Boran Foundation (DMBF) kondigt met trots aan dat op 15 en 16 maart 2025 
-              de Nederlandse Kampioenschappen Muay Thai Boran zullen plaatsvinden. In samenwerking met de WFCA 
-              organiseert de DMBF dit prestigieuze evenement dat zich richt op het authentieke Muay Thai Boran.
-            </p>
+            <div className="relative">
+              <p className={`text-gray-600 mb-2 ${showFullText ? '' : 'line-clamp-3'}`}>
+                De Dutch Muay Boran Foundation (DMBF) kondigt met trots aan dat op 15 en 16 maart 2025 
+                de Nederlandse Kampioenschappen Muay Thai zullen plaatsvinden. In samenwerking met de WFCA 
+                organiseert de DMBF dit prestigieuze evenement dat zich richt op het authentieke Muay Thai.
+                {!showFullText && (
+                  <button 
+                    onClick={() => setShowFullText(true)}
+                    className="text-blue-600 hover:underline text-sm font-medium inline sm:hidden"
+                  >
+                    ...Lees meer
+                  </button>
+                )}
+              </p>
+              
+              {showFullText && (
+                <button 
+                  onClick={() => setShowFullText(false)}
+                  className="text-blue-600 hover:underline text-sm font-medium mt-1 inline-block sm:hidden"
+                >
+                  Toon minder
+                </button>
+              )}
+            </div>
             <p className="text-gray-600 mb-6 italic">
               Voor meer informatie kunt u contact met ons opnemen.
             </p>

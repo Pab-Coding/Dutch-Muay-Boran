@@ -91,7 +91,7 @@ const HeroSection = () => {
               className="mt-4 md:mt-6 text-lg sm:text-xl md:text-2xl text-gray-200 font-medium
                          leading-relaxed max-w-2xl drop-shadow-lg px-4 md:px-0 text-center"
             >
-              Ontdek de vereisten voor elk niveau in Muay Thai Boran
+              Ontdek de vereisten voor elk niveau in Muay Thai
             </MotionP>
           </MotionDiv>
         </div>

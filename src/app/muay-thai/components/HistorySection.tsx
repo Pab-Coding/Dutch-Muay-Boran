@@ -43,11 +43,11 @@ const HistorySection = () => {
   const paragraphs = [
     {
       title: "Oorsprong",
-      content: "Muay Thai Boran, ook wel Thaiboksen genoemd, is een vechtsport uit het hedendaagse Thailand waarvan de oorsprong meer dan 1000 jaar teruggaat. In die tijd werd het gebruikt in oorlogssituaties om het land te beschermen tegen invallen en om de koning te beschermen."
+      content: "Muay Thai, ook wel Thaiboksen genoemd, is een vechtsport uit het hedendaagse Thailand waarvan de oorsprong meer dan 1000 jaar teruggaat. In die tijd werd het gebruikt in oorlogssituaties om het land te beschermen tegen invallen en om de koning te beschermen."
     },
     {
       title: "Ontwikkeling",
-      content: "De Thaise soldaten vochten met twee zwaarden. Deze gewapende gevechtskunst werd 'Krabi Krabong' genoemd. Wanneer de soldaten hun zwaarden verloren hadden, gingen zij verder met het ongewapende gevecht: Muay Thai Boran, oftewel 'Thais vechten'. De bedoeling was om de 8 harde delen van het lichaam als wapens te gebruiken."
+      content: "De Thaise soldaten vochten met twee zwaarden. Deze gewapende gevechtskunst werd 'Krabi Krabong' genoemd. Wanneer de soldaten hun zwaarden verloren hadden, gingen zij verder met het ongewapende gevecht: Muay Thai, oftewel 'Thais vechten'. De bedoeling was om de 8 harde delen van het lichaam als wapens te gebruiken."
     },
     {
       title: "Evolutie", 
@@ -57,11 +57,11 @@ const HistorySection = () => {
     {
       title: "Modernisering",
       content: "Daarom werden er in 1929 nieuwe regels ingevoerd. Er kwamen gewichtsklassen en 5 rondes van 3 minuten, waarna er op punten werd beslist. De wedstrijden vonden vanaf nu ook plaats in een boksring.",
-      expanded: "Ook werd er nu gebruik gemaakt van bokshandschoenen in plaats van touwen die om de handen werden gewikkeld. Dit heeft de sport zo veranderd dat er inmiddels sprake is van twee takken: Muay Boran, de oude stijl, en Muay Thai Boran, de 'nieuwe' wedstrijdsport."
+      expanded: "Ook werd er nu gebruik gemaakt van bokshandschoenen in plaats van touwen die om de handen werden gewikkeld. Dit heeft de sport zo veranderd dat er inmiddels sprake is van twee takken: Muay Boran, de oude stijl, en Muay Thai, de 'nieuwe' wedstrijdsport."
     },
     {
       title: "Internationale Erkenning",
-      content: "Sinds de Tweede Wereldoorlog is het hard gegaan met Muay Thai Boran. De effectiviteit van de sport sprak zich rond in vechtsportland.",
+      content: "Sinds de Tweede Wereldoorlog is het hard gegaan met Muay Thai. De effectiviteit van de sport sprak zich rond in vechtsportland.",
       expanded: "Verscheidene delegaties van vechtsporters uit Japan, de Filipijnen en China werden allemaal verslagen. Onder de indruk van de hardheid van de Thai besloten de Japanners hun kennis te combineren met de trainingsmethodes en de technieken van de Thai. Om een groter publiek aan te spreken verwijderden zij de harde elleboogtechnieken, het clinchen en de Thaise rituelen en werd het 'kickboksen' genoemd. Ondanks de grotere bekendheid van het kickboksen tegenwoordig worden de wedstrijdvechters in Thailand nog altijd beschouwd als de beste en hardste ter wereld."
     }
   ]

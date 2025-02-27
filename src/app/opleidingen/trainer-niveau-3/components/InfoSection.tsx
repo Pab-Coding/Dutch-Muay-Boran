@@ -62,7 +62,7 @@ const InfoSection = () => {
               Historie & Achtergrond
             </h2>
             <p className="text-gray-700 leading-relaxed text-lg">
-              Muay Thai Boran, de nationale sport van Thailand, kent een rijke geschiedenis van meer dan 1000 jaar. 
+              Muay Thai, de nationale sport van Thailand, kent een rijke geschiedenis van meer dan 1000 jaar. 
               Oorspronkelijk ontwikkeld als gevechtskunst voor militaire doeleinden, heeft het zich geëvolueerd 
               tot een verfijnde vechtsport die wereldwijd wordt beoefend. Bij de Dutch Muay Boran Foundation (DMBF) 
               bewaren en onderwijzen we deze authentieke kunst in zijn meest pure vorm.
@@ -83,7 +83,7 @@ const InfoSection = () => {
                 </h2>
               </div>
               <p className="text-gray-700 mb-6 text-lg">
-                Wil jij je passie voor Muay Thai Boran delen en anderen inspireren? 
+                Wil jij je passie voor Muay Thai delen en anderen inspireren? 
                 De DMBF biedt een uitgebreide NOC/NSF-erkende opleiding tot Trainer / Coach niveau 3 aan.
               </p>
               <h3 className="text-xl font-semibold mb-4 text-gray-900">
@@ -91,10 +91,10 @@ const InfoSection = () => {
               </h3>
               <ul className="space-y-3">
                 {[
-                  'Aspirant Muay Thai Boran instructeurs',
+                  'Aspirant Muay Thai instructeurs',
                   'Huidige assistent leraren die hun kennis willen verdiepen',
                   'Instructeurs uit andere vechtsporten (kickboksen, karate, etc.)',
-                  'Sportprofessionals die zich willen specialiseren in Muay Thai Boran'
+                  'Sportprofessionals die zich willen specialiseren in Muay Thai'
                 ].map((item, index) => (
                   <motion.li
                     key={index}
@@ -160,7 +160,7 @@ const InfoSection = () => {
                 {[
                   'Minimumleeftijd: 18 jaar',
                   'Minimaal 3 jaar aantoonbare ervaring in Muay Thai, Kickboksen, Savate of vergelijkbare full-contact sporten',
-                  'Motivatie om de authentieke kunst van Muay Thai Boran te onderwijzen'
+                  'Motivatie om de authentieke kunst van Muay Thai te onderwijzen'
                 ].map((item, index) => (
                   <motion.li
                     key={index}

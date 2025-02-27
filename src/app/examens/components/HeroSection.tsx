@@ -50,7 +50,7 @@ const HeroSection = () => {
       >
         <Image
           src="/images/examens-muay.webp"
-          alt="Muay Thai Boran Examens"
+          alt="Muay Thai Examens"
           fill
           className="object-cover"
           priority
@@ -97,7 +97,7 @@ const HeroSection = () => {
               className="mt-4 md:mt-6 text-lg sm:text-xl md:text-2xl text-gray-200 font-medium
                          leading-relaxed max-w-2xl drop-shadow-lg px-4 md:px-0"
             >
-              Ontwikkel je vaardigheden en bereik nieuwe niveaus in Muay Thai Boran
+              Ontwikkel je vaardigheden en bereik nieuwe niveaus in Muay Thai
             </MotionP>
           </MotionDiv>
 

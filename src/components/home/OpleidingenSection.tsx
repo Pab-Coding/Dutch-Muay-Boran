@@ -37,7 +37,7 @@ const courses = [
     title: "Trainer / Coach niveau 3",
     startDate: "Maart 2025",
     description:
-      "Start je reis als Muay Thai Boran instructeur met onze Trainer / Coach opleiding",
+      "Start je reis als Muay Thai instructeur met onze Trainer / Coach opleiding",
     icon: FaMedal,
     path: "/opleidingen/trainer-niveau-3",
     color: "from-red-700 to-red-900",
@@ -46,7 +46,7 @@ const courses = [
     title: "Leraar niveau 4 & 5",
     startDate: "Maart 2025",
     description:
-      "Word een gecertificeerde Muay Thai Boran leraar niveau 4 & 5",
+      "Word een gecertificeerde Muay Thai leraar niveau 4 & 5",
     icon: GiBoxingGlove,
     path: "/opleidingen/leraar-niveau-4&5",
     color: "from-blue-700 to-blue-900",

@@ -159,7 +159,7 @@ export default function OpleidingenPage() {
                   >
                     <h3 className="text-lg sm:text-xl font-semibold text-gray-800">Ervaren Instructeurs</h3>
                     <p className="text-sm sm:text-base text-gray-600">
-                      Onze instructeurs hebben jarenlange ervaring in het lesgeven en de praktijk van Muay Thai Boran.
+                      Onze instructeurs hebben jarenlange ervaring in het lesgeven en de praktijk van Muay Thai.
                     </p>
                   </motion.div>
                 </motion.div>

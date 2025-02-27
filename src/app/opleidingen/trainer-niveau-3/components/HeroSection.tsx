@@ -50,7 +50,7 @@ className="relative h-[60vh] md:h-[70vh] min-h-[400px] md:min-h-[600px] w-full o
       >
         <Image
           src="/images/Muay-thai-boran.webp"
-          alt="Traditional Muay Thai Boran Training Techniques"
+          alt="Traditional Muay Thai Training Techniques"
           fill
           sizes="100vw"
           className="object-cover"
@@ -96,7 +96,7 @@ className="relative h-[60vh] md:h-[70vh] min-h-[400px] md:min-h-[600px] w-full o
               className="mt-4 md:mt-6 text-lg sm:text-xl md:text-2xl text-gray-200 font-medium
                          leading-relaxed max-w-2xl drop-shadow-lg px-4 md:px-0"
             >
-              Start je reis als Muay Thai Boran instructeur en word deel van een 
+              Start je reis als Muay Thai instructeur en word deel van een 
               eeuwenoude traditie
             </MotionP>
 

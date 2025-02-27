@@ -50,7 +50,7 @@ const HeroSection = () => {
       >
         <Image
           src="/images/zelf-standig.webp"
-          alt="Muay Thai Boran Training"
+          alt="Muay Thai Training"
           fill
           sizes="100vw"
           className="object-cover"
@@ -96,7 +96,7 @@ const HeroSection = () => {
               className="mt-4 md:mt-6 text-lg sm:text-xl md:text-2xl text-gray-200 font-medium
                          leading-relaxed max-w-2xl drop-shadow-lg px-4 md:px-0"
             >
-              Start je reis als Muay Thai Boran instructeur en word deel van een 
+              Start je reis als Muay Thai instructeur en word deel van een 
               eeuwenoude traditie
             </MotionP>
 

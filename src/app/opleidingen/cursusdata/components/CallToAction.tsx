@@ -63,7 +63,7 @@ const CallToAction = () => {
               </h2>
 
               <p className="text-gray-600 max-w-2xl mx-auto text-base sm:text-lg">
-                Schrijf je in voor een van onze professionele opleidingen en start je reis in de wereld van Muay Thai Boran. 
+                Schrijf je in voor een van onze professionele opleidingen en start je reis in de wereld van Muay Thai. 
                 Onze ervaren instructeurs staan klaar om jou te begeleiden naar het volgende niveau.
               </p>
 

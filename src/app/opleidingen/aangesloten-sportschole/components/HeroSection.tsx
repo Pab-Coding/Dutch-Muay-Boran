@@ -101,7 +101,7 @@ const HeroSection = () => {
               className="mt-6 text-xl md:text-2xl text-gray-200 font-medium
                          leading-relaxed max-w-2xl drop-shadow-lg"
             >
-              Word lid van onze aangesloten sportscholen en train onder de beste instructeurs in Muay Thai Boran
+              Word lid van onze aangesloten sportscholen en train onder de beste instructeurs in Muay Thai
             </MotionP>
           </MotionDiv>
 

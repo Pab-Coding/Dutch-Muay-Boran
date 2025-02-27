@@ -95,7 +95,7 @@ const OpleidingenHero = () => {
                          leading-relaxed max-w-2xl drop-shadow-lg px-4 md:px-0"
             >
               Ontwikkel je vaardigheden en start je professionele carrière
-              in de authentieke kunst van Muay Thai Boran en Muay Boran
+              in de authentieke kunst van Muay Thai en Muay Boran
             </MotionP>
           </MotionDiv>
         </div>

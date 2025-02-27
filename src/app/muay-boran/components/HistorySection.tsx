@@ -34,7 +34,7 @@ const HistorySection = () => {
   const paragraphs = [
     {
       title: "Oorsprong en Definitie",
-      content: "Muay Thai Boran is de moedersport van het moderne Muay Thai, de ringsport die over de hele wereld populair is vanwege zijn hardheid en effectiviteit. Het hedendaagse Muay Thai werd door de eeuwen heen ontwikkeld uit wat nu Muay Thai Boran genoemd wordt. 'Boran' betekent 'oud' of in het Engels 'ancient', en 'muay' betekent 'vechten' - letterlijk dus 'oud vechten'.",
+      content: "Muay Thai is de moedersport van het moderne Muay Thai, de ringsport die over de hele wereld populair is vanwege zijn hardheid en effectiviteit. Het hedendaagse Muay Thai werd door de eeuwen heen ontwikkeld uit wat nu Muay Thai genoemd wordt. 'Boran' betekent 'oud' of in het Engels 'ancient', en 'muay' betekent 'vechten' - letterlijk dus 'oud vechten'.",
       expanded: "In 1929 werden de nieuwe regels ingevoerd, die afgeleid zijn van het Westerse boksen. Gewichtsklassen werden ingevoerd, 5 rondes van 3 minuten en bokshandschoenen werden verplicht. Dit heeft de sport zo ingrijpend veranderd dat er een duidelijk verschil is ontstaan tussen het moderne sport-Muay Thai en de oude gevechtskunst Muay Boran."
     },
     {

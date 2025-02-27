@@ -49,7 +49,7 @@ const HeroSection = () => {
       >
         <Image
           src="/images/muay-thai.webp"
-          alt="Muay Thai Boran"
+          alt="Muay Thai"
           fill
           sizes="100vw"
           className="object-cover"
@@ -87,7 +87,7 @@ const HeroSection = () => {
                          bg-gradient-to-r from-white via-gray-200 to-white
                          leading-[1.2] pb-2 sm:pb-4"
             >
-              Muay Thai Boran
+              Muay Thai
             </MotionH1>
 
             <MotionP

@@ -86,7 +86,7 @@ const CallToAction = () => {
               </h2>
               
               <p className="text-gray-600 max-w-2xl mx-auto text-sm md:text-base">
-                Ontdek de gedetailleerde exameneisen voor elke khan-graad en begin je reis naar het volgende niveau in Muay Thai Boran
+                Ontdek de gedetailleerde exameneisen voor elke khan-graad en begin je reis naar het volgende niveau in Muay Thai
               </p>
 
               <motion.div

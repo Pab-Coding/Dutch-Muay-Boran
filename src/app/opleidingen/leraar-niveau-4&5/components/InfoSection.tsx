@@ -67,7 +67,7 @@ const InfoSection = () => {
               en is geëvolueerd van militaire gevechtskunst tot een wereldwijd beoefende vechtsport. 
               Bij de Dutch Muay Boran Foundation (DMBF) bewaren en onderwijzen we deze authentieke kunst 
               via een professionele lerarenopleiding op NOC/NSF niveau 3, gericht op het behoud van 
-              traditionele Muay Thai Boran technieken.
+              traditionele Muay Thai technieken.
             </p>
           </div>
         </motion.div>
