@@ -35,7 +35,7 @@ const iconVariants = {
 const courses = [
   {
     title: "Trainer / Coach niveau 3",
-    startDate: "Maart 2025",
+    startDate: "April 2025",
     description:
       "Start je reis als Muay Thai instructeur met onze Trainer / Coach opleiding",
     icon: FaMedal,
@@ -44,7 +44,7 @@ const courses = [
   },
   {
     title: "Leraar niveau 4 & 5",
-    startDate: "Maart 2025",
+    startDate: "April 2025",
     description:
       "Word een gecertificeerde Muay Thai leraar niveau 4 & 5",
     icon: GiBoxingGlove,
