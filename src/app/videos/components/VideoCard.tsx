@@ -29,8 +29,9 @@ const VideoCard = ({ videoId, title, description, onPlay }: VideoCardProps) => {
     'SGl9vOE_rj8': 'top-[20%]'  // Marco de Cesaris - slightly higher
   }
 
+  // Use a stronger fallback system with local thumbnails
   const thumbnailUrl = defaultThumbnails[videoId] || 
-                      `https://img.youtube.com/vi/${videoId}/maxresdefault.jpg`
+                      `/images/saenchai.webp` // Default fallback if YouTube thumbnail fails
 
   const cardVariants = {
     hidden: {
@@ -115,10 +116,11 @@ const VideoCard = ({ videoId, title, description, onPlay }: VideoCardProps) => {
           alt={title}
           fill
           className="object-cover"
-          quality={85}
+          quality={75}
           onError={() => setThumbnailError(true)}
           sizes="(max-width: 768px) 100vw, 50vw"
-          priority
+          placeholder="blur"
+          blurDataURL="data:image/webp;base64,UklGRlIAAABXRUJQVlA4IEYAAAAwAQCdASoIAAUAAUAmJaQAA3AA/v89WAAAAP7/2T5G1NLf/8elPp36k9P/d8JvkH9D/Y32G9gD+AP4A/gD+AP4A/gD+AMAA"
         />
 
         {/* Always visible overlay with gradient */}

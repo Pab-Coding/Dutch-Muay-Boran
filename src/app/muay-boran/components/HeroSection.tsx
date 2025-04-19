@@ -4,11 +4,12 @@ import { motion } from 'framer-motion'
 import Image from 'next/image'
 import Link from 'next/link'
 import { useRef } from 'react'
+import { useMediaQuery } from '@/hooks/useMediaQuery'
 import { MotionSection, MotionDiv, MotionH1, MotionP } from '@/components/shared/MotionComponents'
 
 const HeroSection = () => {
   const sectionRef = useRef<HTMLDivElement>(null)
-  const isMobile = typeof window !== 'undefined' && window.innerWidth < 768
+  const isMobile = useMediaQuery('(max-width: 768px)')
 
   // Simplified animation variants
   const heroVariants = {
@@ -51,16 +52,15 @@ const HeroSection = () => {
           src="/images/boran-optimized.webp"
           alt="Muay Boran"
           fill
-          sizes="100vw"
+          sizes="(max-width: 768px) 100vw, 100vw"
           className="object-cover"
-          priority
-          quality={90}
+          priority={true}
+          quality={85}
           placeholder="blur"
-          blurDataURL="data:image/webp;base64,UklGRlIAAABXRUJQVlA4IEYAAAAwAQCdASoIAAUAAUAmJaQAA3AA/v89WAAAAP7/2T5G1NLf/8elPp36k9P/d8JvkH9D/Y32G9gD+AP4A/gD+AP4A/gD+AMAA"
+          blurDataURL="data:image/webp;base64,UklGRnQBAABXRUJQVlA4IGgBAACQBgCdASpkAGQAPpE+m0elo6KhMAgAsBIJaQAACRgAAjUxQJAD55QAAAAD6UAA5mLR0tXYe0jN7JA8QlXSZmvtLfdoQk8RsELOw9Pqix8WA0eVXIQvIj8EFqCNDvLZZLSaAAD+88eElnY/i1jWY1TxhYlhLTsI0NJlRNZbSFKM6/rhJDlW66yhUFx53cB5pqy3DdwGKB/KUdxOoBjGT5iiDAGbOPnE1xobyWQJGTVe3MgKy7IFNP3qbvJNPuB+jQgFR7dYxA7MxHs18DHCpVwVQ7XTzKnIEUZUNFmOLuZUxkjHg2LPuR9G86Nq5kx8eYHbOyEQeKU6KlC6LMCvOt/fv8Jdybn+hLKQfCrLvPLnl7T6O6cL5YAYGK4nVOE+v1KaP2EEGidOY7zFYtE5hDBRUn5o8czXP4X+S/Y2CfSvOVs+57CouQAAAA=="
         />
         <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/30 to-black/40" />
         <div className="absolute inset-0 bg-gradient-to-r from-red-900/5 to-blue-900/5" />
-        <div className="absolute inset-0 backdrop-blur-[0.5px]" />
       </MotionDiv>
 
       <MotionDiv

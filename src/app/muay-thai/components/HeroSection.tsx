@@ -4,11 +4,12 @@ import { motion } from 'framer-motion'
 import Image from 'next/image'
 import Link from 'next/link'
 import { useRef } from 'react'
+import { useMediaQuery } from '@/hooks/useMediaQuery'
 import { MotionSection, MotionDiv, MotionButton, MotionSpan, MotionH1, MotionP } from '@/components/shared/MotionComponents'
 
 const HeroSection = () => {
   const sectionRef = useRef<HTMLDivElement>(null)
-  const isMobile = typeof window !== 'undefined' && window.innerWidth < 768
+  const isMobile = useMediaQuery('(max-width: 768px)')
 
   // Simplified animation variants
   const heroVariants = {
@@ -51,16 +52,14 @@ const HeroSection = () => {
           src="/images/muay-thai.webp"
           alt="Muay Thai"
           fill
-          sizes="100vw"
+          sizes="(max-width: 768px) 100vw, 100vw"
           className="object-cover"
-          priority
-          quality={90}
+          quality={85}
           placeholder="blur"
-          blurDataURL="data:image/webp;base64,UklGRlIAAABXRUJQVlA4IEYAAAAwAQCdASoIAAUAAUAmJaQAA3AA/v89WAAAAP7/2T5G1NLf/8elPp36k9P/d8JvkH9D/Y32G9gD+AP4A/gD+AP4A/gD+AMAA"
+          blurDataURL="data:image/webp;base64,UklGRmQBAABXRUJQVlA4IFgBAABwCgCdASpkAGQAPpE4l0eloyIhsAgAsBIJaQAACqwAIxAcSEAD8j/1MP/4Y2ZeT/zPEtHxRUACsj5SjLbIZHC3CBLvMtl/9G0a3+uf/s7Ypn2kZhRwAAD+2MpYEUh20FwmPOjTGc34+NHwMxNRiyLgWEEBJrCLzUZoHW+L3JrVjM6Vbz23jAwDqNMdotI1dMpY4CoZ7LWO1VT7nJNwYXRG3Tx1Qod1YYT3MCIbVFZn8BvCVsb8IslLEuOvz+7t+QpPVuPMVMCr9jsQppn6C+5SP+0IVTYXjCCnUY1iFDcB/Wa2/asQGS+lE4LJ7e5VrgjzuuUtFX3f7rBmX9EvdP9Aq9/7M5qQrEtIEPWDsM8J+IjuD8/7V4j4bK0JtpP21gQJH8QpIoBzGwAA"
         />
         <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/30 to-black/40" />
         <div className="absolute inset-0 bg-gradient-to-r from-red-900/5 to-blue-900/5" />
-        <div className="absolute inset-0 backdrop-blur-[0.5px]" />
       </MotionDiv>
 
       <MotionDiv

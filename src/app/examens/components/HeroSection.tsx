@@ -4,12 +4,13 @@ import { motion } from 'framer-motion'
 import Image from 'next/image'
 import Link from 'next/link'
 import { useRef } from 'react'
+import { useMediaQuery } from '@/hooks/useMediaQuery'
 import { ArrowRightIcon } from '@heroicons/react/24/outline'
 import { MotionSection, MotionDiv, MotionButton, MotionSpan, MotionH1, MotionP } from '@/components/shared/MotionComponents'
 
 const HeroSection = () => {
   const sectionRef = useRef<HTMLDivElement>(null)
-  const isMobile = typeof window !== 'undefined' && window.innerWidth < 768
+  const isMobile = useMediaQuery('(max-width: 768px)')
 
   // Optimized animation variants
   const heroVariants = {
@@ -53,16 +54,13 @@ const HeroSection = () => {
           alt="Muay Thai Examens"
           fill
           className="object-cover"
-          priority
-          quality={90}
-          loading="eager"
-          sizes="100vw"
+          quality={85}
+          sizes="(max-width: 768px) 100vw, 100vw"
           placeholder="blur"
-          blurDataURL="data:image/webp;base64,UklGRlIAAABXRUJQVlA4IEYAAAAwAQCdASoIAAUAAUAmJaQAA3AA/v89WAAAAP7/2T5G1NLf/8elPp36k9P/d8JvkH9D/Y32G9gD+AP4A/gD+AP4A/gD+AMAA"
+          blurDataURL="data:image/webp;base64,UklGRooBAABXRUJQVlA4IH4BAACwCACdASpkAGQAPpE+m0iloyKhMAgAsBIJaQAACvPP/YHW+o5GZkcwAAD+9cF9nrNE4iCHvJbXDTuA1X/9eozJoA75/JdWKfcxK+d7a5Dx/S3R1fIkPi70Rk+rX38/qoKnUiD8rrCJkNkxQPFPtNnzp1f9QEwRzTNg2/2o7kVuKL9gw++kkKOk8Tb+uxu77Vc5FE7zBOBBrEHePwbDSbCNDy+9aDFTDyFyWWuDBTIjK3LwcDIu5Yl1WGd9d9+J1r0sXl0I9D9J5UlXcAXszm8Bi6f9TBnw1+mP6Fw2jV0+XaVEyY7L2EH8aOwcMqhyjJ+GilKS1H8XQZtxeVuUCYtIw3zBx9OD6VYC+xO4I8kqG2EzEOLMU+C3YtCgF6tK5q8nnOWrq37DPj7kfO4ntD2QvJSuKXvGLKyScpIJLzwcWrVJNkAAAA=="
         />
         <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/30 to-black/40" />
         <div className="absolute inset-0 bg-gradient-to-r from-red-900/5 to-blue-900/5" />
-        <div className="absolute inset-0 backdrop-blur-[0.5px]" />
       </MotionDiv>
 
       <MotionDiv

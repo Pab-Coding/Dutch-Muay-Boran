@@ -56,16 +56,13 @@ const HeroSection = () => {
           src="/images/nieuws.webp"
           alt="Nieuws - Dutch Muay Boran Foundation"
           fill
-          sizes="100vw"
+          sizes="(max-width: 768px) 100vw, 100vw"
           className="object-cover"
-          priority
-          quality={90}
+          quality={85}
           placeholder="blur"
-          blurDataURL="data:image/webp;base64,UklGRlIAAABXRUJQVlA4IEYAAAAwAQCdASoIAAUAAUAmJaQAA3AA/v89WAAAAP7/2T5G1NLf/8elPp36k9P/d8JvkH9D/Y32G9gD+AP4A/gD+AP4A/gD+AMAA"
+          blurDataURL="data:image/webp;base64,UklGRnIBAABXRUJQVlA4IGYBAACQCQCdASpkAGQAPpFCm0ilo6KhMAgAsBIJaQAArjAGcAD0l+sAAAAA/vPCXj/QVVJ3+SZhb1X6VtDYZLzXc+X/9+cCONLdCUNUr1+0DYhvQjnomvt2pJAWp9q8q+PwfqVgAAD+88Nb7Zc+TapNmwKoTlOUHblI9jf8wl1jP+rcdGhd2K3sJ8TzH4XFhDkEVSIZMvqCNh2I1hd0/vopvANANzpE6E4cDX9ZI1Y8m41M0+N9Z2vePiH12DWFQ9oqpEXbhYcBDiKrpwkvs1h3NzWRJsQSiPdYmVQwR62aaYMppwuaVBpWB28ZsQAeZZvJpHnUPE19BLFt8zB5iSSEHi6dYvdGNNpEbXyTz5jbwp+d3MX5EYx5nVwLnZ65rQH2rV+yZwKS3Xb2ZL5WrVjvnYd3dUFMqRHQqaAWr/FE3RzUPfSIiX0pNaY67uUP+vdUWfkQhLXODCb3Jz8+Ym7dDwCPj8wfI5XlYTJk5MrTBxN2F9MAAAAA"
         />
         <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-black/20 to-black/30" />
-        
-        <div className="absolute inset-0 bg-gradient-to-r from-red-900/5 to-blue-900/5" />
       </MotionDiv>
 
       <MotionDiv

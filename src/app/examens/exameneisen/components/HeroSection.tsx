@@ -3,11 +3,12 @@
 import { motion } from 'framer-motion'
 import Image from 'next/image'
 import { useRef } from 'react'
+import { useMediaQuery } from '@/hooks/useMediaQuery'
 import { MotionSection, MotionDiv, MotionH1, MotionP } from '@/components/shared/MotionComponents'
 
 const HeroSection = () => {
   const sectionRef = useRef<HTMLDivElement>(null)
-  const isMobile = typeof window !== 'undefined' && window.innerWidth < 768
+  const isMobile = useMediaQuery('(max-width: 768px)')
 
   // Optimized animation variants
   const heroVariants = {
@@ -46,10 +47,8 @@ const HeroSection = () => {
       <MotionDiv
         className="absolute inset-0"
       >
-        <div className="absolute inset-0 bg-gradient-to-r from-red-600 via-white to-blue-600" />
+        <div className="absolute inset-0 bg-gradient-to-r from-red-600 via-white to-blue-600 opacity-80" />
         <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/30 to-black/40" />
-        <div className="absolute inset-0 bg-gradient-to-r from-red-900/5 to-blue-900/5" />
-        <div className="absolute inset-0 backdrop-blur-[0.5px]" />
       </MotionDiv>
 
       <MotionDiv
@@ -70,10 +69,9 @@ const HeroSection = () => {
                 fill
                 sizes="(max-width: 768px) 100vw, 50vw"
                 className="object-contain"
-                priority
-                loading="eager"
+                quality={85}
                 placeholder="blur"
-                blurDataURL="data:image/webp;base64,UklGRlIAAABXRUJQVlA4IEYAAAAwAQCdASoIAAUAAUAmJaQAA3AA/v89WAAAAP7/2T5G1NLf/8elPp36k9P/d8JvkH9D/Y32G9gD+AP4A/gD+AP4A/gD+AMAA"
+                blurDataURL="data:image/webp;base64,UklGRmABAABXRUJQVlA4IFQBAAAwCQCdASpkAGQAPpFInUulpCKhMAgAsBIJaQAACTgGcAD+5QAAAAD+88NaQehknZtQPl5dIKkdBEz6XDCVAiRYhv+ZsI4YYNLi3KX9Jkz2KqA6kNdARm4n+dfHrGwGMDCCiCFIAAD+870zI6Mwcm+bz1aM/jrCR3+N04J6V1mCvyb1IwK5K6/gJfhf5ONVX0NxzGGLVrQnMdoQOPZx1lfj/J9Fj/lSEu7gJuR5mgskGgXuLSfGzIRn3/x41Pg48mEy9hZvdxWF3kv+YkPxrRrwGu+BnH0bLSPR44DFnGhVrk5OqM9QIHhPxsJjMgL8eaVZvIXt41fGp/r3Dkn59iKS1J8fqrp/vVuqlPTKzRXdIZTvMWbvZFsYlIFQl5RZWNbsRSZAR8u4l+7B5vPfcmILdWpgYZpRe6MuMNZYFgAAAA=="
               />
             </MotionDiv>
 
