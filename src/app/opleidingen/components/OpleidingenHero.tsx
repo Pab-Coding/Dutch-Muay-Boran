@@ -3,11 +3,12 @@
 import { motion } from 'framer-motion'
 import Image from 'next/image'
 import { useRef } from 'react'
+import { useMediaQuery } from '@/hooks/useMediaQuery'
 import { MotionSection, MotionDiv, MotionH1, MotionP } from '@/components/shared/MotionComponents'
 
 const OpleidingenHero = () => {
   const sectionRef = useRef<HTMLDivElement>(null)
-  const isMobile = typeof window !== 'undefined' && window.innerWidth < 768
+  const isMobile = useMediaQuery('(max-width: 768px)')
 
   // Optimized animation variants
   const heroVariants = {
@@ -50,16 +51,14 @@ const OpleidingenHero = () => {
           src="/images/opleidingen.webp"
           alt="Opleidingen Muay Thai"
           fill
-          sizes="100vw"
+          sizes="(max-width: 768px) 100vw, 100vw"
           className="object-cover"
-          priority
-          quality={90}
+          quality={85}
           placeholder="blur"
-          blurDataURL="data:image/webp;base64,UklGRlIAAABXRUJQVlA4IEYAAAAwAQCdASoIAAUAAUAmJaQAA3AA/v89WAAAAP7/2T5G1NLf/8elPp36k9P/d8JvkH9D/Y32G9gD+AP4A/gD+AP4A/gD+AMAA"
+          blurDataURL="data:image/webp;base64,UklGRoQBAABXRUJQVlA4IHgBAACQCQCdASpkAGQAPpE8l0elIyIhMAgAsBIJaQAAqMAJ0CkD8/IjUgAA/vdVbGdCnlBjAFwCKmm36r8TP6Zny+JG5GI8Dh91aqP1EqQB8QS2zewK+L6iqNfftN+bOBs0AAAAiv8/HpmRPKTDCEd5I9g8b9Gd8kA7qrqUjnGm/nFAqAEZlvj9kXULUwq3sB2a+O/IgTYAZxb9PkfQ18lAgxVCO8SyPvJrPPWXwW9jxbPuYO9Bsv6cZ4iC8mSPx3DjL+G6h/g1e+bV+dYyDgmhRW6QWw1RFSUPSYsP+8Jb5PbxJ9/i4FJmPQitMm1TLCL89wg9b+dq/MQ6YfQ3sKGHh5GVijSFDLqpnDI+mQ8nzHO45DkWl5J4VHD9SjJHwIiJ0MWrXgLYbKFQrNEggLvWXyS+cMkSa1TH0z9B9FLfT8z+7Df9ZskAAAAA"
         />
         <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/30 to-black/40" />
         <div className="absolute inset-0 bg-gradient-to-r from-red-900/5 to-blue-900/5" />
-        <div className="absolute inset-0 backdrop-blur-[0.5px]" />
       </MotionDiv>
 
       <MotionDiv

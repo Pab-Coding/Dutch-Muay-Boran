@@ -3,12 +3,12 @@
 import { motion } from 'framer-motion'
 import Image from 'next/image'
 import { useRef } from 'react'
+import { useMediaQuery } from '@/hooks/useMediaQuery'
 import { MotionDiv, MotionH1 } from '@/components/shared/MotionComponents'
 
 const DateSection = () => {
   const sectionRef = useRef<HTMLDivElement>(null)
-  // Simplified mobile detection with safe check
-  const isMobile = typeof window !== 'undefined' ? window.innerWidth < 768 : false
+  const isMobile = useMediaQuery('(max-width: 768px)')
 
   // Simple animation variants
   const fadeIn = {
@@ -50,9 +50,9 @@ const DateSection = () => {
             sizes="(max-width: 768px) 100vw, 192px"
             className="object-cover rounded-full"
             priority
-            quality={90}
+            quality={85}
             placeholder="blur"
-            blurDataURL="data:image/webp;base64,UklGRlIAAABXRUJQVlA4IEYAAAAwAQCdASoIAAUAAUAmJaQAA3AA/v89WAAAAP7/2T5G1NLf/8elPp36k9P/d8JvkH9D/Y32G9gD+AP4A/gD+AP4A/gD+AMAA"
+            blurDataURL="data:image/webp;base64,UklGRoYBAABXRUJQVlA4IHoBAADQCgCdASpkAGQAPpFEnEqlo6KhMAgAsBKJaQAACtDwALmMfP4H+AAAAAD+9eKXrp2uvuYaORyTTLY6NMYTDlIaQPv7JIBJk2JzTUGdA4HWdGAcHbWz+m4hwK9G3oR98O3s3pfsbL6y69b8ZxOSf9pWJoILgm2yE889Zt/kZQo/+2WY0SdqrH/gPrRo49YVFOkH74xMBRpyV/qVvFv8Q69cLuZePUk7XxxJoQWgM83KA83dAesjVEJ8JdSWx56xcE25DzrS8JNpODrgjkV5mSVl5G/qKvX28L52bTCkwJz1OBa/tR9qf6GdgaZpIpKWF4GsRVE1OjCCXbjr3qhkvCPRWXuiRR3lv3UR2K9Q/1l0s11iH6U9P7DsrD51rOL4USZC2iYsA0kJe5fxMTyO4jOjbpWvTBZeRbHQf/dT3mL4Ax2YRnhqAQ8AAA=="
           />
         </MotionDiv>
 

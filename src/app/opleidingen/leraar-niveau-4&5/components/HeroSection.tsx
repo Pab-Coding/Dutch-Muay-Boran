@@ -4,12 +4,13 @@ import { motion } from 'framer-motion'
 import Image from 'next/image'
 import Link from 'next/link'
 import { useRef } from 'react'
+import { useMediaQuery } from '@/hooks/useMediaQuery'
 import { CalendarIcon } from '@heroicons/react/24/outline'
 import { MotionSection, MotionDiv, MotionH1, MotionP } from '@/components/shared/MotionComponents'
 
 const HeroSection = () => {
   const sectionRef = useRef<HTMLDivElement>(null)
-  const isMobile = typeof window !== 'undefined' && window.innerWidth < 768
+  const isMobile = useMediaQuery('(max-width: 768px)')
 
   // Optimized animation variants
   const heroVariants = {
@@ -52,16 +53,14 @@ const HeroSection = () => {
           src="/images/zelf-standig.webp"
           alt="Muay Thai Training"
           fill
-          sizes="100vw"
+          sizes="(max-width: 768px) 100vw, 100vw"
           className="object-cover"
-          priority
-          quality={90}
+          quality={85}
           placeholder="blur"
-          blurDataURL="data:image/webp;base64,UklGRlIAAABXRUJQVlA4IEYAAAAwAQCdASoIAAUAAUAmJaQAA3AA/v89WAAAAP7/2T5G1NLf/8elPp36k9P/d8JvkH9D/Y32G9gD+AP4A/gD+AP4A/gD+AMAA"
+          blurDataURL="data:image/webp;base64,UklGRmQBAABXRUJQVlA4IFgBAABQCACdASpkAGQAPpE+mkilIyIhsAgAsBIJaQAAPHAuANLLXj2XmWsAP7zwsaUpACdnYQcQB5l53jJADyT/9DTW6gS+TJQmcBTgU1WY/V2Sw5qg5Dq9x7qiMPw53wh3J2JL7j/z/Bfs6uTdCbV6+zKY4AAA/vpwKjFVd/Ry2nTJGwQ8eRq/0U+27+Qvj5Gw8sKbDgCxvVBo6c0uq9/nCEoEMJ4mVf+FYcA9gkHT46kFcIa+CL1tXR1sSoUeQdDkQg8+a6JgYAgpwvZXAtnGDdnwwQWy3z/PoFnrYSZIbLd83Z6O2tCIhUjKm0m7z6Q2PO9QwFYqsH8qC5pXqPkBjJjbHGVONk/7rD20HtE1HEI19KjVKVyxOOEuY2kkWqFgblPcuU3Ry0d4qjz8J/ZkfwHqeN60bQAAAA=="
         />
         <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/30 to-black/40" />
         <div className="absolute inset-0 bg-gradient-to-r from-red-900/5 to-blue-900/5" />
-        <div className="absolute inset-0 backdrop-blur-[0.5px]" />
       </MotionDiv>
 
       <MotionDiv 
@@ -104,10 +103,10 @@ const HeroSection = () => {
 
           <MotionDiv
             variants={childVariants}
-          className="mt-8 sm:mt-12 flex flex-wrap gap-4 w-full px-4 sm:px-0"
+            className="mt-8 sm:mt-12 flex flex-wrap gap-4 w-full px-4 sm:px-0"
           >
             <Link href="/opleidingen/inschrijven">
-              <MotionDiv
+              <motion.div
                 whileHover={{ scale: isMobile ? 1 : 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 className="w-full sm:w-auto px-6 sm:px-8 py-3 sm:py-4 bg-gradient-to-r from-red-600 to-red-700 
@@ -118,11 +117,11 @@ const HeroSection = () => {
                          cursor-pointer text-center"
               >
                 Schrijf je nu in
-              </MotionDiv>
+              </motion.div>
             </Link>
 
             <Link href="/opleidingen/cursusdata">
-              <MotionDiv
+              <motion.div
                 whileHover={{ scale: isMobile ? 1 : 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 className="w-full sm:w-auto px-6 sm:px-8 py-3 sm:py-4 bg-gradient-to-r from-blue-600/10 to-blue-700/10
@@ -135,7 +134,7 @@ const HeroSection = () => {
                   <CalendarIcon className="w-5 h-5 text-white" />
                   <span>Zie geplande data</span>
                 </div>
-              </MotionDiv>
+              </motion.div>
             </Link>
           </MotionDiv>
 

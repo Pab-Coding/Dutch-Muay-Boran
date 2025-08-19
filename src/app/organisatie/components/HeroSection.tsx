@@ -3,11 +3,12 @@
 import { motion } from 'framer-motion'
 import Image from 'next/image'
 import { useRef } from 'react'
+import { useMediaQuery } from '@/hooks/useMediaQuery'
 import { MotionSection, MotionDiv, MotionH1, MotionP } from '@/components/shared/MotionComponents'
 
 const HeroSection = () => {
   const sectionRef = useRef<HTMLDivElement>(null)
-  const isMobile = typeof window !== 'undefined' && window.innerWidth < 768
+  const isMobile = useMediaQuery('(max-width: 768px)')
 
   // Optimized animation variants
   const heroVariants = {
@@ -50,16 +51,14 @@ const HeroSection = () => {
           src="/images/flyer-amsterdam.webp"
           alt="Dutch Muay Boran Foundation Amsterdam"
           fill
-          sizes="100vw"
+          sizes="(max-width: 768px) 100vw, 100vw"
           className="object-cover"
-          priority
-          quality={90}
+          quality={85}
           placeholder="blur"
-          blurDataURL="data:image/webp;base64,UklGRlIAAABXRUJQVlA4IEYAAAAwAQCdASoIAAUAAUAmJaQAA3AA/v89WAAAAP7/2T5G1NLf/8elPp36k9P/d8JvkH9D/Y32G9gD+AP4A/gD+AP4A/gD+AMAA"
+          blurDataURL="data:image/webp;base64,UklGRpQBAABXRUJQVlA4IIgBAABQCgCdASpkAGQAPpE+mEiloyKhqAgAsBIJaQAACtK/OJ9htpGpAAD++Gb6VVnXPTJppvGkgPIpJu4vPiD4GQAZm1KLu3j5Vc2EFY4PD6I/B3dV7UBeCLF5Pqw1qP1HwSv9Vl/BDtOjY1o5t9hOYE1rZUWmO3uQc7Vd1FBQmLSzAAD+8cRGi25sGLhMvbQYJBXi7aGhg7RsFBhZL2UdYO3u1UWyXJAgbG8EZcxpvSEtGbgTrzHYRD3YoTKi0WVcIq0O/UcVEMVgIrLAm2vOYGEwCIE2fqEk4NnB8vDtmWHq1CXf6ZbPb+eVs+JL+jUxvWBmLALVk9HH6HExYZSFBs7Y7H4XqYasMxSyVK6FhVw1bcjlXkqMv7FYw2uGvFYXmTL97pUvTkbRXPLCJpCp0rfN4lHZLr/10U83ZUO0B5oS4wpYw/jtm1FPvQBjCbYgQxOETuB8lFkLTKXyAAAA"
         />
         <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/50 to-black/60" />
         <div className="absolute inset-0 bg-gradient-to-r from-red-900/5 to-blue-900/5" />
-        <div className="absolute inset-0 backdrop-blur-[0.5px]" />
       </MotionDiv>
 
       <MotionDiv
