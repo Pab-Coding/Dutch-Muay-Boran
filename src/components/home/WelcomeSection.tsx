@@ -77,7 +77,7 @@ const WelcomeSection = () => {
             variants={childVariants}
             whileHover={{ scale: 1.05 }}
             transition={{ duration: 0.3 }}
-            className="relative w-48 h-48 md:w-56 md:h-56 mb-6"
+            className="relative w-48 h-48 md:w-56 md:h-56 mb-6 rounded-full overflow-hidden"
           >
             <div className="absolute inset-0 bg-gradient-to-br from-red-600/20 to-blue-600/20 rounded-full backdrop-blur-sm" />
             <InstantImage
@@ -87,7 +87,7 @@ const WelcomeSection = () => {
               backgroundSrc={INLINE_IMAGES.logoInlineBg}
               fill
               sizes="(max-width: 768px) 192px, 256px"
-              className="object-contain"
+              className="object-contain rounded-full"
               priority
               placeholder="blur"
               blurDataURL="data:image/webp;base64,UklGRogAAABXRUJQVlA4WAoAAAAQAAAACQAABQAAQUxQSCwAAAABP0CQbRtMDQ5zhvM8ImJeBIoiSY3DTyQgAUlIyPdOR/Q/JmKjDvpibNREAlZQOCA2AAAAsAEAnQEqCgAGAAVAfCWwAnQA3OaW0AD+hziJb2VElaTBSUxCQUEEFyQ/jgh0X5E93X36J+AA"
