@@ -10,12 +10,24 @@ import ContactButton from '@/components/shared/ContactButton'
 
 const newsData = [
   {
+    id: 2,
+    title: 'Toekomstige Nederlandse Kampioenschappen Muay Thai',
+    date: new Date().toISOString().split('T')[0],
+    image: '/images/muay-thai.webp',
+    excerpt: 'De Dutch Muay Boran Foundation (DMBF) werkt aan de organisatie van nieuwe Nederlandse Kampioenschappen Muay Thai. Samen met onze partners bereiden we toekomstige evenementen voor die het authentieke Muay Thai zullen promoten. Blijf op de hoogte van aankomende kampioenschappen en evenementen! Voor meer informatie over toekomstige evenementen, neem contact met ons op.',
+    slug: 'contact',
+    category: 'Aankondiging'
+  }
+]
+
+const archivedNews = [
+  {
     id: 1,
     title: 'Nederlandse Kampioenschappen Muay Thai 2025',
     date: '2025-03-15',
     image: '/images/nk-muaythai-2025.webp',
-    excerpt: 'De Dutch Muay Boran Foundation (DMBF) kondigt met trots aan dat op 15 en 16 maart 2025 de Nederlandse Kampioenschappen Muay Thai zullen plaatsvinden. In samenwerking met de WFCA organiseert de DMBF dit prestigieuze evenement dat zich richt op het authentieke Muay Thai. Voor meer informatie kunt u contact met ons opnemen.',
-    slug: 'contact', // Cambiado para redirigir a la página de contacto
+    excerpt: 'De Dutch Muay Boran Foundation (DMBF) organiseerde op 15 en 16 maart 2025 de Nederlandse Kampioenschappen Muay Thai. In samenwerking met de WFCA werd dit prestigieuze evenement gehouden dat zich richtte op het authentieke Muay Thai.',
+    slug: 'archived-nk-2025',
     category: 'Evenementen'
   }
 ]
@@ -105,6 +117,14 @@ export default function NieuwsPage() {
             className="relative z-10"
           >
             <NewsGrid news={newsData} />
+            
+            {/* Archived News Section */}
+            <div className="max-w-7xl mx-auto px-4 pb-12 mt-8">
+              <h2 className="text-2xl font-bold text-gray-800 mb-6 text-center">
+                Archief - Oude Nieuwsberichten
+              </h2>
+              <NewsGrid news={archivedNews} />
+            </div>
           </motion.div>
         </main>
 

@@ -45,8 +45,8 @@ const LatestNewsHighlight = () => {
         >
           <div className="relative">
             <Image
-              src="/images/nk-muaythai-2025.webp"
-              alt="Nederlandse Kampioenschappen Muay Thai 2025"
+              src="/images/muay-thai.webp"
+              alt="Toekomstige Kampioenschappen Muay Thai"
               width={1200}
               height={600}
               sizes="(max-width: 768px) 100vw, 50vw"
@@ -59,19 +59,19 @@ const LatestNewsHighlight = () => {
                          flex items-center space-x-2 shadow-lg"
             >
               <BsNewspaper className="animate-bounce" />
-              <MotionSpan animate={shakeAnimation}>NIEUWS!</MotionSpan>
+              <MotionSpan animate={shakeAnimation}>BINNENKORT!</MotionSpan>
             </MotionDiv>
           </div>
 
           <div className="p-6">
             <h2 className="text-2xl font-bold mb-4 text-gray-800">
-              Nederlandse Kampioenschappen Muay Thai 2025
+              Toekomstige Nederlandse Kampioenschappen Muay Thai
             </h2>
             <div className="relative">
               <p className={`text-gray-600 mb-2 ${showFullText ? '' : 'line-clamp-3'}`}>
-                De Dutch Muay Boran Foundation (DMBF) kondigt met trots aan dat op 15 en 16 maart 2025 
-                de Nederlandse Kampioenschappen Muay Thai zullen plaatsvinden. In samenwerking met de WFCA 
-                organiseert de DMBF dit prestigieuze evenement dat zich richt op het authentieke Muay Thai.
+                De Dutch Muay Boran Foundation (DMBF) werkt aan de organisatie van nieuwe Nederlandse Kampioenschappen 
+                Muay Thai. Samen met onze partners bereiden we toekomstige evenementen voor die het 
+                authentieke Muay Thai zullen promoten. Blijf op de hoogte van aankomende kampioenschappen en evenementen!
                 {!showFullText && (
                   <button 
                     onClick={() => setShowFullText(true)}
@@ -92,7 +92,7 @@ const LatestNewsHighlight = () => {
               )}
             </div>
             <p className="text-gray-600 mb-6 italic">
-              Voor meer informatie kunt u contact met ons opnemen.
+              Voor meer informatie over toekomstige evenementen, neem contact met ons op.
             </p>
 
             <div className="flex justify-between items-center">
