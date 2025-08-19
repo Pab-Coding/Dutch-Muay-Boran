@@ -47,15 +47,16 @@ const WelcomeSection = () => {
       <MotionDiv
         className="absolute inset-0"
       >
-        <Image
+        <InstantImage
           src="/images/new-team-photo.webp"
           alt="DMBF Team"
+          inlineSrc={INLINE_IMAGES.teamPhotoInline}
+          backgroundSrc={INLINE_IMAGES.teamPhotoInlineBg}
           fill
           sizes="100vw"
           className="object-cover object-center"
           priority
           quality={90}
-          loading="eager"
           placeholder="blur"
           blurDataURL="data:image/webp;base64,UklGRkYAAABXRUJQVlA4IDoAAACQAQCdASoKAAYABUB8JZQAAgboSWgA+Qa3wgZ8qSji/y1MrOm0BWgAOoeQUI6up0x4ocKzKn/mcAAA="
         />
@@ -78,14 +79,15 @@ const WelcomeSection = () => {
             className="relative w-48 h-48 md:w-56 md:h-56 mb-6"
           >
             <div className="absolute inset-0 bg-gradient-to-br from-red-600/20 to-blue-600/20 rounded-full backdrop-blur-sm" />
-            <Image
+            <InstantImage
               src="/images/logo.webp"
               alt="DMBF Logo"
+              inlineSrc={INLINE_IMAGES.logoInline}
+              backgroundSrc={INLINE_IMAGES.logoInlineBg}
               fill
               sizes="(max-width: 768px) 192px, 256px"
               className="object-contain"
               priority
-              loading="eager"
               placeholder="blur"
               blurDataURL="data:image/webp;base64,UklGRogAAABXRUJQVlA4WAoAAAAQAAAACQAABQAAQUxQSCwAAAABP0CQbRtMDQ5zhvM8ImJeBIoiSY3DTyQgAUlIyPdOR/Q/JmKjDvpibNREAlZQOCA2AAAAsAEAnQEqCgAGAAVAfCWwAnQA3OaW0AD+hziJb2VElaTBSUxCQUEEFyQ/jgh0X5E93X36J+AA"
             />

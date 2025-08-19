@@ -1,10 +1,11 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import Image from 'next/image'
 import Link from 'next/link'
 import { useRef } from 'react'
 import { MotionSection, MotionDiv, MotionButton, MotionSpan, MotionH1, MotionP } from '@/components/shared/MotionComponents'
+import InstantImage from '@/components/shared/InstantImage'
+import { INLINE_IMAGES } from '@/constants/inlineImages'
 
 const HeroSection = () => {
   const sectionRef = useRef<HTMLDivElement>(null)
@@ -47,12 +48,13 @@ const HeroSection = () => {
       <MotionDiv
         className="absolute inset-0"
       >
-        <Image
+        <InstantImage
           src="/images/muay-thai.webp"
           alt="Muay Thai"
+          inlineSrc={INLINE_IMAGES.muayThaiInline}
+          backgroundSrc={INLINE_IMAGES.muayThaiInlineBg}
           fill
           sizes="100vw"
-          className="object-cover"
           priority
           quality={90}
           placeholder="blur"

@@ -33,10 +33,34 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
-        <link rel="preload" as="image" href="/images/new-team-photo.webp" />
-        <link rel="preload" as="image" href="/images/logo.webp" />
-        <link rel="preload" as="image" href="/images/boran-optimized.webp" />
-        <link rel="preload" as="image" href="/images/muay-thai.webp" />
+        {/* Critical resource preloading for instant display */}
+        <link rel="preload" as="image" href="/images/new-team-photo.webp" fetchPriority="high" />
+        <link rel="preload" as="image" href="/images/logo.webp" fetchPriority="high" />
+        <link rel="preload" as="image" href="/images/boran-optimized.webp" fetchPriority="high" />
+        <link rel="preload" as="image" href="/images/muay-thai.webp" fetchPriority="high" />
+        <link rel="preload" as="image" href="/images/nieuws.webp" />
+        <link rel="preload" as="image" href="/images/examens-muay.webp" />
+        {/* DNS prefetch for faster image loading */}
+        <link rel="dns-prefetch" href="//dutchmuayboran.nl" />
+        <style>{`
+          /* Zero-delay loading states */
+          .instant-image-container {
+            background: linear-gradient(135deg, rgb(220, 38, 38, 0.1) 0%, rgb(37, 99, 235, 0.1) 100%);
+            transition: none !important;
+          }
+          .instant-image-container * {
+            transition: opacity 0.2s ease !important;
+          }
+          /* Prevent flash of unstyled content */
+          body { opacity: 0; }
+          body.loaded { opacity: 1; transition: opacity 0.1s ease; }
+        `}</style>
+        <script>{`
+          // Mark body as loaded immediately
+          document.addEventListener('DOMContentLoaded', function() {
+            document.body.classList.add('loaded');
+          });
+        `}</script>
       </head>
       <body className={inter.className}>{children}</body>
     </html>
