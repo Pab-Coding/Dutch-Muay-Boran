@@ -1,7 +1,8 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import Image from 'next/image'
+import InstantImage from '@/components/shared/InstantImage'
+import { INLINE_IMAGES } from '@/constants/inlineImages'
 import Link from 'next/link'
 import { useRef } from 'react'
 import { ArrowRightIcon } from '@heroicons/react/24/outline'
@@ -48,14 +49,15 @@ const HeroSection = () => {
       <MotionDiv
         className="absolute inset-0"
       >
-        <Image
+        <InstantImage
           src="/images/examens-muay.webp"
           alt="Muay Thai Examens"
+          inlineSrc={INLINE_IMAGES.muayThaiInline}
+          backgroundSrc={INLINE_IMAGES.muayThaiInlineBg}
           fill
           className="object-cover"
           priority
           quality={90}
-          loading="eager"
           sizes="100vw"
           placeholder="blur"
           blurDataURL="data:image/webp;base64,UklGRjwAAABXRUJQVlA4IDAAAADQAQCdASoKAAYABUB8JZQAAl3XpQ3rwAD+ukNcfstfdearMXAE7b7u4BNWADABKAA="

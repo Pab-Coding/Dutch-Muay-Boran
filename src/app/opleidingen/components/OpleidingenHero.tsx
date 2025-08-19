@@ -1,7 +1,8 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import Image from 'next/image'
+import InstantImage from '@/components/shared/InstantImage'
+import { INLINE_IMAGES } from '@/constants/inlineImages'
 import { useRef } from 'react'
 import { useMediaQuery } from '@/hooks/useMediaQuery'
 import { MotionSection, MotionDiv, MotionH1, MotionP } from '@/components/shared/MotionComponents'
@@ -47,9 +48,11 @@ const OpleidingenHero = () => {
       <MotionDiv
         className="absolute inset-0"
       >
-        <Image
+        <InstantImage
           src="/images/opleidingen.webp"
           alt="Opleidingen Muay Thai"
+          inlineSrc={INLINE_IMAGES.muayThaiInline}
+          backgroundSrc={INLINE_IMAGES.muayThaiInlineBg}
           fill
           sizes="(max-width: 768px) 100vw, 100vw"
           className="object-cover"

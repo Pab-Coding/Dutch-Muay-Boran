@@ -1,7 +1,8 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import Image from 'next/image'
+import InstantImage from '@/components/shared/InstantImage'
+import { INLINE_IMAGES } from '@/constants/inlineImages'
 import Link from 'next/link'
 import { useRef } from 'react'
 import { useMediaQuery } from '@/hooks/useMediaQuery'
@@ -49,9 +50,11 @@ className="relative h-[60vh] md:h-[70vh] min-h-[400px] md:min-h-[600px] w-full o
       <MotionDiv 
         className="absolute inset-0"
       >
-        <Image
+        <InstantImage
           src="/images/Muay-thai-boran.webp"
           alt="Traditional Muay Thai Training Techniques"
+          inlineSrc={INLINE_IMAGES.boranInline}
+          backgroundSrc={INLINE_IMAGES.boranInlineBg}
           fill
           sizes="(max-width: 768px) 100vw, 100vw"
           className="object-cover"

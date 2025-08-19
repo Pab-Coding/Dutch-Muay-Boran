@@ -1,7 +1,8 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import Image from 'next/image'
+import InstantImage from '@/components/shared/InstantImage'
+import { INLINE_IMAGES } from '@/constants/inlineImages'
 import { useRef } from 'react'
 import { useMediaQuery } from '@/hooks/useMediaQuery'
 import { MotionSection, MotionDiv, MotionH1, MotionP } from '@/components/shared/MotionComponents'
@@ -63,9 +64,11 @@ const HeroSection = () => {
               variants={childVariants}
               className="w-32 h-32 relative mx-auto"
             >
-              <Image
+              <InstantImage
                 src="/images/logo.webp"
                 alt="Dutch Muay Boran Logo"
+                inlineSrc={INLINE_IMAGES.logoInline}
+                backgroundSrc={INLINE_IMAGES.logoInlineBg}
                 fill
                 sizes="(max-width: 768px) 100vw, 50vw"
                 className="object-contain"

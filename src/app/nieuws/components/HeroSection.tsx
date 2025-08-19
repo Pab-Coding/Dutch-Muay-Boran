@@ -1,7 +1,8 @@
 'use client'
 
 import { useScroll, useTransform } from 'framer-motion'
-import Image from 'next/image'
+import InstantImage from '@/components/shared/InstantImage'
+import { INLINE_IMAGES } from '@/constants/inlineImages'
 import { useRef } from 'react'
 import { MotionSection, MotionDiv, MotionH1, MotionP } from '@/components/shared/MotionComponents'
 
@@ -52,9 +53,11 @@ const HeroSection = () => {
       <MotionDiv
         className="absolute inset-0"
       >
-        <Image
+        <InstantImage
           src="/images/nieuws.webp"
           alt="Nieuws - Dutch Muay Boran Foundation"
+          inlineSrc={INLINE_IMAGES.muayThaiInline}
+          backgroundSrc={INLINE_IMAGES.muayThaiInlineBg}
           fill
           sizes="100vw"
           className="object-cover"
