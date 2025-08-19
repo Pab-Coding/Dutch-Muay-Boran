@@ -57,7 +57,7 @@ const WelcomeSection = () => {
           quality={90}
           loading="eager"
           placeholder="blur"
-          blurDataURL="data:image/webp;base64,UklGRlIAAABXRUJQVlA4IEYAAAAwAQCdASoIAAUAAUAmJaQAA3AA/v89WAAAAP7/2T5G1NLf/8elPp36k9P/d8JvkH9D/Y32G9gD+AP4A/gD+AP4A/gD+AMAA"
+          blurDataURL="data:image/webp;base64,UklGRkYAAABXRUJQVlA4IDoAAACQAQCdASoKAAYABUB8JZQAAgboSWgA+Qa3wgZ8qSji/y1MrOm0BWgAOoeQUI6up0x4ocKzKn/mcAAA="
         />
         {/* Multiple overlay layers for depth and readability */}
         <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/50 to-black/60 rounded-xl" />
@@ -87,7 +87,7 @@ const WelcomeSection = () => {
               priority
               loading="eager"
               placeholder="blur"
-              blurDataURL="data:image/webp;base64,UklGRlIAAABXRUJQVlA4IEYAAAAwAQCdASoIAAUAAUAmJaQAA3AA/v89WAAAAP7/2T5G1NLf/8elPp36k9P/d8JvkH9D/Y32G9gD+AP4A/gD+AP4A/gD+AMAA"
+              blurDataURL="data:image/webp;base64,UklGRogAAABXRUJQVlA4WAoAAAAQAAAACQAABQAAQUxQSCwAAAABP0CQbRtMDQ5zhvM8ImJeBIoiSY3DTyQgAUlIyPdOR/Q/JmKjDvpibNREAlZQOCA2AAAAsAEAnQEqCgAGAAVAfCWwAnQA3OaW0AD+hziJb2VElaTBSUxCQUEEFyQ/jgh0X5E93X36J+AA"
             />
           </MotionDiv>
 

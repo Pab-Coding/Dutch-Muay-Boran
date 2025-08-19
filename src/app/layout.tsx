@@ -32,6 +32,12 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
+      <head>
+        <link rel="preload" as="image" href="/images/new-team-photo.webp" />
+        <link rel="preload" as="image" href="/images/logo.webp" />
+        <link rel="preload" as="image" href="/images/boran-optimized.webp" />
+        <link rel="preload" as="image" href="/images/muay-thai.webp" />
+      </head>
       <body className={inter.className}>{children}</body>
     </html>
   )

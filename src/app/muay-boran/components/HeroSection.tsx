@@ -56,7 +56,7 @@ const HeroSection = () => {
           priority
           quality={90}
           placeholder="blur"
-          blurDataURL="data:image/webp;base64,UklGRlIAAABXRUJQVlA4IEYAAAAwAQCdASoIAAUAAUAmJaQAA3AA/v89WAAAAP7/2T5G1NLf/8elPp36k9P/d8JvkH9D/Y32G9gD+AP4A/gD+AP4A/gD+AMAA"
+          blurDataURL="data:image/webp;base64,UklGRkQAAABXRUJQVlA4IDgAAADQAQCdASoKAAYABUB8JQBOgBu02GhhAADhknUIb4xpxmi9e3aMuF1u7o51YEfPjPCzDR8TPkAAAA=="
         />
         <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/30 to-black/40" />
         <div className="absolute inset-0 bg-gradient-to-r from-red-900/5 to-blue-900/5" />
