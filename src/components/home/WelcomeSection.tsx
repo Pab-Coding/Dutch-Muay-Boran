@@ -1,6 +1,5 @@
 'use client'
 
-import Image from 'next/image'
 import Link from 'next/link'
 import {
   MotionDiv,
@@ -9,6 +8,8 @@ import {
   MotionButton,
   MotionSection
 } from '@/components/shared/MotionComponents'
+import InstantImage from '@/components/shared/InstantImage'
+import { INLINE_IMAGES } from '@/constants/inlineImages'
 
 const WelcomeSection = () => {
   const heroVariants = {

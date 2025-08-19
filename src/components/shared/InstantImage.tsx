@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import Image from 'next/image'
 
 interface InstantImageProps {
@@ -31,9 +31,14 @@ const InstantImage = ({
   blurDataURL
 }: InstantImageProps) => {
   const [imageLoaded, setImageLoaded] = useState(false)
+  const [mounted, setMounted] = useState(false)
+
+  useEffect(() => {
+    setMounted(true)
+  }, [])
 
   // Create instant background style
-  const backgroundStyle = backgroundSrc ? {
+  const backgroundStyle = backgroundSrc && mounted ? {
     backgroundImage: `url(${backgroundSrc})`,
     backgroundSize: 'cover',
     backgroundPosition: 'center',
@@ -45,8 +50,8 @@ const InstantImage = ({
       className={`relative w-full h-full ${className}`}
       style={backgroundStyle}
     >
-      {/* Instant display background layer */}
-      {inlineSrc && !imageLoaded && (
+      {/* Instant display background layer - only show after mount */}
+      {mounted && inlineSrc && !imageLoaded && (
         <div
           className="absolute inset-0 transition-opacity duration-300"
           style={{
@@ -75,8 +80,8 @@ const InstantImage = ({
         onLoad={() => setImageLoaded(true)}
       />
       
-      {/* Progressive enhancement overlay */}
-      {!imageLoaded && (
+      {/* Progressive enhancement overlay - only show after mount */}
+      {mounted && !imageLoaded && (
         <div className="absolute inset-0 bg-gradient-to-br from-red-900/20 via-transparent to-blue-900/20 animate-pulse" />
       )}
     </div>

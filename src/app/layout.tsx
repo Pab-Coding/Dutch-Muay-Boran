@@ -52,15 +52,8 @@ export default function RootLayout({
             transition: opacity 0.2s ease !important;
           }
           /* Prevent flash of unstyled content */
-          body { opacity: 0; }
-          body.loaded { opacity: 1; transition: opacity 0.1s ease; }
+          body { opacity: 1; }
         `}</style>
-        <script>{`
-          // Mark body as loaded immediately
-          document.addEventListener('DOMContentLoaded', function() {
-            document.body.classList.add('loaded');
-          });
-        `}</script>
       </head>
       <body className={inter.className}>{children}</body>
     </html>
