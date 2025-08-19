@@ -52,8 +52,8 @@ const HeroSection = () => {
         <InstantImage
           src="/images/examens-muay.webp"
           alt="Muay Thai Examens"
-          inlineSrc={INLINE_IMAGES.muayThaiInline}
-          backgroundSrc={INLINE_IMAGES.muayThaiInlineBg}
+          inlineSrc={INLINE_IMAGES.examensMuayInline}
+          backgroundSrc={INLINE_IMAGES.examensMuayInlineBg}
           fill
           className="object-cover"
           priority

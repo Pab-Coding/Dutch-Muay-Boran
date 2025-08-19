@@ -51,8 +51,8 @@ const OpleidingenHero = () => {
         <InstantImage
           src="/images/opleidingen.webp"
           alt="Opleidingen Muay Thai"
-          inlineSrc={INLINE_IMAGES.muayThaiInline}
-          backgroundSrc={INLINE_IMAGES.muayThaiInlineBg}
+          inlineSrc={INLINE_IMAGES.opleidingenInline}
+          backgroundSrc={INLINE_IMAGES.opleidingenInlineBg}
           fill
           sizes="(max-width: 768px) 100vw, 100vw"
           className="object-cover"

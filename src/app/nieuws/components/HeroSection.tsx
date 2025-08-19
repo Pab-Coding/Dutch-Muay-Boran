@@ -56,8 +56,8 @@ const HeroSection = () => {
         <InstantImage
           src="/images/nieuws.webp"
           alt="Nieuws - Dutch Muay Boran Foundation"
-          inlineSrc={INLINE_IMAGES.muayThaiInline}
-          backgroundSrc={INLINE_IMAGES.muayThaiInlineBg}
+          inlineSrc={INLINE_IMAGES.nieuwsInline}
+          backgroundSrc={INLINE_IMAGES.nieuwsInlineBg}
           fill
           sizes="100vw"
           className="object-cover"

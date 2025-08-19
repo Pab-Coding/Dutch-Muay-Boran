@@ -53,8 +53,8 @@ className="relative h-[60vh] md:h-[70vh] min-h-[400px] md:min-h-[600px] w-full o
         <InstantImage
           src="/images/Muay-thai-boran.webp"
           alt="Traditional Muay Thai Training Techniques"
-          inlineSrc={INLINE_IMAGES.boranInline}
-          backgroundSrc={INLINE_IMAGES.boranInlineBg}
+          inlineSrc={INLINE_IMAGES.muayThaiBoranInline}
+          backgroundSrc={INLINE_IMAGES.muayThaiBoranInlineBg}
           fill
           sizes="(max-width: 768px) 100vw, 100vw"
           className="object-cover"

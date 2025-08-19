@@ -51,8 +51,8 @@ const HeroSection = () => {
         <InstantImage
           src="/images/flyer-amsterdam.webp"
           alt="Dutch Muay Boran Foundation Amsterdam"
-          inlineSrc={INLINE_IMAGES.muayThaiInline}
-          backgroundSrc={INLINE_IMAGES.muayThaiInlineBg}
+          inlineSrc={INLINE_IMAGES.flyerAmsterdamInline}
+          backgroundSrc={INLINE_IMAGES.flyerAmsterdamInlineBg}
           fill
           sizes="(max-width: 768px) 100vw, 100vw"
           className="object-cover"
