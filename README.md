@@ -1,5 +1,10 @@
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
+## Recent Updates  
+- Fixed image loading performance issues
+- Eliminated grey placeholder delays
+- Compressed images for faster loading
+
 ## Getting Started
 
 First, run the development server:
