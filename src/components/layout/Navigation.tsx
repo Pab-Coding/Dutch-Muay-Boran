@@ -53,6 +53,7 @@ const Navigation = () => {
   // Hide-on-scroll state
   const [isHidden, setIsHidden] = useState(false)
   const [disableAutoHide, setDisableAutoHide] = useState(false)
+  const [isMounted, setIsMounted] = useState(false)
   const lastScrollYRef = useRef(0)
 
   const handleMouseEnter = useCallback((itemName: string) => {
@@ -84,6 +85,11 @@ const Navigation = () => {
       document.body.style.overflow = 'auto'
     }
   }, [isMenuOpen])
+
+  // Set mounted state after initial render
+  useEffect(() => {
+    setIsMounted(true)
+  }, [])
 
   // Hide nav when scrolling down, show when scrolling up (with small threshold) or near top
   useEffect(() => {
@@ -117,14 +123,17 @@ const Navigation = () => {
   // Keep nav visible briefly after route changes to avoid perceived refresh
   useEffect(() => {
     // On every path change, show nav and pause auto-hide briefly
-    setIsHidden(false)
+    // Only update if nav was hidden to prevent unnecessary re-renders
+    if (isHidden) {
+      setIsHidden(false)
+    }
     setDisableAutoHide(true)
     const timeout = setTimeout(() => setDisableAutoHide(false), 450)
     return () => clearTimeout(timeout)
   }, [pathname])
 
   return (
-    <nav className={`fixed ${isHidden ? '-top-16 opacity-0 pointer-events-none' : 'top-0 opacity-100'} left-0 right-0 h-16 shadow-lg z-[100] transition-[top,opacity] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)]`}>
+    <nav className={`fixed ${isHidden ? '-top-16 opacity-0 pointer-events-none' : 'top-0 opacity-100'} left-0 right-0 h-16 shadow-lg z-[100] ${isMounted ? 'transition-[top,opacity] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)]' : ''}`}>
       {/* Full-width Banner Background (CSS background to avoid image re-mounts) */}
       <div
         aria-hidden="true"
