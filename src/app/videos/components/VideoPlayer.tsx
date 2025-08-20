@@ -97,6 +97,7 @@ const VideoPlayer = ({ videoId, isOpen, onClose, title, description }: VideoPlay
   const containerRef = useRef<HTMLDivElement>(null)
   const infoRef = useRef<HTMLDivElement>(null)
   const [showHint, setShowHint] = useState(true)
+  const [videoLoaded, setVideoLoaded] = useState(false)
 
   const scrollToInfo = () => {
     if (containerRef.current && infoRef.current) {
@@ -173,8 +174,11 @@ const VideoPlayer = ({ videoId, isOpen, onClose, title, description }: VideoPlay
                          encrypted-media; gyroscope; picture-in-picture"
                   allowFullScreen
                   className="absolute inset-0 w-full h-full"
+                  onLoad={() => setVideoLoaded(true)}
                 />
-                <div className="absolute inset-0 bg-black pointer-events-none" />
+                {!videoLoaded && (
+                  <div className="absolute inset-0 bg-black pointer-events-none transition-opacity duration-150" />
+                )}
               </div>
               {/* Scroll hint to details */}
               {(title || description) && (
