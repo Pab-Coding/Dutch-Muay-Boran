@@ -43,7 +43,7 @@ export default function RootLayout({
         {/* DNS prefetch for faster image loading */}
         <link rel="dns-prefetch" href="//dutchmuayboran.nl" />
         <style>{`
-          /* Zero-delay loading states */
+          /* Zero-delay loading states  */
           .instant-image-container {
             background: linear-gradient(135deg, rgb(220, 38, 38, 0.1) 0%, rgb(37, 99, 235, 0.1) 100%);
             transition: none !important;
