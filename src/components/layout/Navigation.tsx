@@ -52,10 +52,8 @@ const Navigation = () => {
   const [mobileExpanded, setMobileExpanded] = useState<string | null>(null)
   // Hide-on-scroll state
   const [isHidden, setIsHidden] = useState(false)
-  const [disableAutoHide, setDisableAutoHide] = useState(false)
   const [enableTransitions, setEnableTransitions] = useState(false)
   const lastScrollYRef = useRef(0)
-  const hasScrolledRef = useRef(false)
 
   const handleMouseEnter = useCallback((itemName: string) => {
     setHoveredItem(itemName)
@@ -87,16 +85,13 @@ const Navigation = () => {
     }
   }, [isMenuOpen])
 
-  // Enable transitions after user has scrolled (not on initial mount)
+  // Enable transitions after component mounts and initial render is done
   useEffect(() => {
-    const enableTransitionsOnScroll = () => {
-      if (!hasScrolledRef.current) {
-        hasScrolledRef.current = true
-        setEnableTransitions(true)
-      }
-    }
-    window.addEventListener('scroll', enableTransitionsOnScroll, { passive: true, once: true })
-    return () => window.removeEventListener('scroll', enableTransitionsOnScroll)
+    // Use a small delay to ensure no transition on initial render
+    const timer = setTimeout(() => {
+      setEnableTransitions(true)
+    }, 100)
+    return () => clearTimeout(timer)
   }, [])
 
   // Hide nav when scrolling down, show when scrolling up (with small threshold) or near top
@@ -104,7 +99,6 @@ const Navigation = () => {
     lastScrollYRef.current = window.scrollY
     let ticking = false
     const handleScroll = () => {
-      if (disableAutoHide) return
       if (ticking) return
       ticking = true
       window.requestAnimationFrame(() => {
@@ -112,11 +106,14 @@ const Navigation = () => {
         const delta = currentY - lastScrollYRef.current
         const nearTop = currentY < 20
 
+        // Always show on mobile when menu is open, or when near top
         if (isMenuOpen || nearTop) {
           setIsHidden(false)
         } else if (delta > 5) {
+          // Scrolling down - hide nav
           setIsHidden(true)
         } else if (delta < -5) {
+          // Scrolling up - show nav
           setIsHidden(false)
         }
 
@@ -126,27 +123,23 @@ const Navigation = () => {
     }
     window.addEventListener('scroll', handleScroll, { passive: true })
     return () => window.removeEventListener('scroll', handleScroll)
-  }, [isMenuOpen, disableAutoHide])
+  }, [isMenuOpen])
 
-  // Keep nav visible briefly after route changes to avoid perceived refresh
+  // Reset navigation state on route changes
   useEffect(() => {
-    // On every path change, show nav and pause auto-hide briefly
-    // Only update if nav was hidden to prevent unnecessary re-renders
-    if (isHidden) {
-      setIsHidden(false)
-    }
-    setDisableAutoHide(true)
-    // Disable transitions temporarily on route change to prevent animation
+    // Temporarily disable transitions on route change
     setEnableTransitions(false)
-    const timeout = setTimeout(() => {
-      setDisableAutoHide(false)
-      // Re-enable transitions after route change completes
-      if (hasScrolledRef.current) {
-        setEnableTransitions(true)
-      }
-    }, 450)
-    return () => clearTimeout(timeout)
-  }, [pathname, isHidden])
+    // Show nav on route change
+    setIsHidden(false)
+    // Reset scroll position tracking
+    lastScrollYRef.current = 0
+    
+    // Re-enable transitions after a short delay
+    const timer = setTimeout(() => {
+      setEnableTransitions(true)
+    }, 50)
+    return () => clearTimeout(timer)
+  }, [pathname])
 
   return (
     <nav className={`fixed ${isHidden ? '-top-16 opacity-0 pointer-events-none' : 'top-0 opacity-100'} left-0 right-0 h-16 shadow-lg z-[100] ${enableTransitions ? 'transition-[top,opacity] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)]' : ''}`}>
