@@ -104,7 +104,7 @@ const VideoPlayer = ({ videoId, isOpen, onClose, title, description }: VideoPlay
         >
           {/* Modal Container */}
           <motion.div
-            className="relative w-full sm:max-w-5xl mx-auto bg-gradient-to-br from-gray-900 to-black rounded-none sm:rounded-2xl overflow-hidden shadow-2xl sm:my-8 max-h-[90svh] sm:max-h-[85svh] flex flex-col"
+            className="relative w-full mx-auto bg-gradient-to-br from-gray-900 to-black rounded-none sm:rounded-2xl shadow-2xl sm:my-8 max-h-[96svh] overflow-auto flex flex-col max-w-[min(96vw,calc(90svh*16/9))]"
             variants={modalVariants}
             onClick={e => e.stopPropagation()}
           >
@@ -122,7 +122,8 @@ const VideoPlayer = ({ videoId, isOpen, onClose, title, description }: VideoPlay
 
             {/* Video Container with Gradient Border */}
             <div className="relative bg-gradient-to-r from-red-500/20 via-white/20 to-blue-500/20 sm:rounded-t-2xl">
-              <div className="relative aspect-video overflow-hidden bg-black sm:rounded-t-2xl">
+              {/* Use 56.25% aspect ratio plus a small extra space for controls rendering */}
+              <div className="relative bg-black sm:rounded-t-2xl" style={{ paddingTop: '57%' }}>
                 <iframe
                   src={`https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0&playsinline=1`}
                   title="YouTube video player"
