@@ -147,31 +147,31 @@ const VideoPlayer = ({ videoId, isOpen, onClose, title, description }: VideoPlay
           {/* Modal Container */}
           <motion.div
             ref={containerRef}
-            className="relative w-full mx-auto bg-gradient-to-br from-gray-900 to-black rounded-none sm:rounded-2xl shadow-2xl sm:my-8 max-h-[96svh] overflow-y-auto flex flex-col max-w-[min(96vw,calc(90svh*16/9))] will-change-transform"
+            className="relative w-full h-full sm:h-auto mx-auto bg-gradient-to-br from-gray-900 to-black rounded-none sm:rounded-2xl shadow-2xl sm:my-8 max-h-[100dvh] sm:max-h-[90vh] overflow-y-auto flex flex-col sm:max-w-[min(90vw,1200px)] will-change-transform"
             variants={modalVariants}
             onClick={e => e.stopPropagation()}
           >
             {/* Close Button */}
             <motion.button
-              className="absolute top-2 sm:top-4 right-2 sm:right-4 z-10 p-2 
-                         rounded-full bg-black/50 text-white hover:bg-black/70 
-                         backdrop-blur-sm border border-white/10
+              className="fixed sm:absolute top-[env(safe-area-inset-top,8px)] sm:top-4 right-2 sm:right-4 z-10 p-3 sm:p-2 
+                         rounded-full bg-black/60 sm:bg-black/50 text-white hover:bg-black/70 
+                         backdrop-blur-sm border border-white/20 sm:border-white/10
                          transition-colors duration-200 touch-manipulation"
               whileTap={{ scale: 0.9 }}
               onClick={onClose}
             >
-              <XMarkIcon className="w-5 h-5 sm:w-6 sm:h-6" />
+              <XMarkIcon className="w-6 h-6" />
             </motion.button>
 
             {/* Video Container with Gradient Border */}
             <div className="relative bg-gradient-to-r from-red-500/10 via-white/10 to-blue-500/10 sm:rounded-t-2xl">
               {/* Use 56.25% aspect ratio plus a small extra space for controls rendering */}
-              <div className="relative bg-black sm:rounded-t-2xl" style={{ paddingTop: '57%' }}>
+              <div className="relative bg-black sm:rounded-t-2xl" style={{ paddingTop: '56.25%' }}>
                 <iframe
-                  src={`https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0&playsinline=1`}
+                  src={`https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0&playsinline=1&modestbranding=1`}
                   title="YouTube video player"
                   allow="accelerometer; autoplay; clipboard-write; 
-                         encrypted-media; gyroscope; picture-in-picture"
+                         encrypted-media; gyroscope; picture-in-picture; fullscreen"
                   allowFullScreen
                   className="absolute inset-0 w-full h-full"
                   onLoad={() => setVideoLoaded(true)}
@@ -203,10 +203,10 @@ const VideoPlayer = ({ videoId, isOpen, onClose, title, description }: VideoPlay
                 ref={infoRef}
                 className="relative z-10 p-4 sm:p-6 bg-gradient-to-b from-black/80 to-black/95 backdrop-blur-[1px]"
               >
-                <div className="absolute right-4 top-3 flex gap-2">
+                <div className="absolute right-2 sm:right-4 top-2 sm:top-3 flex gap-2">
                   <button
                     onClick={scrollToTop}
-                    className="inline-flex items-center justify-center w-8 h-8 rounded-full bg-white/10 text-white hover:bg-white/20 border border-white/10"
+                    className="inline-flex items-center justify-center w-9 h-9 sm:w-8 sm:h-8 rounded-full bg-white/10 text-white hover:bg-white/20 border border-white/10 touch-manipulation"
                     aria-label="Back to video"
                   >
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-5 h-5">
@@ -215,13 +215,13 @@ const VideoPlayer = ({ videoId, isOpen, onClose, title, description }: VideoPlay
                   </button>
                 </div>
                 {title && (
-                  <h2 className="text-2xl font-bold text-white mb-2 sm:mb-3 leading-tight">
+                  <h2 className="text-xl sm:text-2xl font-bold text-white mb-3 sm:mb-3 leading-tight pr-10">
                     {title}
                   </h2>
                 )}
                 {description && (
                   <div className="prose prose-invert max-w-none">
-                    <p className="text-gray-200 text-[15px] sm:text-base leading-relaxed whitespace-pre-line">
+                    <p className="text-gray-200 text-sm sm:text-base leading-relaxed whitespace-pre-line">
                       {description}
                     </p>
                   </div>
