@@ -33,13 +33,9 @@ const VideoGrid = () => {
   const [isModalOpen, setIsModalOpen] = useState(false)
   const gridRef = useRef<HTMLDivElement>(null)
 
-  const { scrollYProgress } = useScroll({
-    target: gridRef,
-    offset: ["start end", "end start"]
-  })
-
-  const opacity = useTransform(scrollYProgress, [0, 0.2], [0, 1])
-  const scale = useTransform(scrollYProgress, [0, 0.2], [0.8, 1])
+  const { scrollYProgress } = useScroll({ target: gridRef, offset: ["start 0.9", "end start"] })
+  const opacity = useTransform(scrollYProgress, [0, 0.01], [1, 1])
+  const scale = useTransform(scrollYProgress, [0, 0.01], [1, 1])
 
   const handleVideoPlay = (videoId: string) => {
     setSelectedVideo(videoId)

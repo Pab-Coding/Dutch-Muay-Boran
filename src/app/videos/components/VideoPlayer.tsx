@@ -1,7 +1,8 @@
 'use client'
 
 import { motion, AnimatePresence } from 'framer-motion'
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
+import { createPortal } from 'react-dom'
 import { XMarkIcon } from '@heroicons/react/24/outline'
 
 interface VideoPlayerProps {
@@ -13,6 +14,11 @@ interface VideoPlayerProps {
 }
 
 const VideoPlayer = ({ videoId, isOpen, onClose, title, description }: VideoPlayerProps) => {
+  const [mounted, setMounted] = useState(false)
+
+  useEffect(() => {
+    setMounted(true)
+  }, [])
   useEffect(() => {
     if (isOpen) {
       document.body.style.overflow = 'hidden'
@@ -85,13 +91,11 @@ const VideoPlayer = ({ videoId, isOpen, onClose, title, description }: VideoPlay
     }
   }
 
-  return (
+  const content = (
     <AnimatePresence>
       {isOpen && videoId && (
         <motion.div
-          className="fixed inset-0 z-50 flex items-start sm:items-center 
-                     justify-center px-0 sm:px-4 py-4 sm:py-8 overflow-y-auto 
-                     bg-black/80 touch-manipulation"
+          className="fixed inset-0 z-[100] flex items-center justify-center px-0 sm:px-4 py-4 sm:py-8 bg-black/80 touch-manipulation"
           variants={backdropVariants}
           initial="hidden"
           animate="visible"
@@ -100,9 +104,7 @@ const VideoPlayer = ({ videoId, isOpen, onClose, title, description }: VideoPlay
         >
           {/* Modal Container */}
           <motion.div
-            className="relative w-full h-full sm:h-auto sm:max-w-5xl mx-auto 
-                       bg-gradient-to-br from-gray-900 to-black rounded-none 
-                       sm:rounded-2xl overflow-hidden shadow-2xl sm:my-8"
+            className="relative w-full sm:max-w-5xl mx-auto bg-gradient-to-br from-gray-900 to-black rounded-none sm:rounded-2xl overflow-hidden shadow-2xl sm:my-8 max-h-[90svh] sm:max-h-[85svh] flex flex-col"
             variants={modalVariants}
             onClick={e => e.stopPropagation()}
           >
@@ -119,12 +121,10 @@ const VideoPlayer = ({ videoId, isOpen, onClose, title, description }: VideoPlay
             </motion.button>
 
             {/* Video Container with Gradient Border */}
-            <div className="relative bg-gradient-to-r from-red-500/20 
-                           via-white/20 to-blue-500/20 sm:rounded-t-2xl">
-              <div className="relative aspect-video overflow-hidden bg-black 
-                             sm:rounded-t-2xl">
+            <div className="relative bg-gradient-to-r from-red-500/20 via-white/20 to-blue-500/20 sm:rounded-t-2xl">
+              <div className="relative aspect-video overflow-hidden bg-black sm:rounded-t-2xl">
                 <iframe
-                  src={`https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0`}
+                  src={`https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0&playsinline=1`}
                   title="YouTube video player"
                   allow="accelerometer; autoplay; clipboard-write; 
                          encrypted-media; gyroscope; picture-in-picture"
@@ -140,8 +140,7 @@ const VideoPlayer = ({ videoId, isOpen, onClose, title, description }: VideoPlay
                 variants={infoVariants}
                 initial="hidden"
                 animate="visible"
-                className="p-4 sm:p-6 bg-gradient-to-b from-black/80 to-black 
-                           max-h-[40vh] sm:max-h-[50vh] overflow-y-auto"
+                className="p-4 sm:p-6 bg-gradient-to-b from-black/80 to-black overflow-y-auto"
               >
                 {title && (
                   <h2 className="text-2xl font-bold text-white mb-4 
@@ -184,6 +183,9 @@ const VideoPlayer = ({ videoId, isOpen, onClose, title, description }: VideoPlay
       )}
     </AnimatePresence>
   )
+
+  if (!mounted) return null
+  return createPortal(content, document.body)
 }
 
 export default VideoPlayer
