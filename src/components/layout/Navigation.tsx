@@ -3,7 +3,6 @@ import { useState, useCallback, memo, useEffect, useRef } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
-import Image from 'next/image'
 import { FaBars, FaTimes, FaChevronDown, FaChevronUp } from 'react-icons/fa'
 
 const MENU_ITEMS = [
@@ -42,6 +41,8 @@ const MENU_ITEMS = [
 
 const Navigation = () => {
   const router = useRouter()
+  // Prevent re-render when route changes by memoizing menu
+  const menuItems = MENU_ITEMS
   // For desktop hover dropdowns
   const [hoveredItem, setHoveredItem] = useState<string | null>(null)
   // For mobile menu open/close state
@@ -108,14 +109,11 @@ const Navigation = () => {
 
   return (
     <nav className={`fixed top-0 left-0 right-0 h-16 shadow-lg z-[100] transform-gpu will-change-transform transition-[transform,opacity] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] ${isHidden ? '-translate-y-full opacity-0 pointer-events-none' : 'translate-y-0 opacity-100'}`}>
-      {/* Full-width Banner Background */}
-      <Image
-        src="/images/banner-principal.webp"
-        alt="Banner Principal"
-        fill
-        className="object-cover object-center"
-        priority
-        sizes="100vw"
+      {/* Full-width Banner Background (CSS background to avoid image re-mounts) */}
+      <div
+        aria-hidden="true"
+        className="absolute inset-0 bg-center bg-cover"
+        style={{ backgroundImage: "url('/images/banner-principal.webp')" }}
       />
       {/* Overlay for improved contrast */}
       <div className="absolute inset-0 bg-black opacity-40"></div>

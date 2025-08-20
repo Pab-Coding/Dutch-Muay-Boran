@@ -32,7 +32,7 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en">
+    <html lang="en" className="h-full">
       <head>
         {/* Keep head minimal to avoid duplicate image fetches; Next/Image handles priority */}
         <style>{`
@@ -48,7 +48,7 @@ export default function RootLayout({
           body { opacity: 1; }
         `}</style>
       </head>
-      <body className={inter.className}>
+      <body className={`${inter.className} h-full`}> 
         <Navigation />
         {/* Spacer to offset the fixed nav height */}
         <div className="h-16" />
