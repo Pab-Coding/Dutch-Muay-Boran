@@ -27,7 +27,7 @@ const InstantImage = ({
   className = '',
   priority = false,
   quality = 90,
-  placeholder = 'blur',
+  placeholder = 'empty',
   blurDataURL
 }: InstantImageProps) => {
   const [imageLoaded, setImageLoaded] = useState(false)

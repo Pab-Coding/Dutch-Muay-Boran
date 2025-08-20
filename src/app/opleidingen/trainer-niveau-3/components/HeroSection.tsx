@@ -57,8 +57,7 @@ className="relative h-[60vh] md:h-[70vh] min-h-[400px] md:min-h-[600px] w-full o
           sizes="(max-width: 768px) 100vw, 100vw"
           className="object-cover"
           quality={85}
-          placeholder="blur"
-          blurDataURL={MINIMAL_INLINE_IMAGES.defaultBlur}
+          placeholder="empty"
         />
         <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/30 to-black/40" />
         <div className="absolute inset-0 bg-gradient-to-r from-red-900/5 to-blue-900/5" />

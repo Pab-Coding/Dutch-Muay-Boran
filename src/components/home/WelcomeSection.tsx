@@ -56,8 +56,7 @@ const WelcomeSection = () => {
           className="object-cover object-center"
           priority
           quality={85}
-          placeholder="blur"
-          blurDataURL={MINIMAL_INLINE_IMAGES.defaultBlur}
+          placeholder="empty"
         />
         {/* Multiple overlay layers for depth and readability */}
         <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/50 to-black/60 rounded-xl" />
@@ -85,8 +84,7 @@ const WelcomeSection = () => {
               sizes="(max-width: 768px) 192px, 256px"
               className="object-contain rounded-full"
               priority
-              placeholder="blur"
-              blurDataURL={MINIMAL_INLINE_IMAGES.defaultBlur}
+              placeholder="empty"
             />
           </MotionDiv>
 

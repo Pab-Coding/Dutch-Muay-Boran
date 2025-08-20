@@ -61,8 +61,7 @@ const HeroSection = () => {
           className="object-cover"
           priority
           quality={90}
-          placeholder="blur"
-          blurDataURL={MINIMAL_INLINE_IMAGES.defaultBlur}
+          placeholder="empty"
         />
         <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-black/20 to-black/30" />
         

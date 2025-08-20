@@ -1,8 +1,7 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import InstantImage from '@/components/shared/InstantImage'
-import { INLINE_IMAGES } from '@/constants/inlineImages'
+import OptimizedImage from '@/components/shared/OptimizedImage'
 import { useRef } from 'react'
 import { useMediaQuery } from '@/hooks/useMediaQuery'
 import { MotionSection, MotionDiv, MotionH1, MotionP } from '@/components/shared/MotionComponents'
@@ -64,17 +63,14 @@ const HeroSection = () => {
               variants={childVariants}
               className="w-32 h-32 relative mx-auto"
             >
-              <InstantImage
+              <OptimizedImage
                 src="/images/logo.webp"
                 alt="Dutch Muay Boran Logo"
-                inlineSrc={INLINE_IMAGES.logoInline}
-                backgroundSrc={INLINE_IMAGES.logoInlineBg}
                 fill
                 sizes="(max-width: 768px) 100vw, 50vw"
                 className="object-contain"
                 quality={85}
-                placeholder="blur"
-                blurDataURL="data:image/webp;base64,UklGRmABAABXRUJQVlA4IFQBAAAwCQCdASpkAGQAPpFInUulpCKhMAgAsBIJaQAACTgGcAD+5QAAAAD+88NaQehknZtQPl5dIKkdBEz6XDCVAiRYhv+ZsI4YYNLi3KX9Jkz2KqA6kNdARm4n+dfHrGwGMDCCiCFIAAD+870zI6Mwcm+bz1aM/jrCR3+N04J6V1mCvyb1IwK5K6/gJfhf5ONVX0NxzGGLVrQnMdoQOPZx1lfj/J9Fj/lSEu7gJuR5mgskGgXuLSfGzIRn3/x41Pg48mEy9hZvdxWF3kv+YkPxrRrwGu+BnH0bLSPR44DFnGhVrk5OqM9QIHhPxsJjMgL8eaVZvIXt41fGp/r3Dkn59iKS1J8fqrp/vVuqlPTKzRXdIZTvMWbvZFsYlIFQl5RZWNbsRSZAR8u4l+7B5vPfcmILdWpgYZpRe6MuMNZYFgAAAA=="
+                placeholder="empty"
               />
             </MotionDiv>
 

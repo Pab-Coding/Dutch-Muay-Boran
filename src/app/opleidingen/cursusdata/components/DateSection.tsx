@@ -51,8 +51,7 @@ const DateSection = () => {
             className="object-cover rounded-full"
             priority
             quality={85}
-            placeholder="blur"
-            blurDataURL="data:image/webp;base64,UklGRoYBAABXRUJQVlA4IHoBAADQCgCdASpkAGQAPpFEnEqlo6KhMAgAsBKJaQAACtDwALmMfP4H+AAAAAD+9eKXrp2uvuYaORyTTLY6NMYTDlIaQPv7JIBJk2JzTUGdA4HWdGAcHbWz+m4hwK9G3oR98O3s3pfsbL6y69b8ZxOSf9pWJoILgm2yE889Zt/kZQo/+2WY0SdqrH/gPrRo49YVFOkH74xMBRpyV/qVvFv8Q69cLuZePUk7XxxJoQWgM83KA83dAesjVEJ8JdSWx56xcE25DzrS8JNpODrgjkV5mSVl5G/qKvX28L52bTCkwJz1OBa/tR9qf6GdgaZpIpKWF4GsRVE1OjCCXbjr3qhkvCPRWXuiRR3lv3UR2K9Q/1l0s11iH6U9P7DsrD51rOL4USZC2iYsA0kJe5fxMTyO4jOjbpWvTBZeRbHQf/dT3mL4Ax2YRnhqAQ8AAA=="
+            placeholder="empty"
           />
         </MotionDiv>
 

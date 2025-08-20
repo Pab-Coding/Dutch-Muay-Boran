@@ -120,8 +120,7 @@ const VideoCard = ({ videoId, title, description, onPlay }: VideoCardProps) => {
           quality={75}
           onError={() => setThumbnailError(true)}
           sizes="(max-width: 768px) 100vw, 50vw"
-          placeholder="blur"
-          blurDataURL="data:image/webp;base64,UklGRlIAAABXRUJQVlA4IEYAAAAwAQCdASoIAAUAAUAmJaQAA3AA/v89WAAAAP7/2T5G1NLf/8elPp36k9P/d8JvkH9D/Y32G9gD+AP4A/gD+AP4A/gD+AMAA"
+          placeholder="empty"
         />
 
         {/* Always visible overlay with gradient */}
