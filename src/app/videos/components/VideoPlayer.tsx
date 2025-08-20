@@ -39,14 +39,16 @@ const VideoPlayer = ({ videoId, isOpen, onClose, title, description }: VideoPlay
       opacity: 1,
       backdropFilter: 'blur(8px)',
       transition: {
-        duration: 0.3
+        duration: 0.2,
+        ease: 'easeOut'
       }
     },
     exit: {
       opacity: 0,
       backdropFilter: 'blur(0px)',
       transition: {
-        duration: 0.3
+        duration: 0.2,
+        ease: 'easeIn'
       }
     }
   }
@@ -54,24 +56,25 @@ const VideoPlayer = ({ videoId, isOpen, onClose, title, description }: VideoPlay
   const modalVariants = {
     hidden: {
       opacity: 0,
-      scale: 0.8,
-      y: 50
+      scale: 0.96,
+      y: 10
     },
     visible: {
       opacity: 1,
       scale: 1,
       y: 0,
       transition: {
-        duration: 0.4,
-        ease: "easeOut"
+        duration: 0.25,
+        ease: 'easeOut'
       }
     },
     exit: {
       opacity: 0,
-      scale: 0.8,
-      y: 50,
+      scale: 0.98,
+      y: 10,
       transition: {
-        duration: 0.3
+        duration: 0.2,
+        ease: 'easeIn'
       }
     }
   }
@@ -135,7 +138,7 @@ const VideoPlayer = ({ videoId, isOpen, onClose, title, description }: VideoPlay
         <motion.div
           className="fixed inset-0 z-[100] flex items-center justify-center px-0 sm:px-4 py-4 sm:py-8 bg-black/80 touch-manipulation"
           variants={backdropVariants}
-          initial="hidden"
+          initial={false}
           animate="visible"
           exit="exit"
           onClick={onClose}
@@ -143,7 +146,7 @@ const VideoPlayer = ({ videoId, isOpen, onClose, title, description }: VideoPlay
           {/* Modal Container */}
           <motion.div
             ref={containerRef}
-            className="relative w-full mx-auto bg-gradient-to-br from-gray-900 to-black rounded-none sm:rounded-2xl shadow-2xl sm:my-8 max-h-[96svh] overflow-y-auto flex flex-col max-w-[min(96vw,calc(90svh*16/9))]"
+            className="relative w-full mx-auto bg-gradient-to-br from-gray-900 to-black rounded-none sm:rounded-2xl shadow-2xl sm:my-8 max-h-[96svh] overflow-y-auto flex flex-col max-w-[min(96vw,calc(90svh*16/9))] will-change-transform"
             variants={modalVariants}
             onClick={e => e.stopPropagation()}
           >
@@ -231,7 +234,7 @@ const VideoPlayer = ({ videoId, isOpen, onClose, title, description }: VideoPlay
           {/* Background Decorative Elements */}
           <motion.div
             className="fixed inset-0 pointer-events-none"
-            initial={{ opacity: 0 }}
+            initial={{ opacity: 1 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
           >
