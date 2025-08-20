@@ -163,7 +163,7 @@ const VideoPlayer = ({ videoId, isOpen, onClose, title, description }: VideoPlay
             </motion.button>
 
             {/* Video Container with Gradient Border */}
-            <div className="relative bg-gradient-to-r from-red-500/20 via-white/20 to-blue-500/20 sm:rounded-t-2xl">
+            <div className="relative bg-gradient-to-r from-red-500/10 via-white/10 to-blue-500/10 sm:rounded-t-2xl">
               {/* Use 56.25% aspect ratio plus a small extra space for controls rendering */}
               <div className="relative bg-black sm:rounded-t-2xl" style={{ paddingTop: '57%' }}>
                 <iframe
@@ -174,6 +174,7 @@ const VideoPlayer = ({ videoId, isOpen, onClose, title, description }: VideoPlay
                   allowFullScreen
                   className="absolute inset-0 w-full h-full"
                 />
+                <div className="absolute inset-0 bg-black pointer-events-none" />
               </div>
               {/* Scroll hint to details */}
               {(title || description) && (
