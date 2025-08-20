@@ -176,9 +176,13 @@ const Navigation = () => {
 
         {/* Mobile Hamburger Button placed on the right */}
         <div className="md:hidden flex justify-end w-full">
-          <div className="bg-white/10 w-10 h-10 rounded-md backdrop-blur-sm border border-white/20 flex items-center justify-center">
-            <button onClick={toggleMobileMenu} className="text-white focus:outline-none p-0 m-0 flex items-center justify-center">
-              {isMenuOpen ? <FaTimes size={24} /> : <FaBars size={24} />}
+          <div className={`w-10 h-10 rounded-md backdrop-blur-sm border flex items-center justify-center transition-colors shadow-md ${isMenuOpen ? 'bg-white/90 text-gray-900 border-white/30' : 'bg-white/20 text-white border-white/30'}`}>
+            <button
+              onClick={toggleMobileMenu}
+              className="focus:outline-none p-0 m-0 flex items-center justify-center text-inherit"
+              aria-label={isMenuOpen ? 'Sluit menu' : 'Open menu'}
+            >
+              {isMenuOpen ? <FaTimes size={26} /> : <FaBars size={26} />}
             </button>
           </div>
         </div>
