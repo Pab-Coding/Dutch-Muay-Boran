@@ -53,8 +53,9 @@ const Navigation = () => {
   // Hide-on-scroll state
   const [isHidden, setIsHidden] = useState(false)
   const [disableAutoHide, setDisableAutoHide] = useState(false)
-  const [isMounted, setIsMounted] = useState(false)
+  const [enableTransitions, setEnableTransitions] = useState(false)
   const lastScrollYRef = useRef(0)
+  const hasScrolledRef = useRef(false)
 
   const handleMouseEnter = useCallback((itemName: string) => {
     setHoveredItem(itemName)
@@ -86,9 +87,16 @@ const Navigation = () => {
     }
   }, [isMenuOpen])
 
-  // Set mounted state after initial render
+  // Enable transitions after user has scrolled (not on initial mount)
   useEffect(() => {
-    setIsMounted(true)
+    const enableTransitionsOnScroll = () => {
+      if (!hasScrolledRef.current) {
+        hasScrolledRef.current = true
+        setEnableTransitions(true)
+      }
+    }
+    window.addEventListener('scroll', enableTransitionsOnScroll, { passive: true, once: true })
+    return () => window.removeEventListener('scroll', enableTransitionsOnScroll)
   }, [])
 
   // Hide nav when scrolling down, show when scrolling up (with small threshold) or near top
@@ -128,12 +136,20 @@ const Navigation = () => {
       setIsHidden(false)
     }
     setDisableAutoHide(true)
-    const timeout = setTimeout(() => setDisableAutoHide(false), 450)
+    // Disable transitions temporarily on route change to prevent animation
+    setEnableTransitions(false)
+    const timeout = setTimeout(() => {
+      setDisableAutoHide(false)
+      // Re-enable transitions after route change completes
+      if (hasScrolledRef.current) {
+        setEnableTransitions(true)
+      }
+    }, 450)
     return () => clearTimeout(timeout)
-  }, [pathname])
+  }, [pathname, isHidden])
 
   return (
-    <nav className={`fixed ${isHidden ? '-top-16 opacity-0 pointer-events-none' : 'top-0 opacity-100'} left-0 right-0 h-16 shadow-lg z-[100] ${isMounted ? 'transition-[top,opacity] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)]' : ''}`}>
+    <nav className={`fixed ${isHidden ? '-top-16 opacity-0 pointer-events-none' : 'top-0 opacity-100'} left-0 right-0 h-16 shadow-lg z-[100] ${enableTransitions ? 'transition-[top,opacity] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)]' : ''}`}>
       {/* Full-width Banner Background (CSS background to avoid image re-mounts) */}
       <div
         aria-hidden="true"
