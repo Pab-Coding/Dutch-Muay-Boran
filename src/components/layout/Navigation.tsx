@@ -1,5 +1,5 @@
 'use client'
-import { useState, useCallback, memo, useEffect } from 'react'
+import { useState, useCallback, memo, useEffect, useRef } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
@@ -48,6 +48,9 @@ const Navigation = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   // For mobile submenu toggling
   const [mobileExpanded, setMobileExpanded] = useState<string | null>(null)
+  // Hide-on-scroll state
+  const [isHidden, setIsHidden] = useState(false)
+  const lastScrollYRef = useRef(0)
 
   const handleMouseEnter = useCallback((itemName: string) => {
     setHoveredItem(itemName)
@@ -79,8 +82,32 @@ const Navigation = () => {
     }
   }, [isMenuOpen])
 
+  // Hide nav when scrolling down, show when scrolling up (with small threshold) or near top
+  useEffect(() => {
+    lastScrollYRef.current = window.scrollY
+    const handleScroll = () => {
+      const currentY = window.scrollY
+      const delta = currentY - lastScrollYRef.current
+      const nearTop = currentY < 20
+
+      if (isMenuOpen || nearTop) {
+        setIsHidden(false)
+      } else if (delta > 5) {
+        // Scrolling down
+        setIsHidden(true)
+      } else if (delta < -5) {
+        // Scrolling up
+        setIsHidden(false)
+      }
+
+      lastScrollYRef.current = currentY
+    }
+    window.addEventListener('scroll', handleScroll, { passive: true })
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [isMenuOpen])
+
   return (
-    <nav className="relative h-16 shadow-lg z-50">
+    <nav className={`fixed top-0 left-0 right-0 h-16 shadow-lg z-[100] transform-gpu will-change-transform transition-[transform,opacity] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] ${isHidden ? '-translate-y-full opacity-0 pointer-events-none' : 'translate-y-0 opacity-100'}`}>
       {/* Full-width Banner Background */}
       <Image
         src="/images/banner-principal.webp"

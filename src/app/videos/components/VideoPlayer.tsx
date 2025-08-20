@@ -1,7 +1,7 @@
 'use client'
 
 import { motion, AnimatePresence } from 'framer-motion'
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useRef } from 'react'
 import { createPortal } from 'react-dom'
 import { XMarkIcon } from '@heroicons/react/24/outline'
 
@@ -91,6 +91,44 @@ const VideoPlayer = ({ videoId, isOpen, onClose, title, description }: VideoPlay
     }
   }
 
+  const containerRef = useRef<HTMLDivElement>(null)
+  const infoRef = useRef<HTMLDivElement>(null)
+  const [showHint, setShowHint] = useState(true)
+
+  const scrollToInfo = () => {
+    if (containerRef.current && infoRef.current) {
+      const top = infoRef.current.offsetTop
+      containerRef.current.scrollTo({ top, behavior: 'smooth' })
+    }
+    setShowHint(false)
+  }
+
+  const scrollToTop = () => {
+    if (containerRef.current) {
+      containerRef.current.scrollTo({ top: 0, behavior: 'smooth' })
+    }
+    setShowHint(true)
+  }
+
+  // Toggle down-hint visibility based on scroll direction
+  useEffect(() => {
+    const el = containerRef.current
+    if (!el) return
+    let last = el.scrollTop
+    const onScroll = () => {
+      const y = el.scrollTop
+      const delta = y - last
+      if (delta > 5) {
+        setShowHint(false)
+      } else if (delta < -5) {
+        setShowHint(true)
+      }
+      last = y
+    }
+    el.addEventListener('scroll', onScroll, { passive: true })
+    return () => el.removeEventListener('scroll', onScroll)
+  }, [isOpen])
+
   const content = (
     <AnimatePresence>
       {isOpen && videoId && (
@@ -104,7 +142,8 @@ const VideoPlayer = ({ videoId, isOpen, onClose, title, description }: VideoPlay
         >
           {/* Modal Container */}
           <motion.div
-            className="relative w-full mx-auto bg-gradient-to-br from-gray-900 to-black rounded-none sm:rounded-2xl shadow-2xl sm:my-8 max-h-[96svh] overflow-auto flex flex-col max-w-[min(96vw,calc(90svh*16/9))]"
+            ref={containerRef}
+            className="relative w-full mx-auto bg-gradient-to-br from-gray-900 to-black rounded-none sm:rounded-2xl shadow-2xl sm:my-8 max-h-[96svh] overflow-y-auto flex flex-col max-w-[min(96vw,calc(90svh*16/9))]"
             variants={modalVariants}
             onClick={e => e.stopPropagation()}
           >
@@ -133,6 +172,18 @@ const VideoPlayer = ({ videoId, isOpen, onClose, title, description }: VideoPlay
                   className="absolute inset-0 w-full h-full"
                 />
               </div>
+              {/* Scroll hint to details */}
+              {(title || description) && (
+                <button
+                  onClick={scrollToInfo}
+                  className={`hidden sm:flex absolute -bottom-4 left-1/2 -translate-x-1/2 z-20 items-center justify-center w-9 h-9 rounded-full bg-white/90 text-gray-800 shadow-md border border-black/10 hover:bg-white transition-all duration-300 ${showHint ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}
+                  aria-label="Scroll to details"
+                >
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-5 h-5">
+                    <path fillRule="evenodd" d="M12 16.5a.75.75 0 0 1-.53-.22l-6-6a.75.75 0 1 1 1.06-1.06L12 14.69l5.47-5.47a.75.75 0 1 1 1.06 1.06l-6 6a.75.75 0 0 1-.53.22z" clipRule="evenodd" />
+                  </svg>
+                </button>
+              )}
             </div>
 
             {/* Video Information */}
@@ -141,18 +192,28 @@ const VideoPlayer = ({ videoId, isOpen, onClose, title, description }: VideoPlay
                 variants={infoVariants}
                 initial="hidden"
                 animate="visible"
-                className="p-4 sm:p-6 bg-gradient-to-b from-black/80 to-black overflow-y-auto"
+                ref={infoRef}
+                className="relative z-10 p-4 sm:p-6 bg-gradient-to-b from-black/80 to-black/95 backdrop-blur-[1px]"
               >
+                <div className="absolute right-4 top-3 flex gap-2">
+                  <button
+                    onClick={scrollToTop}
+                    className="inline-flex items-center justify-center w-8 h-8 rounded-full bg-white/10 text-white hover:bg-white/20 border border-white/10"
+                    aria-label="Back to video"
+                  >
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-5 h-5">
+                      <path fillRule="evenodd" d="M12 7.5a.75.75 0 0 1 .53.22l6 6a.75.75 0 0 1-1.06 1.06L12 9.31l-5.47 5.47a.75.75 0 0 1-1.06-1.06l6-6a.75.75 0 0 1 .53-.22z" clipRule="evenodd" />
+                    </svg>
+                  </button>
+                </div>
                 {title && (
-                  <h2 className="text-2xl font-bold text-white mb-4 
-                                leading-tight">
+                  <h2 className="text-2xl font-bold text-white mb-2 sm:mb-3 leading-tight">
                     {title}
                   </h2>
                 )}
                 {description && (
                   <div className="prose prose-invert max-w-none">
-                    <p className="text-gray-300 text-base leading-relaxed 
-                                 whitespace-pre-line">
+                    <p className="text-gray-200 text-[15px] sm:text-base leading-relaxed whitespace-pre-line">
                       {description}
                     </p>
                   </div>
@@ -160,10 +221,10 @@ const VideoPlayer = ({ videoId, isOpen, onClose, title, description }: VideoPlay
               </motion.div>
             )}
 
-            {/* Decorative Elements */}
-            <div className="absolute inset-0 bg-gradient-to-br from-red-500/5 
+            {/* Decorative Elements (placed behind content) */}
+            <div className="absolute inset-0 -z-10 bg-gradient-to-br from-red-500/5 
                            via-transparent to-blue-500/5 pointer-events-none" />
-            <div className="absolute inset-0 bg-gradient-to-tr from-blue-500/5 
+            <div className="absolute inset-0 -z-10 bg-gradient-to-tr from-blue-500/5 
                            via-transparent to-red-500/5 pointer-events-none" />
           </motion.div>
 

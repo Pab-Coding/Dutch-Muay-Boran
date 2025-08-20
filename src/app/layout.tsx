@@ -50,6 +50,8 @@ export default function RootLayout({
       </head>
       <body className={inter.className}>
         <Navigation />
+        {/* Spacer to offset the fixed nav height */}
+        <div className="h-16" />
         {children}
       </body>
     </html>
