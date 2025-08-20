@@ -1,8 +1,8 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import InstantImage from '@/components/shared/InstantImage'
-import { INLINE_IMAGES } from '@/constants/inlineImages'
+import OptimizedImage from '@/components/shared/OptimizedImage'
+import { MINIMAL_INLINE_IMAGES } from '@/constants/minimalInlineImages'
 import Link from 'next/link'
 import { useRef } from 'react'
 import { useMediaQuery } from '@/hooks/useMediaQuery'
@@ -50,17 +50,15 @@ const HeroSection = () => {
       <MotionDiv 
         className="absolute inset-0"
       >
-        <InstantImage
+        <OptimizedImage
           src="/images/zelf-standig.webp"
           alt="Muay Thai Training"
-          inlineSrc={INLINE_IMAGES.zelfStandigInline}
-          backgroundSrc={INLINE_IMAGES.zelfStandigInlineBg}
           fill
           sizes="(max-width: 768px) 100vw, 100vw"
           className="object-cover"
           quality={85}
           placeholder="blur"
-          blurDataURL="data:image/webp;base64,UklGRmQBAABXRUJQVlA4IFgBAABQCACdASpkAGQAPpE+mkilIyIhsAgAsBIJaQAAPHAuANLLXj2XmWsAP7zwsaUpACdnYQcQB5l53jJADyT/9DTW6gS+TJQmcBTgU1WY/V2Sw5qg5Dq9x7qiMPw53wh3J2JL7j/z/Bfs6uTdCbV6+zKY4AAA/vpwKjFVd/Ry2nTJGwQ8eRq/0U+27+Qvj5Gw8sKbDgCxvVBo6c0uq9/nCEoEMJ4mVf+FYcA9gkHT46kFcIa+CL1tXR1sSoUeQdDkQg8+a6JgYAgpwvZXAtnGDdnwwQWy3z/PoFnrYSZIbLd83Z6O2tCIhUjKm0m7z6Q2PO9QwFYqsH8qC5pXqPkBjJjbHGVONk/7rD20HtE1HEI19KjVKVyxOOEuY2kkWqFgblPcuU3Ry0d4qjz8J/ZkfwHqeN60bQAAAA=="
+          blurDataURL={MINIMAL_INLINE_IMAGES.defaultBlur}
         />
         <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/30 to-black/40" />
         <div className="absolute inset-0 bg-gradient-to-r from-red-900/5 to-blue-900/5" />

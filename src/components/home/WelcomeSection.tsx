@@ -8,8 +8,8 @@ import {
   MotionButton,
   MotionSection
 } from '@/components/shared/MotionComponents'
-import InstantImage from '@/components/shared/InstantImage'
-import { INLINE_IMAGES } from '@/constants/inlineImages'
+import OptimizedImage from '@/components/shared/OptimizedImage'
+import { MINIMAL_INLINE_IMAGES } from '@/constants/minimalInlineImages'
 
 const WelcomeSection = () => {
   const heroVariants = {
@@ -48,18 +48,16 @@ const WelcomeSection = () => {
       <MotionDiv
         className="absolute inset-0"
       >
-        <InstantImage
-          src="/images/new-team-photo.webp"
+        <OptimizedImage
+          src="/images/new-team-photo-optimized.webp"
           alt="DMBF Team"
-          inlineSrc={INLINE_IMAGES.teamPhotoInline}
-          backgroundSrc={INLINE_IMAGES.teamPhotoInlineBg}
           fill
           sizes="100vw"
           className="object-cover object-center"
           priority
-          quality={90}
+          quality={85}
           placeholder="blur"
-          blurDataURL="data:image/webp;base64,UklGRkYAAABXRUJQVlA4IDoAAACQAQCdASoKAAYABUB8JZQAAgboSWgA+Qa3wgZ8qSji/y1MrOm0BWgAOoeQUI6up0x4ocKzKn/mcAAA="
+          blurDataURL={MINIMAL_INLINE_IMAGES.defaultBlur}
         />
         {/* Multiple overlay layers for depth and readability */}
         <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/50 to-black/60 rounded-xl" />
@@ -80,17 +78,15 @@ const WelcomeSection = () => {
             className="relative w-48 h-48 md:w-56 md:h-56 mb-6 rounded-full overflow-hidden"
           >
             <div className="absolute inset-0 bg-gradient-to-br from-red-600/20 to-blue-600/20 rounded-full backdrop-blur-sm" />
-            <InstantImage
-              src="/images/logo.webp"
+            <OptimizedImage
+              src="/images/logo-optimized.webp"
               alt="DMBF Logo"
-              inlineSrc={INLINE_IMAGES.logoInline}
-              backgroundSrc={INLINE_IMAGES.logoInlineBg}
               fill
               sizes="(max-width: 768px) 192px, 256px"
               className="object-contain rounded-full"
               priority
               placeholder="blur"
-              blurDataURL="data:image/webp;base64,UklGRogAAABXRUJQVlA4WAoAAAAQAAAACQAABQAAQUxQSCwAAAABP0CQbRtMDQ5zhvM8ImJeBIoiSY3DTyQgAUlIyPdOR/Q/JmKjDvpibNREAlZQOCA2AAAAsAEAnQEqCgAGAAVAfCWwAnQA3OaW0AD+hziJb2VElaTBSUxCQUEEFyQ/jgh0X5E93X36J+AA"
+              blurDataURL={MINIMAL_INLINE_IMAGES.defaultBlur}
             />
           </MotionDiv>
 

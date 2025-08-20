@@ -4,8 +4,8 @@ import { motion } from 'framer-motion'
 import Link from 'next/link'
 import { useRef } from 'react'
 import { MotionSection, MotionDiv, MotionButton, MotionSpan, MotionH1, MotionP } from '@/components/shared/MotionComponents'
-import InstantImage from '@/components/shared/InstantImage'
-import { INLINE_IMAGES } from '@/constants/inlineImages'
+import OptimizedImage from '@/components/shared/OptimizedImage'
+import { MINIMAL_INLINE_IMAGES } from '@/constants/minimalInlineImages'
 
 const HeroSection = () => {
   const sectionRef = useRef<HTMLDivElement>(null)
@@ -48,17 +48,15 @@ const HeroSection = () => {
       <MotionDiv
         className="absolute inset-0"
       >
-        <InstantImage
+        <OptimizedImage
           src="/images/muay-thai.webp"
           alt="Muay Thai"
-          inlineSrc={INLINE_IMAGES.muayThaiInline}
-          backgroundSrc={INLINE_IMAGES.muayThaiInlineBg}
           fill
           sizes="100vw"
           priority
           quality={90}
           placeholder="blur"
-          blurDataURL="data:image/webp;base64,UklGRjwAAABXRUJQVlA4IDAAAACQAQCdASoKAAYABUB8JYwAAp0LMqAA/t2iRc1baLUnF0eE4bsyCgO/PYODcStA4AA="
+          blurDataURL={MINIMAL_INLINE_IMAGES.defaultBlur}
         />
         <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/30 to-black/40" />
         <div className="absolute inset-0 bg-gradient-to-r from-red-900/5 to-blue-900/5" />

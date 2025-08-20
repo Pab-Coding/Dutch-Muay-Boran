@@ -1,8 +1,8 @@
 'use client'
 
 import { useScroll, useTransform } from 'framer-motion'
-import InstantImage from '@/components/shared/InstantImage'
-import { INLINE_IMAGES } from '@/constants/inlineImages'
+import OptimizedImage from '@/components/shared/OptimizedImage'
+import { MINIMAL_INLINE_IMAGES } from '@/constants/minimalInlineImages'
 import { useRef } from 'react'
 import { MotionSection, MotionDiv, MotionH1, MotionP } from '@/components/shared/MotionComponents'
 
@@ -53,18 +53,16 @@ const HeroSection = () => {
       <MotionDiv
         className="absolute inset-0"
       >
-        <InstantImage
+        <OptimizedImage
           src="/images/nieuws.webp"
           alt="Nieuws - Dutch Muay Boran Foundation"
-          inlineSrc={INLINE_IMAGES.nieuwsInline}
-          backgroundSrc={INLINE_IMAGES.nieuwsInlineBg}
           fill
           sizes="100vw"
           className="object-cover"
           priority
           quality={90}
           placeholder="blur"
-          blurDataURL="data:image/webp;base64,UklGRjQAAABXRUJQVlA4ICgAAAAwAQCdASoKAAYABUB8JaQAA3AA/u9MNhm0u6w0Kybt3Bv5UiLIfQAA"
+          blurDataURL={MINIMAL_INLINE_IMAGES.defaultBlur}
         />
         <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-black/20 to-black/30" />
         

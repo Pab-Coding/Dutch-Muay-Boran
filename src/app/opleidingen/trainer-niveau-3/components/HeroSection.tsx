@@ -1,8 +1,8 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import InstantImage from '@/components/shared/InstantImage'
-import { INLINE_IMAGES } from '@/constants/inlineImages'
+import OptimizedImage from '@/components/shared/OptimizedImage'
+import { MINIMAL_INLINE_IMAGES } from '@/constants/minimalInlineImages'
 import Link from 'next/link'
 import { useRef } from 'react'
 import { useMediaQuery } from '@/hooks/useMediaQuery'
@@ -50,17 +50,15 @@ className="relative h-[60vh] md:h-[70vh] min-h-[400px] md:min-h-[600px] w-full o
       <MotionDiv 
         className="absolute inset-0"
       >
-        <InstantImage
+        <OptimizedImage
           src="/images/Muay-thai-boran.webp"
           alt="Traditional Muay Thai Training Techniques"
-          inlineSrc={INLINE_IMAGES.muayThaiBoranInline}
-          backgroundSrc={INLINE_IMAGES.muayThaiBoranInlineBg}
           fill
           sizes="(max-width: 768px) 100vw, 100vw"
           className="object-cover"
           quality={85}
           placeholder="blur"
-          blurDataURL="data:image/webp;base64,UklGRmQBAABXRUJQVlA4IFgBAABQCACdASpkAGQAPpFAm0eloyIhsAgAsBIJaQAAPGge4BR2wCujkxmMAP7zw3+nRUeHUxgNSNOUjYSx/hLPEu03BRHWFUvHAWnbxQZdTX+3Wa/rHxb0oHlb5h92C2QoO5oOmX2mAd+eYTBPUqAILvJfEUJZA0OMY8G1b/L2kpZ9BBd42AChfXJvs3LL4y65g1FpJxmM7ssCWgR26Z1Rp9UoGhfGhGR9GOdUjBKsYABvJO7q2nZlVPGUC1e6YfXDmRZXpPZgtchm6cORgRl7SXdSNYHbO8N+1eCk7dHXWWaTrm9yfOWEigolXtKa0EpTDxoKwuNLsGp1D3Fb9Z8vYGOokOWfhZlnxEVkgpXYGYnO/Vy/gJp+l1xkuavTbNJXKrdcWavxwqtTVrwAAAAA"
+          blurDataURL={MINIMAL_INLINE_IMAGES.defaultBlur}
         />
         <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/30 to-black/40" />
         <div className="absolute inset-0 bg-gradient-to-r from-red-900/5 to-blue-900/5" />

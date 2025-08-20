@@ -1,8 +1,8 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import InstantImage from '@/components/shared/InstantImage'
-import { INLINE_IMAGES } from '@/constants/inlineImages'
+import OptimizedImage from '@/components/shared/OptimizedImage'
+import { MINIMAL_INLINE_IMAGES } from '@/constants/minimalInlineImages'
 import Link from 'next/link'
 import { useRef } from 'react'
 import { ArrowRightIcon } from '@heroicons/react/24/outline'
@@ -49,18 +49,16 @@ const HeroSection = () => {
       <MotionDiv
         className="absolute inset-0"
       >
-        <InstantImage
+        <OptimizedImage
           src="/images/examens-muay.webp"
           alt="Muay Thai Examens"
-          inlineSrc={INLINE_IMAGES.examensMuayInline}
-          backgroundSrc={INLINE_IMAGES.examensMuayInlineBg}
           fill
           className="object-cover"
           priority
           quality={90}
           sizes="100vw"
           placeholder="blur"
-          blurDataURL="data:image/webp;base64,UklGRjwAAABXRUJQVlA4IDAAAADQAQCdASoKAAYABUB8JZQAAl3XpQ3rwAD+ukNcfstfdearMXAE7b7u4BNWADABKAA="
+          blurDataURL={MINIMAL_INLINE_IMAGES.defaultBlur}
         />
         <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/30 to-black/40" />
         <div className="absolute inset-0 bg-gradient-to-r from-red-900/5 to-blue-900/5" />

@@ -1,8 +1,8 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import InstantImage from '@/components/shared/InstantImage'
-import { INLINE_IMAGES } from '@/constants/inlineImages'
+import OptimizedImage from '@/components/shared/OptimizedImage'
+import { MINIMAL_INLINE_IMAGES } from '@/constants/minimalInlineImages'
 import { useRef } from 'react'
 import { useMediaQuery } from '@/hooks/useMediaQuery'
 import { MotionSection, MotionDiv, MotionH1, MotionP } from '@/components/shared/MotionComponents'
@@ -48,17 +48,15 @@ const HeroSection = () => {
       <MotionDiv
         className="absolute inset-0"
       >
-        <InstantImage
+        <OptimizedImage
           src="/images/flyer-amsterdam.webp"
           alt="Dutch Muay Boran Foundation Amsterdam"
-          inlineSrc={INLINE_IMAGES.flyerAmsterdamInline}
-          backgroundSrc={INLINE_IMAGES.flyerAmsterdamInlineBg}
           fill
           sizes="(max-width: 768px) 100vw, 100vw"
           className="object-cover"
           quality={85}
           placeholder="blur"
-          blurDataURL="data:image/webp;base64,UklGRpQBAABXRUJQVlA4IIgBAABQCgCdASpkAGQAPpE+mEiloyKhqAgAsBIJaQAACtK/OJ9htpGpAAD++Gb6VVnXPTJppvGkgPIpJu4vPiD4GQAZm1KLu3j5Vc2EFY4PD6I/B3dV7UBeCLF5Pqw1qP1HwSv9Vl/BDtOjY+eVs+JL+jUxvWBmLALVk9HH6HExYZSFBs7Y7H4XqYasMxSyVK6FhVw1bcjlXkqMv7FYw2uGvFYXmTL97pUvTkbRXPLCJpCp0rfN4lHZLr/10U83ZUO0B5oS4wpYw/jtm1FPvQBjCbYgQxOETuB8lFkLTKXyAAAA"
+          blurDataURL={MINIMAL_INLINE_IMAGES.defaultBlur}
         />
         <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/50 to-black/60" />
         <div className="absolute inset-0 bg-gradient-to-r from-red-900/5 to-blue-900/5" />

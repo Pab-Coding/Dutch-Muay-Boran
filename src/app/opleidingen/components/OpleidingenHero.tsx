@@ -1,8 +1,8 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import InstantImage from '@/components/shared/InstantImage'
-import { INLINE_IMAGES } from '@/constants/inlineImages'
+import OptimizedImage from '@/components/shared/OptimizedImage'
+import { MINIMAL_INLINE_IMAGES } from '@/constants/minimalInlineImages'
 import { useRef } from 'react'
 import { useMediaQuery } from '@/hooks/useMediaQuery'
 import { MotionSection, MotionDiv, MotionH1, MotionP } from '@/components/shared/MotionComponents'
@@ -48,17 +48,15 @@ const OpleidingenHero = () => {
       <MotionDiv
         className="absolute inset-0"
       >
-        <InstantImage
+        <OptimizedImage
           src="/images/opleidingen.webp"
           alt="Opleidingen Muay Thai"
-          inlineSrc={INLINE_IMAGES.opleidingenInline}
-          backgroundSrc={INLINE_IMAGES.opleidingenInlineBg}
           fill
           sizes="(max-width: 768px) 100vw, 100vw"
           className="object-cover"
           quality={85}
           placeholder="blur"
-          blurDataURL="data:image/webp;base64,UklGRoQBAABXRUJQVlA4IHgBAACQCQCdASpkAGQAPpE8l0elIyIhMAgAsBIJaQAAqMAJ0CkD8/IjUgAA/vdVbGdCnlBjAFwCKmm36r8TP6Zny+JG5GI8Dh91aqP1EqQB8QS2zewK+L6iqNfftN+bOBs0AAAAiv8/HpmRPKTDCEd5I9g8b9Gd8kA7qrqUjnGm/nFAqAEZlvj9kXULUwq3sB2a+O/IgTYAZxb9PkfQ18lAgxVCO8SyPvJrPPWXwW9jxbPuYO9Bsv6cZ4iC8mSPx3DjL+G6h/g1e+bV+dYyDgmhRW6QWw1RFSUPSYsP+8Jb5PbxJ9/i4FJmPQitMm1TLCL89wg9b+dq/MQ6YfQ3sKGHh5GVijSFDLqpnDI+mQ8nzHO45DkWl5J4VHD9SjJHwIiJ0MWrXgLYbKFQrNEggLvWXyS+cMkSa1TH0z9B9FLfT8z+7Df9ZskAAAAA"
+          blurDataURL={MINIMAL_INLINE_IMAGES.defaultBlur}
         />
         <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/30 to-black/40" />
         <div className="absolute inset-0 bg-gradient-to-r from-red-900/5 to-blue-900/5" />
