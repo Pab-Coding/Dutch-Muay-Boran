@@ -2,7 +2,7 @@
 import { useState, useCallback, memo, useEffect, useRef } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import Link from 'next/link'
-import { useRouter } from 'next/navigation'
+import { useRouter, usePathname } from 'next/navigation'
 import { FaBars, FaTimes, FaChevronDown, FaChevronUp } from 'react-icons/fa'
 
 const MENU_ITEMS = [
@@ -41,6 +41,7 @@ const MENU_ITEMS = [
 
 const Navigation = () => {
   const router = useRouter()
+  const pathname = usePathname()
   // Prevent re-render when route changes by memoizing menu
   const menuItems = MENU_ITEMS
   // For desktop hover dropdowns
@@ -51,6 +52,7 @@ const Navigation = () => {
   const [mobileExpanded, setMobileExpanded] = useState<string | null>(null)
   // Hide-on-scroll state
   const [isHidden, setIsHidden] = useState(false)
+  const [disableAutoHide, setDisableAutoHide] = useState(false)
   const lastScrollYRef = useRef(0)
 
   const handleMouseEnter = useCallback((itemName: string) => {
@@ -86,26 +88,40 @@ const Navigation = () => {
   // Hide nav when scrolling down, show when scrolling up (with small threshold) or near top
   useEffect(() => {
     lastScrollYRef.current = window.scrollY
+    let ticking = false
     const handleScroll = () => {
-      const currentY = window.scrollY
-      const delta = currentY - lastScrollYRef.current
-      const nearTop = currentY < 20
+      if (disableAutoHide) return
+      if (ticking) return
+      ticking = true
+      window.requestAnimationFrame(() => {
+        const currentY = window.scrollY
+        const delta = currentY - lastScrollYRef.current
+        const nearTop = currentY < 20
 
-      if (isMenuOpen || nearTop) {
-        setIsHidden(false)
-      } else if (delta > 5) {
-        // Scrolling down
-        setIsHidden(true)
-      } else if (delta < -5) {
-        // Scrolling up
-        setIsHidden(false)
-      }
+        if (isMenuOpen || nearTop) {
+          setIsHidden(false)
+        } else if (delta > 5) {
+          setIsHidden(true)
+        } else if (delta < -5) {
+          setIsHidden(false)
+        }
 
-      lastScrollYRef.current = currentY
+        lastScrollYRef.current = currentY
+        ticking = false
+      })
     }
     window.addEventListener('scroll', handleScroll, { passive: true })
     return () => window.removeEventListener('scroll', handleScroll)
-  }, [isMenuOpen])
+  }, [isMenuOpen, disableAutoHide])
+
+  // Keep nav visible briefly after route changes to avoid perceived refresh
+  useEffect(() => {
+    // On every path change, show nav and pause auto-hide briefly
+    setIsHidden(false)
+    setDisableAutoHide(true)
+    const timeout = setTimeout(() => setDisableAutoHide(false), 450)
+    return () => clearTimeout(timeout)
+  }, [pathname])
 
   return (
     <nav className={`fixed ${isHidden ? '-top-16 opacity-0 pointer-events-none' : 'top-0 opacity-100'} left-0 right-0 h-16 shadow-lg z-[100] transition-[top,opacity] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)]`}>
