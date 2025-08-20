@@ -2,7 +2,6 @@
 
 import { motion, useScroll, useTransform } from 'framer-motion'
 import { useRef } from 'react'
-import Navigation from '@/components/layout/Navigation'
 import Footer from '@/components/layout/Footer'
 import HeroSection from './components/HeroSection'
 import NewsGrid from './components/NewsGrid'
@@ -90,7 +89,6 @@ export default function NieuwsPage() {
 
       {/* Content Container */}
       <div className="relative z-10">
-        <Navigation />
 
         <main className="relative">
           <motion.div

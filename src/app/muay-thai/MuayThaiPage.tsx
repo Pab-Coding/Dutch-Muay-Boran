@@ -2,7 +2,6 @@
 
 import { motion, useScroll, useTransform } from 'framer-motion'
 import { useRef } from 'react'
-import Navigation from '@/components/layout/Navigation'
 import Footer from '@/components/layout/Footer'
 import HeroSection from './components/HeroSection'
 import HistorySection from './components/HistorySection'
@@ -65,7 +64,6 @@ export default function MuayThaiPage() {
 
       {/* Contenedor principal */}
       <div className="relative z-10">
-        <Navigation />
 
         <main className="relative">
           {/* Hero Section */}

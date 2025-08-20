@@ -2,7 +2,6 @@
 
 import { motion, useScroll, useTransform } from 'framer-motion'
 import { useRef } from 'react'
-import Navigation from '@/components/layout/Navigation'
 import Footer from '@/components/layout/Footer'
 import VisionSection from './components/VisionSection'
 import MissionSection from './components/MissionSection'
@@ -33,7 +32,6 @@ export default function VisieMissiePage() {
 
       {/* Contenido principal */}
       <div className="relative z-10">
-        <Navigation />
 
         <main className="relative w-full max-w-7xl mx-auto px-3 sm:px-4 py-8 sm:py-12">
           <motion.div

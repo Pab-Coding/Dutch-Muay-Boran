@@ -1,7 +1,6 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import Navigation from '@/components/layout/Navigation'
 import Footer from '@/components/layout/Footer'
 import PageWrapper from './components/PageWrapper'
 import DateSection from './components/DateSection'
@@ -32,7 +31,7 @@ export default function CursusDataPage() {
 
   return (
     <PageWrapper>
-      <Navigation />
+      
 
       <main className="flex-grow">
         {/* Content container with simple fade-in animation */}

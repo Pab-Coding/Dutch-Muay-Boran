@@ -1,7 +1,6 @@
 'use client'
 import { motion, useScroll, useTransform } from 'framer-motion'
 import { useRef } from 'react'
-import Navigation from '@/components/layout/Navigation'
 import HeroSection from './components/HeroSection'
 import InfoSection from './components/InfoSection'
 import ModulesSection from './components/ModulesSection'
@@ -61,7 +60,6 @@ export default function TrainerNiveau3Page() {
 
       {/* Content Container */}
       <div className="relative z-10">
-        <Navigation />
 
         <main className="relative">
           <motion.div

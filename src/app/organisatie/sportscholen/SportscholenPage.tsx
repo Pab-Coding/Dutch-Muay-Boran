@@ -1,7 +1,6 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import Navigation from '@/components/layout/Navigation'
 import Footer from '@/components/layout/Footer'
 import PageWrapper from './components/PageWrapper'
 import LogoSection from './components/LogoSection'
@@ -10,7 +9,7 @@ import SchoolsList from './components/SchoolsList'
 export default function SportscholenPage() {
   return (
     <PageWrapper>
-      <Navigation />
+      
 
       <main className="flex-grow">
         {/* Background subtle patterns */}

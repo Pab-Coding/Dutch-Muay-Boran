@@ -1,6 +1,5 @@
 'use client'
 import { motion } from 'framer-motion'
-import Navigation from '@/components/layout/Navigation'
 import ContactSection from './components/sections/ContactSection'
 import Footer from '@/components/layout/Footer'
 
@@ -18,7 +17,6 @@ export default function ContactPage() {
 
       {/* Content Container */}
       <div className="relative z-10">
-        <Navigation />
 
         <main className="relative">
           <ContactSection />

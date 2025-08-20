@@ -2,7 +2,6 @@
 
 import { motion, useScroll, useTransform } from 'framer-motion'
 import { useRef } from 'react'
-import Navigation from '@/components/layout/Navigation'
 import HeroSection from './components/HeroSection'
 import ExamensInfo from './components/ExamensInfo'
 import KhanSystemTable from './components/KhanSystemTable'
@@ -64,7 +63,6 @@ export default function ExamensPage() {
 
       {/* Content Container */}
       <div className="relative z-10 w-full overflow-x-hidden">
-        <Navigation />
 
         <main className="relative">
           <motion.div

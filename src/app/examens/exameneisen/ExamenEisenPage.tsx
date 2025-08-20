@@ -2,7 +2,6 @@
 
 import { MotionDiv, MotionSection, MotionH1 } from '../../../components/shared/MotionComponents'
 import Image from 'next/image'
-import Navigation from '../../../components/layout/Navigation'
 import Footer from '../../../components/layout/Footer'
 import ThaiseBenamingenSection from './components/ThaiseBenamingenSection'
 import KhanSystemSection from './components/KhanSystemSection'
@@ -11,8 +10,6 @@ import Link from 'next/link'
 export default function ExamenEisenPage() {
   return (
     <>
-      <Navigation />
-      
       <MotionDiv
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}

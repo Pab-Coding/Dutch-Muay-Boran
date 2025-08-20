@@ -2,7 +2,6 @@
 
 import { motion, useScroll, useTransform } from 'framer-motion'
 import { useRef } from 'react'
-import Navigation from '@/components/layout/Navigation'
 import Footer from '@/components/layout/Footer'
 import OpleidingenHero from './components/OpleidingenHero'
 import OpleidingenSection from '@/components/home/OpleidingenSection'
@@ -126,7 +125,6 @@ export default function OpleidingenPage() {
 
       {/* Content Container */}
       <div className="relative z-10">
-        <Navigation />
 
         <main className="relative">
           {/* Hero Section */}

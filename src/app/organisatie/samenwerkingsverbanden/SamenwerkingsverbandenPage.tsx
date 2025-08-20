@@ -1,7 +1,6 @@
 'use client'
 
 import { motion, useScroll, useTransform } from 'framer-motion'
-import Navigation from '@/components/layout/Navigation'
 import Footer from '@/components/layout/Footer'
 import ImageSection from './components/ImageSection'
 import CollaborationInfo from './components/CollaborationInfo'
@@ -67,7 +66,7 @@ export default function SamenwerkingsverbandenPage() {
       variants={pageVariants}
       className="min-h-screen flex flex-col bg-white overflow-x-hidden"
     >
-      <Navigation />
+      
 
       <motion.main 
         ref={mainRef}
