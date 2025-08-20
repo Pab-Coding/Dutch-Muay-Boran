@@ -137,7 +137,7 @@ const VideoPlayer = ({ videoId, isOpen, onClose, title, description }: VideoPlay
     <AnimatePresence>
       {isOpen && videoId && (
         <motion.div
-          className="fixed inset-0 z-[100] flex items-center justify-center px-0 sm:px-4 py-4 sm:py-8 bg-black/80 touch-manipulation"
+          className="fixed inset-0 z-[100] flex items-start sm:items-center justify-center bg-black/90 sm:bg-black/80 touch-manipulation"
           variants={backdropVariants}
           initial={false}
           animate="visible"
@@ -147,15 +147,15 @@ const VideoPlayer = ({ videoId, isOpen, onClose, title, description }: VideoPlay
           {/* Modal Container */}
           <motion.div
             ref={containerRef}
-            className="relative w-full h-full sm:h-auto mx-auto bg-gradient-to-br from-gray-900 to-black rounded-none sm:rounded-2xl shadow-2xl sm:my-8 max-h-[100dvh] sm:max-h-[90vh] overflow-y-auto flex flex-col sm:max-w-[min(90vw,1200px)] will-change-transform"
+            className="relative w-full h-[100dvh] sm:h-auto bg-gradient-to-br from-gray-900 to-black rounded-none sm:rounded-2xl shadow-2xl sm:my-8 sm:max-h-[90vh] overflow-y-auto flex flex-col sm:max-w-[min(90vw,1200px)] will-change-transform"
             variants={modalVariants}
             onClick={e => e.stopPropagation()}
           >
             {/* Close Button */}
             <motion.button
-              className="fixed sm:absolute top-[env(safe-area-inset-top,8px)] sm:top-4 right-2 sm:right-4 z-10 p-3 sm:p-2 
-                         rounded-full bg-black/60 sm:bg-black/50 text-white hover:bg-black/70 
-                         backdrop-blur-sm border border-white/20 sm:border-white/10
+              className="absolute top-3 right-3 sm:top-4 sm:right-4 z-20 p-2.5 sm:p-2 
+                         rounded-full bg-black/70 sm:bg-black/50 text-white hover:bg-black/80 
+                         backdrop-blur-sm border border-white/30 sm:border-white/10
                          transition-colors duration-200 touch-manipulation"
               whileTap={{ scale: 0.9 }}
               onClick={onClose}
@@ -164,7 +164,7 @@ const VideoPlayer = ({ videoId, isOpen, onClose, title, description }: VideoPlay
             </motion.button>
 
             {/* Video Container with Gradient Border */}
-            <div className="relative bg-gradient-to-r from-red-500/10 via-white/10 to-blue-500/10 sm:rounded-t-2xl">
+            <div className="relative flex-shrink-0 bg-gradient-to-r from-red-500/10 via-white/10 to-blue-500/10 sm:rounded-t-2xl">
               {/* Use 56.25% aspect ratio plus a small extra space for controls rendering */}
               <div className="relative bg-black sm:rounded-t-2xl" style={{ paddingTop: '56.25%' }}>
                 <iframe
@@ -180,11 +180,11 @@ const VideoPlayer = ({ videoId, isOpen, onClose, title, description }: VideoPlay
                   <div className="absolute inset-0 bg-black pointer-events-none transition-opacity duration-150" />
                 )}
               </div>
-              {/* Scroll hint to details */}
+              {/* Scroll hint to details - visible on mobile too */}
               {(title || description) && (
                 <button
                   onClick={scrollToInfo}
-                  className={`hidden sm:flex absolute -bottom-4 left-1/2 -translate-x-1/2 z-20 items-center justify-center w-9 h-9 rounded-full bg-white/90 text-gray-800 shadow-md border border-black/10 hover:bg-white transition-all duration-300 ${showHint ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}
+                  className={`flex absolute -bottom-5 left-1/2 -translate-x-1/2 z-20 items-center justify-center w-10 h-10 sm:w-9 sm:h-9 rounded-full bg-white/90 text-gray-800 shadow-lg border border-black/10 hover:bg-white transition-all duration-300 ${showHint ? 'opacity-100 animate-bounce' : 'opacity-0 pointer-events-none'}`}
                   aria-label="Scroll to details"
                 >
                   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-5 h-5">
@@ -201,7 +201,7 @@ const VideoPlayer = ({ videoId, isOpen, onClose, title, description }: VideoPlay
                 initial="hidden"
                 animate="visible"
                 ref={infoRef}
-                className="relative z-10 p-4 sm:p-6 bg-gradient-to-b from-black/80 to-black/95 backdrop-blur-[1px]"
+                className="relative z-10 flex-shrink-0 min-h-[200px] p-4 sm:p-6 bg-gradient-to-b from-black/90 to-black backdrop-blur-[1px]"
               >
                 <div className="absolute right-2 sm:right-4 top-2 sm:top-3 flex gap-2">
                   <button
