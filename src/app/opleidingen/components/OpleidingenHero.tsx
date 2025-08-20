@@ -54,11 +54,13 @@ const OpleidingenHero = () => {
           fill
           sizes="(max-width: 768px) 100vw, 100vw"
           className="object-cover"
-          quality={85}
+          quality={90}
+          priority
           placeholder="empty"
         />
         <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/30 to-black/40" />
         <div className="absolute inset-0 bg-gradient-to-r from-red-900/5 to-blue-900/5" />
+        <div className="absolute inset-0 backdrop-blur-[0.5px]" />
       </MotionDiv>
 
       <MotionDiv
