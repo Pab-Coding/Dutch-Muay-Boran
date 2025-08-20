@@ -108,7 +108,7 @@ const Navigation = () => {
   }, [isMenuOpen])
 
   return (
-    <nav className={`fixed top-0 left-0 right-0 h-16 shadow-lg z-[100] transform-gpu will-change-transform transition-[transform,opacity] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] ${isHidden ? '-translate-y-full opacity-0 pointer-events-none' : 'translate-y-0 opacity-100'}`}>
+    <nav className={`fixed ${isHidden ? '-top-16 opacity-0 pointer-events-none' : 'top-0 opacity-100'} left-0 right-0 h-16 shadow-lg z-[100] transition-[top,opacity] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)]`}>
       {/* Full-width Banner Background (CSS background to avoid image re-mounts) */}
       <div
         aria-hidden="true"
