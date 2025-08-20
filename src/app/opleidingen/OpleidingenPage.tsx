@@ -17,6 +17,36 @@ export default function OpleidingenPage() {
   const opacity = useTransform(scrollYProgress, [0, 0.8], [1, 0])
   const scale = useTransform(scrollYProgress, [0, 0.8], [1, 0.98])
 
+  const pageVariants = {
+    hidden: {
+      opacity: 0
+    },
+    visible: {
+      opacity: 1,
+      transition: {
+        duration: 0.6,
+        ease: "easeOut",
+        when: "beforeChildren",
+        staggerChildren: 0.2
+      }
+    }
+  }
+
+  const sectionVariants = {
+    hidden: {
+      opacity: 0,
+      y: 20
+    },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.5,
+        ease: "easeOut"
+      }
+    }
+  }
+
   const titleVariants = {
     hidden: {
       opacity: 0,
@@ -82,47 +112,42 @@ export default function OpleidingenPage() {
   return (
     <motion.div
       ref={pageRef}
+      variants={pageVariants}
       initial="hidden"
       animate="visible"
-      className="min-h-screen bg-gradient-to-b from-gray-50 to-white overflow-x-hidden"
+      className="min-h-screen bg-gradient-to-b from-gray-50 to-white"
     >
       {/* Background Effects */}
       <div className="fixed inset-0 bg-gradient-to-br from-red-500/5 via-transparent to-blue-500/5 pointer-events-none" />
-      <div className="fixed inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-transparent via-white/50 to-transparent pointer-events-none" />
+      <div 
+        className="fixed inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] 
+                   from-transparent via-white/50 to-transparent pointer-events-none" 
+      />
 
       {/* Content Container */}
       <div className="relative z-10">
         <Navigation />
 
         <main className="relative">
+          {/* Hero Section */}
           <motion.div
+            variants={sectionVariants}
             style={{ opacity, scale }}
           >
             <OpleidingenHero />
           </motion.div>
 
+          {/* Opleidingen Section */}
           <motion.div
-            variants={cardVariants}
+            variants={sectionVariants}
             className="relative z-10"
           >
-            <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.2 }}
-                className="mt-8 sm:mt-16"
-              >
-                <OpleidingenSection />
-              </motion.div>
-            </div>
+            <OpleidingenSection />
           </motion.div>
 
           {/* Additional Info Section */}
           <motion.div
-            variants={infoCardVariants}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: "-100px" }}
+            variants={sectionVariants}
             className="relative z-10 mt-8 sm:mt-16 mb-8 sm:mb-16"
           >
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -168,11 +193,44 @@ export default function OpleidingenPage() {
           </motion.div>
         </main>
 
-        <Footer />
+        {/* Footer */}
+        <motion.footer
+          variants={sectionVariants}
+          className="relative z-20"
+        >
+          <Footer />
+        </motion.footer>
       </div>
 
       {/* Decorative Elements */}
-      <div className="fixed inset-0 bottom-[5%] bg-gradient-to-t from-transparent via-transparent to-transparent pointer-events-none" />
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 0.5, duration: 1 }}
+        className="fixed inset-0 pointer-events-none"
+      >
+        <div 
+          className="absolute inset-0 bg-gradient-to-t from-transparent 
+                     via-transparent to-transparent opacity-20"
+        />
+        <div 
+          className="absolute bottom-0 left-0 right-0 h-32 
+                     bg-gradient-to-t from-white via-transparent to-transparent"
+        />
+      </motion.div>
+
+      {/* Particle Effect */}
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 0.5 }}
+        transition={{ delay: 1, duration: 1 }}
+        className="fixed inset-0 pointer-events-none"
+      >
+        <div 
+          className="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] 
+                     from-blue-500/5 via-transparent to-transparent"
+        />
+      </motion.div>
     </motion.div>
   )
 }

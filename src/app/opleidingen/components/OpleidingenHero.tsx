@@ -85,7 +85,7 @@ const OpleidingenHero = () => {
               variants={childVariants}
               className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-transparent bg-clip-text
                          bg-gradient-to-r from-white via-gray-200 to-white
-                         leading-[1.2] pb-4 max-w-full"
+                         leading-[1.2] pb-2 md:pb-4"
             >
               Opleidingen
             </MotionH1>
