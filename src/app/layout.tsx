@@ -33,15 +33,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
-        {/* Critical resource preloading for instant display */}
-        <link rel="preload" as="image" href="/images/new-team-photo.webp" fetchPriority="high" />
-        <link rel="preload" as="image" href="/images/logo.webp" fetchPriority="high" />
-        <link rel="preload" as="image" href="/images/boran-optimized.webp" fetchPriority="high" />
-        <link rel="preload" as="image" href="/images/muay-thai.webp" fetchPriority="high" />
-        <link rel="preload" as="image" href="/images/nieuws.webp" />
-        <link rel="preload" as="image" href="/images/examens-muay.webp" />
-        {/* DNS prefetch for faster image loading */}
-        <link rel="dns-prefetch" href="//dutchmuayboran.nl" />
+        {/* Keep head minimal to avoid duplicate image fetches; Next/Image handles priority */}
         <style>{`
           /* Zero-delay loading states  */
           .instant-image-container {

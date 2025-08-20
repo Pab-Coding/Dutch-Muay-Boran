@@ -88,6 +88,7 @@ const Navigation = () => {
         fill
         className="object-cover object-center"
         priority
+        sizes="100vw"
       />
       {/* Overlay for improved contrast */}
       <div className="absolute inset-0 bg-black opacity-40"></div>

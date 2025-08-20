@@ -55,13 +55,10 @@ const courses = [
 
 const OpleidingenSection = () => {
   const sectionRef = useRef(null);
-  const { scrollYProgress } = useScroll({
-    target: sectionRef,
-    offset: ["start end", "end start"],
-  });
-
-  const opacity = useTransform(scrollYProgress, [0, 0.2], [0, 1]);
-  const scale = useTransform(scrollYProgress, [0, 0.2], [0.95, 1]);
+  // Avoid initial hidden state on first load to reduce layout shifts/flicker
+  const { scrollYProgress } = useScroll({ target: sectionRef, offset: ["start 0.9", "end start"] });
+  const opacity = useTransform(scrollYProgress, [0, 0.05], [1, 1]);
+  const scale = useTransform(scrollYProgress, [0, 0.05], [1, 1]);
 
   return (
     <motion.section
