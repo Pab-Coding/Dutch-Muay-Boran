@@ -165,8 +165,8 @@ const VideoPlayer = ({ videoId, isOpen, onClose, title, description }: VideoPlay
 
             {/* Video Container with Gradient Border */}
             <div className="relative flex-shrink-0 bg-gradient-to-r from-red-500/10 via-white/10 to-blue-500/10 sm:rounded-t-2xl">
-              {/* Use 56.25% aspect ratio plus a small extra space for controls rendering */}
-              <div className="relative bg-black sm:rounded-t-2xl" style={{ paddingTop: '56.25%' }}>
+              {/* Use calc to add space for YouTube controls (approximately 48px) on desktop */}
+              <div className="relative bg-black sm:rounded-t-2xl" style={{ paddingTop: 'calc(56.25% + 48px)' }}>
                 <iframe
                   src={`https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0&playsinline=1&modestbranding=1&controls=1`}
                   title="YouTube video player"
