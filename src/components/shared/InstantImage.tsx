@@ -15,6 +15,7 @@ interface InstantImageProps {
   quality?: number
   placeholder?: 'blur' | 'empty'
   blurDataURL?: string
+  showLoadingOverlay?: boolean
 }
 
 const InstantImage = ({
@@ -28,7 +29,8 @@ const InstantImage = ({
   priority = false,
   quality = 90,
   placeholder = 'empty',
-  blurDataURL
+  blurDataURL,
+  showLoadingOverlay = false
 }: InstantImageProps) => {
   const [imageLoaded, setImageLoaded] = useState(false)
   const [mounted, setMounted] = useState(false)
@@ -80,8 +82,8 @@ const InstantImage = ({
         onLoad={() => setImageLoaded(true)}
       />
       
-      {/* Progressive enhancement overlay - only show after mount */}
-      {mounted && !imageLoaded && (
+      {/* Progressive enhancement overlay - optional */}
+      {showLoadingOverlay && !imageLoaded && (
         <div className="absolute inset-0 bg-gradient-to-br from-red-900/20 via-transparent to-blue-900/20 animate-pulse" />
       )}
     </div>

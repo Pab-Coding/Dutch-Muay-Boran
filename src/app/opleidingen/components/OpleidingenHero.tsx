@@ -1,8 +1,7 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import InstantImage from '@/components/shared/InstantImage'
-import { ADDITIONAL_INLINE_IMAGES } from '@/constants/additionalInlineImages'
+import OptimizedImage from '@/components/shared/OptimizedImage'
 import { useRef } from 'react'
 import { useMediaQuery } from '@/hooks/useMediaQuery'
 import { MotionSection, MotionDiv, MotionH1, MotionP } from '@/components/shared/MotionComponents'
@@ -48,18 +47,15 @@ const OpleidingenHero = () => {
       <MotionDiv
         className="absolute inset-0"
       >
-        <InstantImage
+        <OptimizedImage
           src="/images/opleidingen-optimized.webp"
           alt="Opleidingen Muay Thai"
           fill
-          sizes="(max-width: 768px) 100vw, 100vw"
+          sizes="100vw"
           className="object-cover"
           quality={90}
           priority
-          placeholder="blur"
-          blurDataURL={ADDITIONAL_INLINE_IMAGES.opleidingenInline}
-          inlineSrc={ADDITIONAL_INLINE_IMAGES.opleidingenInline}
-          backgroundSrc={ADDITIONAL_INLINE_IMAGES.opleidingenInlineBg}
+          placeholder="empty"
         />
         <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/30 to-black/40" />
         <div className="absolute inset-0 bg-gradient-to-r from-red-900/5 to-blue-900/5" />

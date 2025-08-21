@@ -124,6 +124,8 @@ const VideoCard = ({ videoId, title, description, onPlay }: VideoCardProps) => {
           blurDataURL={ADDITIONAL_INLINE_IMAGES.muayThaiBoranInline}
           inlineSrc={ADDITIONAL_INLINE_IMAGES.muayThaiBoranInline}
           backgroundSrc={ADDITIONAL_INLINE_IMAGES.muayThaiBoranInlineBg}
+          showLoadingOverlay={false}
+          priority={false}
         />
 
         {/* Always visible overlay with gradient */}
