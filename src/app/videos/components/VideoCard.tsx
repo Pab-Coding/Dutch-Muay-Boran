@@ -1,7 +1,8 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import Image from 'next/image'
+import InstantImage from '@/components/shared/InstantImage'
+import { ADDITIONAL_INLINE_IMAGES } from '@/constants/additionalInlineImages'
 import { useState } from 'react'
 
 interface VideoCardProps {
@@ -112,15 +113,17 @@ const VideoCard = ({ videoId, title, description, onPlay }: VideoCardProps) => {
       onClick={onPlay}
     >
       <div className="relative aspect-video">
-        <Image
-          src={thumbnailUrl}
+        <InstantImage
+          src={thumbnailUrl.replace('.webp', '-optimized.webp')}
           alt={title}
           fill
           className="object-cover"
-          quality={75}
-          onError={() => setThumbnailError(true)}
+          quality={80}
           sizes="(max-width: 768px) 100vw, 50vw"
-          placeholder="empty"
+          placeholder="blur"
+          blurDataURL={ADDITIONAL_INLINE_IMAGES.muayThaiBoranInline}
+          inlineSrc={ADDITIONAL_INLINE_IMAGES.muayThaiBoranInline}
+          backgroundSrc={ADDITIONAL_INLINE_IMAGES.muayThaiBoranInlineBg}
         />
 
         {/* Always visible overlay with gradient */}

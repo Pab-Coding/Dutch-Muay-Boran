@@ -1,7 +1,8 @@
 'use client'
 
 import { MotionSection, MotionDiv, MotionH2, MotionP, MotionButton } from '../../../../components/shared/MotionComponents'
-import Image from 'next/image'
+import InstantImage from '@/components/shared/InstantImage'
+import { ADDITIONAL_INLINE_IMAGES } from '@/constants/additionalInlineImages'
 import { useState } from 'react'
 
 const ThaiseBenamingenSection = () => {
@@ -63,12 +64,17 @@ const ThaiseBenamingenSection = () => {
       <div className="flex flex-col lg:flex-row gap-8">
         <MotionDiv variants={itemVariants} className="lg:w-1/3">
           <div className="relative h-[200px] sm:h-[250px] md:h-[300px] rounded-xl overflow-hidden">
-            <Image
-              src="/images/thaise-benamingen.webp"
+            <InstantImage
+              src="/images/thaise-benamingen-optimized.webp"
               alt="Thaise Benamingen"
               fill
               sizes="(max-width: 768px) 100vw, 50vw"
               className="object-cover"
+              quality={85}
+              placeholder="blur"
+              blurDataURL={ADDITIONAL_INLINE_IMAGES.nieuwsInline}
+              inlineSrc={ADDITIONAL_INLINE_IMAGES.nieuwsInline}
+              backgroundSrc={ADDITIONAL_INLINE_IMAGES.nieuwsInlineBg}
             />
           </div>
         </MotionDiv>

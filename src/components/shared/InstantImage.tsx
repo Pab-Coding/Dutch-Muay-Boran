@@ -38,7 +38,7 @@ const InstantImage = ({
   }, [])
 
   // Create instant background style
-  const backgroundStyle = backgroundSrc && mounted ? {
+  const backgroundStyle = backgroundSrc ? {
     backgroundImage: `url(${backgroundSrc})`,
     backgroundSize: 'cover',
     backgroundPosition: 'center',
@@ -50,8 +50,8 @@ const InstantImage = ({
       className={`relative w-full h-full ${className}`}
       style={backgroundStyle}
     >
-      {/* Instant display background layer - only show after mount */}
-      {mounted && inlineSrc && !imageLoaded && (
+      {/* Instant display background layer - SSR + CSR */}
+      {inlineSrc && !imageLoaded && (
         <div
           className="absolute inset-0 transition-opacity duration-300"
           style={{
