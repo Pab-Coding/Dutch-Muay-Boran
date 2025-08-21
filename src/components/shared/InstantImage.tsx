@@ -16,6 +16,7 @@ interface InstantImageProps {
   placeholder?: 'blur' | 'empty'
   blurDataURL?: string
   showLoadingOverlay?: boolean
+  disableFade?: boolean
 }
 
 const InstantImage = ({
@@ -30,7 +31,8 @@ const InstantImage = ({
   quality = 90,
   placeholder = 'empty',
   blurDataURL,
-  showLoadingOverlay = false
+  showLoadingOverlay = false,
+  disableFade = false
 }: InstantImageProps) => {
   const [imageLoaded, setImageLoaded] = useState(false)
   const [mounted, setMounted] = useState(false)
@@ -72,13 +74,14 @@ const InstantImage = ({
         alt={alt}
         fill={fill}
         sizes={sizes}
-        className={`object-cover transition-opacity duration-300 ${
+        className={`object-cover ${disableFade ? '' : 'transition-opacity duration-300'} ${
           imageLoaded ? 'opacity-100' : 'opacity-0'
         }`}
         priority={priority}
         quality={quality}
         placeholder={placeholder}
         blurDataURL={blurDataURL}
+        loading={priority ? 'eager' : 'lazy'}
         onLoad={() => setImageLoaded(true)}
       />
       

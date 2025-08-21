@@ -10,9 +10,10 @@ interface VideoCardProps {
   title: string
   description: string
   onPlay: () => void
+  priority?: boolean
 }
 
-const VideoCard = ({ videoId, title, description, onPlay }: VideoCardProps) => {
+const VideoCard = ({ videoId, title, description, onPlay, priority = false }: VideoCardProps) => {
   const [isHovered, setIsHovered] = useState(false)
   const [thumbnailError, setThumbnailError] = useState(false)
 
@@ -118,14 +119,15 @@ const VideoCard = ({ videoId, title, description, onPlay }: VideoCardProps) => {
           alt={title}
           fill
           className="object-cover"
-          quality={80}
+          quality={70}
           sizes="(max-width: 768px) 100vw, 50vw"
           placeholder="blur"
           blurDataURL={ADDITIONAL_INLINE_IMAGES.muayThaiBoranInline}
           inlineSrc={ADDITIONAL_INLINE_IMAGES.muayThaiBoranInline}
           backgroundSrc={ADDITIONAL_INLINE_IMAGES.muayThaiBoranInlineBg}
           showLoadingOverlay={false}
-          priority={false}
+          priority={priority}
+          disableFade
         />
 
         {/* Always visible overlay with gradient */}
