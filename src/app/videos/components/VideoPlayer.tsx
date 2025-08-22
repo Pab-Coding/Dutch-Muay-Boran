@@ -15,9 +15,18 @@ interface VideoPlayerProps {
 
 const VideoPlayer = ({ videoId, isOpen, onClose, title, description }: VideoPlayerProps) => {
   const [mounted, setMounted] = useState(false)
+  const [isMobile, setIsMobile] = useState(false)
 
   useEffect(() => {
     setMounted(true)
+    setIsMobile(window.innerWidth < 640)
+    
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 640)
+    }
+    
+    window.addEventListener('resize', handleResize)
+    return () => window.removeEventListener('resize', handleResize)
   }, [])
   useEffect(() => {
     if (isOpen) {
@@ -147,13 +156,13 @@ const VideoPlayer = ({ videoId, isOpen, onClose, title, description }: VideoPlay
           {/* Modal Container */}
           <motion.div
             ref={containerRef}
-            className="relative w-full h-[100dvh] sm:h-auto bg-gradient-to-br from-gray-900 to-black rounded-none sm:rounded-2xl shadow-2xl sm:my-8 sm:max-h-[90vh] overflow-y-auto flex flex-col sm:max-w-[min(90vw,1200px)] will-change-transform"
+            className="relative w-full h-[100dvh] sm:h-auto bg-gradient-to-br from-gray-900 to-black rounded-none sm:rounded-2xl shadow-2xl sm:my-8 sm:max-h-[90vh] overflow-y-auto overflow-x-hidden flex flex-col sm:max-w-[min(90vw,1200px)] will-change-transform"
             variants={modalVariants}
             onClick={e => e.stopPropagation()}
           >
             {/* Close Button */}
             <motion.button
-              className="absolute top-3 right-3 sm:top-4 sm:right-4 z-20 p-2.5 sm:p-2 
+              className="fixed sm:absolute top-3 right-3 sm:top-4 sm:right-4 z-30 sm:z-20 p-2.5 sm:p-2 
                          rounded-full bg-black/70 sm:bg-black/50 text-white hover:bg-black/80 
                          backdrop-blur-sm border border-white/30 sm:border-white/10
                          transition-colors duration-200 touch-manipulation"
@@ -165,8 +174,8 @@ const VideoPlayer = ({ videoId, isOpen, onClose, title, description }: VideoPlay
 
             {/* Video Container with Gradient Border */}
             <div className="relative flex-shrink-0 bg-gradient-to-r from-red-500/10 via-white/10 to-blue-500/10 sm:rounded-t-2xl">
-              {/* Use calc to add space for YouTube controls (approximately 48px) on desktop */}
-              <div className="relative bg-black sm:rounded-t-2xl" style={{ paddingTop: 'calc(56.25% + 48px)' }}>
+              {/* Mobile gets standard 16:9, desktop gets extra space for controls */}
+              <div className="relative bg-black sm:rounded-t-2xl" style={{ paddingTop: isMobile ? '56.25%' : 'calc(56.25% + 48px)' }}>
                 <iframe
                   src={`https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0&playsinline=1&modestbranding=1&controls=1`}
                   title="YouTube video player"
@@ -180,11 +189,11 @@ const VideoPlayer = ({ videoId, isOpen, onClose, title, description }: VideoPlay
                   <div className="absolute inset-0 bg-black pointer-events-none transition-opacity duration-150" />
                 )}
               </div>
-              {/* Scroll hint to details - visible on mobile too */}
-              {(title || description) && (
+              {/* Scroll hint to details - only on desktop */}
+              {(title || description) && !isMobile && (
                 <button
                   onClick={scrollToInfo}
-                  className={`flex absolute -bottom-5 left-1/2 -translate-x-1/2 z-20 items-center justify-center w-10 h-10 sm:w-9 sm:h-9 rounded-full bg-white/90 text-gray-800 shadow-lg border border-black/10 hover:bg-white transition-all duration-300 ${showHint ? 'opacity-100 animate-bounce' : 'opacity-0 pointer-events-none'}`}
+                  className={`flex absolute -bottom-5 left-1/2 -translate-x-1/2 z-20 items-center justify-center w-9 h-9 rounded-full bg-white/90 text-gray-800 shadow-lg border border-black/10 hover:bg-white transition-all duration-300 ${showHint ? 'opacity-100 animate-bounce' : 'opacity-0 pointer-events-none'}`}
                   aria-label="Scroll to details"
                 >
                   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-5 h-5">
@@ -203,19 +212,21 @@ const VideoPlayer = ({ videoId, isOpen, onClose, title, description }: VideoPlay
                 ref={infoRef}
                 className="relative z-10 flex-shrink-0 min-h-[200px] p-4 sm:p-6 bg-gradient-to-b from-black/90 to-black backdrop-blur-[1px]"
               >
-                <div className="absolute right-2 sm:right-4 top-2 sm:top-3 flex gap-2">
-                  <button
-                    onClick={scrollToTop}
-                    className="inline-flex items-center justify-center w-9 h-9 sm:w-8 sm:h-8 rounded-full bg-white/10 text-white hover:bg-white/20 border border-white/10 touch-manipulation"
-                    aria-label="Back to video"
-                  >
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-5 h-5">
-                      <path fillRule="evenodd" d="M12 7.5a.75.75 0 0 1 .53.22l6 6a.75.75 0 0 1-1.06 1.06L12 9.31l-5.47 5.47a.75.75 0 0 1-1.06-1.06l6-6a.75.75 0 0 1 .53-.22z" clipRule="evenodd" />
-                    </svg>
-                  </button>
-                </div>
+                {!isMobile && (
+                  <div className="absolute right-4 top-3 flex gap-2">
+                    <button
+                      onClick={scrollToTop}
+                      className="inline-flex items-center justify-center w-8 h-8 rounded-full bg-white/10 text-white hover:bg-white/20 border border-white/10"
+                      aria-label="Back to video"
+                    >
+                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-5 h-5">
+                        <path fillRule="evenodd" d="M12 7.5a.75.75 0 0 1 .53.22l6 6a.75.75 0 0 1-1.06 1.06L12 9.31l-5.47 5.47a.75.75 0 0 1-1.06-1.06l6-6a.75.75 0 0 1 .53-.22z" clipRule="evenodd" />
+                      </svg>
+                    </button>
+                  </div>
+                )}
                 {title && (
-                  <h2 className="text-xl sm:text-2xl font-bold text-white mb-3 sm:mb-3 leading-tight pr-10">
+                  <h2 className={`text-xl sm:text-2xl font-bold text-white mb-3 sm:mb-3 leading-tight ${!isMobile ? 'pr-10' : ''}`}>
                     {title}
                   </h2>
                 )}

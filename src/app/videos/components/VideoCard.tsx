@@ -108,8 +108,7 @@ const VideoCard = ({ videoId, title, description, onPlay, priority = false }: Vi
       initial="hidden"
       animate="visible"
       className="relative group rounded-xl overflow-hidden shadow-lg 
-                 bg-gradient-to-r from-red-500/10 to-blue-500/10 cursor-pointer
-                 hover:shadow-xl transition-shadow duration-300
+                 cursor-pointer hover:shadow-xl transition-shadow duration-300
                  active:scale-[0.98] touch-manipulation"
       onClick={onPlay}
     >
@@ -127,7 +126,9 @@ const VideoCard = ({ videoId, title, description, onPlay, priority = false }: Vi
           backgroundSrc={ADDITIONAL_INLINE_IMAGES.muayThaiBoranInlineBg}
           showLoadingOverlay={false}
           priority={priority}
-          disableFade
+          disableFade={false}
+          fastFade={priority}
+          placeholderSoft={priority}
         />
 
         {/* Always visible overlay with gradient */}

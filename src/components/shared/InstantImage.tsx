@@ -17,6 +17,8 @@ interface InstantImageProps {
   blurDataURL?: string
   showLoadingOverlay?: boolean
   disableFade?: boolean
+  fastFade?: boolean
+  placeholderSoft?: boolean
 }
 
 const InstantImage = ({
@@ -32,7 +34,9 @@ const InstantImage = ({
   placeholder = 'empty',
   blurDataURL,
   showLoadingOverlay = false,
-  disableFade = false
+  disableFade = false,
+  fastFade = false,
+  placeholderSoft = false
 }: InstantImageProps) => {
   const [imageLoaded, setImageLoaded] = useState(false)
   const [mounted, setMounted] = useState(false)
@@ -54,16 +58,17 @@ const InstantImage = ({
       className={`relative w-full h-full ${className}`}
       style={backgroundStyle}
     >
-      {/* Instant display background layer - SSR + CSR */}
-      {inlineSrc && !imageLoaded && (
+      {/* Instant display background layer - SSR + CSR with optional soft placeholder and fast fade */}
+      {inlineSrc && (
         <div
-          className="absolute inset-0 transition-opacity duration-300"
+          className={`absolute inset-0 transition-opacity ${fastFade ? 'duration-100' : 'duration-300'}`}
           style={{
             backgroundImage: `url(${inlineSrc})`,
             backgroundSize: 'cover',
             backgroundPosition: 'center',
-            filter: 'blur(2px)',
-            transform: 'scale(1.1)'
+            filter: placeholderSoft ? 'blur(1px)' : 'blur(2px)',
+            transform: placeholderSoft ? 'none' : 'scale(1.1)',
+            opacity: imageLoaded ? 0 : 1
           }}
         />
       )}
@@ -74,7 +79,7 @@ const InstantImage = ({
         alt={alt}
         fill={fill}
         sizes={sizes}
-        className={`object-cover ${disableFade ? '' : 'transition-opacity duration-300'} ${
+        className={`object-cover ${disableFade ? '' : fastFade ? 'transition-opacity duration-100' : 'transition-opacity duration-300'} ${
           imageLoaded ? 'opacity-100' : 'opacity-0'
         }`}
         priority={priority}
