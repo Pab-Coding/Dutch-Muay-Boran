@@ -19,6 +19,7 @@ interface InstantImageProps {
   disableFade?: boolean
   fastFade?: boolean
   placeholderSoft?: boolean
+  overlayOnTop?: boolean
 }
 
 const InstantImage = ({
@@ -36,7 +37,8 @@ const InstantImage = ({
   showLoadingOverlay = false,
   disableFade = false,
   fastFade = false,
-  placeholderSoft = false
+  placeholderSoft = false,
+  overlayOnTop = false
 }: InstantImageProps) => {
   const [imageLoaded, setImageLoaded] = useState(false)
   const [mounted, setMounted] = useState(false)
@@ -61,7 +63,7 @@ const InstantImage = ({
       {/* Instant display background layer - SSR + CSR with optional soft placeholder and fast fade */}
       {inlineSrc && (
         <div
-          className={`absolute inset-0 transition-opacity ${fastFade ? 'duration-100' : 'duration-300'}`}
+          className={`absolute inset-0 transition-opacity ${fastFade ? 'duration-100' : 'duration-300'} ${overlayOnTop ? 'z-10' : ''}`}
           style={{
             backgroundImage: `url(${inlineSrc})`,
             backgroundSize: 'cover',

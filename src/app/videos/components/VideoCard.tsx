@@ -120,8 +120,7 @@ const VideoCard = ({ videoId, title, description, onPlay, priority = false }: Vi
           className="object-cover"
           quality={70}
           sizes="(max-width: 768px) 100vw, 50vw"
-          placeholder="blur"
-          blurDataURL={ADDITIONAL_INLINE_IMAGES.muayThaiBoranInline}
+          placeholder="empty"
           inlineSrc={ADDITIONAL_INLINE_IMAGES.muayThaiBoranInline}
           backgroundSrc={ADDITIONAL_INLINE_IMAGES.muayThaiBoranInlineBg}
           showLoadingOverlay={false}
@@ -129,6 +128,7 @@ const VideoCard = ({ videoId, title, description, onPlay, priority = false }: Vi
           disableFade={false}
           fastFade={priority}
           placeholderSoft={priority}
+          overlayOnTop
         />
 
         {/* Always visible overlay with gradient */}
