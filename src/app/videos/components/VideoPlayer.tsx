@@ -174,8 +174,12 @@ const VideoPlayer = ({ videoId, isOpen, onClose, title, description }: VideoPlay
 
             {/* Video Container with Gradient Border */}
             <div className="relative flex-shrink-0 bg-gradient-to-r from-red-500/10 via-white/10 to-blue-500/10 sm:rounded-t-2xl">
-              {/* Mobile gets standard 16:9, desktop gets extra space for controls */}
-              <div className="relative bg-black sm:rounded-t-2xl" style={{ paddingTop: isMobile ? '56.25%' : 'calc(56.25% + 48px)' }}>
+              {/* Mobile gets constrained height to prevent overlap, desktop gets extra space for controls */}
+              <div className="relative bg-black sm:rounded-t-2xl" style={{ 
+                paddingTop: isMobile ? '0' : 'calc(56.25% + 48px)',
+                height: isMobile ? 'calc(56.25vw)' : 'auto',
+                maxHeight: isMobile ? '50vh' : 'none'
+              }}>
                 <iframe
                   src={`https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0&playsinline=1&modestbranding=1&controls=1`}
                   title="YouTube video player"
@@ -210,7 +214,7 @@ const VideoPlayer = ({ videoId, isOpen, onClose, title, description }: VideoPlay
                 initial="hidden"
                 animate="visible"
                 ref={infoRef}
-                className={`relative ${isMobile ? 'z-20' : 'z-10'} flex-shrink-0 min-h-[140px] sm:min-h-[200px] p-4 sm:p-6 mt-2 sm:mt-0 bg-gradient-to-b from-black/90 to-black backdrop-blur-[1px]`}
+                className={`relative z-10 flex-1 sm:flex-shrink-0 min-h-[120px] sm:min-h-[200px] p-4 sm:p-6 mt-4 sm:mt-0 bg-gradient-to-b from-black/90 to-black backdrop-blur-[1px] overflow-y-auto`}
               >
                 {!isMobile && (
                   <div className="absolute right-4 top-3 flex gap-2">
