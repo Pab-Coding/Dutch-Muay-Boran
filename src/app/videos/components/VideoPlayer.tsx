@@ -210,7 +210,7 @@ const VideoPlayer = ({ videoId, isOpen, onClose, title, description }: VideoPlay
                 initial="hidden"
                 animate="visible"
                 ref={infoRef}
-                className="relative z-10 flex-shrink-0 min-h-[200px] p-4 sm:p-6 bg-gradient-to-b from-black/90 to-black backdrop-blur-[1px]"
+                className="relative z-10 flex-shrink-0 min-h-0 sm:min-h-[200px] p-4 sm:p-6 bg-gradient-to-b from-black/90 to-black backdrop-blur-[1px]"
               >
                 {!isMobile && (
                   <div className="absolute right-4 top-3 flex gap-2">
