@@ -26,7 +26,7 @@ const VideoCard = ({ videoId, title, description, onPlay, priority = false }: Vi
 
   // Posiciones personalizadas del botón de play según el videoId
   const playButtonPositions: { [key: string]: string } = {
-    'AI2MD0wuXXo': 'top-[35%]', // De Geschiedenis van Muay Thai - considerably higher
+    'AI2MD0wuXXo': 'top-[22%] sm:top-[35%]', // De Geschiedenis van Muay Thai - higher on mobile only
     '0fNkU_APRU8': 'top-[30%]', // Saenchai video
     'GbmdhnMPB3M': 'top-[20%]', // Muay Kard Chiek - higher
     'SGl9vOE_rj8': 'top-[20%]'  // Marco de Cesaris - slightly higher
